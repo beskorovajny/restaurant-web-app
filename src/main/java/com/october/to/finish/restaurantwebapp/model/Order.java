@@ -1,7 +1,6 @@
 package com.october.to.finish.restaurantwebapp.model;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.DoubleStream;
@@ -54,6 +53,31 @@ public class Order {
                             .of((e.getPrice() - ((e.getPrice() / 100) * discount)) * e.getCount())).sum();
         }
         return orderedDishes.stream().flatMapToDouble(e -> DoubleStream.of(e.getPrice() * e.getCount())).sum();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+        return id == order.id && discount == order.discount && Objects.equals(customer, order.customer) && Objects.equals(dateCreated, order.dateCreated) && status == order.status && Objects.equals(orderedDishes, order.orderedDishes);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, customer, dateCreated, status, discount, orderedDishes);
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", customer=" + customer +
+                ", dateCreated=" + dateCreated +
+                ", status=" + status +
+                ", discount=" + discount +
+                ", orderedDishes=" + orderedDishes +
+                '}';
     }
 
     public enum Status {
@@ -125,30 +149,5 @@ public class Order {
         public Order build() {
             return Order.this;
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return id == order.id && discount == order.discount && Objects.equals(customer, order.customer) && Objects.equals(dateCreated, order.dateCreated) && status == order.status && Objects.equals(orderedDishes, order.orderedDishes);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, customer, dateCreated, status, discount, orderedDishes);
-    }
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", customer=" + customer +
-                ", dateCreated=" + dateCreated +
-                ", status=" + status +
-                ", discount=" + discount +
-                ", orderedDishes=" + orderedDishes +
-                '}';
     }
 }
