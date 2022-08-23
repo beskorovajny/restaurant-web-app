@@ -1,6 +1,7 @@
 package com.october.to.finish.restaurantwebapp.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.DoubleStream;
@@ -73,7 +74,7 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", customer=" + customer +
-                ", dateCreated=" + dateCreated +
+                ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
                 ", status=" + status +
                 ", discount=" + discount +
                 ", orderedDishes=" + orderedDishes +

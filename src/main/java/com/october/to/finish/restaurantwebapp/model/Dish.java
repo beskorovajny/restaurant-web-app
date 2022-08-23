@@ -1,6 +1,7 @@
 package com.october.to.finish.restaurantwebapp.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -91,7 +92,7 @@ public class Dish {
                 ", weightInGrams=" + weightInGrams +
                 ", count=" + count +
                 ", minutesToCook=" + minutesToCook +
-                ", dateCreated=" + dateCreated +
+                ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
                 ", image=" + Arrays.toString(image) +
                 '}';
     }
