@@ -1,4 +1,4 @@
-package com.restaurant.october.to.finish.restaurantwebapp;
+package com.october.to.finish.restaurantwebapp;
 
 import java.io.*;
 import javax.servlet.http.*;
