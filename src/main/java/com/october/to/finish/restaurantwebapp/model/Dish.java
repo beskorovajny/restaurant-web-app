@@ -11,6 +11,8 @@ public class Dish {
     private Category category;
     private double price;
     private int weightInGrams;
+
+    private int count;
     private int minutesToCook;
     private LocalDateTime dateCreated;
     private byte[] image;
@@ -43,6 +45,10 @@ public class Dish {
         return weightInGrams;
     }
 
+    public int getCount() {
+        return count;
+    }
+
     public int getMinutesToCook() {
         return minutesToCook;
     }
@@ -64,12 +70,12 @@ public class Dish {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dish dish = (Dish) o;
-        return id == dish.id && Double.compare(dish.price, price) == 0 && weightInGrams == dish.weightInGrams && minutesToCook == dish.minutesToCook && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated) && Arrays.equals(image, dish.image);
+        return id == dish.id && Double.compare(dish.price, price) == 0 && weightInGrams == dish.weightInGrams && count == dish.count && minutesToCook == dish.minutesToCook && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated) && Arrays.equals(image, dish.image);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, title, description, category, price, weightInGrams, minutesToCook, dateCreated);
+        int result = Objects.hash(id, title, description, category, price, weightInGrams, count, minutesToCook, dateCreated);
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
@@ -83,8 +89,10 @@ public class Dish {
                 ", category=" + category +
                 ", price=" + price +
                 ", weightInGrams=" + weightInGrams +
+                ", count=" + count +
                 ", minutesToCook=" + minutesToCook +
                 ", dateCreated=" + dateCreated +
+                ", image=" + Arrays.toString(image) +
                 '}';
     }
 
@@ -155,6 +163,14 @@ public class Dish {
                 throw new IllegalArgumentException("Weight can't be < 0");
             }
             Dish.this.weightInGrams = weightInGrams;
+            return this;
+        }
+
+        public Builder setCount(int count) {
+            if (count < 1) {
+                throw new IllegalArgumentException("Can't add less than one dish!");
+            }
+            Dish.this.count = count;
             return this;
         }
 
