@@ -3,6 +3,9 @@ package com.october.to.finish.restaurantwebapp.model;
 import java.util.Objects;
 
 public class Address {
+
+
+    private long id;
     private String country;
     private String city;
     private String street;
@@ -22,6 +25,17 @@ public class Address {
         this.street = street;
         this.buildingNumber = buildingNumber;
         this.roomNumber = roomNumber;
+    }
+
+    public void setId(long id) {
+        if(id < 0) {
+            throw new IllegalArgumentException("ID cannot be < 0");
+        }
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getCountry() {
@@ -84,18 +98,19 @@ public class Address {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return Objects.equals(country, address.country) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(buildingNumber, address.buildingNumber) && Objects.equals(roomNumber, address.roomNumber);
+        return id == address.id && Objects.equals(country, address.country) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(buildingNumber, address.buildingNumber) && Objects.equals(roomNumber, address.roomNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(country, city, street, buildingNumber, roomNumber);
+        return Objects.hash(id, country, city, street, buildingNumber, roomNumber);
     }
 
     @Override
     public String toString() {
         return "Address{" +
-                "country='" + country + '\'' +
+                "id=" + id +
+                ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", buildingNumber='" + buildingNumber + '\'' +

@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.stream.DoubleStream;
 
-public class Order {
+public class Receipt {
     private long id;
     private Person customer;
     private LocalDateTime dateCreated;
@@ -16,7 +16,7 @@ public class Order {
     private Map<String, Dish> orderedDishes;
 
     public static Builder newBuilder() {
-        return new Order().new Builder();
+        return new Receipt().new Builder();
     }
 
     public long getId() {
@@ -62,8 +62,8 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
-        return id == order.id && discount == order.discount && Objects.equals(customer, order.customer) && Objects.equals(dateCreated, order.dateCreated) && status == order.status && Objects.equals(orderedDishes, order.orderedDishes);
+        Receipt receipt = (Receipt) o;
+        return id == receipt.id && discount == receipt.discount && Objects.equals(customer, receipt.customer) && Objects.equals(dateCreated, receipt.dateCreated) && status == receipt.status && Objects.equals(orderedDishes, receipt.orderedDishes);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
+        return "Receipt{" +
                 "id=" + id +
                 ", customer=" + customer +
                 ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
@@ -84,10 +84,10 @@ public class Order {
     }
 
     public enum Status {
-        NEW("new"),
-        COOKING("cooking"),
-        DELIVERY("delivery"),
-        COMPLETED("completed");
+        NEW("New"),
+        COOKING("Cooking"),
+        DELIVERY("Delivery"),
+        COMPLETED("Completed");
 
         private final String statusTitle;
 
@@ -108,7 +108,7 @@ public class Order {
             if (id < 0) {
                 throw new IllegalArgumentException("ID can't be < 0!");
             }
-            Order.this.id = id;
+            Receipt.this.id = id;
             return this;
         }
 
@@ -116,12 +116,12 @@ public class Order {
             if (customer == null) {
                 throw new IllegalArgumentException("Customer can't be null!");
             }
-            Order.this.customer = customer;
+            Receipt.this.customer = customer;
             return this;
         }
 
         public Builder setTimeCreated() {
-            Order.this.dateCreated = LocalDateTime.now();
+            Receipt.this.dateCreated = LocalDateTime.now();
             return this;
         }
 
@@ -129,7 +129,7 @@ public class Order {
             if (status == null) {
                 throw new IllegalArgumentException("Status can't be null!");
             }
-            Order.this.status = status;
+            Receipt.this.status = status;
             return this;
         }
 
@@ -137,7 +137,7 @@ public class Order {
             if (discount < 0) {
                 throw new IllegalArgumentException("Discount can't be null");
             }
-            Order.this.discount = discount;
+            Receipt.this.discount = discount;
             return this;
         }
 
@@ -145,12 +145,12 @@ public class Order {
             if (orderedDishes == null) {
                 throw new IllegalArgumentException("Dishes can't be null!");
             }
-            Order.this.orderedDishes = orderedDishes;
+            Receipt.this.orderedDishes = orderedDishes;
             return this;
         }
 
-        public Order build() {
-            return Order.this;
+        public Receipt build() {
+            return Receipt.this;
         }
     }
 }

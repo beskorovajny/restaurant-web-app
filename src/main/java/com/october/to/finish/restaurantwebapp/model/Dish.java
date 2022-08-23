@@ -8,7 +8,9 @@ import java.util.Objects;
 public class Dish {
     private long id;
     private String title;
+    private String titleCyrillic;
     private String description;
+    private String descriptionCyrillic;
     private Category category;
     private double price;
     private int weightInGrams;
@@ -30,8 +32,16 @@ public class Dish {
         return title;
     }
 
+    public String getTitleCyrillic() {
+        return titleCyrillic;
+    }
+
     public String getDescription() {
         return description;
+    }
+
+    public String getDescriptionCyrillic() {
+        return descriptionCyrillic;
     }
 
     public Category getCategory() {
@@ -86,7 +96,9 @@ public class Dish {
         return "Dish{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
+                ", titleCyrillic='" + titleCyrillic + '\'' +
                 ", description='" + description + '\'' +
+                ", descriptionCyrillic='" + descriptionCyrillic + '\'' +
                 ", category=" + category +
                 ", price=" + price +
                 ", weightInGrams=" + weightInGrams +
@@ -98,10 +110,10 @@ public class Dish {
     }
 
     public enum Category {
-        SALAD("salad"),
-        PIZZA("pizza"),
-        APPETIZER("appetizer"),
-        DRINK("drink");
+        SALAD("Salad"),
+        PIZZA("Pizza"),
+        APPETIZER("Appetizer"),
+        DRINK("Drink");
 
 
         private final String categoryName;
@@ -135,11 +147,27 @@ public class Dish {
             return this;
         }
 
+        public Builder setTitleCyrillic(String titleCyrillic) {
+            if (titleCyrillic == null) {
+                throw new IllegalArgumentException("Title can't be null!");
+            }
+            Dish.this.titleCyrillic = titleCyrillic;
+            return this;
+        }
+
         public Builder setDescription(String description) {
             if (description == null) {
                 throw new IllegalArgumentException("Description can't be null");
             }
             Dish.this.description = description;
+            return this;
+        }
+
+        public Builder setDescriptionCyrillic(String descriptionCyrillic) {
+            if (descriptionCyrillic == null) {
+                throw new IllegalArgumentException("Description can't be null");
+            }
+            Dish.this.descriptionCyrillic = descriptionCyrillic;
             return this;
         }
 

@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class CreditCard {
-    private String bankName;
     private String cardNumber;
+    private String bankName;
     private double balance;
     private char[] password;
 

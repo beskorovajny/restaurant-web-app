@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class Person {
-    private Set<Order> orders;
+    private Set<Receipt> receipts;
     private long id;
     private String email;
     private String firstName;
@@ -61,12 +61,12 @@ public class Person {
         return password;
     }
 
-    public Set<Order> getOrders() {
-        return orders;
+    public Set<Receipt> getOrders() {
+        return receipts;
     }
 
-    public void setOrders(Set<Order> orders) {
-        this.orders = orders;
+    public void setOrders(Set<Receipt> receipts) {
+        this.receipts = receipts;
     }
 
     @Override
@@ -74,12 +74,12 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return id == person.id && Objects.equals(orders, person.orders) && Objects.equals(email, person.email) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(phoneNumber, person.phoneNumber) && role == person.role && Objects.equals(creditCard, person.creditCard) && Objects.equals(address, person.address) && Arrays.equals(password, person.password);
+        return id == person.id && Objects.equals(receipts, person.receipts) && Objects.equals(email, person.email) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(phoneNumber, person.phoneNumber) && role == person.role && Objects.equals(creditCard, person.creditCard) && Objects.equals(address, person.address) && Arrays.equals(password, person.password);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(orders, id, email, firstName, lastName, phoneNumber, role, creditCard, address);
+        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, role, creditCard, address);
         result = 31 * result + Arrays.hashCode(password);
         return result;
     }
@@ -87,7 +87,7 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "orders=" + orders +
+                "orders=" + receipts +
                 ", id=" + id +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
@@ -101,9 +101,9 @@ public class Person {
     }
 
     public enum Role {
-        CLIENT("client"),
-        MANAGER("manager"),
-        UNAUTHORIZED_USER("unauthorized_user");
+        CLIENT("Client"),
+        MANAGER("Manager"),
+        UNAUTHORIZED_USER("Unauthorized_user");
 
         private final String roleName;
 
@@ -125,7 +125,7 @@ public class Person {
                 throw new IllegalArgumentException("ID can't be < 0");
             }
             Person.this.id = id;
-            Person.this.orders = new HashSet<>();
+            Person.this.receipts = new HashSet<>();
             return this;
         }
 
