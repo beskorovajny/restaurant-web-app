@@ -2,8 +2,8 @@ package com.october.to.finish.restaurantwebapp.model;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 import java.util.stream.DoubleStream;
 
 public class Order {
@@ -13,7 +13,7 @@ public class Order {
     private Status status;
     private int discount;
 
-    private Set<Dish> orderedDishes;
+    private Map<String, Dish> orderedDishes;
 
     public static Builder newBuilder() {
         return new Order().new Builder();
@@ -39,21 +39,23 @@ public class Order {
         return discount;
     }
 
-    public Set<Dish> getOrderedDishes() {
+    public Map<String, Dish> getOrderedDishes() {
         return orderedDishes;
     }
 
-    public void setOrderedDishes(Set<Dish> orderedDishes) {
+    public void setOrderedDishes(Map<String, Dish> orderedDishes) {
         this.orderedDishes = orderedDishes;
     }
 
     public double getTotalPrice() {
         if (discount > 0) {
-            return orderedDishes.stream()
+            return orderedDishes.entrySet().stream()
                     .flatMapToDouble(e -> DoubleStream
-                            .of((e.getPrice() - ((e.getPrice() / 100) * discount)) * e.getCount())).sum();
+                            .of((e.getValue().getPrice() -
+                                    ((e.getValue().getPrice() / 100) * discount)) * e.getValue().getCount())).sum();
         }
-        return orderedDishes.stream().flatMapToDouble(e -> DoubleStream.of(e.getPrice() * e.getCount())).sum();
+        return orderedDishes.entrySet().stream()
+                .flatMapToDouble(e -> DoubleStream.of(e.getValue().getPrice() * e.getValue().getCount())).sum();
     }
 
     @Override
@@ -139,7 +141,7 @@ public class Order {
             return this;
         }
 
-        public Builder setOrderedDishes(Set<Dish> orderedDishes) {
+        public Builder setOrderedDishes(Map<String, Dish> orderedDishes) {
             if (orderedDishes == null) {
                 throw new IllegalArgumentException("Dishes can't be null!");
             }
