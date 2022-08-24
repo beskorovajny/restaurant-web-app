@@ -3,7 +3,7 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DBException;
 import com.october.to.finish.restaurantwebapp.model.Dish;
 
-import java.util.List;
+import java.util.Set;
 
 public interface DishDAO extends GenericDAO<Dish> {
     boolean insertDish(Dish dish) throws DBException;
@@ -16,5 +16,5 @@ public interface DishDAO extends GenericDAO<Dish> {
 
     Dish getDishByTitle(String title) throws DBException;
 
-    List<Dish> findAllDishes() throws DBException;
+    Set<Dish> findAllDishes() throws DBException;
 }

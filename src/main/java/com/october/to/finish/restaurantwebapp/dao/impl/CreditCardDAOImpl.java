@@ -4,9 +4,15 @@ import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
 import com.october.to.finish.restaurantwebapp.exceptions.DBException;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class CreditCardDAOImpl implements CreditCardDAO {
+    private final Connection connection;
+    public CreditCardDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean insertCreditCard(CreditCard creditCard) throws DBException {
         return false;

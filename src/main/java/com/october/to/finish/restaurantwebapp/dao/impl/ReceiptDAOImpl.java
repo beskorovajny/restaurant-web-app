@@ -4,9 +4,15 @@ import com.october.to.finish.restaurantwebapp.dao.ReceiptDAO;
 import com.october.to.finish.restaurantwebapp.exceptions.DBException;
 import com.october.to.finish.restaurantwebapp.model.Receipt;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class ReceiptDAOImpl implements ReceiptDAO {
+    private final Connection connection;
+    public ReceiptDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean insertReceipt(Receipt receipt) throws DBException {
         return false;

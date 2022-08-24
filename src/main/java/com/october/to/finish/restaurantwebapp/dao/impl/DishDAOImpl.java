@@ -4,9 +4,15 @@ import com.october.to.finish.restaurantwebapp.dao.DishDAO;
 import com.october.to.finish.restaurantwebapp.exceptions.DBException;
 import com.october.to.finish.restaurantwebapp.model.Dish;
 
-import java.util.List;
+import java.sql.Connection;
+import java.util.Set;
 
 public class DishDAOImpl implements DishDAO {
+    private final Connection connection;
+    public DishDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean insertDish(Dish dish) throws DBException {
         return false;
@@ -33,7 +39,7 @@ public class DishDAOImpl implements DishDAO {
     }
 
     @Override
-    public List<Dish> findAllDishes() throws DBException {
+    public Set<Dish> findAllDishes() throws DBException {
         return null;
     }
 }

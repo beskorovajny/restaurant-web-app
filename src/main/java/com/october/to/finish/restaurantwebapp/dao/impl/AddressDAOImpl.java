@@ -4,9 +4,15 @@ import com.october.to.finish.restaurantwebapp.dao.AddressDAO;
 import com.october.to.finish.restaurantwebapp.exceptions.DBException;
 import com.october.to.finish.restaurantwebapp.model.Address;
 
+import java.sql.Connection;
 import java.util.List;
 
 public class AddressDAOImpl implements AddressDAO {
+    private final Connection connection;
+    public AddressDAOImpl(Connection connection) {
+        this.connection = connection;
+    }
+
     @Override
     public boolean insertAddress(Address address) throws DBException {
         return false;
