@@ -12,7 +12,7 @@ public class Receipt {
     private LocalDateTime dateCreated;
     private Status status;
     private int discount;
-
+    private double totalPrice;
     private Map<String, Dish> orderedDishes;
 
     public static Builder newBuilder() {
@@ -48,6 +48,11 @@ public class Receipt {
     }
 
     public double getTotalPrice() {
+        totalPrice = calculateTotalPrice();
+        return totalPrice;
+    }
+
+    private double calculateTotalPrice() {
         if (discount > 0) {
             return orderedDishes.entrySet().stream()
                     .flatMapToDouble(e -> DoubleStream
@@ -63,12 +68,12 @@ public class Receipt {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Receipt receipt = (Receipt) o;
-        return id == receipt.id && discount == receipt.discount && Objects.equals(customer, receipt.customer) && Objects.equals(dateCreated, receipt.dateCreated) && status == receipt.status && Objects.equals(orderedDishes, receipt.orderedDishes);
+        return id == receipt.id && discount == receipt.discount && Double.compare(receipt.totalPrice, totalPrice) == 0 && Objects.equals(customer, receipt.customer) && Objects.equals(dateCreated, receipt.dateCreated) && status == receipt.status && Objects.equals(orderedDishes, receipt.orderedDishes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customer, dateCreated, status, discount, orderedDishes);
+        return Objects.hash(id, customer, dateCreated, status, discount, totalPrice, orderedDishes);
     }
 
     @Override
@@ -79,6 +84,7 @@ public class Receipt {
                 ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
                 ", status=" + status +
                 ", discount=" + discount +
+                ", totalPrice=" + totalPrice +
                 ", orderedDishes=" + orderedDishes +
                 '}';
     }

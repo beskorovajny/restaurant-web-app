@@ -14,7 +14,6 @@ public class Dish {
     private Category category;
     private double price;
     private int weightInGrams;
-
     private int count;
     private int minutesToCook;
     private LocalDateTime dateCreated;
@@ -216,13 +215,13 @@ public class Dish {
             return this;
         }
 
-        /*public Builder setImage(byte[] image) {
+        public Builder setImage(byte[] image) {
             if (image == null) {
                 throw new IllegalArgumentException("Image can't be null");
             }
             Dish.this.image = image;
             return this;
-        }*/
+        }
 
         public Dish build() {
             return Dish.this;
