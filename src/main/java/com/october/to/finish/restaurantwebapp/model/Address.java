@@ -3,8 +3,6 @@ package com.october.to.finish.restaurantwebapp.model;
 import java.util.Objects;
 
 public class Address {
-
-
     private long id;
     private String country;
     private String city;
@@ -27,15 +25,15 @@ public class Address {
         this.roomNumber = roomNumber;
     }
 
+    public long getId() {
+        return id;
+    }
+
     public void setId(long id) {
-        if(id < 0) {
+        if (id < 0) {
             throw new IllegalArgumentException("ID cannot be < 0");
         }
         this.id = id;
-    }
-
-    public long getId() {
-        return id;
     }
 
     public String getCountry() {

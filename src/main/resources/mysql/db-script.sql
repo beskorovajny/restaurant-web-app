@@ -7,6 +7,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema restaurant
 -- -----------------------------------------------------
+DROP SCHEMA IF EXISTS `restaurant` ;
 
 -- -----------------------------------------------------
 -- Schema restaurant
@@ -28,11 +29,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `restaurant`.`person`
+-- Table `restaurant`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`person` ;
+DROP TABLE IF EXISTS `restaurant`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`person` (
+CREATE TABLE IF NOT EXISTS `restaurant`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `email` VARCHAR(45) NOT NULL,
   `first_name` VARCHAR(45) NOT NULL,
@@ -63,13 +64,13 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`credit_card` (
   `bank_name` VARCHAR(45) NOT NULL,
   `balance` DECIMAL(10,2) NOT NULL,
   `password` VARCHAR(65) NOT NULL,
-  `person_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`card_number`),
   INDEX `idx_card_number` (`card_number` ASC) INVISIBLE,
-  INDEX `fk_credit_card_person1_idx` (`person_id` ASC) VISIBLE,
+  INDEX `fk_credit_card_person1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_credit_card_person1`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `restaurant`.`person` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `restaurant`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -87,14 +88,14 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`address` (
   `street` VARCHAR(45) NOT NULL,
   `building_number` VARCHAR(45) NOT NULL,
   `room_number` VARCHAR(45) NULL,
-  `person_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `idx_address_country` (`country` ASC) INVISIBLE,
   INDEX `idx_address_city_street` (`city` ASC, `street` ASC) VISIBLE,
-  INDEX `fk_address_person1_idx` (`person_id` ASC) VISIBLE,
+  INDEX `fk_address_person1_idx` (`user_id` ASC) VISIBLE,
   CONSTRAINT `fk_address_person1`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `restaurant`.`person` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `restaurant`.`user` (`id`)
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
@@ -147,6 +148,19 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `restaurant`.`receipt_status`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant`.`receipt_status` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_status` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `status` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `status_UNIQUE` (`status` ASC) VISIBLE)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `restaurant`.`receipt`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `restaurant`.`receipt` ;
@@ -156,18 +170,23 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
   `time_created` DATETIME NOT NULL,
   `discount` INT NULL,
   `total_price` DECIMAL(10,2) NOT NULL,
-  `status` ENUM('New', 'Cooking', 'Delivery', 'Completed') NOT NULL,
-  `person_id` INT NOT NULL,
+  `user_id` INT NOT NULL,
+  `receipt_status_id` INT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `idx_time_created` (`time_created` ASC) INVISIBLE,
-  INDEX `idx_status` (`status` ASC) INVISIBLE,
   INDEX `idx_price` (`total_price` ASC) VISIBLE,
-  INDEX `fk_receipt_person1_idx` (`person_id` ASC) VISIBLE,
+  INDEX `fk_receipt_person1_idx` (`user_id` ASC) VISIBLE,
+  INDEX `fk_receipt_receipt_status1_idx` (`receipt_status_id` ASC) VISIBLE,
   CONSTRAINT `fk_receipt_person1`
-    FOREIGN KEY (`person_id`)
-    REFERENCES `restaurant`.`person` (`id`)
+    FOREIGN KEY (`user_id`)
+    REFERENCES `restaurant`.`user` (`id`)
     ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_receipt_receipt_status1`
+    FOREIGN KEY (`receipt_status_id`)
+    REFERENCES `restaurant`.`receipt_status` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -193,6 +212,51 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_has_dish` (
     ON DELETE CASCADE
     ON UPDATE CASCADE)
 ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `restaurant`.`status_flow`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant`.`status_flow` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant`.`status_flow` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `from` INT NOT NULL,
+  `to` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_status_flow_receipt_status1_idx` (`from` ASC) VISIBLE,
+  INDEX `fk_status_flow_receipt_status2_idx` (`to` ASC) VISIBLE,
+  CONSTRAINT `fk_status_flow_from`
+    FOREIGN KEY (`from`)
+    REFERENCES `restaurant`.`receipt_status` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT `fk_status_flow_to`
+    FOREIGN KEY (`to`)
+    REFERENCES `restaurant`.`receipt_status` (`id`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
+ENGINE = InnoDB;
+
+-- ----------------------------------------------------------
+-- Inserts
+-- ----------------------------------------------------------
+INSERT INTO role (id, name) VALUES 
+										(DEFAULT, "Manager"),
+										(DEFAULT, "Client"),
+										(DEFAULT, "Unauthorized_user");
+
+INSERT INTO category(id, name) VALUES 
+										(DEFAULT, "Salad"),
+										(DEFAULT, "Pizza"),
+										(DEFAULT, "Appetizer"),
+										(DEFAULT, "Drink");
+
+INSERT INTO receipt_status(id, status)  VALUES 
+										(DEFAULT, "New"),
+										(DEFAULT, "Cooking"),
+										(DEFAULT, "Delivery"),
+										(DEFAULT, "Completed");
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
