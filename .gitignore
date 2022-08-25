@@ -7,7 +7,7 @@ target/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
-.idea/libraries/
+#.idea/libraries/
 *.iws
 *.iml
 *.ipr
@@ -36,4 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
-/src/main/java/com/october/to/finish/restaurantwebapp/testing/
+
+/src/main/logs/
