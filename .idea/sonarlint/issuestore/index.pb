@@ -31,8 +31,6 @@ Ysrc/main/java/com/october/to/finish/restaurantwebapp/dao/factory/impl/DAOFactor
 Psrc/main/java/com/october/to/finish/restaurantwebapp/dao/factory/DAOFactory.java,4\d\4dfb5ce3b8737dd7701d6f9bcecbfe4f346000fe
 ~
 Nsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/DishDAOImpl.java,d\1\d135e3de55a1ae66ebe4aa218d1430b3a5e2b70d
-€
-Psrc/main/java/com/october/to/finish/restaurantwebapp/exceptions/DBException.java,3\b\3b72f55f385d53ed91afa9e2bccc5611bcfe2ea0
 Ž
 ^src/main/java/com/october/to/finish/restaurantwebapp/dao/connections/ConnectionPoolHolder.java,5\1\515620d2acc0eb6401f5ac4e177156be7d05e8b5
 €

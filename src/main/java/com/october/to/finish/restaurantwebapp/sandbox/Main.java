@@ -3,16 +3,16 @@ package com.october.to.finish.restaurantwebapp.sandbox;
 import com.october.to.finish.restaurantwebapp.model.Dish;
 import com.october.to.finish.restaurantwebapp.model.Person;
 import com.october.to.finish.restaurantwebapp.model.Receipt;
+import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static java.lang.String.*;
-
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
+
     public static void main(String[] args) {
         Map<String, Dish> dishes = new HashMap<>();
         Dish dish1 = Dish.newBuilder().setId(1)
@@ -26,7 +26,7 @@ public class Main {
                 .setWeightInGrams(425)
                 .setCount(5)
                 .setPrice(200).build();
-        LOGGER.info(format("Dish : %s was created", dish1));
+        LOGGER.info("Dish : {} was created", dish1);
         Dish dish2 = Dish.newBuilder().setId(1)
                 .setTitle("Drink")
                 .setTitleCyrillic("Напій")
@@ -55,5 +55,11 @@ public class Main {
         receipt.getOrderedDishes().entrySet().forEach(System.out::println);
         System.out.println(receipt);
         LOGGER.error("Fatal error...");
+        String password = "440HemiSixPack";
+        Person person = Person.newBuilder()
+                .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
+        LOGGER.info(String.valueOf(person.getPassword()));
+
+
     }
 }
