@@ -6,7 +6,7 @@ import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import java.util.List;
 
 public interface CreditCardDAO extends GenericDAO<CreditCard> {
-    boolean insertCreditCard(CreditCard creditCard) throws DBException;
+    boolean insertCreditCard(CreditCard creditCard, long personId) throws DBException;
 
     boolean deleteCreditCard(CreditCard creditCard) throws DBException;
 

@@ -26,11 +26,23 @@ public class CreditCard {
         return bankName;
     }
 
+    public void setBankName(String bankName) {
+        if (bankName == null || bankName.isEmpty()) {
+            throw new IllegalArgumentException("Bank name can't be empty or null");
+        }
+        this.bankName = bankName;
+    }
+
     public String getCardNumber() {
         return cardNumber;
     }
 
-
+    public void setCardNumber(String cardNumber) {
+        if (cardNumber == null || cardNumber.isEmpty()) {
+            throw new IllegalArgumentException("Card number can't be empty or null.");
+        }
+        this.cardNumber = cardNumber;
+    }
     public double getBalance() {
         return balance;
     }

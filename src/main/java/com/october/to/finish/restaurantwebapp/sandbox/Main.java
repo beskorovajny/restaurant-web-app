@@ -1,20 +1,23 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
-import com.october.to.finish.restaurantwebapp.model.Dish;
+import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
+import com.october.to.finish.restaurantwebapp.dao.connections.ConnectionPoolHolder;
+import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
+import com.october.to.finish.restaurantwebapp.dao.impl.CreditCardDAOImpl;
+import com.october.to.finish.restaurantwebapp.exceptions.DBException;
+import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import com.october.to.finish.restaurantwebapp.model.Person;
-import com.october.to.finish.restaurantwebapp.model.Receipt;
-import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
-        Map<String, Dish> dishes = new HashMap<>();
+       /* Map<String, Dish> dishes = new HashMap<>();
         Dish dish1 = Dish.newBuilder().setId(1)
                 .setTitle("Pizza")
                 .setTitleCyrillic("Піца")
@@ -58,7 +61,22 @@ public class Main {
         String password = "440HemiSixPack";
         Person person = Person.newBuilder()
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
-        LOGGER.info(String.valueOf(person.getPassword()));
+        LOGGER.info(String.valueOf(person.getPassword()));*/
+        try {
+
+            CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
+            CreditCard creditCard = new CreditCard("Bank Of America",
+                    "5555555555555555", 5000.0, "12345".toCharArray());
+            Person person = Person.newBuilder()
+                    .setFirstName("John")
+                    .setLastName("Doe")
+                    .setEmail("john_doe@example.com")
+                    .setPassword("12213312".toCharArray())
+                    .setId(1).build();
+            creditCardDAO.insertCreditCard(creditCard, person.getId());
+        } catch (SQLException | DBException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
