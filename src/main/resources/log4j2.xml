@@ -22,6 +22,7 @@
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
+                <OnStartupTriggeringPolicy />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
@@ -32,6 +33,7 @@
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
+                <OnStartupTriggeringPolicy />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>
@@ -42,6 +44,7 @@
             <PatternLayout pattern="${LOG_PATTERN}"/>
             <Policies>
                 <SizeBasedTriggeringPolicy size="10MB" />
+                <OnStartupTriggeringPolicy />
             </Policies>
             <DefaultRolloverStrategy max="10"/>
         </RollingFile>

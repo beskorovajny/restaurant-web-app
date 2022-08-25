@@ -35,6 +35,3 @@ Nsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/DishDAOImpl.java
 ^src/main/java/com/october/to/finish/restaurantwebapp/dao/connections/ConnectionPoolHolder.java,5\1\515620d2acc0eb6401f5ac4e177156be7d05e8b5
 €
 Psrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/PersonDAOImpl.java,4\a\4ae2034eb1a90b70281f6a202fe1a2dd0bb62073
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
