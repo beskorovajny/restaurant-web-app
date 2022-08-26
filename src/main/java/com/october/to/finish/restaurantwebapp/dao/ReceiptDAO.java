@@ -9,9 +9,9 @@ public interface ReceiptDAO extends GenericDAO<Receipt> {
 
     boolean insertReceipt(Receipt receipt) throws DAOException;
 
-    boolean deleteReceipt(Receipt receipt) throws DAOException;
+    boolean deleteReceipt(long receiptId) throws DAOException;
 
-    boolean updateReceipt(Receipt receipt) throws DAOException;
+    boolean updateReceipt(long receiptId, Receipt receipt) throws DAOException;
 
     Receipt getReceiptById(long receiptId) throws DAOException;
 

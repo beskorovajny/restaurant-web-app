@@ -19,12 +19,12 @@ public class DishDAOImpl implements DishDAO {
     }
 
     @Override
-    public boolean deleteDish(Dish dish) throws DAOException {
+    public boolean deleteDish(long dishId) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean updateDish(Dish dish) throws DAOException {
+    public boolean updateDish(long dishId , Dish dish) throws DAOException {
         return false;
     }
 

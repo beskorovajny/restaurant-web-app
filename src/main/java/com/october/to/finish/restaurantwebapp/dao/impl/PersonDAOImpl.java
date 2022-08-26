@@ -20,12 +20,12 @@ public class PersonDAOImpl implements PersonDAO {
     }
 
     @Override
-    public boolean deletePerson(Person person) throws DAOException {
+    public boolean deletePerson(long personId) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean updatePerson(Person person) throws DAOException {
+    public boolean updatePerson(long personId, Person person) throws DAOException {
         return false;
     }
 

@@ -2,10 +2,8 @@ package com.october.to.finish.restaurantwebapp.dao.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.AddressDAO;
 import com.october.to.finish.restaurantwebapp.dao.mapper.impl.AddressMapper;
-import com.october.to.finish.restaurantwebapp.dao.mapper.impl.CreditCardMapper;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Address;
-import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

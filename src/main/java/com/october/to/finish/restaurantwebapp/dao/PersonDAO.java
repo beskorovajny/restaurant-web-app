@@ -8,9 +8,9 @@ import java.util.List;
 public interface PersonDAO extends GenericDAO<Person> {
     boolean insertPerson(Person person) throws DAOException;
 
-    boolean deletePerson(Person person) throws DAOException;
+    boolean deletePerson(long personId) throws DAOException;
 
-    boolean updatePerson(Person person) throws DAOException;
+    boolean updatePerson(long personId, Person person) throws DAOException;
 
     Person getPersonById(long personId) throws DAOException;
 

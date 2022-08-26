@@ -19,12 +19,12 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     }
 
     @Override
-    public boolean deleteReceipt(Receipt receipt) throws DAOException {
+    public boolean deleteReceipt(long receiptId) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean updateReceipt(Receipt receipt) throws DAOException {
+    public boolean updateReceipt(long receiptId, Receipt receipt) throws DAOException {
         return false;
     }
 
