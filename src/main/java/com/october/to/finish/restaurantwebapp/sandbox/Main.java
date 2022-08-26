@@ -64,15 +64,15 @@ public class Main {
             CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
 
             CreditCard creditCard = new CreditCard("Bank Of Africa",
-                    "5555555555555550", 5000.0, "12349".toCharArray());
+                    "4555555555555550", 5000.0, "12349".toCharArray());
 
             CreditCard creditCard2 = new CreditCard("Bank Of England",
-                    "5555555555555551", 5000.0, "12342".toCharArray());
+                    "4555555555555551", 5000.0, "12342".toCharArray());
 
             CreditCard creditCard3 = new CreditCard("Bank Of Canada",
-                    "5555555555555561", 5000.0, "12343".toCharArray());
+                    "4555555555555561", 5000.0, "12343".toCharArray());
             CreditCard creditCard4 = new CreditCard("Bank Of Jamaica",
-                    "5555555555555550", 5000.0, "12346".toCharArray());
+                    "4555555555555550", 5000.0, "12346".toCharArray());
             Person person = Person.newBuilder()
                     .setFirstName("John")
                     .setLastName("Doe")
@@ -83,12 +83,12 @@ public class Main {
 
             //CreditCard creditCard1 = creditCardDAO.getCreditCardByNumber(creditCard2.getCardNumber());
 
-            /*creditCardDAO.insertCreditCard(creditCard2, 2);
+            creditCardDAO.insertCreditCard(creditCard2, 2);
             creditCardDAO.insertCreditCard(creditCard3, 3);
-            creditCardDAO.insertCreditCard(creditCard4, 4);*/
+            creditCardDAO.insertCreditCard(creditCard4, 4);
 
-            //creditCardDAO.updateCreditCard(creditCard2.getCardNumber(), creditCard);
-            creditCardDAO.deleteCreditCard(creditCard4.getCardNumber());
+            /*//creditCardDAO.updateCreditCard(creditCard2.getCardNumber(), creditCard);
+            creditCardDAO.deleteCreditCard(creditCard4.getCardNumber());*/
 
             creditCardDAO.findAllCreditCards().forEach(System.out::println);
 

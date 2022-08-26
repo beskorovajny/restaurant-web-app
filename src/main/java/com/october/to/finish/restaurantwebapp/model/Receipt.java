@@ -126,8 +126,11 @@ public class Receipt {
             return this;
         }
 
-        public Builder setTimeCreated() {
-            Receipt.this.dateCreated = LocalDateTime.now();
+        public Builder setTimeCreated(LocalDateTime timeCreated) {
+            if (timeCreated == null) {
+                throw new IllegalArgumentException("Creation time can't be null!");
+            }
+            Receipt.this.dateCreated = timeCreated;
             return this;
         }
 
@@ -144,6 +147,14 @@ public class Receipt {
                 throw new IllegalArgumentException("Discount can't be null");
             }
             Receipt.this.discount = discount;
+            return this;
+        }
+
+        public Builder setTotalPrice(double totalPrice) {
+            if (totalPrice < 0) {
+                throw new IllegalArgumentException("Price can't be < 0");
+            }
+            Receipt.this.totalPrice = totalPrice;
             return this;
         }
 

@@ -3,14 +3,8 @@ O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 v
 Fsrc/main/java/com/october/to/finish/restaurantwebapp/HelloServlet.java,f\a\fadc2626f37c71e255061f928e41d1ca1003a68e
-v
-Fsrc/main/java/com/october/to/finish/restaurantwebapp/model/Person.java,8\c\8c7edb5e6e23dcc83275ef3543b6a3b45b7c4e5a
 w
 Gsrc/main/java/com/october/to/finish/restaurantwebapp/model/Address.java,9\f\9ff7ae232ae83d5eb99bbe93d41968aa8a2516d0
-w
-Gsrc/main/java/com/october/to/finish/restaurantwebapp/model/Receipt.java,d\b\db9cd0bf18303b23ef9e5ee748a300db8003bf15
-t
-Dsrc/main/java/com/october/to/finish/restaurantwebapp/model/Dish.java,3\5\353d8f04426241533cfb6143f8afb13669934d53
 x
 Hsrc/main/java/com/october/to/finish/restaurantwebapp/dao/ReceiptDAO.java,7\6\765ae6dcd15a6c6a80e65ab2e4bf4ba5352193ed
 w

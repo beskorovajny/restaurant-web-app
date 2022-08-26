@@ -210,8 +210,11 @@ public class Dish {
             return this;
         }
 
-        public Builder setDateCreated() {
-            Dish.this.dateCreated = LocalDateTime.now();
+        public Builder setDateCreated(LocalDateTime dateCreated) {
+            if (dateCreated == null) {
+                throw new IllegalArgumentException("Creation time can't be null");
+            }
+            Dish.this.dateCreated = dateCreated;
             return this;
         }
 

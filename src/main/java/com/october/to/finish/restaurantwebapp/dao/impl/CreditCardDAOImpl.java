@@ -4,6 +4,7 @@ import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
 import com.october.to.finish.restaurantwebapp.dao.mapper.impl.CreditCardMapper;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
+import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -40,7 +41,8 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             preparedStatement.setString(1, creditCard.getCardNumber());
             preparedStatement.setString(2, creditCard.getBankName());
             preparedStatement.setBigDecimal(3, BigDecimal.valueOf(creditCard.getBalance()));
-            preparedStatement.setString(4, String.valueOf(creditCard.getPassword()));
+            preparedStatement.setString(4, PasswordEncryptionUtil.
+                    getEncrypted(String.valueOf(creditCard.getPassword())));
             preparedStatement.setLong(5, personId);
 
             preparedStatement.executeUpdate();
