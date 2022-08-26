@@ -12,11 +12,7 @@ Gsrc/main/java/com/october/to/finish/restaurantwebapp/model/Receipt.java,d\b\db
 t
 Dsrc/main/java/com/october/to/finish/restaurantwebapp/model/Dish.java,3\5\353d8f04426241533cfb6143f8afb13669934d53
 x
-Hsrc/main/java/com/october/to/finish/restaurantwebapp/dao/GenericDAO.java,9\b\9b499da7275c7190f8ab72fc434f5120f06c10f7
-x
 Hsrc/main/java/com/october/to/finish/restaurantwebapp/dao/ReceiptDAO.java,7\6\765ae6dcd15a6c6a80e65ab2e4bf4ba5352193ed
-x
-Hsrc/main/java/com/october/to/finish/restaurantwebapp/dao/AddressDAO.java,2\8\2870eaa2a235b781fd857676b0fd1abeeeb114c6
 w
 Gsrc/main/java/com/october/to/finish/restaurantwebapp/dao/PersonDAO.java,1\5\152ccb64a3286c20036174bec37239052d97369e
 ~
@@ -36,8 +32,6 @@ Psrc/main/java/com/october/to/finish/restaurantwebapp/dao/factory/DAOFactory.jav
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-Å
-Qsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/AddressDAOImpl.java,2\0\20db7452530683d4fa7591abf00070350d039d07
 â
 Ysrc/main/java/com/october/to/finish/restaurantwebapp/dao/factory/impl/DAOFactoryImpl.java,6\8\68dbf2326b9a693def82b87805b50e7272313078
 7

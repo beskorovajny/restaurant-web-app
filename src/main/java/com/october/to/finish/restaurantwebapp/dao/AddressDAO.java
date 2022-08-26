@@ -6,11 +6,11 @@ import com.october.to.finish.restaurantwebapp.model.Address;
 import java.util.List;
 
 public interface AddressDAO extends GenericDAO<Address> {
-    boolean insertAddress(Address address) throws DAOException;
+    boolean insertAddress(long personId, Address address) throws DAOException;
 
-    boolean deleteAddress(Address address) throws DAOException;
+    boolean deleteAddress(long addressId) throws DAOException;
 
-    boolean updateAddress(Address address) throws DAOException;
+    boolean updateAddress(long addressId, Address address) throws DAOException;
 
     Address getAddressById(long addressId) throws DAOException;
 

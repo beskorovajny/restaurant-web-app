@@ -64,15 +64,14 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             if (rowDeleted > 0) {
                 LOGGER.info("Credit card with number : [{}] was removed.", cardNumber);
                 return true;
-            } else {
-                LOGGER.info("Credit card with number : [{}] was not removed.", cardNumber);
-                return false;
             }
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not removed. An exception occurs : {}",
                     cardNumber, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while removing CreditCard" + e.getMessage(), e);
         }
+        LOGGER.info("Credit card with number : [{}] was not removed.", cardNumber);
+        return false;
     }
 
     @Override
@@ -122,7 +121,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
                     card.getBankName(), card.getCardNumber()));
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not found. An exception occurs : {}", cardNumber, e.getMessage());
-            throw new DAOException("[CreditCardDAO] exception while reading CreditCard", e);
+            throw new DAOException("[CreditCardDAO] exception while loading CreditCard", e);
         }
         return creditCard.orElse(new CreditCard());
     }
@@ -145,14 +144,14 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     }
 
     private List<CreditCard> extractCreditCards(List<CreditCard> creditCards, PreparedStatement preparedStatement) throws SQLException {
-        ResultSet resultSet1 = preparedStatement.executeQuery();
+        ResultSet resultSet = preparedStatement.executeQuery();
 
         CreditCardMapper creditCardMapper = new CreditCardMapper();
 
-        while (resultSet1.next()) {
-            Optional<CreditCard> user = Optional.
-                    ofNullable(creditCardMapper.extractFromResultSet(resultSet1));
-            user.ifPresent(creditCards::add);
+        while (resultSet.next()) {
+            Optional<CreditCard> creditCard = Optional.
+                    ofNullable(creditCardMapper.extractFromResultSet(resultSet));
+            creditCard.ifPresent(creditCards::add);
         }
         return creditCards;
     }
