@@ -66,7 +66,7 @@ public class Main {
 
             CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
             CreditCard creditCard = new CreditCard("Bank Of America",
-                    "5555555555555555", 5000.0, "12345".toCharArray());
+                    "5555555555555556", 5000.0, "12345".toCharArray());
             Person person = Person.newBuilder()
                     .setFirstName("John")
                     .setLastName("Doe")

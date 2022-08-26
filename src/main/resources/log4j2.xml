@@ -24,7 +24,7 @@
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy />
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
+            <DefaultRolloverStrategy max="3"/>
         </RollingFile>
 
         <RollingFile name="infoLog" fileName="${APP_LOG_ROOT}/app-info.log"
@@ -35,7 +35,7 @@
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy />
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
+            <DefaultRolloverStrategy max="3"/>
         </RollingFile>
 
         <RollingFile name="errorLog" fileName="${APP_LOG_ROOT}/app-error.log"
@@ -46,7 +46,7 @@
                 <SizeBasedTriggeringPolicy size="10MB" />
                 <OnStartupTriggeringPolicy />
             </Policies>
-            <DefaultRolloverStrategy max="10"/>
+            <DefaultRolloverStrategy max="3"/>
         </RollingFile>
 
 
