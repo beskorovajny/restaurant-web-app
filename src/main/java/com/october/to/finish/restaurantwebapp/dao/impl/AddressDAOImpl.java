@@ -1,7 +1,7 @@
 package com.october.to.finish.restaurantwebapp.dao.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.AddressDAO;
-import com.october.to.finish.restaurantwebapp.exceptions.DBException;
+import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Address;
 
 import java.sql.Connection;
@@ -14,27 +14,27 @@ public class AddressDAOImpl implements AddressDAO {
     }
 
     @Override
-    public boolean insertAddress(Address address) throws DBException {
+    public boolean insertAddress(Address address) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean deleteAddress(Address address) throws DBException {
+    public boolean deleteAddress(Address address) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean updateAddress(Address address) throws DBException {
+    public boolean updateAddress(Address address) throws DAOException {
         return false;
     }
 
     @Override
-    public Address getAddressById(long addressId) throws DBException {
+    public Address getAddressById(long addressId) throws DAOException {
         return null;
     }
 
     @Override
-    public List<Address> findAllAddresses() throws DBException {
+    public List<Address> findAllAddresses() throws DAOException {
         return null;
     }
 }

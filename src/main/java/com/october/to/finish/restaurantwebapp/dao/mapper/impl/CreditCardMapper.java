@@ -12,22 +12,22 @@ public class CreditCardMapper implements ObjectMapper<CreditCard> {
 
     @Override
     public CreditCard extractFromResultSet(ResultSet resultSet) throws SQLException {
-        Map<Integer, CreditCard> cardMap = new HashMap<>();
+        Map<String, CreditCard> cardMap = new HashMap<>();
         CreditCard card = new CreditCard();
         card.setCardNumber(resultSet.getString("card_number"));
         card.setBankName(resultSet.getString("bank_name"));
         card.setBalance(resultSet.getBigDecimal("balance").doubleValue());
         card.setPassword(resultSet.getString("password").toCharArray());
 
-        cardMap.put(Integer.parseInt(card.getCardNumber()), card);
+        cardMap.put(card.getCardNumber(), card);
 
         card = this.makeUnique(cardMap, card);
         return card;
     }
 
     @Override
-    public CreditCard makeUnique(Map<Integer, CreditCard> cache, CreditCard card) {
-        cache.putIfAbsent(Integer.parseInt(card.getCardNumber()), card);
-        return cache.get(Integer.parseInt(card.getCardNumber()));
+    public CreditCard makeUnique(Map<String, CreditCard> cache, CreditCard card) {
+        cache.putIfAbsent(card.getCardNumber(), card);
+        return cache.get(card.getCardNumber());
     }
 }

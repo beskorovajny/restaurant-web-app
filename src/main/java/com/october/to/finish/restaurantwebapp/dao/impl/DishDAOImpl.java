@@ -1,7 +1,7 @@
 package com.october.to.finish.restaurantwebapp.dao.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.DishDAO;
-import com.october.to.finish.restaurantwebapp.exceptions.DBException;
+import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Dish;
 
 import java.sql.Connection;
@@ -14,32 +14,32 @@ public class DishDAOImpl implements DishDAO {
     }
 
     @Override
-    public boolean insertDish(Dish dish) throws DBException {
+    public boolean insertDish(Dish dish) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean deleteDish(Dish dish) throws DBException {
+    public boolean deleteDish(Dish dish) throws DAOException {
         return false;
     }
 
     @Override
-    public boolean updateDish(Dish dish) throws DBException {
+    public boolean updateDish(Dish dish) throws DAOException {
         return false;
     }
 
     @Override
-    public Dish getDishById(long dishId) throws DBException {
+    public Dish getDishById(long dishId) throws DAOException {
         return null;
     }
 
     @Override
-    public Dish getDishByTitle(String title) throws DBException {
+    public Dish getDishByTitle(String title) throws DAOException {
         return null;
     }
 
     @Override
-    public Set<Dish> findAllDishes() throws DBException {
+    public Set<Dish> findAllDishes() throws DAOException {
         return null;
     }
 }
