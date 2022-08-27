@@ -49,6 +49,10 @@ public class Person {
         return role;
     }
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     public CreditCard getCreditCard() {
         return creditCard;
     }

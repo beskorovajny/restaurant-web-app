@@ -19,6 +19,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 public class PersonDAOImpl implements PersonDAO {
@@ -28,6 +29,8 @@ public class PersonDAOImpl implements PersonDAO {
             "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?);";
     private static final String GET_ROLE_ID_BY_NAME = "SELECT id FROM role WHERE name = ?";
+    private static final String GET_ROLE_BY_ID = "SELECT name FROM role " +
+            "RIGHT JOIN user ON role.id = user.role_id WHERE user.id = ?";
     private static final String DELETE_USER = "DELETE FROM user WHERE id = ?";
     private static final String UPDATE_USER = "UPDATE user SET email = ?," +
              "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
@@ -53,7 +56,7 @@ public class PersonDAOImpl implements PersonDAO {
         try {
             connection.setAutoCommit(false);
 
-            roleId = getRoleId(person, roleId);
+            roleId = getRoleIdByName(person, roleId);
             insertPersonHelper(person, roleId);
             addressDAO.insertAddress(person.getId(), person.getAddress());
             creditCardDAO.insertCreditCard(person.getId(), person.getCreditCard());
@@ -66,7 +69,7 @@ public class PersonDAOImpl implements PersonDAO {
         }
     }
 
-    private long getRoleId(Person person, long roleId) throws SQLException, DAOException {
+    private long getRoleIdByName(Person person, long roleId) throws SQLException, DAOException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ROLE_ID_BY_NAME)) {
             preparedStatement.setString(1, person.getRole().getRoleName());
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -81,6 +84,23 @@ public class PersonDAOImpl implements PersonDAO {
             throw new DAOException("[PersonDAO] exception while reading Role" + e.getMessage(), e);
         }
         return roleId;
+    }
+    private String getRoleNameById(Person person, long roleId) throws SQLException, DAOException {
+        String roleName = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ROLE_BY_ID)) {
+            preparedStatement.setLong(1, person.getId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                roleName = resultSet.getString("name");
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Role : [{}] was not found. An exception occurs." +
+                            " Transaction rolled back!!! : {}",
+                    roleId, e.getMessage());
+            connection.rollback();
+            throw new DAOException("[PersonDAO] exception while reading Role" + e.getMessage(), e);
+        }
+        return roleName;
     }
 
     private void insertPersonHelper(Person person, long roleId) throws SQLException, DAOException {
@@ -131,7 +151,7 @@ public class PersonDAOImpl implements PersonDAO {
         try {
             long roleId = 0;
             connection.setAutoCommit(false);
-            roleId = getRoleId(person, roleId);
+            roleId = getRoleIdByName(person, roleId);
 
             if (updateHelper(personId, person, roleId)) return true;
             addressDAO.insertAddress(personId, person.getAddress());
@@ -198,12 +218,27 @@ public class PersonDAOImpl implements PersonDAO {
         ResultSet resultSet = preparedStatement.executeQuery();
         long addressID = 0;
         String creditCardID = null;
+        String roleName = null;
         PersonMapper personMapper = new PersonMapper();
         while (resultSet.next()) {
             connection.setAutoCommit(false);
             Optional<Person> user = Optional.
                     ofNullable(personMapper.extractFromResultSet(resultSet));
             if (user.isPresent()) {
+                try (PreparedStatement preparedStatement1 = connection.prepareStatement(GET_ROLE_BY_ID)) {
+                    preparedStatement1.setLong(1, user.get().getId());
+                    ResultSet resultSet1 = preparedStatement1.executeQuery();
+                    while (resultSet1.next()) {
+                        roleName = resultSet1.getString("name");
+                    }
+                } catch (SQLException e) {
+                    LOGGER.error("Role for UserID : [{}] was not found. An exception occurs." +
+                                    " Transaction rolled back!!! : {}",
+                            user.get().getId(), e.getMessage());
+                    DBUtils.rollback(connection);
+                    throw new DAOException("[PersonDAO] exception while reading role");
+                }
+                user.get().setRole(Person.Role.valueOf(roleName.toUpperCase()));
                 try (PreparedStatement preparedStatement1 = connection.prepareStatement(FIND_ADDRESS_ID)) {
                     preparedStatement1.setLong(1, user.get().getId());
                     ResultSet resultSet1 = preparedStatement1.executeQuery();
@@ -231,7 +266,6 @@ public class PersonDAOImpl implements PersonDAO {
                     DBUtils.rollback(connection);
                     throw new DAOException("[PersonDAO] exception while reading address id");
                 }
-
                 Address address = new Address();
                 CreditCard creditCard = new CreditCard();
                 if (addressID > 0) {
