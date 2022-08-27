@@ -1,6 +1,7 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
 import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
+import com.october.to.finish.restaurantwebapp.dao.PersonDAO;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
@@ -9,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -60,8 +62,11 @@ public class Main {
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
         LOGGER.info(String.valueOf(person.getPassword()));*/
         try {
+            PersonDAO personDAO = DAOFactory.getInstance().createPersonDAO();
+            List<Person> personList = personDAO.findAllPersons();
+            personList.forEach(System.out::println);
 
-            CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
+           /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
 
             CreditCard creditCard = new CreditCard("Bank Of Africa",
                     "4555555555555550", 5000.0, "12349".toCharArray());
@@ -79,7 +84,7 @@ public class Main {
                     .setEmail("john_doe@example.com")
                     .setPassword("12213312".toCharArray())
                     .setId(1).build();
-           /* creditCardDAO.insertCreditCard(creditCard, person.getId());*/
+           *//* creditCardDAO.insertCreditCard(creditCard, person.getId());*//*
 
             //CreditCard creditCard1 = creditCardDAO.getCreditCardByNumber(creditCard2.getCardNumber());
 
@@ -87,10 +92,10 @@ public class Main {
             creditCardDAO.insertCreditCard(creditCard3, 3);
             creditCardDAO.insertCreditCard(creditCard4, 4);
 
-            /*//creditCardDAO.updateCreditCard(creditCard2.getCardNumber(), creditCard);
-            creditCardDAO.deleteCreditCard(creditCard4.getCardNumber());*/
+            creditCardDAO.updateCreditCard(creditCard2.getCardNumber(), creditCard);
+            creditCardDAO.deleteCreditCard(creditCard4.getCardNumber());*//*
 
-            creditCardDAO.findAllCreditCards().forEach(System.out::println);
+            creditCardDAO.findAllCreditCards().forEach(System.out::println);*/
 
         } catch (SQLException | DAOException e) {
             throw new RuntimeException(e);

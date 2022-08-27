@@ -35,7 +35,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     }
 
     @Override
-    public boolean insertCreditCard(CreditCard creditCard, long personId) throws DAOException {
+    public boolean insertCreditCard(long personId, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT_CREDIT_CARD)) {
             preparedStatement.setString(1, creditCard.getCardNumber());

@@ -3,10 +3,11 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Person;
 
+import java.sql.SQLException;
 import java.util.List;
 
 public interface PersonDAO extends GenericDAO<Person> {
-    boolean insertPerson(Person person) throws DAOException;
+    boolean insertPerson(Person person) throws DAOException, SQLException;
 
     boolean deletePerson(long personId) throws DAOException;
 

@@ -20,7 +20,7 @@ public class AddressDAOImpl implements AddressDAO {
     private static final Logger LOGGER = LogManager.getLogger(AddressDAOImpl.class);
     private static final String INSERT_ADDRESS = "INSERT INTO address" +
             " (country, city, street, building_number, room_number, user_id)" +
-            " VALUES (?, ?, ?, ?, ?, ?); ";
+            " VALUES (?, ?, ?, ?, ?, ?);";
     private static final String DELETE_ADDRESS = "DELETE FROM address WHERE id = ?";
     private static final String UPDATE_ADDRESS = "UPDATE address SET country = ?," +
             " city = ?, street = ?, building_number = ?, room_number = ? WHERE id = ?";
@@ -37,11 +37,7 @@ public class AddressDAOImpl implements AddressDAO {
     public boolean insertAddress(long personId, Address address) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT_ADDRESS)) {
-            preparedStatement.setString(1, address.getCountry());
-            preparedStatement.setString(2, address.getCity());
-            preparedStatement.setString(3, address.getStreet());
-            preparedStatement.setString(4, address.getBuildingNumber());
-            preparedStatement.setString(5, address.getRoomNumber());
+            setAddressParams(address, preparedStatement);
             preparedStatement.setLong(6, personId);
 
             preparedStatement.executeUpdate();

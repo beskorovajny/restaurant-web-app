@@ -316,13 +316,22 @@ values (DEFAULT, 1, 2),
        (DEFAULT, 2, 3),
        (DEFAULT, 3, 4);
 
-insert into user (id, email, first_name, last_name, password, role_id)
-values (default, "johndoe@example.com", "John", "Doe", "132331", 2);
-insert into user (id, email, first_name, last_name, password, role_id)
-values (default, "johndoe1@example.com", "John1", "Doe1", "132331", 1);
-insert into user (id, email, first_name, last_name, password, role_id)
-values (default, "johndoe2@example.com", "John2", "Doe", "132331", 3);
-insert into user (id, email, first_name, last_name, password, role_id)
-values (default, "johndoe3@example.com", "John3", "Doe", "132331", 2);
-insert into user (id, email, first_name, last_name, password, role_id)
-values (default, "johndoe4@example.com", "John4", "Doe", "132331", 1);
+insert into user(id, email, first_name, last_name, phone_number, password, role_id)
+values (default, "johndoe@example.com", "John", "Doe", "1111", "132331", 2),
+       (default, "johndoe1@example.com", "John1", "Doe1", "1112", "132331", 1),
+       (default, "johndoe2@example.com", "John2", "Doe", "1113", "132331", 3),
+       (default, "johndoe3@example.com", "John3", "Doe", "1114", "132331", 2),
+       (default, "johndoe4@example.com", "John4", "Doe", "1115", "132331", 1);
+
+insert into address(id, country, city, street, building_number, room_number, user_id)
+values (default, "USA", "Seattle", "Washington", "1111", "1", 1),
+       (default, "USA", "Seattle", "5th", "25", "5", 2),
+       (default, "USA", "Washington", "1st", "84", "25", 3),
+       (default, "Canada", "Torronto", "Queen Elizabeth", "1", "1", 4),
+       (default, "USA", "New Jersey", "Bank", "11/45", "3", 5);
+insert into credit_card(card_number, bank_name, balance, password, user_id)
+values ("5555-5555-5555-5555", "Bank of America", 99999, "5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8", 1),
+       ("5555-5555-5555-5556", "Bank of America", 5000, "daaad6e5604e8e17bd9f108d91e26afe6281dac8fda0091040a7a6d7bd9b43b5", 2),
+       ("5555-5555-5555-5557", "1st credit bank", 456000, "0be64ae89ddd24e225434de95d501711339baeee18f009ba9b4369af27d30d60", 3),
+       ("5555-5555-5555-5558", "Washington Capital", 1900, "15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225", 4),
+       ("5555-5555-5555-5559", "Big Apple Investment", 200, "ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1", 5);
