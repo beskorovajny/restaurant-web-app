@@ -19,7 +19,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Optional;
 
 public class PersonDAOImpl implements PersonDAO {
@@ -33,8 +32,8 @@ public class PersonDAOImpl implements PersonDAO {
             "RIGHT JOIN user ON role.id = user.role_id WHERE user.id = ?";
     private static final String DELETE_USER = "DELETE FROM user WHERE id = ?";
     private static final String UPDATE_USER = "UPDATE user SET email = ?," +
-             "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
-             "role_Id = ? WHERE id = ?";
+            "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
+            "role_Id = ? WHERE id = ?";
     private static final String FIND_ALL_USERS = "SELECT * FROM user";
     private static final String FIND_ADDRESS_ID =
             "SELECT id FROM address WHERE user_id = ?";
@@ -85,6 +84,7 @@ public class PersonDAOImpl implements PersonDAO {
         }
         return roleId;
     }
+
     private String getRoleNameById(Person person, long roleId) throws SQLException, DAOException {
         String roleName = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ROLE_BY_ID)) {
@@ -156,7 +156,7 @@ public class PersonDAOImpl implements PersonDAO {
             if (updateHelper(personId, person, roleId)) return true;
             addressDAO.insertAddress(personId, person.getAddress());
             creditCardDAO.insertCreditCard(personId, person.getCreditCard());
-        }catch (SQLException e) {
+        } catch (SQLException e) {
             throw new DAOException(e.getMessage(), e);
         }
         LOGGER.info("User with ID : [{}] was not  found for update", personId);

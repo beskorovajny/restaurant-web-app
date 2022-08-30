@@ -40,3 +40,4 @@ build/
 /src/main/logs/
 /src/logs/
 /.idea/sonarlint/
+!/src/logs/

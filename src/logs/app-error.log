@@ -1,0 +1,7 @@
+2022-08-26 13:15:28 ERROR Credit card : [5555555555555558] was not inserted. An exception occurs : Duplicate entry '5555555555555558' for key 'credit_card.PRIMARY'
+2022-08-26 13:19:09 ERROR Credit card : [555555555555559] was not  found for update
+2022-08-26 13:20:04 ERROR Credit card : [5555555555555558] was not updated. An exception occurs : Duplicate entry '5555555555555557' for key 'credit_card.PRIMARY'
+2022-08-26 13:20:41 ERROR Credit card : [5555555555555558] was not updated. An exception occurs : Duplicate entry '5555555555555557' for key 'credit_card.PRIMARY'
+2022-08-26 13:21:29 ERROR Credit card : [5555555555555558] was not updated. An exception occurs : Duplicate entry '5555555555555557' for key 'credit_card.PRIMARY'
+2022-08-26 13:24:13 ERROR Credit card : [5555555555555557] was not updated. An exception occurs : Duplicate entry '5555555555555561' for key 'credit_card.PRIMARY'
+2022-08-26 13:30:17 ERROR Credit card : [5555555555555557] was not updated. An exception occurs : Duplicate entry '5555555555555552' for key 'credit_card.PRIMARY'

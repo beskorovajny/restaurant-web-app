@@ -65,6 +65,7 @@ public class Main {
             PersonDAO personDAO = DAOFactory.getInstance().createPersonDAO();
             List<Person> personList = personDAO.findAllPersons();
             personList.forEach(System.out::println);
+            personDAO.deletePerson(2);
 
            /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
 
