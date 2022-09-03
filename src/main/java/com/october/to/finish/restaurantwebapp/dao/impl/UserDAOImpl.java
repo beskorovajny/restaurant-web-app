@@ -157,10 +157,10 @@ public class UserDAOImpl implements UserDAO {
             long roleId = 0;
             connection.setAutoCommit(false);
             roleId = getRoleIdByName(user, roleId);
-
-            if (updateHelper(userId, user, roleId)) return true;
             addressDAO.insertAddress(userId, user.getAddress());
             creditCardDAO.insertCreditCard(userId, user.getCreditCard());
+            if (updateHelper(userId, user, roleId)) return true;
+
         } catch (SQLException e) {
             DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
