@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class Person {
+public class User {
     private Set<Receipt> receipts;
     private long id;
     private String email;
@@ -18,7 +18,7 @@ public class Person {
     private char[] password;
 
     public static Builder newBuilder() {
-        return new Person().new Builder();
+        return new User().new Builder();
     }
 
     public long getId() {
@@ -85,8 +85,8 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return id == person.id && Objects.equals(receipts, person.receipts) && Objects.equals(email, person.email) && Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName) && Objects.equals(phoneNumber, person.phoneNumber) && role == person.role && Objects.equals(creditCard, person.creditCard) && Objects.equals(address, person.address) && Arrays.equals(password, person.password);
+        User user = (User) o;
+        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(creditCard, user.creditCard) && Objects.equals(address, user.address) && Arrays.equals(password, user.password);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "User{" +
                 "orders=" + receipts +
                 ", id=" + id +
                 ", email='" + email + '\'' +
@@ -108,7 +108,7 @@ public class Person {
                 ", role=" + role +
                 ", creditCard=" + creditCard +
                 ", address=" + address +
-                ", password=" + Arrays.toString(password) +
+                ", password=" + String.valueOf(password) +
                 '}';
     }
 
@@ -136,8 +136,8 @@ public class Person {
             if (id < 0) {
                 throw new IllegalArgumentException("ID can't be < 0");
             }
-            Person.this.id = id;
-            Person.this.receipts = new HashSet<>();
+            User.this.id = id;
+            User.this.receipts = new HashSet<>();
             return this;
         }
 
@@ -145,7 +145,7 @@ public class Person {
             if (email == null) {
                 throw new IllegalArgumentException("Email can't be null!");
             }
-            Person.this.email = email;
+            User.this.email = email;
             return this;
         }
 
@@ -153,7 +153,7 @@ public class Person {
             if (firstName == null) {
                 throw new IllegalArgumentException("First name can't be null!");
             }
-            Person.this.firstName = firstName;
+            User.this.firstName = firstName;
             return this;
         }
 
@@ -161,7 +161,7 @@ public class Person {
             if (lastName == null) {
                 throw new IllegalArgumentException("Last name can't be null!");
             }
-            Person.this.lastName = lastName;
+            User.this.lastName = lastName;
             return this;
         }
 
@@ -169,7 +169,7 @@ public class Person {
             if (phoneNumber == null) {
                 throw new IllegalArgumentException("Phone number can't be null!");
             }
-            Person.this.phoneNumber = phoneNumber;
+            User.this.phoneNumber = phoneNumber;
             return this;
         }
 
@@ -177,7 +177,7 @@ public class Person {
             if (role == null) {
                 throw new IllegalArgumentException("Role can't be null!");
             }
-            Person.this.role = role;
+            User.this.role = role;
             return this;
         }
 
@@ -185,7 +185,7 @@ public class Person {
             if (creditCard == null) {
                 throw new IllegalArgumentException("Credit card can't be null!");
             }
-            Person.this.creditCard = creditCard;
+            User.this.creditCard = creditCard;
             return this;
         }
 
@@ -193,7 +193,7 @@ public class Person {
             if (address == null) {
                 throw new IllegalArgumentException("Address can't be null!");
             }
-            Person.this.address = address;
+            User.this.address = address;
             return this;
         }
 
@@ -201,12 +201,12 @@ public class Person {
             if (password == null) {
                 throw new IllegalArgumentException("Password can't be null!");
             }
-            Person.this.password = password;
+            User.this.password = password;
             return this;
         }
 
-        public Person build() {
-            return Person.this;
+        public User build() {
+            return User.this;
         }
     }
 }

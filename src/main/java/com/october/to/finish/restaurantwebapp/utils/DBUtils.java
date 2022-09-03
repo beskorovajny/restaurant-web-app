@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DBUtils {
+    private DBUtils() {}
     public static void rollback(Connection connection) throws DAOException {
         try {
             connection.rollback();

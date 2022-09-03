@@ -87,7 +87,7 @@ public class CreditCard {
                 "bankName='" + bankName + '\'' +
                 ", cardNumber='" + cardNumber + '\'' +
                 ", balance=" + balance +
-                ", password=" + Arrays.toString(password) +
+                ", password=" + String.valueOf(password) +
                 '}';
     }
 }

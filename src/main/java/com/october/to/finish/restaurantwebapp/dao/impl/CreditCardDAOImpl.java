@@ -23,8 +23,11 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             " (card_number, bank_name, balance, password, user_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String DELETE_CREDIT_CARD = "DELETE FROM credit_card WHERE card_number = ?";
+    private static final String DELETE_CREDIT_CARD_BY_USER_ID = "DELETE FROM credit_card WHERE user_id = ?";
     private static final String UPDATE_CREDIT_CARD = "UPDATE credit_card SET card_number = ?," +
             " bank_name = ?, balance = ?, password = ? WHERE card_number  = ?";
+    private static final String UPDATE_CREDIT_CARD_BY_USER_ID = "UPDATE credit_card SET card_number = ?," +
+            " bank_name = ?, balance = ?, password = ? WHERE user_id  = ?";
 
     private static final String FIND_BY_CARD_NUMBER = "SELECT * FROM credit_card WHERE card_number = ?";
     private static final String FIND_ALL_CREDIT_CARDS = "SELECT * FROM credit_card";
@@ -78,6 +81,24 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         return false;
     }
 
+    public boolean deleteCreditCardByUserId(long userId) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(DELETE_CREDIT_CARD_BY_USER_ID)) {
+            preparedStatement.setLong(1, userId);
+            int rowDeleted = preparedStatement.executeUpdate();
+            if (rowDeleted > 0) {
+                LOGGER.info("Credit card for UserID : [{}] was removed.", userId);
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Credit card for UserID: [{}] was not removed. An exception occurs : {}",
+                    userId, e.getMessage());
+            throw new DAOException("[CreditCardDAO] exception while removing CreditCard" + e.getMessage(), e);
+        }
+        LOGGER.info("Credit card for UserID : [{}] was not removed.", userId);
+        return false;
+    }
+
     @Override
     public boolean updateCreditCard(String cardNumber, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
@@ -102,6 +123,29 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         return false;
     }
 
+    @Override
+    public boolean updateCreditCardByUserId(long userId, CreditCard creditCard) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(UPDATE_CREDIT_CARD_BY_USER_ID)) {
+            cardMapper.setCreditCardParams(creditCard, preparedStatement);
+
+            preparedStatement.setLong(5, userId);
+
+            int rowUpdated = preparedStatement.executeUpdate();
+
+            if (rowUpdated > 0 && rowUpdated < 4) {
+                LOGGER.info("Credit card for UserID : [{}] was updated.", userId);
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Credit card for UserID: [{}] was not updated. An exception occurs : {}",
+                    userId, e.getMessage());
+            throw new DAOException("[CreditCardDAO] exception while updating CreditCard" + e.getMessage(), e);
+        }
+        LOGGER.info("Credit card for UserID : [{}] was not  found for update",
+                userId);
+        return false;
+    }
 
 
     @Override

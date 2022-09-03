@@ -2,13 +2,13 @@ package com.october.to.finish.restaurantwebapp.dao.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.AddressDAO;
 import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
-import com.october.to.finish.restaurantwebapp.dao.PersonDAO;
+import com.october.to.finish.restaurantwebapp.dao.UserDAO;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
-import com.october.to.finish.restaurantwebapp.dao.mapper.impl.PersonMapper;
+import com.october.to.finish.restaurantwebapp.dao.mapper.impl.UserMapper;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Address;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
-import com.october.to.finish.restaurantwebapp.model.Person;
+import com.october.to.finish.restaurantwebapp.model.User;
 import com.october.to.finish.restaurantwebapp.utils.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -21,8 +21,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class PersonDAOImpl implements PersonDAO {
-    private static final Logger LOGGER = LogManager.getLogger(PersonDAOImpl.class);
+import static java.util.Objects.requireNonNull;
+
+public class UserDAOImpl implements UserDAO {
+    private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
 
     private static final String INSERT_USER =
             "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
@@ -43,161 +45,165 @@ public class PersonDAOImpl implements PersonDAO {
     private final AddressDAO addressDAO;
     private final CreditCardDAO creditCardDAO;
 
-    public PersonDAOImpl(Connection connection) throws SQLException {
+    private final UserMapper userMapper = new UserMapper();
+
+    public UserDAOImpl(Connection connection) throws SQLException {
         this.connection = connection;
         addressDAO = DAOFactory.getInstance().createAddressDAO();
         creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
     }
 
     @Override
-    public boolean insertPerson(Person person) throws DAOException {
+    public boolean insertUser(User user) throws DAOException {
         long roleId = 0;
         try {
             connection.setAutoCommit(false);
 
-            roleId = getRoleIdByName(person, roleId);
-            insertPersonHelper(person, roleId);
-            addressDAO.insertAddress(person.getId(), person.getAddress());
-            creditCardDAO.insertCreditCard(person.getId(), person.getCreditCard());
+            roleId = getRoleIdByName(user, roleId);
+            insertUserHelper(user, roleId);
+            addressDAO.insertAddress(user.getId(), user.getAddress());
+            creditCardDAO.insertCreditCard(user.getId(), user.getCreditCard());
             connection.commit();
             return true;
         } catch (SQLException e) {
-            LOGGER.error("Person : [{}] was not inserted. An exception occurs.: {}", person, e.getMessage());
+            LOGGER.error("User : [{}] was not inserted. An exception occurs.: {}", user, e.getMessage());
             DBUtils.rollback(connection);
-            throw new DAOException("[PersonDAO] exception while creating User" + e.getMessage(), e);
+            throw new DAOException("[UserDAO] exception while creating User" + e.getMessage(), e);
         }
     }
 
-    private long getRoleIdByName(Person person, long roleId) throws SQLException, DAOException {
+    private long getRoleIdByName(User user, long roleId) throws SQLException, DAOException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ROLE_ID_BY_NAME)) {
-            preparedStatement.setString(1, person.getRole().getRoleName());
+            preparedStatement.setString(1, user.getRole().getRoleName());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 roleId = resultSet.getLong("id");
             }
         } catch (SQLException e) {
-            LOGGER.error("Role : [{}] was not found. An exception occurs." +
-                            " Transaction rolled back!!! : {}",
-                    person.getRole().getRoleName(), e.getMessage());
+            LOGGER.error("Role : [{}] was not found. An exception occurs. Transaction rolled back!!! : {}",
+                    user.getRole().getRoleName(), e.getMessage());
             connection.rollback();
-            throw new DAOException("[PersonDAO] exception while reading Role" + e.getMessage(), e);
+            throw new DAOException("[UserDAO] exception while reading Role" + e.getMessage(), e);
         }
         return roleId;
     }
 
-    private String getRoleNameById(Person person, long roleId) throws SQLException, DAOException {
+    private String getRoleNameById(User user, long roleId) throws SQLException, DAOException {
         String roleName = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ROLE_BY_ID)) {
-            preparedStatement.setLong(1, person.getId());
+            preparedStatement.setLong(1, user.getId());
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 roleName = resultSet.getString("name");
             }
         } catch (SQLException e) {
-            LOGGER.error("Role : [{}] was not found. An exception occurs." +
-                            " Transaction rolled back!!! : {}",
+            LOGGER.error("Role : [{}] was not found. An exception occurs. Transaction rolled back!!! : {}",
                     roleId, e.getMessage());
             connection.rollback();
-            throw new DAOException("[PersonDAO] exception while reading Role" + e.getMessage(), e);
+            throw new DAOException("[UserDAO] exception while reading Role" + e.getMessage(), e);
         }
         return roleName;
     }
 
-    private void insertPersonHelper(Person person, long roleId) throws SQLException, DAOException {
+    private void insertUserHelper(User user, long roleId) throws SQLException, DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT_USER)) {
-            setPersonParams(person, preparedStatement);
+            userMapper.setPersonParams(user, preparedStatement);
             preparedStatement.setLong(6, roleId);
 
             preparedStatement.executeUpdate();
-            LOGGER.info("User : {} was inserted successfully", person);
+            LOGGER.info("User : {} was inserted successfully", user);
         } catch (SQLException e) {
-            LOGGER.error("User : [{}] was not inserted. An exception occurs." +
-                    " Transaction rolled back!!! : {}", person, e.getMessage());
+            LOGGER.error("User : [{}] was not inserted. An exception occurs. Transaction rolled back!!! : {}", user, e.getMessage());
             connection.rollback();
-            throw new DAOException("[PersonDAO] exception while creating User" + e.getMessage(), e);
+            throw new DAOException("[UserDAO] exception while creating User" + e.getMessage(), e);
         }
     }
 
-    private void setPersonParams(Person person, PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.setString(1, person.getEmail());
-        preparedStatement.setString(2, person.getFirstName());
-        preparedStatement.setString(3, person.getLastName());
-        preparedStatement.setString(4, person.getPhoneNumber());
-        preparedStatement.setString(5, String.valueOf(person.getPassword()));
-    }
 
     @Override
-    public boolean deletePerson(long personId) throws DAOException {
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(DELETE_USER)) {
-            preparedStatement.setLong(1, personId);
-            int rowDeleted = preparedStatement.executeUpdate();
-            if (rowDeleted > 0) {
-                LOGGER.info("User with ID : [{}] was removed.", personId);
-                return true;
+    public boolean deleteUser(long userId) throws DAOException {
+        try {
+            connection.setAutoCommit(false);
+            if (!addressDAO.deleteAddressByUserId(userId)) {
+                DBUtils.rollback(connection);
+            }
+            if (!creditCardDAO.deleteCreditCardByUserId(userId)) {
+                DBUtils.rollback(connection);
+            }
+            try (PreparedStatement preparedStatement = connection.
+                    prepareStatement(DELETE_USER)) {
+                preparedStatement.setLong(1, userId);
+                int rowDeleted = preparedStatement.executeUpdate();
+                if (rowDeleted ==  1) {
+                    LOGGER.info("User with ID : [{}] was removed.", userId);
+                    return true;
+                }
+            } catch (SQLException e) {
+                LOGGER.error("User with ID : [{}] was not removed. An exception occurs : {}",
+                        userId, e.getMessage());
+                throw new DAOException("[UserDAO] exception while removing User" + e.getMessage(), e);
             }
         } catch (SQLException e) {
-            LOGGER.error("User with ID : [{}] was not removed. An exception occurs : {}",
-                    personId, e.getMessage());
-            throw new DAOException("[PersonDAO] exception while removing User" + e.getMessage(), e);
+            throw new DAOException(e.getMessage());
         }
-        LOGGER.info("User with ID : [{}] was not removed.", personId);
+        LOGGER.info("User with ID : [{}] was not removed.", userId);
         return false;
     }
 
     @Override
-    public boolean updatePerson(long personId, Person person) throws DAOException {
+    public boolean updateUser(long userId, User user) throws DAOException {
         try {
             long roleId = 0;
             connection.setAutoCommit(false);
-            roleId = getRoleIdByName(person, roleId);
+            roleId = getRoleIdByName(user, roleId);
 
-            if (updateHelper(personId, person, roleId)) return true;
-            addressDAO.insertAddress(personId, person.getAddress());
-            creditCardDAO.insertCreditCard(personId, person.getCreditCard());
+            if (updateHelper(userId, user, roleId)) return true;
+            addressDAO.insertAddress(userId, user.getAddress());
+            creditCardDAO.insertCreditCard(userId, user.getCreditCard());
         } catch (SQLException e) {
+            DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
         }
-        LOGGER.info("User with ID : [{}] was not  found for update", personId);
+        LOGGER.info("User with ID : [{}] was not  found for update", userId);
         return false;
     }
 
-    private boolean updateHelper(long personId, Person person, long roleId) throws DAOException {
+    private boolean updateHelper(long userId, User user, long roleId) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE_USER)) {
-            setPersonParams(person, preparedStatement);
+            userMapper.setPersonParams(user, preparedStatement);
             preparedStatement.setLong(6, roleId);
 
-            preparedStatement.setLong(7, personId);
+            preparedStatement.setLong(7, userId);
 
             int rowUpdated = preparedStatement.executeUpdate();
 
             if (rowUpdated > 0 && rowUpdated < 7) {
-                LOGGER.info("User with ID : [{}] was updated.", personId);
+                LOGGER.info("User with ID : [{}] was updated.", userId);
                 return true;
             }
         } catch (SQLException e) {
             LOGGER.error("User with ID : [{}] was not updated. An exception occurs : {}",
-                    personId, e.getMessage());
-            throw new DAOException("[PersonDAO] exception while updating User" + e.getMessage(), e);
+                    userId, e.getMessage());
+            throw new DAOException("[UserDAO] exception while updating User" + e.getMessage(), e);
         }
         return false;
     }
 
     @Override
-    public Person getPersonById(long personId) throws DAOException {
+    public User getUserById(long userId) throws DAOException {
         return null;
     }
 
     @Override
-    public Person getPersonByEmail(String eMail) throws DAOException {
+    public User getUserByEmail(String eMail) throws DAOException {
         return null;
     }
 
     @Override
-    public List<Person> findAllPersons() throws DAOException {
-        List<Person> result = new ArrayList<>();
+    public List<User> findAllUsers() throws DAOException {
+        List<User> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL_USERS)) {
             extractUsers(result, preparedStatement);
@@ -209,21 +215,21 @@ public class PersonDAOImpl implements PersonDAO {
         } catch (SQLException e) {
             LOGGER.error("Users was not found. An exception occurs : {}", e.getMessage());
             DBUtils.rollback(connection);
-            throw new DAOException("[PersonDAO] exception while reading all users", e);
+            throw new DAOException("[UserDAO] exception while reading all users", e);
         }
         return result;
     }
 
-    private List<Person> extractUsers(List<Person> users, PreparedStatement preparedStatement) throws DAOException, SQLException {
+    private List<User> extractUsers(List<User> users, PreparedStatement preparedStatement) throws DAOException, SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
         long addressID = 0;
         String creditCardID = null;
         String roleName = null;
-        PersonMapper personMapper = new PersonMapper();
+        UserMapper userMapper = new UserMapper();
         while (resultSet.next()) {
             connection.setAutoCommit(false);
-            Optional<Person> user = Optional.
-                    ofNullable(personMapper.extractFromResultSet(resultSet));
+            Optional<User> user = Optional.
+                    ofNullable(userMapper.extractFromResultSet(resultSet));
             if (user.isPresent()) {
                 try (PreparedStatement preparedStatement1 = connection.prepareStatement(GET_ROLE_BY_ID)) {
                     preparedStatement1.setLong(1, user.get().getId());
@@ -236,9 +242,9 @@ public class PersonDAOImpl implements PersonDAO {
                                     " Transaction rolled back!!! : {}",
                             user.get().getId(), e.getMessage());
                     DBUtils.rollback(connection);
-                    throw new DAOException("[PersonDAO] exception while reading role");
+                    throw new DAOException("[UserDAO] exception while reading role");
                 }
-                user.get().setRole(Person.Role.valueOf(roleName.toUpperCase()));
+                user.get().setRole(User.Role.valueOf(requireNonNull(roleName).toUpperCase()));
                 try (PreparedStatement preparedStatement1 = connection.prepareStatement(FIND_ADDRESS_ID)) {
                     preparedStatement1.setLong(1, user.get().getId());
                     ResultSet resultSet1 = preparedStatement1.executeQuery();
@@ -250,7 +256,7 @@ public class PersonDAOImpl implements PersonDAO {
                                     " Transaction rolled back!!! : {}",
                             user.get().getId(), e.getMessage());
                     DBUtils.rollback(connection);
-                    throw new DAOException("[PersonDAO] exception while reading address id");
+                    throw new DAOException("[UserDAO] exception while reading address id");
                 }
 
                 try (PreparedStatement preparedStatement1 = connection.prepareStatement(FIND_CREDIT_CARD)) {
@@ -264,7 +270,7 @@ public class PersonDAOImpl implements PersonDAO {
                                     " Transaction rolled back!!! : {}",
                             user.get().getId(), e.getMessage());
                     DBUtils.rollback(connection);
-                    throw new DAOException("[PersonDAO] exception while reading address id");
+                    throw new DAOException("[UserDAO] exception while reading address id");
                 }
                 Address address = new Address();
                 CreditCard creditCard = new CreditCard();

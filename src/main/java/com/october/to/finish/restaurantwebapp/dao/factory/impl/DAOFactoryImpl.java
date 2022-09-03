@@ -13,8 +13,8 @@ public class DAOFactoryImpl extends DAOFactory {
     private final DataSource dataSource = ConnectionPoolHolder.getDataSource();
 
     @Override
-    public PersonDAO createPersonDAO() throws SQLException {
-        return new PersonDAOImpl(dataSource.getConnection());
+    public UserDAO createPersonDAO() throws SQLException {
+        return new UserDAOImpl(dataSource.getConnection());
     }
 
     @Override

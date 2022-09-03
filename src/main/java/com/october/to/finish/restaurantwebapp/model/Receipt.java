@@ -8,7 +8,7 @@ import java.util.stream.DoubleStream;
 
 public class Receipt {
     private long id;
-    private Person customer;
+    private User customer;
     private LocalDateTime dateCreated;
     private Status status;
     private int discount;
@@ -23,7 +23,7 @@ public class Receipt {
         return id;
     }
 
-    public Person getCustomer() {
+    public User getCustomer() {
         return customer;
     }
 
@@ -118,7 +118,7 @@ public class Receipt {
             return this;
         }
 
-        public Builder setCustomer(Person customer) {
+        public Builder setCustomer(User customer) {
             if (customer == null) {
                 throw new IllegalArgumentException("Customer can't be null!");
             }

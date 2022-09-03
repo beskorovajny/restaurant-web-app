@@ -109,3 +109,117 @@
 2022-08-28 01:28:00 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
 2022-08-28 01:28:00 INFO Users was found successfully.
 2022-08-28 01:28:00 INFO User with ID : [2] was removed.
+2022-09-03 15:47:00 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 15:47:00 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 15:47:00 INFO Loaded address from db: [Address{id=2, country='USA', city='Seattle', street='5th', buildingNumber='25', roomNumber='5'}]
+2022-09-03 15:47:00 INFO Credit card from db: [Bank of America], [5555-5555-5555-5556]
+2022-09-03 15:47:00 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 15:47:00 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 15:47:00 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 15:47:00 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 15:47:00 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 15:47:00 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 15:47:00 INFO Users was found successfully.
+2022-09-03 15:47:00 INFO User with ID : [2] was removed.
+2022-09-03 15:47:32 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 15:47:32 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 15:47:32 INFO Loaded address from db: [Address{id=2, country='USA', city='Seattle', street='5th', buildingNumber='25', roomNumber='5'}]
+2022-09-03 15:47:32 INFO Credit card from db: [Bank of America], [5555-5555-5555-5556]
+2022-09-03 15:47:32 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 15:47:32 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 15:47:32 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 15:47:32 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 15:47:32 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 15:47:32 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 15:47:32 INFO Users was found successfully.
+2022-09-03 15:47:32 INFO User with ID : [2] was removed.
+2022-09-03 16:01:05 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:01:05 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:01:05 INFO Loaded address from db: [Address{id=2, country='USA', city='Seattle', street='5th', buildingNumber='25', roomNumber='5'}]
+2022-09-03 16:01:05 INFO Credit card from db: [Bank of America], [5555-5555-5555-5556]
+2022-09-03 16:01:05 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:01:05 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:01:05 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:01:05 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:01:05 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:01:05 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:01:05 INFO Users was found successfully.
+2022-09-03 16:01:05 INFO Address for UserID : [2] was removed.
+2022-09-03 16:01:05 INFO Credit card for UserID : [2] was removed.
+2022-09-03 16:01:05 INFO User with ID : [2] was removed.
+2022-09-03 16:01:41 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:01:41 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:01:41 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:01:41 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:01:41 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:01:41 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:01:41 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:01:41 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:01:41 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:01:41 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:01:41 INFO Users was found successfully.
+2022-09-03 16:14:54 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-03 16:14:56 INFO User with ID : [2] was updated.
+2022-09-03 16:14:56 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:14:56 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:14:56 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:14:56 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:14:56 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:14:56 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:14:56 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:14:56 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:14:56 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:14:56 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:14:56 INFO Users was found successfully.
+2022-09-03 16:16:13 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-03 16:16:14 INFO User with ID : [2] was updated.
+2022-09-03 16:16:14 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:16:14 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:16:14 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:16:14 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:16:15 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:16:15 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:16:15 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:16:15 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:16:15 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:16:15 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:16:15 INFO Users was found successfully.
+2022-09-03 16:18:47 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-03 16:18:49 INFO User with ID : [2] was updated.
+2022-09-03 16:18:49 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:18:49 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:18:49 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:18:49 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:18:49 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:18:49 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:18:49 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:18:49 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:18:49 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:18:49 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:18:49 INFO Users was found successfully.
+2022-09-03 16:25:52 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-03 16:25:54 INFO User with ID : [2] was updated.
+2022-09-03 16:25:54 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:25:54 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:25:54 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:25:54 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:25:54 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:25:54 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:25:54 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:25:54 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:25:54 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:25:54 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:25:54 INFO Users was found successfully.
+2022-09-03 16:28:56 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-03 16:28:58 INFO User with ID : [2] was updated.
+2022-09-03 16:28:58 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:28:58 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:28:58 INFO Loaded address from db: [Address{id=1, country='USA', city='Seattle', street='Washington', buildingNumber='1111', roomNumber='1'}]
+2022-09-03 16:28:58 INFO Credit card from db: [Bank of America], [5555-5555-5555-5555]
+2022-09-03 16:28:58 INFO Loaded address from db: [Address{id=3, country='USA', city='Washington', street='1st', buildingNumber='84', roomNumber='25'}]
+2022-09-03 16:28:58 INFO Credit card from db: [1st credit bank], [5555-5555-5555-5557]
+2022-09-03 16:28:58 INFO Loaded address from db: [Address{id=4, country='Canada', city='Torronto', street='Queen Elizabeth', buildingNumber='1', roomNumber='1'}]
+2022-09-03 16:28:58 INFO Credit card from db: [Washington Capital], [5555-5555-5555-5558]
+2022-09-03 16:28:58 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
+2022-09-03 16:28:58 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-03 16:28:58 INFO Users was found successfully.

@@ -1,11 +1,12 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
-import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
-import com.october.to.finish.restaurantwebapp.dao.PersonDAO;
+import com.october.to.finish.restaurantwebapp.dao.UserDAO;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
+import com.october.to.finish.restaurantwebapp.model.Address;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
-import com.october.to.finish.restaurantwebapp.model.Person;
+import com.october.to.finish.restaurantwebapp.model.User;
+import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -56,16 +57,26 @@ public class Main {
 
         receipt.getOrderedDishes().entrySet().forEach(System.out::println);
         System.out.println(receipt);
-        LOGGER.error("Fatal error...");
-        String password = "440HemiSixPack";
-        Person person = Person.newBuilder()
+        LOGGER.error("Fatal error...");*/
+        Address address = new Address("Ukraine", "Lviv", "Science st.", "24", "16");
+        CreditCard creditCard = new CreditCard("PrivatBank", "5555-5555-5555-0001", 10000, "password".toCharArray());
+        String password = "426HemiSixPack";
+        User user = User.newBuilder()
+                .setEmail("janedoe@example.com")
+                .setFirstName("Jane")
+                .setLastName("Doe")
+                .setPhoneNumber("555-000-278")
+                .setRole(User.Role.MANAGER)
+                .setAddress(address)
+                .setCreditCard(creditCard)
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
-        LOGGER.info(String.valueOf(person.getPassword()));*/
+        LOGGER.info(String.valueOf(user.getPassword()));
         try {
-            PersonDAO personDAO = DAOFactory.getInstance().createPersonDAO();
-            List<Person> personList = personDAO.findAllPersons();
-            personList.forEach(System.out::println);
-            personDAO.deletePerson(2);
+            UserDAO userDAO = DAOFactory.getInstance().createPersonDAO();
+            userDAO.updateUser(2, user);
+            List<User> userList = userDAO.findAllUsers();
+            userList.forEach(System.out::println);
+            /* userDAO.deletePerson(2);*/
 
            /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
 
@@ -79,13 +90,13 @@ public class Main {
                     "4555555555555561", 5000.0, "12343".toCharArray());
             CreditCard creditCard4 = new CreditCard("Bank Of Jamaica",
                     "4555555555555550", 5000.0, "12346".toCharArray());
-            Person person = Person.newBuilder()
+            Person user = Person.newBuilder()
                     .setFirstName("John")
                     .setLastName("Doe")
                     .setEmail("john_doe@example.com")
                     .setPassword("12213312".toCharArray())
                     .setId(1).build();
-           *//* creditCardDAO.insertCreditCard(creditCard, person.getId());*//*
+           *//* creditCardDAO.insertCreditCard(creditCard, user.getId());*//*
 
             //CreditCard creditCard1 = creditCardDAO.getCreditCardByNumber(creditCard2.getCardNumber());
 
