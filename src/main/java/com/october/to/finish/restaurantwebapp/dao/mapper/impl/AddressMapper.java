@@ -3,10 +3,13 @@ package com.october.to.finish.restaurantwebapp.dao.mapper.impl;
 import com.october.to.finish.restaurantwebapp.dao.mapper.ObjectMapper;
 import com.october.to.finish.restaurantwebapp.model.Address;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class AddressMapper implements ObjectMapper<Address> {
 
@@ -31,5 +34,25 @@ public class AddressMapper implements ObjectMapper<Address> {
     public Address makeUnique(Map<String, Address> cache, Address address) {
         cache.putIfAbsent(String.valueOf(address.getId()), address);
         return cache.get(String.valueOf(address.getId()));
+    }
+
+    public void setAddressParams(Address address, PreparedStatement preparedStatement) throws SQLException {
+        preparedStatement.setString(1, address.getCountry());
+        preparedStatement.setString(2, address.getCity());
+        preparedStatement.setString(3, address.getStreet());
+        preparedStatement.setString(4, address.getBuildingNumber());
+        preparedStatement.setString(5, address.getRoomNumber());
+    }
+    public List<Address> extractAddresses(List<Address> addresses, PreparedStatement preparedStatement) throws SQLException {
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        AddressMapper addressMapper = new AddressMapper();
+
+        while (resultSet.next()) {
+            Optional<Address> address = Optional.
+                    ofNullable(addressMapper.extractFromResultSet(resultSet));
+            address.ifPresent(addresses::add);
+        }
+        return addresses;
     }
 }

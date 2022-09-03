@@ -40,8 +40,8 @@ public class PersonDAOImpl implements PersonDAO {
     private static final String FIND_CREDIT_CARD =
             "SELECT card_number FROM credit_card WHERE user_id = ?";
     private final Connection connection;
-    private AddressDAO addressDAO;
-    private CreditCardDAO creditCardDAO;
+    private final AddressDAO addressDAO;
+    private final CreditCardDAO creditCardDAO;
 
     public PersonDAOImpl(Connection connection) throws SQLException {
         this.connection = connection;

@@ -3,10 +3,14 @@ package com.october.to.finish.restaurantwebapp.dao.mapper.impl;
 import com.october.to.finish.restaurantwebapp.dao.mapper.ObjectMapper;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
 
+import java.math.BigDecimal;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class CreditCardMapper implements ObjectMapper<CreditCard> {
 
@@ -29,5 +33,25 @@ public class CreditCardMapper implements ObjectMapper<CreditCard> {
     public CreditCard makeUnique(Map<String, CreditCard> cache, CreditCard card) {
         cache.putIfAbsent(card.getCardNumber(), card);
         return cache.get(card.getCardNumber());
+    }
+
+    public void setCreditCardParams(CreditCard creditCard, PreparedStatement preparedStatement) throws SQLException {
+        preparedStatement.setString(1, creditCard.getCardNumber());
+        preparedStatement.setString(2, creditCard.getBankName());
+        preparedStatement.setBigDecimal(3, BigDecimal.valueOf(creditCard.getBalance()));
+        preparedStatement.setString(4, String.valueOf(creditCard.getPassword()));
+    }
+
+    public List<CreditCard> extractCreditCards(List<CreditCard> creditCards, PreparedStatement preparedStatement) throws SQLException {
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+        CreditCardMapper creditCardMapper = new CreditCardMapper();
+
+        while (resultSet.next()) {
+            Optional<CreditCard> creditCard = Optional.
+                    ofNullable(creditCardMapper.extractFromResultSet(resultSet));
+            creditCard.ifPresent(creditCards::add);
+        }
+        return creditCards;
     }
 }

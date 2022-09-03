@@ -30,6 +30,8 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     private static final String FIND_ALL_CREDIT_CARDS = "SELECT * FROM credit_card";
     private final Connection connection;
 
+    private final CreditCardMapper cardMapper = new CreditCardMapper();
+
     public CreditCardDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -80,7 +82,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     public boolean updateCreditCard(String cardNumber, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE_CREDIT_CARD)) {
-            setCreditCardParams(creditCard, preparedStatement);
+            cardMapper.setCreditCardParams(creditCard, preparedStatement);
 
             preparedStatement.setString(5, cardNumber);
 
@@ -100,12 +102,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         return false;
     }
 
-    private void setCreditCardParams(CreditCard creditCard, PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.setString(1, creditCard.getCardNumber());
-        preparedStatement.setString(2, creditCard.getBankName());
-        preparedStatement.setBigDecimal(3, BigDecimal.valueOf(creditCard.getBalance()));
-        preparedStatement.setString(4, String.valueOf(creditCard.getPassword()));
-    }
+
 
     @Override
     public CreditCard getCreditCardByNumber(String cardNumber) throws DAOException {
@@ -133,7 +130,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         List<CreditCard> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL_CREDIT_CARDS)) {
-            extractCreditCards(result, preparedStatement);
+            cardMapper.extractCreditCards(result, preparedStatement);
             if (!result.isEmpty()) {
                 LOGGER.info("Credit cards was found successfully.");
                 return result;
@@ -145,16 +142,5 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         return result;
     }
 
-    private List<CreditCard> extractCreditCards(List<CreditCard> creditCards, PreparedStatement preparedStatement) throws SQLException {
-        ResultSet resultSet = preparedStatement.executeQuery();
 
-        CreditCardMapper creditCardMapper = new CreditCardMapper();
-
-        while (resultSet.next()) {
-            Optional<CreditCard> creditCard = Optional.
-                    ofNullable(creditCardMapper.extractFromResultSet(resultSet));
-            creditCard.ifPresent(creditCards::add);
-        }
-        return creditCards;
-    }
 }

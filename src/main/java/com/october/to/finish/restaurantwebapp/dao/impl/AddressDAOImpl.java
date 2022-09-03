@@ -29,6 +29,8 @@ public class AddressDAOImpl implements AddressDAO {
     private static final String FIND_ALL_ADDRESSES = "SELECT * FROM address";
     private final Connection connection;
 
+    private final AddressMapper addressMapper = new AddressMapper();
+
     public AddressDAOImpl(Connection connection) {
         this.connection = connection;
     }
@@ -37,7 +39,7 @@ public class AddressDAOImpl implements AddressDAO {
     public boolean insertAddress(long personId, Address address) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT_ADDRESS)) {
-            setAddressParams(address, preparedStatement);
+            addressMapper.setAddressParams(address, preparedStatement);
             preparedStatement.setLong(6, personId);
 
             preparedStatement.executeUpdate();
@@ -73,7 +75,7 @@ public class AddressDAOImpl implements AddressDAO {
     public boolean updateAddress(long addressId, Address address) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE_ADDRESS)) {
-            setAddressParams(address, preparedStatement);
+            addressMapper.setAddressParams(address, preparedStatement);
 
             preparedStatement.setLong(6, addressId);
 
@@ -92,13 +94,7 @@ public class AddressDAOImpl implements AddressDAO {
         return false;
     }
 
-    private void setAddressParams(Address address, PreparedStatement preparedStatement) throws SQLException {
-        preparedStatement.setString(1, address.getCountry());
-        preparedStatement.setString(2, address.getCity());
-        preparedStatement.setString(3, address.getStreet());
-        preparedStatement.setString(4, address.getBuildingNumber());
-        preparedStatement.setString(5, address.getRoomNumber());
-    }
+
 
     @Override
     public Address getAddressById(long addressId) throws DAOException {
@@ -108,7 +104,6 @@ public class AddressDAOImpl implements AddressDAO {
 
             preparedStatement.setLong(1, addressId);
             ResultSet resultSet = preparedStatement.executeQuery();
-            AddressMapper addressMapper = new AddressMapper();
             if (resultSet.next()) {
                 address = Optional.ofNullable(addressMapper.extractFromResultSet(resultSet));
             }
@@ -125,7 +120,7 @@ public class AddressDAOImpl implements AddressDAO {
         List<Address> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL_ADDRESSES)) {
-            extractAddresses(result, preparedStatement);
+            addressMapper.extractAddresses(result, preparedStatement);
             if (!result.isEmpty()) {
                 LOGGER.info("Address was found successfully.");
                 return result;
@@ -137,16 +132,5 @@ public class AddressDAOImpl implements AddressDAO {
         return result;
     }
 
-    private List<Address> extractAddresses(List<Address> addresses, PreparedStatement preparedStatement) throws SQLException {
-        ResultSet resultSet = preparedStatement.executeQuery();
 
-        AddressMapper addressMapper = new AddressMapper();
-
-        while (resultSet.next()) {
-            Optional<Address> address = Optional.
-                    ofNullable(addressMapper.extractFromResultSet(resultSet));
-            address.ifPresent(addresses::add);
-        }
-        return addresses;
-    }
 }
