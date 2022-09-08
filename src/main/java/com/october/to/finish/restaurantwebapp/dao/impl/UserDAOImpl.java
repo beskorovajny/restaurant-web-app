@@ -46,7 +46,7 @@ public class UserDAOImpl implements UserDAO {
             LOGGER.info("User : {} was inserted successfully", user);
             return true;
         } catch (SQLException e) {
-            LOGGER.error("User : [{}] was not inserted. An exception occurs. Transaction rolled back!!! : {}", user, e.getMessage());
+            LOGGER.error("User : [{}] was not inserted. An exception occurs.: {}", user, e.getMessage());
             throw new DAOException("[UserDAO] exception while creating User" + e.getMessage(), e);
         }
     }
@@ -87,7 +87,7 @@ public class UserDAOImpl implements UserDAO {
             DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
         }
-        LOGGER.info("User with ID : [{}] was not  found for update", userId);
+        LOGGER.info("User with ID : [{}] was not found for update", userId);
         return false;
     }
 
@@ -142,7 +142,6 @@ public class UserDAOImpl implements UserDAO {
             }
         } catch (SQLException e) {
             LOGGER.error("Users was not found. An exception occurs : {}", e.getMessage());
-            DBUtils.rollback(connection);
             throw new DAOException("[UserDAO] exception while reading all users", e);
         }
         return result;
