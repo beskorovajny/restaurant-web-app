@@ -45,12 +45,9 @@ public class AddressMapper implements ObjectMapper<Address> {
     }
     public List<Address> extractAddresses(List<Address> addresses, PreparedStatement preparedStatement) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
-
-        AddressMapper addressMapper = new AddressMapper();
-
         while (resultSet.next()) {
             Optional<Address> address = Optional.
-                    ofNullable(addressMapper.extractFromResultSet(resultSet));
+                    ofNullable(extractFromResultSet(resultSet));
             address.ifPresent(addresses::add);
         }
         return addresses;

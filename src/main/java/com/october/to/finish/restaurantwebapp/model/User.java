@@ -113,14 +113,19 @@ public class User {
     }
 
     public enum Role {
-        CLIENT("Client"),
-        MANAGER("Manager"),
-        UNAUTHORIZED_USER("Unauthorized_user");
-
+        CLIENT(1,"Client"),
+        MANAGER(2,"Manager"),
+        UNAUTHORIZED_USER(3,"Unauthorized_user");
+        private final long id;
         private final String roleName;
 
-        Role(String roleName) {
+        Role(long id, String roleName) {
+            this.id = id;
             this.roleName = roleName;
+        }
+
+        public long getId() {
+            return id;
         }
 
         public String getRoleName() {

@@ -2,6 +2,7 @@ package com.october.to.finish.restaurantwebapp.dao.mapper.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.mapper.ObjectMapper;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
+import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -39,17 +40,15 @@ public class CreditCardMapper implements ObjectMapper<CreditCard> {
         preparedStatement.setString(1, creditCard.getCardNumber());
         preparedStatement.setString(2, creditCard.getBankName());
         preparedStatement.setBigDecimal(3, BigDecimal.valueOf(creditCard.getBalance()));
-        preparedStatement.setString(4, String.valueOf(creditCard.getPassword()));
+        preparedStatement.setString(4, PasswordEncryptionUtil.
+                getEncrypted(String.valueOf(creditCard.getPassword())));
     }
 
     public List<CreditCard> extractCreditCards(List<CreditCard> creditCards, PreparedStatement preparedStatement) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
-
-        CreditCardMapper creditCardMapper = new CreditCardMapper();
-
         while (resultSet.next()) {
             Optional<CreditCard> creditCard = Optional.
-                    ofNullable(creditCardMapper.extractFromResultSet(resultSet));
+                    ofNullable(extractFromResultSet(resultSet));
             creditCard.ifPresent(creditCards::add);
         }
         return creditCards;

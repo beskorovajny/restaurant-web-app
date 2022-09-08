@@ -1,13 +1,16 @@
 package com.october.to.finish.restaurantwebapp.dao.mapper.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.mapper.ObjectMapper;
+import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import com.october.to.finish.restaurantwebapp.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class UserMapper implements ObjectMapper<User> {
     @Override
@@ -40,5 +43,16 @@ public class UserMapper implements ObjectMapper<User> {
         preparedStatement.setString(3, user.getLastName());
         preparedStatement.setString(4, user.getPhoneNumber());
         preparedStatement.setString(5, String.valueOf(user.getPassword()));
+        preparedStatement.setLong(6, user.getRole().getId());
+    }
+
+    public List<User> extractUsers(List<User> users, PreparedStatement preparedStatement) throws SQLException {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Optional<User> user = Optional.
+                    ofNullable(extractFromResultSet(resultSet));
+            user.ifPresent(users::add);
+        }
+        return users;
     }
 }

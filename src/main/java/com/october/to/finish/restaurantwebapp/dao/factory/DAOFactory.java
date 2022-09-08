@@ -18,7 +18,7 @@ public abstract class DAOFactory {
         return daoFactory;
     }
 
-    public abstract UserDAO createPersonDAO() throws SQLException;
+    public abstract UserDAO createUserDAO() throws SQLException;
 
     public abstract ReceiptDAO createReceiptDAO() throws SQLException;
 

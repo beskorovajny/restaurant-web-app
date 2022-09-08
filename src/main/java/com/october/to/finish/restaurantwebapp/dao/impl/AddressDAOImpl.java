@@ -20,17 +20,16 @@ public class AddressDAOImpl implements AddressDAO {
     private static final Logger LOGGER = LogManager.getLogger(AddressDAOImpl.class);
     private static final String INSERT_ADDRESS = "INSERT INTO address" +
             " (country, city, street, building_number, room_number, user_id)" +
-            " VALUES (?, ?, ?, ?, ?, ?);";
-    private static final String DELETE_ADDRESS = "DELETE FROM address WHERE id = ?";
-    private static final String DELETE_ADDRESS_BY_USER_ID = "DELETE FROM address WHERE user_id = ?";
-    private static final String UPDATE_ADDRESS = "UPDATE address SET country = ?," +
-            " city = ?, street = ?, building_number = ?, room_number = ? WHERE id = ?";
-
-    private static final String UPDATE_ADDRESS_BY_USER_ID = "UPDATE address SET country = ?," +
-            " city = ?, street = ?, building_number = ?, room_number = ? WHERE user_id = ?";
-
+            " VALUES (?, ?, ?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM address WHERE id = ?";
     private static final String FIND_ALL_ADDRESSES = "SELECT * FROM address";
+    private static final String UPDATE_ADDRESS = "UPDATE address SET country = ?," +
+            " city = ?, street = ?, building_number = ?, room_number = ? WHERE id = ?";
+    private static final String UPDATE_ADDRESS_BY_USER_ID = "UPDATE address SET country = ?," +
+            " city = ?, street = ?, building_number = ?, room_number = ? WHERE user_id = ?";
+    private static final String DELETE_ADDRESS = "DELETE FROM address WHERE id = ?";
+    private static final String DELETE_ADDRESS_BY_USER_ID = "DELETE FROM address WHERE user_id = ?";
+
     private final Connection connection;
 
     private final AddressMapper addressMapper = new AddressMapper();
@@ -45,7 +44,6 @@ public class AddressDAOImpl implements AddressDAO {
                 prepareStatement(INSERT_ADDRESS)) {
             addressMapper.setAddressParams(address, preparedStatement);
             preparedStatement.setLong(6, userId);
-
             preparedStatement.executeUpdate();
             LOGGER.info("Address : {} was inserted successfully", address);
             return true;
@@ -54,6 +52,84 @@ public class AddressDAOImpl implements AddressDAO {
                     address, e.getMessage());
             throw new DAOException("[AddressDAO] exception while creating Address" + e.getMessage(), e);
         }
+    }
+
+
+    @Override
+    public Address getAddressById(long addressId) throws DAOException {
+        Optional<Address> address = Optional.empty();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_BY_ID)) {
+            preparedStatement.setLong(1, addressId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                address = Optional.ofNullable(addressMapper.extractFromResultSet(resultSet));
+            }
+            address.ifPresent(addr -> LOGGER.info("Loaded address from db: [{}]", addr));
+        } catch (SQLException e) {
+            LOGGER.error("Address with ID : [{}] was not found. An exception occurs : {}", addressId, e.getMessage());
+            throw new DAOException("[AddressDAO] exception while loading Address", e);
+        }
+        return address.orElse(new Address());
+    }
+
+    @Override
+    public List<Address> findAllAddresses() throws DAOException {
+        List<Address> result = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ALL_ADDRESSES)) {
+            addressMapper.extractAddresses(result, preparedStatement);
+            if (!result.isEmpty()) {
+                LOGGER.info("Address was found successfully.");
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Address was not found. An exception occurs : {}", e.getMessage());
+            throw new DAOException("[AddressDAO] exception while reading all addresses", e);
+        }
+        return result;
+    }
+
+    @Override
+    public boolean updateAddress(long addressId, Address address) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(UPDATE_ADDRESS)) {
+            addressMapper.setAddressParams(address, preparedStatement);
+            preparedStatement.setLong(6, addressId);
+
+            int rowUpdated = preparedStatement.executeUpdate();
+            if (rowUpdated > 0 && rowUpdated < 6) {
+                LOGGER.info("Address with ID : [{}] was updated.", addressId);
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Address with ID : [{}] was not updated. An exception occurs : {}",
+                    addressId, e.getMessage());
+            throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
+        }
+        LOGGER.info("Address with ID : [{}] was not  found for update", addressId);
+        return false;
+    }
+
+    @Override
+    public boolean updateAddressByUserId(long userId, Address address) throws DAOException {
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(UPDATE_ADDRESS_BY_USER_ID)) {
+            addressMapper.setAddressParams(address, preparedStatement);
+            preparedStatement.setLong(6, userId);
+
+            int rowUpdated = preparedStatement.executeUpdate();
+            if (rowUpdated > 0 && rowUpdated < 6) {
+                LOGGER.info("Address for UserID : [{}] was updated.", userId);
+                return true;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Address for UserID : [{}] was not updated. An exception occurs : {}",
+                    userId, e.getMessage());
+            throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
+        }
+        LOGGER.info("Address for UserID : [{}] was not  found for update", userId);
+        return false;
     }
 
     @Override
@@ -92,91 +168,4 @@ public class AddressDAOImpl implements AddressDAO {
         LOGGER.info("Address for UserID : [{}] was not removed.", userId);
         return false;
     }
-
-    @Override
-    public boolean updateAddress(long addressId, Address address) throws DAOException {
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(UPDATE_ADDRESS)) {
-            addressMapper.setAddressParams(address, preparedStatement);
-
-            preparedStatement.setLong(6, addressId);
-
-            int rowUpdated = preparedStatement.executeUpdate();
-
-            if (rowUpdated > 0 && rowUpdated < 6) {
-                LOGGER.info("Address with ID : [{}] was updated.", addressId);
-                return true;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Address with ID : [{}] was not updated. An exception occurs : {}",
-                    addressId, e.getMessage());
-            throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
-        }
-        LOGGER.info("Address with ID : [{}] was not  found for update", addressId);
-        return false;
-    }
-
-    @Override
-    public boolean updateAddressByUserId(long userId, Address address) throws DAOException {
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(UPDATE_ADDRESS)) {
-            addressMapper.setAddressParams(address, preparedStatement);
-
-            preparedStatement.setLong(6, userId);
-
-            int rowUpdated = preparedStatement.executeUpdate();
-
-            if (rowUpdated > 0 && rowUpdated < 6) {
-                LOGGER.info("Address for UserID : [{}] was updated.", userId);
-                return true;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Address for UserID : [{}] was not updated. An exception occurs : {}",
-                    userId, e.getMessage());
-            throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
-        }
-        LOGGER.info("Address for UserID : [{}] was not  found for update", userId);
-        return false;
-    }
-
-
-    @Override
-    public Address getAddressById(long addressId) throws DAOException {
-        Optional<Address> address = Optional.empty();
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(FIND_BY_ID)) {
-
-            preparedStatement.setLong(1, addressId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                address = Optional.ofNullable(addressMapper.extractFromResultSet(resultSet));
-            }
-            address.ifPresent(addr -> LOGGER.info("Loaded address from db: [{}]", addr));
-        } catch (SQLException e) {
-            LOGGER.error("Address with ID : [{}] was not found. An exception occurs : {}", addressId, e.getMessage());
-            throw new DAOException("[AddressDAO] exception while loading Address", e);
-        }
-        return address.orElse(new Address());
-    }
-
-    @Override
-    public List<Address> findAllAddresses() throws DAOException {
-        List<Address> result = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(FIND_ALL_ADDRESSES)) {
-            addressMapper.extractAddresses(result, preparedStatement);
-            if (!result.isEmpty()) {
-                LOGGER.info("Address was found successfully.");
-                return result;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Address was not found. An exception occurs : {}", e.getMessage());
-            throw new DAOException("[AddressDAO] exception while reading all addresses", e);
-        }
-        return result;
-    }
-
-
-
-
 }

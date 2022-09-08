@@ -62,20 +62,22 @@ public class Main {
         CreditCard creditCard = new CreditCard("PrivatBank", "5555-5555-5555-0001", 10000, "password".toCharArray());
         String password = "426HemiSixPack";
         User user = User.newBuilder()
-                .setEmail("janedoe@example.com")
-                .setFirstName("Jane")
-                .setLastName("Doe")
-                .setPhoneNumber("555-000-278")
-                .setRole(User.Role.MANAGER)
+                .setEmail("janed22oe@example.com")
+                .setFirstName("Janke")
+                .setLastName("Donuts")
+                .setPhoneNumber("555-000-272")
+                .setRole(User.Role.UNAUTHORIZED_USER)
                 .setAddress(address)
                 .setCreditCard(creditCard)
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
         LOGGER.info(String.valueOf(user.getPassword()));
         try {
-            UserDAO userDAO = DAOFactory.getInstance().createPersonDAO();
-            userDAO.updateUser(2, user);
+            UserDAO userDAO = DAOFactory.getInstance().createUserDAO();
+            /*userDAO.updateUser(2, user);
             List<User> userList = userDAO.findAllUsers();
-            userList.forEach(System.out::println);
+            userList.forEach(System.out::println);*/
+            userDAO.deleteUser(1);
+            System.out.println(userDAO.getUserById(7));
             /* userDAO.deletePerson(2);*/
 
            /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();

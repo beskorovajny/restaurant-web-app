@@ -238,3 +238,22 @@
 2022-09-03 16:32:44 INFO Loaded address from db: [Address{id=5, country='USA', city='New Jersey', street='Bank', buildingNumber='11/45', roomNumber='3'}]
 2022-09-03 16:32:44 INFO Credit card from db: [Big Apple Investment], [5555-5555-5555-5559]
 2022-09-03 16:32:44 INFO Users was found successfully.
+2022-09-08 16:33:28 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:33:29 INFO User with ID : [2] was updated.
+2022-09-08 16:33:29 INFO Users was found successfully.
+2022-09-08 16:35:55 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:35:56 INFO User with ID : [1] was removed.
+2022-09-08 16:36:39 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:36:41 INFO User with ID : [1] was not removed.
+2022-09-08 16:37:32 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:37:34 INFO User with ID : [1] was not removed.
+2022-09-08 16:37:34 INFO User : User{orders=null, id=0, email='janed22oe@example.com', firstName='Jane', lastName='Doe', phoneNumber='555-000-272', role=UNAUTHORIZED_USER, creditCard=CreditCard{bankName='PrivatBank', cardNumber='5555-5555-5555-0001', balance=10000.0, password=password}, address=Address{id=0, country='Ukraine', city='Lviv', street='Science st.', buildingNumber='24', roomNumber='16'}, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821} was inserted successfully
+2022-09-08 16:39:17 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:39:18 INFO User with ID : [1] was not removed.
+2022-09-08 16:39:18 INFO User with ID : [7] was updated.
+2022-09-08 16:40:41 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:40:42 INFO User with ID : [1] was not removed.
+2022-09-08 16:40:42 INFO User received : [3], [johndoe2@example.com]
+2022-09-08 16:41:02 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-08 16:41:03 INFO User with ID : [1] was not removed.
+2022-09-08 16:41:04 INFO User received : [7], [janed22oe@example.com]
