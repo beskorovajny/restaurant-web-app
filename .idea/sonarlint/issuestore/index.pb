@@ -5,10 +5,6 @@ v
 Fsrc/main/java/com/october/to/finish/restaurantwebapp/HelloServlet.java,f\a\fadc2626f37c71e255061f928e41d1ca1003a68e
 Å
 Qsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/ObjectMapper.java,9\3\931415a59bcec2d7eeacf44972d4bcd7bcfda6f8
-z
-Jsrc/main/java/com/october/to/finish/restaurantwebapp/model/CreditCard.java,a\c\ac348b74b335c001f39c9d546b60e9571d9303e4
-w
-Gsrc/main/java/com/october/to/finish/restaurantwebapp/model/Address.java,9\f\9ff7ae232ae83d5eb99bbe93d41968aa8a2516d0
 t
 Dsrc/main/java/com/october/to/finish/restaurantwebapp/model/User.java,1\4\141ffa98fb356056506a552c0eaff986ff99f41d
 á

@@ -94,8 +94,7 @@ public class Main {
                     .setCount(40)
                     .setPrice(70).build();
             /*dish.setId(dishDAO.save(dish));*/
-            dishDAO.delete(1);
-            dishDAO.findAll().forEach(System.out::println);
+            dishDAO.save(dish2);
 
 
 
