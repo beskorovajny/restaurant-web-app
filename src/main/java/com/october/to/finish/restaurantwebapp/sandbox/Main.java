@@ -77,7 +77,7 @@ public class Main {
             List<User> userList = userDAO.findAllUsers();
             userList.forEach(System.out::println);*/
             userDAO.deleteUser(1);
-            System.out.println(userDAO.getUserById(7));
+            System.out.println(userDAO.getUserById(2));
             /* userDAO.deletePerson(2);*/
 
            /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
