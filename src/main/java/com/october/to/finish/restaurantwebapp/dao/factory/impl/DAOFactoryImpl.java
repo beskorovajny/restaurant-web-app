@@ -4,6 +4,7 @@ import com.october.to.finish.restaurantwebapp.dao.*;
 import com.october.to.finish.restaurantwebapp.dao.connections.ConnectionPoolHolder;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
 import com.october.to.finish.restaurantwebapp.dao.impl.*;
+import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -11,6 +12,9 @@ import java.sql.SQLException;
 public class DAOFactoryImpl extends DAOFactory {
 
     private final DataSource dataSource = ConnectionPoolHolder.getDataSource();
+
+    public DAOFactoryImpl() throws DAOException {
+    }
 
     @Override
     public UserDAO createUserDAO() throws SQLException {

@@ -6,11 +6,16 @@ import com.october.to.finish.restaurantwebapp.model.User;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface UserDAO extends GenericDAO<User> {
-    boolean insertUser(User user) throws DAOException, SQLException;
-    User getUserById(long userId) throws DAOException;
-    User getUserByEmail(String eMail) throws DAOException;
-    List<User> findAllUsers() throws DAOException;
-    boolean updateUser(long userId, User user) throws DAOException;
-    boolean deleteUser(long userId) throws DAOException;
+public interface UserDAO {
+    long save(User user) throws DAOException, SQLException;
+
+    User findById(long userId) throws DAOException;
+
+    User findByEmail(String eMail) throws DAOException;
+
+    List<User> findAll() throws DAOException;
+
+    boolean update(long userId, User user) throws DAOException;
+
+    void delete(long userId) throws DAOException;
 }

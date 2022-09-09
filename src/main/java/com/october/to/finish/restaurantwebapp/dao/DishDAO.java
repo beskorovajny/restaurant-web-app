@@ -3,18 +3,20 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Dish;
 
-import java.util.Set;
+import java.util.List;
 
-public interface DishDAO extends GenericDAO<Dish> {
-    boolean insertDish(Dish dish) throws DAOException;
+public interface DishDAO {
+    long save(Dish dish) throws DAOException;
 
-    boolean deleteDish(long dishId) throws DAOException;
+    Dish findById(long dishId) throws DAOException;
 
-    boolean updateDish(long dishId, Dish dish) throws DAOException;
+    Dish findByTitle(String title) throws DAOException;
 
-    Dish getDishById(long dishId) throws DAOException;
+    List<Dish> findAll() throws DAOException;
 
-    Dish getDishByTitle(String title) throws DAOException;
+    boolean update(long dishId, Dish dish) throws DAOException;
 
-    Set<Dish> findAllDishes() throws DAOException;
+    void delete(long dishId) throws DAOException;
+
+
 }

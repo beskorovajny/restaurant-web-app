@@ -2,6 +2,7 @@ package com.october.to.finish.restaurantwebapp.dao.factory;
 
 import com.october.to.finish.restaurantwebapp.dao.*;
 import com.october.to.finish.restaurantwebapp.dao.factory.impl.DAOFactoryImpl;
+import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 
 import java.sql.SQLException;
 
@@ -9,7 +10,7 @@ public abstract class DAOFactory {
 
     private static DAOFactory daoFactory;
 
-    public static DAOFactory getInstance() {
+    public static DAOFactory getInstance() throws DAOException {
         if (daoFactory == null) {
             synchronized (DAOFactory.class) {
                 daoFactory = new DAOFactoryImpl();

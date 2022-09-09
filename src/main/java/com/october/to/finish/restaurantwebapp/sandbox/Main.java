@@ -1,17 +1,19 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
+import com.october.to.finish.restaurantwebapp.dao.DishDAO;
 import com.october.to.finish.restaurantwebapp.dao.UserDAO;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Address;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
+import com.october.to.finish.restaurantwebapp.model.Dish;
 import com.october.to.finish.restaurantwebapp.model.User;
 import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.SQLException;
-import java.util.List;
+import java.time.LocalDateTime;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
@@ -73,12 +75,29 @@ public class Main {
         LOGGER.info(String.valueOf(user.getPassword()));
         try {
             UserDAO userDAO = DAOFactory.getInstance().createUserDAO();
+            DishDAO dishDAO = DAOFactory.getInstance().createDishDAO();
             /*userDAO.updateUser(2, user);
             List<User> userList = userDAO.findAllUsers();
             userList.forEach(System.out::println);*/
-            userDAO.deleteUser(1);
-            System.out.println(userDAO.getUserById(2));
+            /*userDAO.delete(1);
+            System.out.println(userDAO.findById(2));*/
             /* userDAO.deletePerson(2);*/
+            Dish dish2 = Dish.newBuilder().setId(1)
+                    .setTitle("Coffee")
+                    .setTitleCyrillic("Кава")
+                    .setDescription("description")
+                    .setDescriptionCyrillic("Опис...")
+                    .setDateCreated(LocalDateTime.now())
+                    .setMinutesToCook(0)
+                    .setCategory(Dish.Category.DRINK)
+                    .setWeightInGrams(350)
+                    .setCount(40)
+                    .setPrice(70).build();
+            /*dish.setId(dishDAO.save(dish));*/
+            dishDAO.delete(1);
+            dishDAO.findAll().forEach(System.out::println);
+
+
 
            /* CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
 

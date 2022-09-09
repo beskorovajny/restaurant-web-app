@@ -5,15 +5,16 @@ import com.october.to.finish.restaurantwebapp.model.Receipt;
 
 import java.util.List;
 
-public interface ReceiptDAO extends GenericDAO<Receipt> {
+public interface ReceiptDAO {
 
-    boolean insertReceipt(Receipt receipt) throws DAOException;
+    long save(long userid, Receipt receipt) throws DAOException;
 
-    boolean deleteReceipt(long receiptId) throws DAOException;
+    Receipt findById(long receiptId) throws DAOException;
 
-    boolean updateReceipt(long receiptId, Receipt receipt) throws DAOException;
+    List<Receipt> findAll() throws DAOException;
 
-    Receipt getReceiptById(long receiptId) throws DAOException;
+    boolean update(long receiptId, Receipt receipt) throws DAOException;
 
-    List<Receipt> findAllReceipts() throws DAOException;
+    void delete(long receiptId) throws DAOException;
+
 }

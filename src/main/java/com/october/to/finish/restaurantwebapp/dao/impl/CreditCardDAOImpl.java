@@ -4,32 +4,27 @@ import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
 import com.october.to.finish.restaurantwebapp.dao.mapper.impl.CreditCardMapper;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.CreditCard;
-import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 public class CreditCardDAOImpl implements CreditCardDAO {
     private static final Logger LOGGER = LogManager.getLogger(CreditCardDAOImpl.class);
-    private static final String INSERT_CREDIT_CARD = "INSERT INTO credit_card" +
+    private static final String INSERT = "INSERT INTO credit_card" +
             " (card_number, bank_name, balance, password, user_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String FIND_BY_CARD_NUMBER = "SELECT * FROM credit_card WHERE card_number = ?";
-    private static final String FIND_ALL_CREDIT_CARDS = "SELECT * FROM credit_card";
-    private static final String UPDATE_CREDIT_CARD = "UPDATE credit_card SET card_number = ?," +
+    private static final String FIND_ALL = "SELECT * FROM credit_card";
+    private static final String UPDATE = "UPDATE credit_card SET card_number = ?," +
             " bank_name = ?, balance = ?, password = ? WHERE card_number  = ?";
-    private static final String UPDATE_CREDIT_CARD_BY_USER_ID = "UPDATE credit_card SET card_number = ?," +
+    private static final String UPDATE_BY_USER_ID = "UPDATE credit_card SET card_number = ?," +
             " bank_name = ?, balance = ?, password = ? WHERE user_id  = ?";
-    private static final String DELETE_CREDIT_CARD = "DELETE FROM credit_card WHERE card_number = ?";
-    private static final String DELETE_CREDIT_CARD_BY_USER_ID = "DELETE FROM credit_card WHERE user_id = ?";
+    private static final String DELETE = "DELETE FROM credit_card WHERE card_number = ?";
+    private static final String DELETE_BY_USER_ID = "DELETE FROM credit_card WHERE user_id = ?";
 
 
     private final Connection connection;
@@ -41,26 +36,29 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     }
 
     @Override
-    public boolean insertCreditCard(long userId, CreditCard creditCard) throws DAOException {
+    public long save(long userId, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(INSERT_CREDIT_CARD)) {
+                prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             cardMapper.setCreditCardParams(creditCard, preparedStatement);
             preparedStatement.setLong(5, userId);
-
             preparedStatement.executeUpdate();
-            LOGGER.info("Credit card : {}, {} was inserted successfully",
-                    creditCard.getCardNumber(), creditCard.getBankName());
-            return true;
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            long key = 0;
+            if (resultSet.next()) {
+                key = resultSet.getLong(1);
+                LOGGER.info("Credit card : {}, {} was saved successfully",
+                        creditCard.getCardNumber(), creditCard.getBankName());
+            }
+            return key;
         } catch (SQLException e) {
-            LOGGER.error("Credit card : [{}] was not inserted. An exception occurs : {}",
+            LOGGER.error("Credit card : [{}] was not saved. An exception occurs : {}",
                     creditCard.getCardNumber(), e.getMessage());
-            throw new DAOException("[CreditCardDAO] exception while creating CreditCard" + e.getMessage(), e);
+            throw new DAOException("[CreditCardDAO] exception while saving CreditCard" + e.getMessage(), e);
         }
-
     }
 
     @Override
-    public CreditCard getCreditCardByNumber(String cardNumber) throws DAOException {
+    public CreditCard findByNumber(String cardNumber) throws DAOException {
         Optional<CreditCard> creditCard = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_CARD_NUMBER)) {
@@ -69,20 +67,20 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             if (resultSet.next()) {
                 creditCard = Optional.ofNullable(cardMapper.extractFromResultSet(resultSet));
             }
-            creditCard.ifPresent(card -> LOGGER.info("Credit card from db: [{}], [{}]",
+            creditCard.ifPresent(card -> LOGGER.info("Credit card received from db: [{}], [{}]",
                     card.getBankName(), card.getCardNumber()));
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not found. An exception occurs : {}", cardNumber, e.getMessage());
-            throw new DAOException("[CreditCardDAO] exception while loading CreditCard", e);
+            throw new DAOException("[CreditCardDAO] exception while receiving CreditCard", e);
         }
         return creditCard.orElse(new CreditCard());
     }
 
     @Override
-    public List<CreditCard> findAllCreditCards() throws DAOException {
+    public List<CreditCard> findAll() throws DAOException {
         List<CreditCard> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(FIND_ALL_CREDIT_CARDS)) {
+                prepareStatement(FIND_ALL)) {
             cardMapper.extractCreditCards(result, preparedStatement);
             if (!result.isEmpty()) {
                 LOGGER.info("Credit cards was found successfully.");
@@ -90,14 +88,15 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             }
         } catch (SQLException e) {
             LOGGER.error("Credit cards was not found. An exception occurs : {}", e.getMessage());
-            throw new DAOException("[CreditCardDAO] exception while reading all credit cards", e);
+            throw new DAOException("[CreditCardDAO] exception while receiving all credit cards", e);
         }
         return result;
     }
+
     @Override
-    public boolean updateCreditCard(String cardNumber, CreditCard creditCard) throws DAOException {
+    public boolean update(String cardNumber, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(UPDATE_CREDIT_CARD)) {
+                prepareStatement(UPDATE)) {
             cardMapper.setCreditCardParams(creditCard, preparedStatement);
             preparedStatement.setString(5, cardNumber);
 
@@ -111,14 +110,14 @@ public class CreditCardDAOImpl implements CreditCardDAO {
                     cardNumber, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while updating CreditCard" + e.getMessage(), e);
         }
-        LOGGER.info("Credit card : [{}] was not  found for update",
-                cardNumber);
+        LOGGER.info("Credit card : [{}] was not  found for update", cardNumber);
         return false;
     }
+
     @Override
-    public boolean updateCreditCardByUserId(long userId, CreditCard creditCard) throws DAOException {
+    public boolean updateByUserId(long userId, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(UPDATE_CREDIT_CARD_BY_USER_ID)) {
+                prepareStatement(UPDATE_BY_USER_ID)) {
             cardMapper.setCreditCardParams(creditCard, preparedStatement);
             preparedStatement.setLong(5, userId);
 
@@ -138,39 +137,38 @@ public class CreditCardDAOImpl implements CreditCardDAO {
     }
 
     @Override
-    public boolean deleteCreditCard(String cardNumber) throws DAOException {
+    public void delete(String cardNumber) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(DELETE_CREDIT_CARD)) {
+                prepareStatement(DELETE)) {
             preparedStatement.setString(1, cardNumber);
             int rowDeleted = preparedStatement.executeUpdate();
             if (rowDeleted > 0) {
                 LOGGER.info("Credit card with number : [{}] was removed.", cardNumber);
-                return true;
+            } else {
+                LOGGER.info("Credit card with number : [{}] was not found to remove.", cardNumber);
             }
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not removed. An exception occurs : {}",
                     cardNumber, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while removing CreditCard" + e.getMessage(), e);
         }
-        LOGGER.info("Credit card with number : [{}] was not removed.", cardNumber);
-        return false;
     }
 
-    public boolean deleteCreditCardByUserId(long userId) throws DAOException {
+    public void deleteByUserId(long userId) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(DELETE_CREDIT_CARD_BY_USER_ID)) {
+                prepareStatement(DELETE_BY_USER_ID)) {
             preparedStatement.setLong(1, userId);
             int rowDeleted = preparedStatement.executeUpdate();
             if (rowDeleted > 0) {
                 LOGGER.info("Credit card for UserID : [{}] was removed.", userId);
-                return true;
+            } else {
+                LOGGER.info("Credit card for UserID : [{}] was not found to remove.", userId);
             }
         } catch (SQLException e) {
             LOGGER.error("Credit card for UserID: [{}] was not removed. An exception occurs : {}",
                     userId, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while removing CreditCard" + e.getMessage(), e);
         }
-        LOGGER.info("Credit card for UserID : [{}] was not removed.", userId);
-        return false;
+
     }
 }

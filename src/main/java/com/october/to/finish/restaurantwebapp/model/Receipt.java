@@ -90,19 +90,24 @@ public class Receipt {
     }
 
     public enum Status {
-        NEW("New"),
-        COOKING("Cooking"),
-        DELIVERY("Delivery"),
-        COMPLETED("Completed");
+        NEW(1, "New"),
+        COOKING(2, "Cooking"),
+        DELIVERY(3, "Delivery"),
+        COMPLETED(4, "Completed");
+        private final long id;
+        private final String status;
 
-        private final String statusTitle;
-
-        Status(String statusTitle) {
-            this.statusTitle = statusTitle;
+        Status(long id, String status) {
+            this.id = id;
+            this.status = status;
         }
 
-        public String getStatusTitle() {
-            return statusTitle;
+        public long getId() {
+            return id;
+        }
+
+        public String getStatus() {
+            return status;
         }
     }
 

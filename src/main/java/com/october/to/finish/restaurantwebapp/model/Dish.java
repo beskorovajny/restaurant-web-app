@@ -27,6 +27,10 @@ public class Dish {
         return id;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -109,16 +113,21 @@ public class Dish {
     }
 
     public enum Category {
-        SALAD("Salad"),
-        PIZZA("Pizza"),
-        APPETIZER("Appetizer"),
-        DRINK("Drink");
+        SALAD(1, "Salad"),
+        PIZZA(2, "Pizza"),
+        APPETIZER(3, "Appetizer"),
+        DRINK(4, "Drink");
 
-
+        private final long id;
         private final String categoryName;
 
-        Category(String categoryName) {
+        Category(long id, String categoryName) {
+            this.id = id;
             this.categoryName = categoryName;
+        }
+
+        public long getId() {
+            return id;
         }
 
         public String getCategoryName() {
@@ -219,9 +228,9 @@ public class Dish {
         }
 
         public Builder setImage(byte[] image) {
-            if (image == null) {
+            /*if (image == null) {
                 throw new IllegalArgumentException("Image can't be null");
-            }
+            }*/
             Dish.this.image = image;
             return this;
         }
