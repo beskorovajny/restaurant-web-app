@@ -4,7 +4,9 @@ PROJECT DESCRIPTION
 
 The task of the final project is to develop a web application
 that supportsthe functionality according to the task variant.
-There are roles: Client, Manager.
+There are roles:
+Client,
+Manager.
 The client (authorized user) places orders from the menu - thecatalog of dishes
 , and also has the opportunity to view the catalog taking into account the sorting:
 - by the name of the dish;
