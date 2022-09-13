@@ -20,4 +20,5 @@ sends it for cooking. After cooking, the Manager passes the order for delivery.
 After delivery and receiving payment,
 the Manager changes the status of the order to "completed".
 
+Database model:
 ![image](https://user-images.githubusercontent.com/29185554/189911582-28077c29-5ad5-4aec-840f-3ef56341f098.png)
