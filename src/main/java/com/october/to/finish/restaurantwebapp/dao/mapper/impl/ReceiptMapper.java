@@ -18,12 +18,12 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     @Override
     public Receipt extractFromResultSet(ResultSet resultSet) throws SQLException {
         Map<String, Receipt> receiptMap = new HashMap<>();
-        Receipt receipt = Receipt.newBuilder().setId(resultSet.getLong("id")).
+        Receipt receipt = Receipt.newBuilder().
+                setId(resultSet.getLong("id")).
                 setTimeCreated(resultSet.getTimestamp("time_created").toLocalDateTime()).
                 setDiscount(resultSet.getInt("discount")).
-                setTotalPrice(resultSet.getBigDecimal("total_price").doubleValue()).
                 build();
-
+        receipt.setTotalPrice(resultSet.getBigDecimal("total_price").doubleValue());
         receiptMap.put(String.valueOf(receipt.getId()), receipt);
 
         receipt = this.makeUnique(receiptMap, receipt);

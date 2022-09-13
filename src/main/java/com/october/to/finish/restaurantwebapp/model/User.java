@@ -6,7 +6,6 @@ import java.util.Objects;
 import java.util.Set;
 
 public class User {
-    private Set<Receipt> receipts;
     private long id;
     private String email;
     private String firstName;
@@ -16,6 +15,7 @@ public class User {
     private CreditCard creditCard;
     private Address address;
     private char[] password;
+    private Set<Receipt> receipts;
 
     public static Builder newBuilder() {
         return new User().new Builder();
@@ -26,6 +26,9 @@ public class User {
     }
 
     public void setId(long id) {
+        if (id < 0) {
+            throw new IllegalArgumentException();
+        }
         this.id = id;
     }
 
@@ -50,6 +53,9 @@ public class User {
     }
 
     public void setRole(Role role) {
+        if (role == null) {
+            throw new IllegalArgumentException();
+        }
         this.role = role;
     }
 
@@ -58,6 +64,9 @@ public class User {
     }
 
     public void setCreditCard(CreditCard creditCard) {
+        if (creditCard == null) {
+            throw new IllegalArgumentException();
+        }
         this.creditCard = creditCard;
     }
 
@@ -66,6 +75,9 @@ public class User {
     }
 
     public void setAddress(Address address) {
+        if (address == null) {
+            throw new IllegalArgumentException();
+        }
         this.address = address;
     }
 
@@ -77,8 +89,11 @@ public class User {
         return receipts;
     }
 
-    public void setOrders(Set<Receipt> receipts) {
-        this.receipts = receipts;
+    public void setOrders(Set<Receipt> orders) {
+        if (orders == null) {
+            throw new IllegalArgumentException();
+        }
+        this.receipts = orders;
     }
 
     @Override
@@ -99,8 +114,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "orders=" + receipts +
-                ", id=" + id +
+                "id=" + id +
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -109,13 +123,14 @@ public class User {
                 ", creditCard=" + creditCard +
                 ", address=" + address +
                 ", password=" + String.valueOf(password) +
+                ", receipts=" + receipts +
                 '}';
     }
 
     public enum Role {
-        CLIENT(1,"Client"),
-        MANAGER(2,"Manager"),
-        UNAUTHORIZED_USER(3,"Unauthorized_user");
+        CLIENT(1, "Client"),
+        MANAGER(2, "Manager"),
+        UNAUTHORIZED_USER(3, "Unauthorized_user");
         private final long id;
         private final String roleName;
 

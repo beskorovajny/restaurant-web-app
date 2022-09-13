@@ -44,11 +44,16 @@ public class Receipt {
     }
 
     public void setOrderedDishes(Map<String, Dish> orderedDishes) {
+        if (orderedDishes == null) {
+            throw new IllegalArgumentException("Dishes can't be null!");
+        }
         this.orderedDishes = orderedDishes;
     }
 
     public double getTotalPrice() {
-        totalPrice = calculateTotalPrice();
+        if (totalPrice == 0) {
+            totalPrice = calculateTotalPrice();
+        }
         return totalPrice;
     }
 
@@ -62,6 +67,14 @@ public class Receipt {
         return orderedDishes.entrySet().stream()
                 .flatMapToDouble(e -> DoubleStream.of(e.getValue().getPrice() * e.getValue().getCount())).sum();
     }
+
+    public void setTotalPrice(double totalPrice) {
+        if (totalPrice < 0) {
+            throw new IllegalArgumentException("Price can't be < 0");
+        }
+        this.totalPrice = totalPrice;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -154,15 +167,6 @@ public class Receipt {
             Receipt.this.discount = discount;
             return this;
         }
-
-        public Builder setTotalPrice(double totalPrice) {
-            if (totalPrice < 0) {
-                throw new IllegalArgumentException("Price can't be < 0");
-            }
-            Receipt.this.totalPrice = totalPrice;
-            return this;
-        }
-
         public Builder setOrderedDishes(Map<String, Dish> orderedDishes) {
             if (orderedDishes == null) {
                 throw new IllegalArgumentException("Dishes can't be null!");

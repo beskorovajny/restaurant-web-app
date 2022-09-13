@@ -45,15 +45,20 @@ class DishTest {
 
     @Test
     void wrongInputTest() {
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setId(-1).build());
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setTitle(null));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setDescription(null));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setPrice(-1));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setCategory(null));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setWeightInGrams(0));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setCount(-1));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setMinutesToCook(-1));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setDateCreated(null));
+        Dish dish = Dish.newBuilder().build();
+        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().
+                setId(-1).
+                setTitle(null).
+                setDescription(null).
+                setPrice(-1).
+                setCategory(null).
+                setWeightInGrams(0).
+                setCount(-1).
+                setMinutesToCook(-1).
+                setDateCreated(null).
+                build());
+        assertThrows(IllegalArgumentException.class, () -> dish.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> dish.setImage(null));
     }
 
 }

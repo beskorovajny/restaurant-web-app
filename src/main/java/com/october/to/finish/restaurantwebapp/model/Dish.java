@@ -26,6 +26,9 @@ public class Dish {
     }
 
     public void setId(long id) {
+        if (id < 0) {
+            throw new IllegalArgumentException();
+        }
         this.id = id;
     }
 
@@ -66,6 +69,9 @@ public class Dish {
     }
 
     public void setImage(byte[] image) {
+        if (image == null) {
+            throw new IllegalArgumentException();
+        }
         this.image = image;
     }
 
