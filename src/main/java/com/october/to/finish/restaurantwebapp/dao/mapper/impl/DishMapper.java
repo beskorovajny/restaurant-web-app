@@ -19,9 +19,7 @@ public class DishMapper implements ObjectMapper<Dish> {
         Map<String, Dish> dishMap = new HashMap<>();
         Dish dish = Dish.newBuilder().setId(resultSet.getLong("id")).
                 setTitle(resultSet.getString("title")).
-                setTitleCyrillic(resultSet.getString("title_ukr")).
                 setDescription(resultSet.getString("description")).
-                setDescriptionCyrillic(resultSet.getString("description_ukr")).
                 setPrice(resultSet.getBigDecimal("price").doubleValue()).
                 setWeightInGrams(resultSet.getInt("weight")).
                 setCount(resultSet.getInt("count")).
@@ -45,9 +43,7 @@ public class DishMapper implements ObjectMapper<Dish> {
 
     public void setDishParams(Dish dish, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, dish.getTitle());
-        preparedStatement.setString(2, dish.getTitleCyrillic());
         preparedStatement.setString(3, dish.getDescription());
-        preparedStatement.setString(4, dish.getDescriptionCyrillic());
         preparedStatement.setBigDecimal(5, BigDecimal.valueOf(dish.getPrice()));
         preparedStatement.setInt(6, dish.getWeightInGrams());
         preparedStatement.setInt(7, dish.getCount());

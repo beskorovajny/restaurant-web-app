@@ -22,7 +22,6 @@ public class AddressMapper implements ObjectMapper<Address> {
         address.setCity(resultSet.getString("city"));
         address.setStreet(resultSet.getString("street"));
         address.setBuildingNumber(resultSet.getString("building_number"));
-        address.setRoomNumber(resultSet.getString("room_number"));
 
         addressMap.put(String.valueOf(address.getId()), address);
 
@@ -41,7 +40,6 @@ public class AddressMapper implements ObjectMapper<Address> {
         preparedStatement.setString(2, address.getCity());
         preparedStatement.setString(3, address.getStreet());
         preparedStatement.setString(4, address.getBuildingNumber());
-        preparedStatement.setString(5, address.getRoomNumber());
     }
     public List<Address> extractAddresses(List<Address> addresses, PreparedStatement preparedStatement) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();

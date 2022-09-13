@@ -60,7 +60,7 @@ public class Main {
         receipt.getOrderedDishes().entrySet().forEach(System.out::println);
         System.out.println(receipt);
         LOGGER.error("Fatal error...");*/
-        Address address = new Address("Ukraine", "Lviv", "Science st.", "24", "16");
+        Address address = new Address("Ukraine", "Lviv", "Science st.", "24");
         CreditCard creditCard = new CreditCard("PrivatBank", "5555-5555-5555-0001", 10000, "password".toCharArray());
         String password = "426HemiSixPack";
         User user = User.newBuilder()
@@ -84,9 +84,7 @@ public class Main {
             /* userDAO.deletePerson(2);*/
             Dish dish2 = Dish.newBuilder().setId(1)
                     .setTitle("Coffee")
-                    .setTitleCyrillic("Кава")
                     .setDescription("description")
-                    .setDescriptionCyrillic("Опис...")
                     .setDateCreated(LocalDateTime.now())
                     .setMinutesToCook(0)
                     .setCategory(Dish.Category.DRINK)

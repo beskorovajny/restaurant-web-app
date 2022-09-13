@@ -8,21 +8,18 @@ public class Address {
     private String city;
     private String street;
     private String buildingNumber;
-    private String roomNumber;
 
     public Address() {
     }
 
-    public Address(String country, String city, String street, String buildingNumber, String roomNumber) {
-        if (country == null || city == null || street == null
-                || buildingNumber == null || roomNumber == null) {
+    public Address(String country, String city, String street, String buildingNumber) {
+        if (country == null || city == null || street == null || buildingNumber == null) {
             throw new IllegalArgumentException("Cannot create address with given parameters...");
         }
         this.country = country;
         this.city = city;
         this.street = street;
         this.buildingNumber = buildingNumber;
-        this.roomNumber = roomNumber;
     }
 
     public long getId() {
@@ -79,29 +76,17 @@ public class Address {
         }
         this.buildingNumber = buildingNumber;
     }
-
-    public String getRoomNumber() {
-        return roomNumber;
-    }
-
-    public void setRoomNumber(String roomNumber) {
-        if (roomNumber == null) {
-            throw new IllegalArgumentException("Room number can't be null!");
-        }
-        this.roomNumber = roomNumber;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Address address = (Address) o;
-        return id == address.id && Objects.equals(country, address.country) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(buildingNumber, address.buildingNumber) && Objects.equals(roomNumber, address.roomNumber);
+        return id == address.id && Objects.equals(country, address.country) && Objects.equals(city, address.city) && Objects.equals(street, address.street) && Objects.equals(buildingNumber, address.buildingNumber);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, country, city, street, buildingNumber, roomNumber);
+        return Objects.hash(id, country, city, street, buildingNumber);
     }
 
     @Override
@@ -112,7 +97,6 @@ public class Address {
                 ", city='" + city + '\'' +
                 ", street='" + street + '\'' +
                 ", buildingNumber='" + buildingNumber + '\'' +
-                ", roomNumber='" + roomNumber + '\'' +
                 '}';
     }
 }

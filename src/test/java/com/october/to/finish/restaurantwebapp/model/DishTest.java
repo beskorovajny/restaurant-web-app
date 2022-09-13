@@ -17,9 +17,7 @@ class DishTest {
         Dish dish = Dish.newBuilder()
                 .setId(1)
                 .setTitle("Coffee")
-                .setTitleCyrillic("Кава")
                 .setDescription("description")
-                .setDescriptionCyrillic("Опис...")
                 .setDateCreated(dateTime)
                 .setMinutesToCook(5)
                 .setCategory(Dish.Category.DRINK)
@@ -30,9 +28,7 @@ class DishTest {
         assertNotNull(dish);
         assertEquals(1, dish.getId());
         assertEquals("Coffee", dish.getTitle());
-        assertEquals("Кава", dish.getTitleCyrillic());
         assertEquals("description", dish.getDescription());
-        assertEquals("Опис...", dish.getDescriptionCyrillic());
         assertEquals("2022-09-09 16:25:53", dish.getDateCreated().format(formatter));
         assertEquals(5, dish.getMinutesToCook());
         assertEquals(Dish.Category.DRINK.getId(), dish.getCategory().getId());
@@ -51,9 +47,7 @@ class DishTest {
     void wrongInputTest() {
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setId(-1).build());
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setTitle(null));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setTitleCyrillic(null));
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setDescription(null));
-        assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setDescriptionCyrillic(null));
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setPrice(-1));
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setCategory(null));
         assertThrows(IllegalArgumentException.class, () -> Dish.newBuilder().setWeightInGrams(0));
