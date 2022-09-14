@@ -3,9 +3,12 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Address;
 
+import java.sql.Connection;
 import java.util.List;
 
 public interface AddressDAO {
+    Connection getConnection();
+
     long save(long personId, Address address) throws DAOException;
 
     Address findById(long addressId) throws DAOException;

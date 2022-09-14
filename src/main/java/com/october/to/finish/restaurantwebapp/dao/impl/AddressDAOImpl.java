@@ -38,6 +38,8 @@ public class AddressDAOImpl implements AddressDAO {
         this.connection = connection;
     }
 
+    public Connection getConnection() {return connection;}
+
     @Override
     public long save(long userId, Address address) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
@@ -105,14 +107,15 @@ public class AddressDAOImpl implements AddressDAO {
             if (rowUpdated > 0 && rowUpdated < 6) {
                 LOGGER.info("Address with ID : [{}] was updated.", addressId);
                 return true;
+            } else {
+                LOGGER.info("Address with ID : [{}] was not found for update", addressId);
+                return false;
             }
         } catch (SQLException e) {
             LOGGER.error("Address with ID : [{}] was not updated. An exception occurs : {}",
                     addressId, e.getMessage());
             throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
         }
-        LOGGER.info("Address with ID : [{}] was not found for update", addressId);
-        return false;
     }
 
     @Override
@@ -126,14 +129,15 @@ public class AddressDAOImpl implements AddressDAO {
             if (rowUpdated > 0 && rowUpdated < 6) {
                 LOGGER.info("Address for UserID : [{}] was updated.", userId);
                 return true;
+            } else {
+                LOGGER.info("Address for UserID : [{}] was not  found for update", userId);
+                return false;
             }
         } catch (SQLException e) {
             LOGGER.error("Address for UserID : [{}] was not updated. An exception occurs : {}",
                     userId, e.getMessage());
             throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
         }
-        LOGGER.info("Address for UserID : [{}] was not  found for update", userId);
-        return false;
     }
 
     @Override

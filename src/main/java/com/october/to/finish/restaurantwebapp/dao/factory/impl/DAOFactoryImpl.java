@@ -11,9 +11,10 @@ import java.sql.SQLException;
 
 public class DAOFactoryImpl extends DAOFactory {
 
-    private final DataSource dataSource = ConnectionPoolHolder.getDataSource();
+    private final DataSource dataSource;
 
     public DAOFactoryImpl() throws DAOException {
+        dataSource = ConnectionPoolHolder.getDataSource();
     }
 
     @Override

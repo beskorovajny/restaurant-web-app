@@ -34,8 +34,12 @@ public class UserDAOImpl implements UserDAO {
         this.connection = connection;
     }
 
+    public Connection getConnection() {
+        return connection;
+    }
+
     @Override
-    public long save(User user) throws DAOException {
+    public void save(User user) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             userMapper.setPersonParams(user, preparedStatement);
@@ -46,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
                 key = resultSet.getLong(1);
                 LOGGER.info("User : {} was saved successfully", user);
             }
-            return key;
+            user.setId(key);
         } catch (SQLException e) {
             LOGGER.error("User : [{}] was not saved. An exception occurs.: {}", user, e.getMessage());
             throw new DAOException("[UserDAO] exception while saving User" + e.getMessage(), e);
@@ -120,13 +124,14 @@ public class UserDAOImpl implements UserDAO {
             if (rowUpdated > 0 && rowUpdated < 7) {
                 LOGGER.info("User with ID : [{}] was updated.", userId);
                 return true;
+            } else {
+                LOGGER.info("User with ID : [{}] was not found for update", userId);
+                return false;
             }
         } catch (SQLException e) {
             DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
         }
-        LOGGER.info("User with ID : [{}] was not found for update", userId);
-        return false;
     }
 
     @Override
@@ -145,6 +150,5 @@ public class UserDAOImpl implements UserDAO {
                     userId, e.getMessage());
             throw new DAOException("[UserDAO] exception while removing User" + e.getMessage(), e);
         }
-
     }
 }

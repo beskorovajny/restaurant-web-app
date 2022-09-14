@@ -310,3 +310,35 @@
 2022-09-14 14:28:03 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
 2022-09-14 14:29:21 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
 2022-09-14 14:29:23 INFO Dish : Dish{id=1, title='Coffee', description='description', category=DRINK, price=70.0, weightInGrams=350, count=40, minutesToCook=0, dateCreated=2022-09-14 14:29:22, image=null} was saved successfully
+2022-09-14 16:06:01 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:06:23 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:09:40 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:12:31 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:12:32 INFO User received : [1], [johndoe@example.com]
+2022-09-14 16:12:43 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:13:48 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:14:20 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:14:23 INFO User : User{id=0, email='janed232oe@example.com', firstName='Janke', lastName='Donuts', phoneNumber='555-000-272', role=UNAUTHORIZED_USER, creditCard=CreditCard{bankName='PrivatBank', cardNumber='5555-5555-5555-0001', balance=10000.0, password=password}, address=Address{id=0, country='Ukraine', city='Lviv', street='Science st.', buildingNumber='24'}, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-14 16:15:06 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:15:37 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:15:38 INFO User : User{id=0, email='janed23442oe@example.com', firstName='Janke33', lastName='Donut33s', phoneNumber='555-000-2222', role=UNAUTHORIZED_USER, creditCard=CreditCard{bankName='PrivatBank', cardNumber='5355-5555-5555-0001', balance=10000.0, password=password}, address=Address{id=0, country='Ukraine', city='Lviv', street='Science st.', buildingNumber='24'}, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-14 16:16:20 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:16:21 INFO User received : [8], [janed23442oe@example.com]
+2022-09-14 16:16:59 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:17:01 INFO User : User{id=0, email='jan3442oe@example.com', firstName='Jae33', lastName='Dut33s', phoneNumber='555-000-1122', role=UNAUTHORIZED_USER, creditCard=CreditCard{bankName='PrivatBank', cardNumber='5355-5555-5555-0001', balance=10000.0, password=password}, address=Address{id=0, country='Ukraine', city='Lviv', street='Science st.', buildingNumber='24'}, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-14 16:24:56 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:24:57 INFO User : User{id=0, email='jan34424e@example.com', firstName='Jae43', lastName='Dut34s', phoneNumber='545-000-1122', role=UNAUTHORIZED_USER, creditCard=CreditCard{bankName='PrivatBank', cardNumber='5355-5555-5555-0001', balance=10000.0, password=password}, address=Address{id=0, country='Ukraine', city='Lviv', street='Science st.', buildingNumber='24'}, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-14 16:29:27 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:29:28 INFO User with ID : [0] was not found to remove.
+2022-09-14 16:32:05 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:32:34 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 16:32:35 INFO User received : [10], [jan34424e@example.com]
+2022-09-14 16:32:35 INFO User with ID : [10] was removed.
+2022-09-14 17:02:37 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 17:02:39 INFO User with ID : [7] was not found to remove.
+2022-09-14 17:02:58 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 17:02:59 INFO User with ID : [8] was removed.
+2022-09-14 17:04:28 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 17:04:29 INFO Users was found successfully.
+2022-09-14 17:04:29 INFO User received : [2], [johndoe1@example.com]
+2022-09-14 17:04:29 INFO User received : [5], [johndoe4@example.com]

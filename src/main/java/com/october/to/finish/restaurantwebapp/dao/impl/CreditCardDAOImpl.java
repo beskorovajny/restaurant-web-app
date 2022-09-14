@@ -35,6 +35,8 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         this.connection = connection;
     }
 
+    public Connection getConnection() {return connection;}
+
     @Override
     public long save(long userId, CreditCard creditCard) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
@@ -104,14 +106,15 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             if (rowUpdated > 0 && rowUpdated < 4) {
                 LOGGER.info("Credit card with number : [{}] was updated.", cardNumber);
                 return true;
+            } else {
+                LOGGER.info("Credit card : [{}] was not  found for update", cardNumber);
+                return false;
             }
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not updated. An exception occurs : {}",
                     cardNumber, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while updating CreditCard" + e.getMessage(), e);
         }
-        LOGGER.info("Credit card : [{}] was not  found for update", cardNumber);
-        return false;
     }
 
     @Override
@@ -125,15 +128,15 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             if (rowUpdated > 0 && rowUpdated < 4) {
                 LOGGER.info("Credit card for UserID : [{}] was updated.", userId);
                 return true;
+            } else {
+                LOGGER.info("Credit card for UserID : [{}] was not  found for update", userId);
+                return false;
             }
         } catch (SQLException e) {
             LOGGER.error("Credit card for UserID: [{}] was not updated. An exception occurs : {}",
                     userId, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while updating CreditCard" + e.getMessage(), e);
         }
-        LOGGER.info("Credit card for UserID : [{}] was not  found for update",
-                userId);
-        return false;
     }
 
     @Override

@@ -3,11 +3,13 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.User;
 
-import java.sql.SQLException;
+import java.sql.Connection;
 import java.util.List;
 
 public interface UserDAO {
-    long save(User user) throws DAOException, SQLException;
+    Connection getConnection();
+
+    void save(User user) throws DAOException;
 
     User findById(long userId) throws DAOException;
 

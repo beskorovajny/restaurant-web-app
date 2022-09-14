@@ -3,9 +3,11 @@ package com.october.to.finish.restaurantwebapp.dao;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.model.Receipt;
 
+import java.sql.Connection;
 import java.util.List;
 
 public interface ReceiptDAO {
+    Connection getConnection();
 
     long save(long userid, Receipt receipt) throws DAOException;
 

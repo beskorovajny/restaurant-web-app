@@ -3,7 +3,6 @@ package com.october.to.finish.restaurantwebapp.dao.impl;
 import com.october.to.finish.restaurantwebapp.dao.ReceiptDAO;
 import com.october.to.finish.restaurantwebapp.dao.mapper.impl.ReceiptMapper;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
-import com.october.to.finish.restaurantwebapp.model.Dish;
 import com.october.to.finish.restaurantwebapp.model.Receipt;
 import com.october.to.finish.restaurantwebapp.utils.DBUtils;
 import org.apache.logging.log4j.LogManager;
@@ -32,6 +31,8 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     public ReceiptDAOImpl(Connection connection) {
         this.connection = connection;
     }
+
+    public Connection getConnection() {return connection;}
 
     @Override
     public long save(long userId, Receipt receipt) throws DAOException {
@@ -103,13 +104,14 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             if (rowUpdated > 0 && rowUpdated < 6) {
                 LOGGER.info("Receipt with ID : [{}] was updated.", receiptId);
                 return true;
+            } else {
+                LOGGER.info("Receipt with ID : [{}] was not found for update", receiptId);
+                return false;
             }
         } catch (SQLException e) {
             DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
         }
-        LOGGER.info("Receipt with ID : [{}] was not found for update", receiptId);
-        return false;
     }
 
     @Override
@@ -128,8 +130,5 @@ public class ReceiptDAOImpl implements ReceiptDAO {
                     receiptId, e.getMessage());
             throw new DAOException("[ReceiptDAO] exception while removing Receipt" + e.getMessage(), e);
         }
-
     }
-
-
 }

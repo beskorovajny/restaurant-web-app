@@ -38,6 +38,8 @@ public class DishDAOImpl implements DishDAO {
         this.connection = connection;
     }
 
+    public Connection getConnection() {return connection;}
+
     @Override
     public long save(Dish dish) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
@@ -79,10 +81,6 @@ public class DishDAOImpl implements DishDAO {
     @Override
     public Dish findByTitle(String title) throws DAOException {
         return getDish(title, FIND_BY_TITLE_ENG);
-    }
-
-    public Dish findByTitleUkr(String titleUkr) throws DAOException {
-        return getDish(titleUkr, FIND_BY_TITLE_UKR);
     }
 
     private Dish getDish(String titleUkr, String findByTitleUkr) throws DAOException {
@@ -133,13 +131,14 @@ public class DishDAOImpl implements DishDAO {
             if (rowUpdated > 0 && rowUpdated < 10) {
                 LOGGER.info("Dish with ID : [{}] was updated.", dishId);
                 return true;
+            } else {
+                LOGGER.info("Dish with ID : [{}] was not found for update", dishId);
+                return false;
             }
         } catch (SQLException e) {
             DBUtils.rollback(connection);
             throw new DAOException(e.getMessage(), e);
         }
-        LOGGER.info("Dish with ID : [{}] was not found for update", dishId);
-        return false;
     }
 
     @Override
@@ -158,6 +157,5 @@ public class DishDAOImpl implements DishDAO {
                     dishId, e.getMessage());
             throw new DAOException("[DishDAO] exception while removing Dish" + e.getMessage(), e);
         }
-
     }
 }
