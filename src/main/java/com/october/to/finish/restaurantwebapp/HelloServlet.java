@@ -13,7 +13,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.sendRedirect("webapp/login.html");
+        response.sendRedirect("/home.jsp");
     }
 
     public void destroy() {
