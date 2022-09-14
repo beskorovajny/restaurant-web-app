@@ -43,14 +43,14 @@ public class DishMapper implements ObjectMapper<Dish> {
 
     public void setDishParams(Dish dish, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, dish.getTitle());
-        preparedStatement.setString(3, dish.getDescription());
-        preparedStatement.setBigDecimal(5, BigDecimal.valueOf(dish.getPrice()));
-        preparedStatement.setInt(6, dish.getWeightInGrams());
-        preparedStatement.setInt(7, dish.getCount());
-        preparedStatement.setInt(8, dish.getMinutesToCook());
-        preparedStatement.setTimestamp(9, Timestamp.valueOf(dish.getDateCreated()));
-        preparedStatement.setBytes(10, dish.getImage());
-        preparedStatement.setLong(11, dish.getCategory().getId());
+        preparedStatement.setString(2, dish.getDescription());
+        preparedStatement.setBigDecimal(3, BigDecimal.valueOf(dish.getPrice()));
+        preparedStatement.setInt(4, dish.getWeightInGrams());
+        preparedStatement.setInt(5, dish.getCount());
+        preparedStatement.setInt(6, dish.getMinutesToCook());
+        preparedStatement.setTimestamp(7, Timestamp.valueOf(dish.getDateCreated()));
+        preparedStatement.setBytes(8, dish.getImage());
+        preparedStatement.setLong(9, dish.getCategory().getId());
     }
 
     public List<Dish> extractDishes(List<Dish> dishes, PreparedStatement preparedStatement) throws SQLException {

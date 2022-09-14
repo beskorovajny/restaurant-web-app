@@ -22,18 +22,12 @@ Zsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/impl/CreditCard
 Tsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/impl/UserMapper.java,a\e\aea3d7971ade876bc789f791d2b9682ac6539f9a
 x
 Hsrc/main/java/com/october/to/finish/restaurantwebapp/dao/ReceiptDAO.java,7\6\765ae6dcd15a6c6a80e65ab2e4bf4ba5352193ed
-E
-src/logs/app-info.log,6\8\688c4409ec8d086f0f2e57e530ac050db2f60cc0
 Ñ
 Tsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/CreditCardDAOImpl.java,a\4\a48ebcbbeef70f563881feba78b6dc742f2ee168
 Å
 Qsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/AddressDAOImpl.java,2\0\20db7452530683d4fa7591abf00070350d039d07
 u
 Esrc/main/java/com/october/to/finish/restaurantwebapp/dao/DishDAO.java,7\4\74d172d2ae9fcf6fb2c735ea8a90206e3ba2bb1a
-~
-Nsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/DishDAOImpl.java,d\1\d135e3de55a1ae66ebe4aa218d1430b3a5e2b70d
-Ñ
-Tsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/impl/DishMapper.java,5\0\5080985a8f21d3e6b78c6e529e4e7d92e544f3f2
 á
 Wsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/impl/AddressMapper.java,8\1\81a593ada63f511b9cad9768fd095ef630cbaa50
 Å
@@ -44,8 +38,6 @@ Nsrc/main/java/com/october/to/finish/restaurantwebapp/dao/impl/UserDAOImpl.java
 Wsrc/main/java/com/october/to/finish/restaurantwebapp/dao/mapper/impl/ReceiptMapper.java,3\f\3f2b00d00bfb1dc09dfb81c477f4d3bb7ea915d6
 u
 Esrc/main/java/com/october/to/finish/restaurantwebapp/dao/UserDAO.java,9\a\9a99f2fe0a9a31fd35869e87637aff7339d91f51
-v
-Fsrc/main/java/com/october/to/finish/restaurantwebapp/sandbox/Main.java,1\7\17130f425b06d44f2d2edb7ad5753dca2d64a823
 t
 Dsrc/main/java/com/october/to/finish/restaurantwebapp/model/User.java,1\4\141ffa98fb356056506a552c0eaff986ff99f41d
 w

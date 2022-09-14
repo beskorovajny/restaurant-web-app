@@ -306,3 +306,7 @@
 2022-09-09 15:37:42 INFO Dish with ID : [1] was not found to remove.
 2022-09-09 16:25:53 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
 2022-09-09 16:25:55 INFO Dish : Dish{id=1, title='Coffee', titleCyrillic='Кава', description='description', descriptionCyrillic='Опис...', category=DRINK, price=70.0, weightInGrams=350, count=40, minutesToCook=0, dateCreated=2022-09-09 16:25:55, image=null} was saved successfully
+2022-09-14 14:26:39 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 14:28:03 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 14:29:21 INFO c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821
+2022-09-14 14:29:23 INFO Dish : Dish{id=1, title='Coffee', description='description', category=DRINK, price=70.0, weightInGrams=350, count=40, minutesToCook=0, dateCreated=2022-09-14 14:29:22, image=null} was saved successfully

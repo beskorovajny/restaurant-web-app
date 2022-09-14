@@ -1,4 +1,4 @@
-package com.october.to.finish.restaurantwebapp.validation;
+package com.october.to.finish.restaurantwebapp.utils.validation;
 
 public class ValidationUtils {
     public static final String EMAIL_PATTERN = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";

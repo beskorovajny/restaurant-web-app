@@ -19,9 +19,9 @@ public class DishDAOImpl implements DishDAO {
     private static final String DISH_RECEIVING_EXCEPTION_MSG = "[DishDAO] exception while receiving Dish";
 
     private static final String INSERT =
-            "INSERT INTO dish (title, title_ukr, description, description_ukr, price, weight, count, " +
+            "INSERT INTO dish (title, description, price, weight, count, " +
                     "minutes_to_cook, date_created, image, category_id) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String FIND_ALL = "SELECT * FROM dish";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
     private static final String FIND_BY_TITLE_ENG = "SELECT * FROM dish WHERE title = ?";
@@ -127,10 +127,10 @@ public class DishDAOImpl implements DishDAO {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             dishMapper.setDishParams(dish, preparedStatement);
-            preparedStatement.setLong(12, dishId);
+            preparedStatement.setLong(10, dishId);
 
             int rowUpdated = preparedStatement.executeUpdate();
-            if (rowUpdated > 0 && rowUpdated < 12) {
+            if (rowUpdated > 0 && rowUpdated < 10) {
                 LOGGER.info("Dish with ID : [{}] was updated.", dishId);
                 return true;
             }
