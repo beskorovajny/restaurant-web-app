@@ -27,5 +27,4 @@ After delivery and receiving payment,
 the Manager changes the status of the order to "completed".
 
 Database model:
-![image](https://user-images.githubusercontent.com/29185554/189911886-dc8bd0ee-065d-49f3-887f-2bb2e75753c8.png)
-
+![img.png](img.png)
