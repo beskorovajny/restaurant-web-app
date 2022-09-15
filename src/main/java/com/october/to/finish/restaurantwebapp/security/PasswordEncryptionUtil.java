@@ -10,6 +10,9 @@ public class PasswordEncryptionUtil {
     }
 
     public static String getEncrypted(String input) {
+        if (input == null) {
+            throw new IllegalArgumentException("PasswordEncryption: Can't encrypt null...");
+        }
         return bytesToHex(encrypt(input.toCharArray()));
     }
 

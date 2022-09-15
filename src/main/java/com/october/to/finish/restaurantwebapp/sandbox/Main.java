@@ -1,24 +1,16 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
-import com.october.to.finish.restaurantwebapp.dao.UserDAO;
-import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
-import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
-import com.october.to.finish.restaurantwebapp.exceptions.ServiceException;
-import com.october.to.finish.restaurantwebapp.model.Address;
-import com.october.to.finish.restaurantwebapp.model.CreditCard;
-import com.october.to.finish.restaurantwebapp.model.User;
 import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
-import com.october.to.finish.restaurantwebapp.service.UserService;
-import com.october.to.finish.restaurantwebapp.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import java.sql.SQLException;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) {
+        System.out.println(PasswordEncryptionUtil.getEncrypted("sBBuE%0&V9h6"));
+        System.out.println(PasswordEncryptionUtil.getEncrypted("U&nCjnNAHUvyQMtP"));
+
        /* Map<String, Dish> dishes = new HashMap<>();
         Dish dish1 = Dish.newBuilder().setId(1)
                 .setTitle("Pizza")
@@ -60,7 +52,7 @@ public class Main {
         receipt.getOrderedDishes().entrySet().forEach(System.out::println);
         System.out.println(receipt);
         LOGGER.error("Fatal error...");*/
-        Address address = new Address("Ukraine", "Lviv", "Science st.", "24");
+        /*Address address = new Address("Ukraine", "Lviv", "Science st.", "24");
         CreditCard creditCard = new CreditCard("PrivatBank", "5355-5555-5555-0001", 10000, "password".toCharArray());
         String password = "426HemiSixPack";
         User user = User.newBuilder()
@@ -69,7 +61,6 @@ public class Main {
                 .setLastName("Dut34s")
                 .setPhoneNumber("545-000-1122")
                 .setRole(User.Role.UNAUTHORIZED_USER)
-                .setAddress(address)
                 .setCreditCard(creditCard)
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
         LOGGER.info(String.valueOf(user.getPassword()));
@@ -79,7 +70,7 @@ public class Main {
             //userService.delete(8);
             userService.findAll().forEach(System.out::println);
             System.out.println(userService.findById(2));
-            System.out.println(userService.findByEmail("johndoe4@example.com"));
+            System.out.println(userService.findByEmail("johndoe4@example.com"));*/
             /*userDAO.updateUser(2, user);
             List<User> userList = userDAO.findAllUsers();
             userList.forEach(System.out::println);*/
@@ -131,9 +122,9 @@ public class Main {
 
             creditCardDAO.findAllCreditCards().forEach(System.out::println);*/
 
-        } catch (SQLException | DAOException | ServiceException e) {
+        /*} catch (SQLException | DAOException | ServiceException e) {
             throw new RuntimeException(e);
-        }
+        }*/
 
 
     }

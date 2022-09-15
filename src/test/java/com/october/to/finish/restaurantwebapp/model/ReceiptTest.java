@@ -5,12 +5,11 @@ import org.junit.jupiter.api.Test;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Map;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReceiptTest {
-
+    Address address = new Address();
     @Test
     void builderTest() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
@@ -26,6 +25,7 @@ class ReceiptTest {
                 setStatus(Receipt.Status.NEW).
                 setDiscount(10).
                 setOrderedDishes(dishMap).
+                setAddress(address).
                 build();
         assertEquals(1, receipt.getId());
         assertEquals(user, receipt.getCustomer());
@@ -34,6 +34,7 @@ class ReceiptTest {
         assertEquals(10, receipt.getDiscount());
         assertEquals(dishMap, receipt.getOrderedDishes());
         assertEquals(90, receipt.getTotalPrice());
+        assertEquals(address, receipt.getAddress());
 
         receipt.setTotalPrice(150);
         assertEquals(150, receipt.getTotalPrice());
@@ -46,14 +47,17 @@ class ReceiptTest {
                 , "3", Dish.newBuilder().setPrice(50).setCount(1).build());
         Receipt receipt = new Receipt();
         assertNull(receipt.getOrderedDishes());
+        assertNull(receipt.getAddress());
 
         receipt.setTotalPrice(20);
         assertEquals(20, receipt.getTotalPrice());
 
         receipt.setTotalPrice(0);
         receipt.setOrderedDishes(dishMap);
+        receipt.setAddress(address);
         assertEquals(dishMap, receipt.getOrderedDishes());
         assertEquals(100, receipt.getTotalPrice());
+        assertEquals(address, receipt.getAddress());
     }
 
     @Test
@@ -67,8 +71,11 @@ class ReceiptTest {
                         setStatus(null).
                         setDiscount(-2).
                         setOrderedDishes(null).
+                        setAddress(null).
                         build());
         assertThrows(IllegalArgumentException.class, () -> receipt.setTotalPrice(-29));
         assertThrows(IllegalArgumentException.class, () -> receipt.setOrderedDishes(null));
+        assertThrows(IllegalArgumentException.class, () -> receipt.setAddress(null));
+
     }
 }
