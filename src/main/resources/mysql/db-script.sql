@@ -306,16 +306,16 @@ VALUES (DEFAULT, 'New'),
        (DEFAULT, 'Completed');
 
 INSERT INTO status_flow(id, `from`, `to`)
-values (DEFAULT, 1, 2),
+VALUES (DEFAULT, 1, 2),
        (DEFAULT, 2, 3),
        (DEFAULT, 3, 4);
 
-insert into user(id, email, first_name, last_name, phone_number, password, role_id)
-values (default, 'johndoe@example.com', 'John', 'Doe', '1111', '132331', 2),
-       (default, 'johndoe1@example.com', 'John1', 'Doe1', '111', '132331', 1),
-       (default, 'johndoe2@example.com', 'John2', 'Doe', '1113', '132331', 3),
-       (default, 'johndoe3@example.com', 'John3', 'Doe', '1114', '132331', 2),
-       (default, 'johndoe4@example.com', 'John4', 'Doe', '1115', '132331', 1);
+INSERT INTO user(id, email, first_name, last_name, phone_number, password, role_id)
+VALUES (DEFAULT, 'johndoe@example.com', 'John', 'Doe', '1111', '132331', 2),
+       (DEFAULT, 'johndoe1@example.com', 'John1', 'Doe1', '111', '132331', 1),
+       (DEFAULT, 'johndoe2@example.com', 'John2', 'Doe', '1113', '132331', 3),
+       (DEFAULT, 'johndoe3@example.com', 'John3', 'Doe', '1114', '132331', 2),
+       (DEFAULT, 'johndoe4@example.com', 'John4', 'Doe', '1115', '132331', 1);
 
 INSERT INTO receipt (id, time_created, discount, total_price, user_id, receipt_status_id)
 VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 0, 1, 1),
@@ -323,13 +323,13 @@ VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 0, 1, 1),
        (DEFAULT, '2012-04-18 10:34:09', 5, 0, 1, 3),
        (DEFAULT, '2012-03-18 10:34:09', 5, 0, 3, 4);
 
-insert into address(id, country, city, street, building_number, receipt_id)
-values (default, 'USA', 'Seattle', 'Washington', '1111', 1),
-       (default, 'USA', 'Washington', '1st', '84', 2),
-       (default, 'Canada', 'Toronto', 'Queen Elizabeth', '1', 3),
-       (default, 'USA', 'New Jersey', 'Bank', '11/45', 4);
-insert into credit_card(card_number, bank_name, balance, password, user_id)
-values ('5555-5555-5555-5555', 'Bank of America', 99999,
+INSERT INTO address(id, country, city, street, building_number, receipt_id)
+VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111', 1),
+       (DEFAULT, 'USA', 'Washington', '1st', '84', 2),
+       (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1', 3),
+       (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45', 4);
+INSERT INTO credit_card(card_number, bank_name, balance, password, user_id)
+VALUES ('5555-5555-5555-5555', 'Bank of America', 99999,
         '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 1),
        ('5555-5555-5555-5556', 'Bank of America', 5000,
         'daaad6e5604e8e17bd9f108d91e26afe6281dac8fda0091040a7a6d7bd9b43b5', 2),
@@ -339,4 +339,3 @@ values ('5555-5555-5555-5555', 'Bank of America', 99999,
         '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 4),
        ('5555-5555-5555-5559', 'Big Apple Investment', 200,
         'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 5);
-
