@@ -13,6 +13,7 @@ public class Receipt {
     private Status status;
     private int discount;
     private double totalPrice;
+    private Address address;
     private Map<String, Dish> orderedDishes;
 
     public static Builder newBuilder() {
@@ -37,6 +38,17 @@ public class Receipt {
 
     public int getDiscount() {
         return discount;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        if (address == null) {
+            throw new IllegalArgumentException();
+        }
+        this.address = address;
     }
 
     public Map<String, Dish> getOrderedDishes() {
@@ -81,12 +93,12 @@ public class Receipt {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Receipt receipt = (Receipt) o;
-        return id == receipt.id && discount == receipt.discount && Double.compare(receipt.totalPrice, totalPrice) == 0 && Objects.equals(customer, receipt.customer) && Objects.equals(dateCreated, receipt.dateCreated) && status == receipt.status && Objects.equals(orderedDishes, receipt.orderedDishes);
+        return id == receipt.id && discount == receipt.discount && Double.compare(receipt.totalPrice, totalPrice) == 0 && Objects.equals(customer, receipt.customer) && Objects.equals(dateCreated, receipt.dateCreated) && status == receipt.status && Objects.equals(address, receipt.address) && Objects.equals(orderedDishes, receipt.orderedDishes);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, customer, dateCreated, status, discount, totalPrice, orderedDishes);
+        return Objects.hash(id, customer, dateCreated, status, discount, totalPrice, address, orderedDishes);
     }
 
     @Override
@@ -98,6 +110,7 @@ public class Receipt {
                 ", status=" + status +
                 ", discount=" + discount +
                 ", totalPrice=" + totalPrice +
+                ", address=" + address +
                 ", orderedDishes=" + orderedDishes +
                 '}';
     }
@@ -167,6 +180,15 @@ public class Receipt {
             Receipt.this.discount = discount;
             return this;
         }
+
+        public Receipt.Builder setAddress(Address address) {
+            if (address == null) {
+                throw new IllegalArgumentException("Address can't be null!");
+            }
+            Receipt.this.address = address;
+            return this;
+        }
+
         public Builder setOrderedDishes(Map<String, Dish> orderedDishes) {
             if (orderedDishes == null) {
                 throw new IllegalArgumentException("Dishes can't be null!");

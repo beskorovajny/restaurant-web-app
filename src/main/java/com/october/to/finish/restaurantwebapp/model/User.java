@@ -13,7 +13,6 @@ public class User {
     private String phoneNumber;
     private Role role;
     private CreditCard creditCard;
-    private Address address;
     private char[] password;
     private Set<Receipt> receipts;
 
@@ -70,17 +69,6 @@ public class User {
         this.creditCard = creditCard;
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        if (address == null) {
-            throw new IllegalArgumentException();
-        }
-        this.address = address;
-    }
-
     public char[] getPassword() {
         return password;
     }
@@ -101,12 +89,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(creditCard, user.creditCard) && Objects.equals(address, user.address) && Arrays.equals(password, user.password);
+        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(creditCard, user.creditCard) && Arrays.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, role, creditCard, address);
+        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, role, creditCard);
         result = 31 * result + Arrays.hashCode(password);
         return result;
     }
@@ -121,7 +109,6 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", role=" + role +
                 ", creditCard=" + creditCard +
-                ", address=" + address +
                 ", password=" + String.valueOf(password) +
                 ", receipts=" + receipts +
                 '}';
@@ -206,14 +193,6 @@ public class User {
                 throw new IllegalArgumentException("Credit card can't be null!");
             }
             User.this.creditCard = creditCard;
-            return this;
-        }
-
-        public Builder setAddress(Address address) {
-            if (address == null) {
-                throw new IllegalArgumentException("Address can't be null!");
-            }
-            User.this.address = address;
             return this;
         }
 

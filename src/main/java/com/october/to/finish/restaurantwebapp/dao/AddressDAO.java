@@ -9,7 +9,7 @@ import java.util.List;
 public interface AddressDAO {
     Connection getConnection();
 
-    long save(long personId, Address address) throws DAOException;
+    long save(long receiptId, Address address) throws DAOException;
 
     Address findById(long addressId) throws DAOException;
 
@@ -17,9 +17,9 @@ public interface AddressDAO {
 
     boolean update(long addressId, Address address) throws DAOException;
 
-    boolean updateByUserId(long userId, Address address) throws DAOException;
+    boolean updateByReceiptId(long receiptId, Address address) throws DAOException;
 
     void delete(long addressId) throws DAOException;
 
-    void deleteByUserId(long userId) throws DAOException;
+    void deleteByReceiptId(long receiptId) throws DAOException;
 }
