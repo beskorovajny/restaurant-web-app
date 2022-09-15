@@ -1,7 +1,6 @@
 package com.october.to.finish.restaurantwebapp.dao.mapper.impl;
 
 import com.october.to.finish.restaurantwebapp.dao.mapper.ObjectMapper;
-import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import com.october.to.finish.restaurantwebapp.model.User;
 
 import java.sql.PreparedStatement;

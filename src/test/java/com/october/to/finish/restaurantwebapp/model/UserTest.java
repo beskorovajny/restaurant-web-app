@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class UserTest {
+
     String password = "password";
     String email = "janed22oe@example.com";
     String phone = "555-000-272";
