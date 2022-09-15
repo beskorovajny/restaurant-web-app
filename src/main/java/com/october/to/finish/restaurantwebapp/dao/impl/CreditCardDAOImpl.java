@@ -18,6 +18,7 @@ public class CreditCardDAOImpl implements CreditCardDAO {
             " (card_number, bank_name, balance, password, user_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String FIND_BY_CARD_NUMBER = "SELECT * FROM credit_card WHERE card_number = ?";
+    private static final String FIND_BY_USER = "SELECT * FROM credit_card WHERE user_id = ?";
     private static final String FIND_ALL = "SELECT * FROM credit_card";
     private static final String UPDATE = "UPDATE credit_card SET card_number = ?," +
             " bank_name = ?, balance = ?, password = ? WHERE card_number  = ?";
@@ -35,7 +36,9 @@ public class CreditCardDAOImpl implements CreditCardDAO {
         this.connection = connection;
     }
 
-    public Connection getConnection() {return connection;}
+    public Connection getConnection() {
+        return connection;
+    }
 
     @Override
     public long save(long userId, CreditCard creditCard) throws DAOException {
@@ -73,6 +76,26 @@ public class CreditCardDAOImpl implements CreditCardDAO {
                     card.getBankName(), card.getCardNumber()));
         } catch (SQLException e) {
             LOGGER.error("Credit card : [{}] was not found. An exception occurs : {}", cardNumber, e.getMessage());
+            throw new DAOException("[CreditCardDAO] exception while receiving CreditCard", e);
+        }
+        return creditCard.orElse(new CreditCard());
+    }
+
+    @Override
+    public CreditCard findByUser(long userId) throws DAOException {
+        Optional<CreditCard> creditCard = Optional.empty();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_BY_USER)) {
+            preparedStatement.setLong(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                creditCard = Optional.ofNullable(cardMapper.extractFromResultSet(resultSet));
+            }
+            creditCard.ifPresent(card -> LOGGER.info("Credit card received from db: [{}], [{}]",
+                    card.getBankName(), card.getCardNumber()));
+        } catch (SQLException e) {
+            LOGGER.error("Credit card for given UserID : [{}] was not found. An exception occurs : {}"
+                    , userId, e.getMessage());
             throw new DAOException("[CreditCardDAO] exception while receiving CreditCard", e);
         }
         return creditCard.orElse(new CreditCard());

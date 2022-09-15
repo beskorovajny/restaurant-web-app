@@ -1,13 +1,25 @@
 package com.october.to.finish.restaurantwebapp.sandbox;
 
+import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
+import com.october.to.finish.restaurantwebapp.dao.UserDAO;
+import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
+import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
+import com.october.to.finish.restaurantwebapp.exceptions.FatalApplicationException;
+import com.october.to.finish.restaurantwebapp.exceptions.ServiceException;
+import com.october.to.finish.restaurantwebapp.model.CreditCard;
+import com.october.to.finish.restaurantwebapp.model.User;
 import com.october.to.finish.restaurantwebapp.security.PasswordEncryptionUtil;
+import com.october.to.finish.restaurantwebapp.service.UserService;
+import com.october.to.finish.restaurantwebapp.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.sql.SQLException;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FatalApplicationException {
         System.out.println(PasswordEncryptionUtil.getEncrypted("sBBuE%0&V9h6"));
         System.out.println(PasswordEncryptionUtil.getEncrypted("U&nCjnNAHUvyQMtP"));
 
@@ -76,7 +88,7 @@ public class Main {
             userList.forEach(System.out::println);*/
             /*userDAO.delete(1);
             System.out.println(userDAO.findById(2));*/
-            /* userDAO.deletePerson(2);*/
+        /* userDAO.deletePerson(2);*/
             /*Dish dish2 = Dish.newBuilder().setId(1)
                     .setTitle("Coffee")
                     .setDescription("description")
@@ -125,7 +137,34 @@ public class Main {
         /*} catch (SQLException | DAOException | ServiceException e) {
             throw new RuntimeException(e);
         }*/
+        try {
+            String password = "426HemiSixPack";
+            CreditCard creditCard3 = new CreditCard("Bank Of Canada",
+                    "2555555555555561", 5000.0, PasswordEncryptionUtil.getEncrypted("12343").toCharArray());
+            CreditCard creditCard = new CreditCard("Bank Of Granada",
+                    "4555555555555561", 5000.0, PasswordEncryptionUtil.getEncrypted("1234").toCharArray());
+            CreditCard creditCard2 = new CreditCard("Bank Of Granada",
+                    "5555-5555-5555-5555", 5000.0, PasswordEncryptionUtil.getEncrypted("1234").toCharArray());
+            User user = User.newBuilder()
+                    .setEmail("janov34424e@example.com")
+                    .setFirstName("Jake")
+                    .setLastName("Smith")
+                    .setPhoneNumber("545-000-1122")
+                    .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).
+                    setRole(User.Role.UNAUTHORIZED_USER).build();
+            user.setId(5);
+            UserDAO userDAO = DAOFactory.getInstance().createUserDAO();
+            CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
+            UserService userService = new UserServiceImpl(userDAO, creditCardDAO);
 
-
+            user.setCreditCard(userService.findCreditCard(user));
+            /*userService.updateCreditCard(user, creditCard);*/
+            /*userService.deleteCreditCard(user);*/
+            /*userService.delete(6);*/
+            userService.delete(3);
+            System.out.println(user.getId());
+        } catch (SQLException | DAOException | ServiceException e) {
+            throw new FatalApplicationException(e.getMessage(), e);
+        }
     }
 }

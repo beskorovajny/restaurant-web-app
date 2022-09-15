@@ -342,3 +342,14 @@
 2022-09-14 17:04:29 INFO Users was found successfully.
 2022-09-14 17:04:29 INFO User received : [2], [johndoe1@example.com]
 2022-09-14 17:04:29 INFO User received : [5], [johndoe4@example.com]
+2022-09-15 15:57:55 INFO User : User{id=0, email='janov34424e@example.com', firstName='Jake', lastName='Smith', phoneNumber='545-000-1122', role=UNAUTHORIZED_USER, creditCard=null, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-15 15:57:55 INFO [UserService] User saved. (email: janov34424e@example.com)
+2022-09-15 16:04:07 INFO User with ID : [6] was removed.
+2022-09-15 16:05:01 INFO User : User{id=0, email='janov34424e@example.com', firstName='Jake', lastName='Smith', phoneNumber='545-000-1122', role=UNAUTHORIZED_USER, creditCard=null, password=c0e9f02b942ff3eb63a30e09f07c7779baa4e9c27c9376f2d0f9d6ba7f110821, receipts=null} was saved successfully
+2022-09-15 16:05:01 INFO [UserService] User saved. (email: janov34424e@example.com)
+2022-09-15 16:15:58 INFO Credit card received from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-15 16:15:58 INFO Credit card with number : [5555-5555-5555-5559] was updated.
+2022-09-15 16:17:46 INFO Credit card received from db: [Bank Of Granada], [4555555555555561]
+2022-09-15 16:17:46 INFO Credit card for UserID : [5] was removed.
+2022-09-15 16:28:21 INFO Credit card received from db: [Big Apple Investment], [5555-5555-5555-5559]
+2022-09-15 16:28:21 INFO User with ID : [3] was removed.

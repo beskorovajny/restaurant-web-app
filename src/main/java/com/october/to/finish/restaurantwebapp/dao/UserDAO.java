@@ -9,7 +9,7 @@ import java.util.List;
 public interface UserDAO {
     Connection getConnection();
 
-    void save(User user) throws DAOException;
+    long save(User user) throws DAOException;
 
     User findById(long userId) throws DAOException;
 

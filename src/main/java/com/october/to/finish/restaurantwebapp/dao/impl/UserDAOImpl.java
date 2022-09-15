@@ -39,7 +39,7 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public void save(User user) throws DAOException {
+    public long save(User user) throws DAOException {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             userMapper.setPersonParams(user, preparedStatement);
@@ -50,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
                 key = resultSet.getLong(1);
                 LOGGER.info("User : {} was saved successfully", user);
             }
-            user.setId(key);
+            return key;
         } catch (SQLException e) {
             LOGGER.error("User : [{}] was not saved. An exception occurs.: {}", user, e.getMessage());
             throw new DAOException("[UserDAO] exception while saving User" + e.getMessage(), e);

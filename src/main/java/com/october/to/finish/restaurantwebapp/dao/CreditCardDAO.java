@@ -9,9 +9,11 @@ import java.util.List;
 public interface CreditCardDAO {
     Connection getConnection();
 
-    long save(long personId, CreditCard creditCard) throws DAOException;
+    long save(long userId, CreditCard creditCard) throws DAOException;
 
     CreditCard findByNumber(String number) throws DAOException;
+
+    CreditCard findByUser(long userId) throws DAOException;
 
     List<CreditCard> findAll() throws DAOException;
 
