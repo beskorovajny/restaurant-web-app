@@ -16,7 +16,7 @@ public interface UserService {
 
     List<User> findAll() throws ServiceException;
 
-    boolean update(User user) throws ServiceException;
+    boolean update(long userId, User user) throws ServiceException;
 
     void delete(long userId) throws ServiceException;
 

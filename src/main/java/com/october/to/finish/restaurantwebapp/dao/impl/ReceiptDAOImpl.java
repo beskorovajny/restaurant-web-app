@@ -20,6 +20,8 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             " (time_created, discount, total_price, user_id, receipt_status_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
+
+    private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ?";
     private static final String FIND_ALL = "SELECT * FROM receipt";
     private static final String UPDATE = "UPDATE receipt SET time_created = ?," +
             " discount = ?, total_price = ?, receipt_status_id = ? WHERE id  = ?";
@@ -71,6 +73,24 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             return receipt.orElse(new Receipt());
         } catch (SQLException e) {
             LOGGER.error("Receipt for given ID : [{}] was not found. An exception occurs : {}", receiptId, e.getMessage());
+            throw new DAOException("[ReceiptDAO] exception while receiving Receipt", e);
+        }
+    }
+    @Override
+    public Receipt findByUserId(long userId) throws DAOException {
+        Optional<Receipt> receipt = Optional.empty();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_BY_USER_ID)) {
+            preparedStatement.setLong(1, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                receipt = Optional.ofNullable(receiptMapper.extractFromResultSet(resultSet));
+            }
+            receipt.ifPresent(d -> LOGGER.info("Receipt for UserID [{}] received from db successfully ",
+                    userId));
+            return receipt.orElse(new Receipt());
+        } catch (SQLException e) {
+            LOGGER.error("Receipt for given UserID : [{}] was not found. An exception occurs : {}", userId, e.getMessage());
             throw new DAOException("[ReceiptDAO] exception while receiving Receipt", e);
         }
     }

@@ -6,7 +6,7 @@ import com.october.to.finish.restaurantwebapp.model.Receipt;
 import java.util.List;
 
 public interface ReceiptService {
-    long save(long userid, Receipt receipt) throws ServiceException;
+    boolean save(long userId, Receipt receipt) throws ServiceException;
 
     Receipt findById(long receiptId) throws ServiceException;
 

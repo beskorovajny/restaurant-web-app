@@ -27,8 +27,8 @@ public class Address {
     }
 
     public void setId(long id) {
-        if (id < 0) {
-            throw new IllegalArgumentException("ID cannot be < 0");
+        if (id < 1) {
+            throw new IllegalArgumentException("ID can't be < 1");
         }
         this.id = id;
     }

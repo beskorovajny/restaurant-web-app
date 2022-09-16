@@ -25,8 +25,8 @@ public class User {
     }
 
     public void setId(long id) {
-        if (id < 0) {
-            throw new IllegalArgumentException();
+        if (id < 1) {
+            throw new IllegalArgumentException("ID can't be < 1");
         }
         this.id = id;
     }
@@ -140,8 +140,8 @@ public class User {
         }
 
         public Builder setId(long id) {
-            if (id < 0) {
-                throw new IllegalArgumentException("ID can't be < 0");
+            if (id < 1) {
+                throw new IllegalArgumentException("ID can't be < 1");
             }
             User.this.id = id;
             User.this.receipts = new HashSet<>();

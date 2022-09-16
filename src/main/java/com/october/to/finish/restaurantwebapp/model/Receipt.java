@@ -24,6 +24,13 @@ public class Receipt {
         return id;
     }
 
+    public void setId(long id) {
+        if (id < 1) {
+            throw new IllegalArgumentException("ID can't be < 1");
+        }
+        this.id = id;
+    }
+
     public User getCustomer() {
         return customer;
     }
@@ -142,8 +149,8 @@ public class Receipt {
         }
 
         public Builder setId(long id) {
-            if (id < 0) {
-                throw new IllegalArgumentException("ID can't be < 0!");
+            if (id < 1) {
+                throw new IllegalArgumentException("ID can't be < 1");
             }
             Receipt.this.id = id;
             return this;

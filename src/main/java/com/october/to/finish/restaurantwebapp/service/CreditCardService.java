@@ -6,7 +6,7 @@ import com.october.to.finish.restaurantwebapp.model.CreditCard;
 import java.util.List;
 
 public interface CreditCardService {
-    long save(long personId, CreditCard creditCard) throws ServiceException;
+    boolean save(long personId, CreditCard creditCard) throws ServiceException;
 
     CreditCard findByNumber(String number) throws ServiceException;
 
