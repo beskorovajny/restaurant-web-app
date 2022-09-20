@@ -2,7 +2,10 @@ package com.october.to.finish.restaurantwebapp.sandbox;
 
 import com.october.to.finish.restaurantwebapp.dao.CreditCardDAO;
 import com.october.to.finish.restaurantwebapp.dao.UserDAO;
+import com.october.to.finish.restaurantwebapp.dao.connections.ConnectionPoolHolder;
 import com.october.to.finish.restaurantwebapp.dao.factory.DAOFactory;
+import com.october.to.finish.restaurantwebapp.dao.impl.CreditCardDAOImpl;
+import com.october.to.finish.restaurantwebapp.dao.impl.UserDAOImpl;
 import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import com.october.to.finish.restaurantwebapp.exceptions.FatalApplicationException;
 import com.october.to.finish.restaurantwebapp.exceptions.ServiceException;
@@ -14,10 +17,12 @@ import com.october.to.finish.restaurantwebapp.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Main {
     private static final Logger LOGGER = LogManager.getLogger(Main.class);
+    public static final String PATH = "src/main/resources/mysql/db.properties";
 
     public static void main(String[] args) throws FatalApplicationException {
         System.out.println(PasswordEncryptionUtil.getEncrypted("sBBuE%0&V9h6"));
@@ -153,8 +158,10 @@ public class Main {
                     .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).
                     setRole(User.Role.UNAUTHORIZED_USER).build();
             user.setId(5);
-            UserDAO userDAO = DAOFactory.getInstance().createUserDAO();
-            CreditCardDAO creditCardDAO = DAOFactory.getInstance().createCreditCardDAO();
+
+            UserDAO userDAO = new UserDAOImpl(ConnectionPoolHolder.getDataSource(PATH).getConnection());
+
+            CreditCardDAO creditCardDAO = new CreditCardDAOImpl(ConnectionPoolHolder.getDataSource(PATH).getConnection());
             UserService userService = new UserServiceImpl(userDAO, creditCardDAO);
 
             user.setCreditCard(userService.findCreditCard(user));

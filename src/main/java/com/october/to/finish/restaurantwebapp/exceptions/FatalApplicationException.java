@@ -8,7 +8,7 @@ public class FatalApplicationException extends Exception {
         super(message);
     }
 
-    public FatalApplicationException(String message, Exception exception) {
+    public FatalApplicationException(String message, Throwable exception) {
         super(message, exception);
     }
 }

@@ -27,7 +27,6 @@ public class UserDAOImpl implements UserDAO {
             "role_Id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM user WHERE id = ?";
     private final Connection connection;
-
     private final UserMapper userMapper = new UserMapper();
 
     public UserDAOImpl(Connection connection) {

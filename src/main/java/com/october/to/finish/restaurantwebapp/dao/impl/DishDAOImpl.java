@@ -24,14 +24,12 @@ public class DishDAOImpl implements DishDAO {
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String FIND_ALL = "SELECT * FROM dish";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
-    private static final String FIND_BY_TITLE_ENG = "SELECT * FROM dish WHERE title = ?";
-    private static final String FIND_BY_TITLE_UKR = "SELECT * FROM dish WHERE title_ukr = ?";
-    private static final String UPDATE = "UPDATE dish SET title = ?, title_ukr = ?," +
-            "description = ?, description_ukr = ?, price = ?, weight = ?, " +
+    private static final String FIND_BY_TITLE = "SELECT * FROM dish WHERE title = ?";
+    private static final String UPDATE = "UPDATE dish SET title = ?," +
+            "description = ?, price = ?, weight = ?, " +
             "count = ?, minutes_to_cook = ?, date_created = ?, image = ?, category_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM dish WHERE id = ?";
     private final Connection connection;
-
     private final DishMapper dishMapper = new DishMapper();
 
     public DishDAOImpl(Connection connection) {
@@ -80,14 +78,10 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public Dish findByTitle(String title) throws DAOException {
-        return getDish(title, FIND_BY_TITLE_ENG);
-    }
-
-    private Dish getDish(String titleUkr, String findByTitleUkr) throws DAOException {
         Optional<Dish> dish = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(findByTitleUkr)) {
-            preparedStatement.setString(1, titleUkr);
+                prepareStatement(FIND_BY_TITLE)) {
+            preparedStatement.setString(1, title);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 dish = Optional.ofNullable(dishMapper.extractFromResultSet(resultSet));
@@ -97,7 +91,7 @@ public class DishDAOImpl implements DishDAO {
             return dish.orElse(new Dish());
         } catch (SQLException e) {
             LOGGER.error("Dish for given title : [{}] was not found. An exception occurs : {}",
-                    titleUkr, e.getMessage());
+                    title, e.getMessage());
             throw new DAOException(DISH_RECEIVING_EXCEPTION_MSG, e);
         }
     }

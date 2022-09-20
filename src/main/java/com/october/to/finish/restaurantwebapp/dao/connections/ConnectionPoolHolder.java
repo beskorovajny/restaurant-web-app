@@ -4,11 +4,9 @@ import com.october.to.finish.restaurantwebapp.exceptions.DAOException;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
@@ -18,11 +16,11 @@ public class ConnectionPoolHolder {
     private ConnectionPoolHolder() {
     }
 
-    public static DataSource getDataSource() throws DAOException {
+    public static DataSource getDataSource(String path) throws DAOException {
         if (dataSource == null) {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
-                    try (InputStream input = Files.newInputStream(Paths.get("src/main/resources/mysql/db.properties"))) {
+                    try (InputStream input = Files.newInputStream(Paths.get(path))) {
                         Properties prop = new Properties();
                         prop.load(input);
 

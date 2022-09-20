@@ -13,8 +13,8 @@ public class DAOFactoryImpl extends DAOFactory {
 
     private final DataSource dataSource;
 
-    public DAOFactoryImpl() throws DAOException {
-        dataSource = ConnectionPoolHolder.getDataSource();
+    public DAOFactoryImpl(String path) throws DAOException {
+        dataSource = ConnectionPoolHolder.getDataSource(path);
     }
 
     @Override

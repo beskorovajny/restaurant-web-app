@@ -22,15 +22,7 @@ public class UserServiceImpl implements UserService {
     private static final String REGISTERED_EMAIL_EXC =
             "[UserService] User with given email is already registered! (email: {})";
     private final UserDAO userDAO;
-    private CreditCardDAO creditCardDAO;
-
-    public UserServiceImpl(UserDAO userDAO) {
-        if (userDAO == null) {
-            LOGGER.error(NULL_USER_DAO_EXC);
-            throw new IllegalArgumentException(NULL_USER_DAO_EXC);
-        }
-        this.userDAO = userDAO;
-    }
+    private final CreditCardDAO creditCardDAO;
 
     public UserServiceImpl(UserDAO userDAO, CreditCardDAO creditCardDAO) {
         if (userDAO == null) {

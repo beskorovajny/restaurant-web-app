@@ -8,7 +8,7 @@ public class ServiceException extends Exception {
         super(message);
     }
 
-    public ServiceException(String message, Exception exception) {
+    public ServiceException(String message, Throwable exception) {
         super(message, exception);
     }
 

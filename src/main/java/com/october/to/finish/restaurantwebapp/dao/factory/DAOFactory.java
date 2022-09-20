@@ -13,7 +13,7 @@ public abstract class DAOFactory {
     public static DAOFactory getInstance() throws DAOException {
         if (daoFactory == null) {
             synchronized (DAOFactory.class) {
-                daoFactory = new DAOFactoryImpl();
+                daoFactory = new DAOFactoryImpl("src/main/resources/mysql/db.properties");
             }
         }
         return daoFactory;
