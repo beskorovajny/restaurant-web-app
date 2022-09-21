@@ -353,4 +353,4 @@
 2022-09-15 16:17:46 INFO Credit card for UserID : [5] was removed.
 2022-09-15 16:28:21 INFO Credit card received from db: [Big Apple Investment], [5555-5555-5555-5559]
 2022-09-15 16:28:21 INFO User with ID : [3] was removed.
-2022-09-15 18:39:45 INFO User : [!!!com.october.to.finish.restaurantwebapp.model.User@1e3f86d5=>java.lang.NullPointerException:null!!!] was saved successfully
+2022-09-15 18:39:45 INFO User : [!!!model.com.october.to.finish.app.web.restaurant.User@1e3f86d5=>java.lang.NullPointerException:null!!!] was saved successfully
