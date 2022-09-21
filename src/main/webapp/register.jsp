@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="messages"/>
+<fmt:setBundle basename="messagesBundle"/>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,18 +14,21 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span
-            class="bs-icon-sm bs-icon-rounded bs-icon-semi-white d-flex justify-content-center align-items-center me-2 bs-icon">
-        </span><span><fmt:message key="text.brand"/></span></a>
-        <div class="collapse navbar-collapse" id="nav-col-1">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+        <span><fmt:message key="text.brand"/></span></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div id="nav-col-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
-                <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    <fmt:message key="logo.globe"/>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                    <li><a class="dropdown-item" href="#">UA</a></li>
-                    <li><a class="dropdown-item" href="#">ENG</a></li>
-                </ul>
+                <div class="btn-group btn-group-sm" role="group" style="margin-left: 5px">
+                    <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <fmt:message key="logo.globe"/>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                        <li><a class="dropdown-item" href="home?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
+                        <li><a class="dropdown-item" href="home?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

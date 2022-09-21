@@ -14,11 +14,11 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><span
-            class="bs-icon-sm bs-icon-rounded bs-icon-primary d-flex justify-content-center align-items-center me-2 bs-icon">
-                    </span><span><fmt:message key="text.brand"/></span></a>
-
-        <div class="collapse navbar-collapse" id="nav-col-1">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+        <span><fmt:message key="text.brand"/></span></a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
+                class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div id="navcol-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <c:if test="${sessionScope.user == null}">
                     <div class="col-md-15 text-end">
@@ -34,10 +34,8 @@
                         <a href="home?command=logout"><button type="button" class="btn btn-outline-danger"><fmt:message key="text.logout"/></button></a>
                     </div>
                 </c:if>
-
-
                 <div class="btn-group btn-group-sm" role="group" style="margin-left: 5px">
-                    <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                         <fmt:message key="logo.globe"/>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
@@ -46,10 +44,10 @@
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 </nav>
+
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
     <div class="row mb-5">
@@ -59,7 +57,7 @@
         </div>
     </div>
 </div>
-<%@ include file = "include/footer.jsp" %>
+<%@ include file="include/footer.jsp" %>
 
 <script src="js/bootstrap.min.js"></script>
 </body>
