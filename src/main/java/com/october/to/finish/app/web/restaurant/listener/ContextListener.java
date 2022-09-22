@@ -21,10 +21,11 @@ import org.apache.logging.log4j.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
-
+@WebListener
 public class ContextListener implements HttpSessionListener, ServletContextListener {
     private static final Logger LOGGER = LogManager.getLogger(ContextListener.class);
     private static final String CONTEXT_LISTENER_MSG = "[ContextListener]";

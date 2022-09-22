@@ -1,11 +1,11 @@
 package com.october.to.finish.app.web.restaurant.dao.connections;
 
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
+import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -20,17 +20,20 @@ public class ConnectionPoolHolder {
         if (dataSource == null) {
             synchronized (ConnectionPoolHolder.class) {
                 if (dataSource == null) {
-                    try (InputStream input = Files.newInputStream(Paths.get(path))) {
+                    try (InputStream inputStream = ConnectionPoolHolder.class.getResourceAsStream(path);
+                         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
                         Properties prop = new Properties();
-                        prop.load(input);
+                        prop.load(reader);
 
                         BasicDataSource basicDataSource = new BasicDataSource();
                         basicDataSource.setUrl(prop.getProperty("mysql.url"));
                         basicDataSource.setUsername(prop.getProperty("mysql.user"));
                         basicDataSource.setPassword(prop.getProperty("mysql.password"));
+                        basicDataSource.setDriverClassName(prop.getProperty("mysql.driver"));
                         basicDataSource.setMinIdle(5);
                         basicDataSource.setMaxIdle(30);
                         basicDataSource.setMaxOpenPreparedStatements(100);
+                        basicDataSource.setMaxWaitMillis(10000);
                         dataSource = basicDataSource;
                     } catch (IOException ex) {
                         throw new DAOException(ex.getMessage(), ex);

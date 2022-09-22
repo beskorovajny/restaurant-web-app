@@ -74,8 +74,6 @@ Msrc/main/java/com/october/to/finish/restaurantwebapp/service/UserService.java,
 Psrc/main/java/com/october/to/finish/restaurantwebapp/dao/factory/DAOFactory.java,4\d\4dfb5ce3b8737dd7701d6f9bcecbfe4f346000fe
 Ž
 ^src/main/java/com/october/to/finish/restaurantwebapp/dao/connections/ConnectionPoolHolder.java,5\1\515620d2acc0eb6401f5ac4e177156be7d05e8b5
-O
-src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 …
 Usrc/main/java/com/october/to/finish/restaurantwebapp/exceptions/CommandException.java,0\d\0d44cca8f97d4ad6fb73a5d3dd5170ab10961660
 Ž
