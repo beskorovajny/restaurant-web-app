@@ -25,8 +25,8 @@
                         <fmt:message key="logo.globe"/>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="home?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
-                        <li><a class="dropdown-item" href="home?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
+                        <li><a class="dropdown-item" href="controller?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
+                        <li><a class="dropdown-item" href="controller?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                         <div class="col-md-6 col-xl-4">
                             <div class="card mb-5">
                                 <div class="card-body d-flex flex-column align-items-center">
-                                    <form class="text-center" method="post">
+                                    <form class="text-center" action="controller" method="post">
                                         <input hidden name="command" value="register"/>
                                         <div class="d-lg-flex justify-content-lg-end align-items-lg-start mb-3"><input
                                                 class="form-control" type="email" name="email" placeholder="Email"

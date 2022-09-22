@@ -62,7 +62,6 @@ public class UserServiceImpl implements UserService {
                 throw new ServiceException(REGISTERED_EMAIL_EXC);
             } else {
                 user.setId(userDAO.save(user));
-
             }
             userDAO.getConnection().commit();
             userDAO.getConnection().setAutoCommit(true);

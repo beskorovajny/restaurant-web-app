@@ -1,0 +1,20 @@
+2022-09-22 19:29:57 INFO [ContextListener] Context initialization started...
+2022-09-22 19:29:58 INFO [ContextListener] Connection created. org.apache.commons.dbcp2.DelegatingDatabaseMetaData@65dd871d
+2022-09-22 19:29:58 INFO [ContextListener] UserDAO created.
+2022-09-22 19:29:58 INFO [ContextListener] CreditCardDAO created.
+2022-09-22 19:29:58 INFO [ContextListener] ReceiptDAO created.
+2022-09-22 19:29:58 INFO [ContextListener] AddressDAO created.
+2022-09-22 19:29:58 INFO [ContextListener] DishDAO created.
+2022-09-22 19:29:58 INFO [ContextListener] UserService created.
+2022-09-22 19:29:58 INFO [ContextListener] CreditCardService created.
+2022-09-22 19:29:58 INFO [ContextListener] ReceiptService created.
+2022-09-22 19:29:58 INFO [ContextListener] AddressService created.
+2022-09-22 19:29:58 INFO [ContextListener] DishService created.
+2022-09-22 19:29:58 INFO [ContextListener] CommandContainer created.
+2022-09-22 19:29:58 INFO [ContextListener] Language command created.
+2022-09-22 19:29:58 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-22 19:29:58 INFO [ContextListener] Registration command created.
+2022-09-22 19:29:58 INFO [ContextListener] LoginFormCommand created.
+2022-09-22 19:29:58 INFO [ContextListener] LoginCommand created.
+2022-09-22 19:29:58 INFO [ContextListener] Services initialized
+2022-09-22 19:30:05 INFO [AppController-doGet] URL processed

@@ -13,6 +13,7 @@ import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.security.PasswordEncryptionUtil;
 import com.october.to.finish.app.web.restaurant.service.UserService;
 import com.october.to.finish.app.web.restaurant.service.impl.UserServiceImpl;
+import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -149,17 +150,17 @@ public class Main {
             CreditCard creditCard2 = new CreditCard("Bank Of Granada",
                     "5555-5555-5555-5555", 5000.0, PasswordEncryptionUtil.getEncrypted("1234").toCharArray());
             User user = User.newBuilder()
-                    .setEmail("janov34424e@example.com")
-                    .setFirstName("Jake")
+                    .setEmail("janov34222424e@example.com")
+                    .setFirstName("2111")
                     .setLastName("Smith")
-                    .setPhoneNumber("545-000-1122")
+                    .setPhoneNumber("545-000-11211")
                     .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).
                     setRole(User.Role.UNAUTHORIZED_USER).build();
             user.setId(5);
 
-            UserDAO userDAO = new UserDAOImpl(ConnectionPoolHolder.getDataSource(PATH).getConnection());
+            UserDAO userDAO = new UserDAOImpl(ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection());
 
-            CreditCardDAO creditCardDAO = new CreditCardDAOImpl(ConnectionPoolHolder.getDataSource(PATH).getConnection());
+            CreditCardDAO creditCardDAO = new CreditCardDAOImpl(ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection());
             UserService userService = new UserServiceImpl(userDAO, creditCardDAO);
 
             user.setCreditCard(userService.findCreditCard(user));
@@ -168,7 +169,7 @@ public class Main {
             /*userService.delete(6);*/
             userService.delete(3);
             System.out.println(user.getId());
-        } catch (SQLException | DAOException | ServiceException e) {
+        } catch (ServiceException | DAOException | SQLException e) {
             throw new FatalApplicationException(e.getMessage(), e);
         }
     }

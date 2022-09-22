@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 public class LoginCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(LoginCommand.class);
+    private static final String LOGIN_COMMAND = "[LoginCommand]";
     private final UserService userService;
     public LoginCommand(UserService userService) {
         this.userService = userService;
@@ -29,16 +30,18 @@ public class LoginCommand implements AppCommand {
         User user = null;
         try {
             user = userService.findByEmail(email);
+            LOGGER.info("{} User received from db: {}",LOGIN_COMMAND, user);
         } catch (ServiceException e) {
+            LOGGER.error("{} An exception occurs : {}", LOGIN_COMMAND, e.getMessage());
             throw new FatalApplicationException(e.getMessage(), e);
         }
-        if(user != null && PasswordEncryptionUtil.validate(password, String.valueOf(user.getPassword()))){
+        if(user != null /*&& PasswordEncryptionUtil.validate(password, String.valueOf(user.getPassword()))*/){
             session.setAttribute("user", user);
             if (user.getRole() == User.Role.MANAGER) {
                 page = "managerPanel.jsp";
             }
             if (user.getRole() == User.Role.CLIENT) {
-                page = "personalCabinet.jsp";
+                page = "home.jsp";
             }
         } else {
             LOGGER.info("Cannot Login");

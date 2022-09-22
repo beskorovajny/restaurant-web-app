@@ -1,0 +1,36 @@
+2022-09-22 19:22:44 INFO [ContextListener] Context initialization started...
+2022-09-22 19:22:45 INFO [ContextListener] Connection created. org.apache.commons.dbcp2.DelegatingDatabaseMetaData@7d90ad5c
+2022-09-22 19:22:45 INFO [ContextListener] UserDAO created.
+2022-09-22 19:22:45 INFO [ContextListener] CreditCardDAO created.
+2022-09-22 19:22:45 INFO [ContextListener] ReceiptDAO created.
+2022-09-22 19:22:45 INFO [ContextListener] AddressDAO created.
+2022-09-22 19:22:45 INFO [ContextListener] DishDAO created.
+2022-09-22 19:22:45 INFO [ContextListener] UserService created.
+2022-09-22 19:22:45 INFO [ContextListener] CreditCardService created.
+2022-09-22 19:22:45 INFO [ContextListener] ReceiptService created.
+2022-09-22 19:22:45 INFO [ContextListener] AddressService created.
+2022-09-22 19:22:45 INFO [ContextListener] DishService created.
+2022-09-22 19:22:45 INFO [ContextListener] CommandContainer created.
+2022-09-22 19:22:45 INFO [ContextListener] Language command created.
+2022-09-22 19:22:45 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-22 19:22:45 INFO [ContextListener] Registration command created.
+2022-09-22 19:22:45 INFO [ContextListener] LoginFormCommand created.
+2022-09-22 19:22:45 INFO [ContextListener] LoginCommand created.
+2022-09-22 19:22:45 INFO [ContextListener] Services initialized
+2022-09-22 19:22:46 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@27c5b979
+2022-09-22 19:22:46 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:46 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@27c5b979
+2022-09-22 19:22:46 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:48 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:22:48 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:48 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:22:48 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:52 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:22:52 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:52 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:22:52 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:22:52 INFO [AppController-doGet] URL processed
+2022-09-22 19:23:04 INFO [JspEncodingFilter] Filter started {command=[register], email=[beskorovajny@gmail.com], firstName=[Andrew], lastName=[Bwww], phoneNumber=[0631988021], password=[aA1111111111]},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:23:04 INFO [JspEncodingFilter] request code : null
+2022-09-22 19:23:04 INFO [JspEncodingFilter] Filter started {command=[register], email=[beskorovajny@gmail.com], firstName=[Andrew], lastName=[Bwww], phoneNumber=[0631988021], password=[aA1111111111]},  org.apache.catalina.connector.ResponseFacade@69d6902c
+2022-09-22 19:23:04 INFO [JspEncodingFilter] request code : null

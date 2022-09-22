@@ -22,16 +22,16 @@
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <c:if test="${sessionScope.user == null}">
                     <div class="col-md-15 text-end">
-                        <a href = "home?command=loginForm"> <button type="button" class="btn btn-outline-primary"><fmt:message key="text.login"/></button></a>
-                        <a href = "home?command=registrationForm"> <button type="button" class="btn btn-outline-success"><fmt:message key="text.register"/></button></a>
+                        <a href = "controller?command=loginForm"> <button type="button" class="btn btn-outline-primary"><fmt:message key="text.login"/></button></a>
+                        <a href = "controller?command=registrationForm"> <button type="button" class="btn btn-outline-success"><fmt:message key="text.register"/></button></a>
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <div class="col-md-15 text-end">
-                        <a href="home?command=personalAccount"><fmt:message key="text.greetings"/>
+                        <a href="controller?command=personalAccount"><fmt:message key="text.greetings"/>
                                 ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                         </a>
-                        <a href="home?command=logout"><button type="button" class="btn btn-outline-danger"><fmt:message key="text.logout"/></button></a>
+                        <a href="controller?command=logout"><button type="button" class="btn btn-outline-danger"><fmt:message key="text.logout"/></button></a>
                     </div>
                 </c:if>
                 <div class="btn-group btn-group-sm" role="group" style="margin-left: 5px">
@@ -39,8 +39,8 @@
                         <fmt:message key="logo.globe"/>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="home?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
-                        <li><a class="dropdown-item" href="home?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
+                        <li><a class="dropdown-item" href="controller?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
+                        <li><a class="dropdown-item" href="controller?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
                     </ul>
                 </div>
             </div>

@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "appController", value = "/home")
+@WebServlet(name = "appController", value = "/controller")
 public class AppController extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(AppController.class);
     private CommandContainer commandContainer;
@@ -29,6 +29,7 @@ public class AppController extends HttpServlet {
         String url = null;
         try {
             url = getUrl(req, resp);
+            LOGGER.info("[AppController-doGet] URL processed");
         } catch (CommandException | FatalApplicationException e) {
             LOGGER.error("An exception occurs: {}", e.getMessage());
             resp.sendError(500, "Can't process command");
@@ -40,6 +41,7 @@ public class AppController extends HttpServlet {
         String url = null;
         try {
             url = getUrl(req, resp);
+            LOGGER.info("[AppController-doPost] URL processed");
         } catch (CommandException | FatalApplicationException e) {
             LOGGER.error("An exception occurs: {}", e.getMessage());
             resp.sendError(500, "Can`t process the command");

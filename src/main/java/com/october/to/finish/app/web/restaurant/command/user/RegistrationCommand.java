@@ -25,14 +25,16 @@ public class RegistrationCommand implements AppCommand {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         User user = User.newBuilder()
                 .setEmail(request.getParameter("email"))
-                .setPassword(PasswordEncryptionUtil.getEncrypted(request.getParameter("password")).toCharArray())
                 .setFirstName(request.getParameter("firstName"))
                 .setLastName(request.getParameter("lastName"))
                 .setPhoneNumber(request.getParameter("phoneNumber"))
+                .setPassword(PasswordEncryptionUtil.getEncrypted(request.getParameter("password")).toCharArray())
                 .setRole(User.Role.CLIENT)
                 .build();
+        LOGGER.info("[RegistrationCommand] User from view : {}" , user);
         try {
             userService.save(user);
+            LOGGER.info("[RegistrationCommand] User saved : {}", user);
         } catch (ServiceException e) {
             LOGGER.error("An exception occurs while saving User [{}]", user.getEmail());
             throw new CommandException(e.getMessage(), e);

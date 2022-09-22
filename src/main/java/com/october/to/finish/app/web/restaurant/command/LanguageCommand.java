@@ -11,6 +11,6 @@ public class LanguageCommand implements AppCommand{
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         HttpSession session = request.getSession();
         session.setAttribute("locale", request.getParameter("locale"));
-        return "home?command=" + request.getParameter("pageToProcess");
+        return "controller?command=" + request.getParameter("pageToProcess");
     }
 }

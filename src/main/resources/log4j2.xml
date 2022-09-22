@@ -4,7 +4,7 @@
     <!-- Logging Properties -->
     <Properties>
         <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %p %m%n</Property>
-        <Property name="APP_LOG_ROOT">src/logs</Property>
+        <Property name="APP_LOG_ROOT">E:\Dev\EPAM\restaurant-web-app\logs</Property>
     </Properties>
 
     <Appenders>
@@ -54,7 +54,7 @@
 
     <Loggers>
 
-        <Logger name="com.october.to.finish.restaurantwebapp" additivity="false" level="debug">
+        <Logger name="com.october.to.finish.app.web.restaurant" additivity="false" level="debug">
             <AppenderRef ref="debugLog" />
             <AppenderRef ref="infoLog"  />
             <AppenderRef ref="errorLog" />
