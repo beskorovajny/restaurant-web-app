@@ -23,6 +23,9 @@
         <mysql.connectorj.version>8.0.30</mysql.connectorj.version>
         <maven-war-plugin.version>3.3.2</maven-war-plugin.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>

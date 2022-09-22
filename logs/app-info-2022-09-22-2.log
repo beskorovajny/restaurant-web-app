@@ -1,45 +1,28 @@
-2022-09-22 19:24:19 INFO [ContextListener] Context initialization started...
-2022-09-22 19:24:21 INFO [ContextListener] Connection created. org.apache.commons.dbcp2.DelegatingDatabaseMetaData@2c6dc110
-2022-09-22 19:24:21 INFO [ContextListener] UserDAO created.
-2022-09-22 19:24:21 INFO [ContextListener] CreditCardDAO created.
-2022-09-22 19:24:21 INFO [ContextListener] ReceiptDAO created.
-2022-09-22 19:24:21 INFO [ContextListener] AddressDAO created.
-2022-09-22 19:24:21 INFO [ContextListener] DishDAO created.
-2022-09-22 19:24:21 INFO [ContextListener] UserService created.
-2022-09-22 19:24:21 INFO [ContextListener] CreditCardService created.
-2022-09-22 19:24:21 INFO [ContextListener] ReceiptService created.
-2022-09-22 19:24:21 INFO [ContextListener] AddressService created.
-2022-09-22 19:24:21 INFO [ContextListener] DishService created.
-2022-09-22 19:24:21 INFO [ContextListener] CommandContainer created.
-2022-09-22 19:24:21 INFO [ContextListener] Language command created.
-2022-09-22 19:24:21 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-22 19:24:21 INFO [ContextListener] Registration command created.
-2022-09-22 19:24:21 INFO [ContextListener] LoginFormCommand created.
-2022-09-22 19:24:21 INFO [ContextListener] LoginCommand created.
-2022-09-22 19:24:21 INFO [ContextListener] Services initialized
-2022-09-22 19:24:22 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1dff7941
-2022-09-22 19:24:22 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:22 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1dff7941
-2022-09-22 19:24:22 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:28 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:24:28 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:28 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:24:28 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:55 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:24:55 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:55 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:24:55 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:24:55 INFO [AppController-doGet] URL processed
-2022-09-22 19:25:15 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:25:15 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:25:15 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:25:15 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:25:15 INFO [AppController-doGet] URL processed
-2022-09-22 19:25:23 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:25:23 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:25:23 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:25:23 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:26:01 INFO [JspEncodingFilter] Filter started {command=[register], email=[beskorovajny@gmail.com], firstName=[Andrew], lastName=[B], phoneNumber=[0631988021], password=[11112222aA]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:26:01 INFO [JspEncodingFilter] request code : null
-2022-09-22 19:26:01 INFO [JspEncodingFilter] Filter started {command=[register], email=[beskorovajny@gmail.com], firstName=[Andrew], lastName=[B], phoneNumber=[0631988021], password=[11112222aA]},  org.apache.catalina.connector.ResponseFacade@363ef558
-2022-09-22 19:26:01 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:32:00 INFO [ContextListener] Context initialization started...
+2022-09-22 22:32:01 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@13576149
+2022-09-22 22:32:01 INFO [ContextListener] UserDAO created.
+2022-09-22 22:32:01 INFO [ContextListener] CreditCardDAO created.
+2022-09-22 22:32:01 INFO [ContextListener] ReceiptDAO created.
+2022-09-22 22:32:01 INFO [ContextListener] AddressDAO created.
+2022-09-22 22:32:01 INFO [ContextListener] DishDAO created.
+2022-09-22 22:32:01 INFO [ContextListener] UserService created.
+2022-09-22 22:32:01 INFO [ContextListener] CreditCardService created.
+2022-09-22 22:32:01 INFO [ContextListener] ReceiptService created.
+2022-09-22 22:32:01 INFO [ContextListener] AddressService created.
+2022-09-22 22:32:01 INFO [ContextListener] DishService created.
+2022-09-22 22:32:01 INFO [ContextListener] CommandContainer created.
+2022-09-22 22:32:01 INFO [ContextListener] Language command created.
+2022-09-22 22:32:01 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-22 22:32:01 INFO [ContextListener] Registration command created.
+2022-09-22 22:32:01 INFO [ContextListener] LoginFormCommand created.
+2022-09-22 22:32:01 INFO [ContextListener] LoginCommand created.
+2022-09-22 22:32:01 INFO [ContextListener] Services initialized
+2022-09-22 22:32:09 INFO [AppController-doGet] URL processed
+2022-09-22 22:32:22 INFO [RegistrationCommand] User from view : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null}
+2022-09-22 22:32:23 INFO User : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null} was saved successfully
+2022-09-22 22:32:23 INFO [UserService] User saved. (email: beskorovajny@gmail.com)
+2022-09-22 22:32:23 INFO [RegistrationCommand] User saved : User{id=8, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null}
+2022-09-22 22:32:23 INFO [AppController-doPost] URL processed
+2022-09-22 22:33:03 INFO [AppController-doPost] URL processed
+2022-09-22 22:33:13 INFO [AppController-doGet] URL processed
+2022-09-22 22:33:26 INFO [AppController-doPost] URL processed

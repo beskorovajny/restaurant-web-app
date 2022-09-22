@@ -7,7 +7,7 @@
         <welcome-file>home.jsp</welcome-file>
     </welcome-file-list>
 
-   <!-- <filter>
+    <!--<filter>
         <filter-name>JspEncodingFilter</filter-name>
         <filter-class>com.october.to.finish.app.web.restaurant.filter.JspEncodingFilter</filter-class>
     </filter>

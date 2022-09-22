@@ -35,7 +35,7 @@ public class LoginCommand implements AppCommand {
             LOGGER.error("{} An exception occurs : {}", LOGIN_COMMAND, e.getMessage());
             throw new FatalApplicationException(e.getMessage(), e);
         }
-        if(user != null /*&& PasswordEncryptionUtil.validate(password, String.valueOf(user.getPassword()))*/){
+        if(user != null && PasswordEncryptionUtil.validate(password, String.valueOf(user.getPassword()))){
             session.setAttribute("user", user);
             if (user.getRole() == User.Role.MANAGER) {
                 page = "managerPanel.jsp";

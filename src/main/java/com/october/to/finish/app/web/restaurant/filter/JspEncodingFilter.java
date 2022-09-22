@@ -1,5 +1,4 @@
 package com.october.to.finish.app.web.restaurant.filter;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

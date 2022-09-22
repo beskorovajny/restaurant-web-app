@@ -18,7 +18,7 @@
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-        <div id="navcol-2" class="collapse navbar-collapse">
+        <div id="nav-col-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <c:if test="${sessionScope.user == null}">
                     <div class="col-md-15 text-end">

@@ -56,7 +56,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
     }
 
     private void initServices(ServletContext context) throws DAOException, SQLException {
-        try (Connection connection = ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection();) {
+            Connection connection = ConnectionPoolHolder.getConnection();
             LOGGER.info("{} Connection created. {}", CONTEXT_LISTENER_MSG, connection.getMetaData());
 
             UserDAO userDAO = new UserDAOImpl(connection);
@@ -124,7 +124,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
             LOGGER.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
 
             context.setAttribute("commandContainer", commandContainer);
-        }
+
     }
 
     @Override

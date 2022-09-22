@@ -46,7 +46,7 @@
                             <div class="card mb-5">
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <form class="text-center" action="controller" method="post">
-                                        <input hidden name="command" value="register"/>
+                                        <input hidden name="command" value="registration"/>
                                         <div class="d-lg-flex justify-content-lg-end align-items-lg-start mb-3"><input
                                                 class="form-control" type="email" name="email" placeholder="Email"
                                                 minlength="3" maxlength="44"
