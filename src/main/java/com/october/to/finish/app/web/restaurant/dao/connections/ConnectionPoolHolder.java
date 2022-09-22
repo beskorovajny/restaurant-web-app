@@ -1,13 +1,13 @@
 package com.october.to.finish.app.web.restaurant.dao.connections;
 
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import javax.sql.DataSource;
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Properties;
 
 public class ConnectionPoolHolder {

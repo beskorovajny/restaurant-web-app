@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="messagesBundle"/>
+<fmt:setBundle basename="l10n/messagesBundle"/>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -46,33 +46,33 @@
                             <div class="card mb-5">
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <form class="text-center" method="post">
-                                        <input hidden name="command" value="register">
+                                        <input hidden name="command" value="register"/>
                                         <div class="d-lg-flex justify-content-lg-end align-items-lg-start mb-3"><input
                                                 class="form-control" type="email" name="email" placeholder="Email"
                                                 minlength="3" maxlength="44"
                                                 pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
-                                                required=""></div>
+                                                required=""/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="First Name"
                                                                                  name="firstName"
                                                                                  pattern="^[а-яА-яa-zA-z ]{2,45}$"
                                                                                  minlength="1" required=""
-                                                                                 maxlength="44"></div>
+                                                                                 maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="Last name"
                                                                                  name="lastName" minlength="1"
                                                                                  pattern="^[а-яА-яa-zA-z ]{2,45}$+"
-                                                                                 required="" maxlength="44"></div>
+                                                                                 required="" maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  name="phoneNumber"
                                                                                  placeholder="Phone number"
                                                                                  maxlength="44" required=""
                                                                                  minlength="3"
-                                                                                 pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$">
+                                                                                 pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
                                                                  placeholder="Password" required="" minlength="8"
-                                                                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$">
+                                                                 pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$"/>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-success d-block w-100" type="submit"
