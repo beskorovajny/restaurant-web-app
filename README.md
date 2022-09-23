@@ -4,13 +4,13 @@ _Servlet-API, JDBC, MySql, Apache Tomcat, JSP..._
 ***PROJECT DESCRIPTION***
 
 The task of the final project is to develop a web application
-that supportsthe functionality according to the task variant.
+that supports the functionality according to the task variant.
 There are roles:
 ```
 Client,
 Manager.
 ```
- The client (authorized user) places orders from the menu - thecatalog of dishes
+ The client (authorized user) places orders from the menu - the catalog of dishes
 , and also has the opportunity to view the catalog taking into account the sorting:
 ```
 - by the name of the dish;
@@ -27,4 +27,4 @@ After delivery and receiving payment,
 the Manager changes the status of the order to "completed".
 
 Database model:
-![img.png](src/main/resources/mysql/db-schema.png)
+![img.png](db-schema.png)

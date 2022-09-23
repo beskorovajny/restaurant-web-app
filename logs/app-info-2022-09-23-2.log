@@ -1,56 +1,38 @@
-2022-09-23 20:02:08 INFO [ContextListener] Context initialization started...
-2022-09-23 20:02:09 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@2fb2d874
-2022-09-23 20:02:09 INFO [ContextListener] UserDAO created.
-2022-09-23 20:02:09 INFO [ContextListener] CreditCardDAO created.
-2022-09-23 20:02:09 INFO [ContextListener] ReceiptDAO created.
-2022-09-23 20:02:09 INFO [ContextListener] AddressDAO created.
-2022-09-23 20:02:09 INFO [ContextListener] DishDAO created.
-2022-09-23 20:02:09 INFO [ContextListener] UserService created.
-2022-09-23 20:02:09 INFO [ContextListener] CreditCardService created.
-2022-09-23 20:02:09 INFO [ContextListener] ReceiptService created.
-2022-09-23 20:02:09 INFO [ContextListener] AddressService created.
-2022-09-23 20:02:09 INFO [ContextListener] DishService created.
-2022-09-23 20:02:09 INFO [ContextListener] CommandContainer created.
-2022-09-23 20:02:09 INFO [ContextListener] Language command created.
-2022-09-23 20:02:09 INFO [ContextListener] Error command created.
-2022-09-23 20:02:09 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-23 20:02:09 INFO [ContextListener] Registration command created.
-2022-09-23 20:02:09 INFO [ContextListener] LoginFormCommand created.
-2022-09-23 20:02:09 INFO [ContextListener] LoginCommand created.
-2022-09-23 20:02:09 INFO [ContextListener] Services initialized
-2022-09-23 20:02:10 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@35cf97dd
-2022-09-23 20:02:10 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@35cf97dd
-2022-09-23 20:02:11 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:11 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:11 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:12 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:12 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:12 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:12 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:12 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:16 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:16 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:16 INFO [LanguageCommand] Page to process = home
-2022-09-23 20:02:16 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:16 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:20 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[uk_UA], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:20 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[uk_UA], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:20 INFO [LanguageCommand] Page to process = home
-2022-09-23 20:02:20 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:20 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:24 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:24 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:24 INFO [LanguageCommand] Page to process = home
-2022-09-23 20:02:24 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:24 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:27 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:27 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:27 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:32 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:32 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:02:32 INFO [LanguageCommand] Page to process = registrationForm
-2022-09-23 20:02:32 INFO [AppController-doGet] URL processed
-2022-09-23 20:02:32 INFO [AppController-doGet] URL processed
-2022-09-23 20:05:27 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:05:27 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@547aa19d
-2022-09-23 20:05:27 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:03 INFO [ContextListener] Context initialization started...
+2022-09-23 20:34:04 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@44ada598
+2022-09-23 20:34:04 INFO [ContextListener] UserDAO created.
+2022-09-23 20:34:04 INFO [ContextListener] CreditCardDAO created.
+2022-09-23 20:34:04 INFO [ContextListener] ReceiptDAO created.
+2022-09-23 20:34:04 INFO [ContextListener] AddressDAO created.
+2022-09-23 20:34:04 INFO [ContextListener] DishDAO created.
+2022-09-23 20:34:04 INFO [ContextListener] UserService created.
+2022-09-23 20:34:05 INFO [ContextListener] CreditCardService created.
+2022-09-23 20:34:05 INFO [ContextListener] ReceiptService created.
+2022-09-23 20:34:05 INFO [ContextListener] AddressService created.
+2022-09-23 20:34:05 INFO [ContextListener] DishService created.
+2022-09-23 20:34:05 INFO [ContextListener] CommandContainer created.
+2022-09-23 20:34:05 INFO [ContextListener] Language command created.
+2022-09-23 20:34:05 INFO [ContextListener] Error command created.
+2022-09-23 20:34:05 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-23 20:34:05 INFO [ContextListener] Registration command created.
+2022-09-23 20:34:05 INFO [ContextListener] LoginFormCommand created.
+2022-09-23 20:34:05 INFO [ContextListener] LoginCommand created.
+2022-09-23 20:34:05 INFO [ContextListener] Services initialized
+2022-09-23 20:34:05 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7351d520
+2022-09-23 20:34:06 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:06 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:08 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:08 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:08 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:11 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:11 INFO [LanguageCommand] Page to process = home
+2022-09-23 20:34:11 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:11 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:13 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:13 INFO [LanguageCommand] Page to process = home
+2022-09-23 20:34:13 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:13 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:14 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[home]},  org.apache.catalina.connector.ResponseFacade@647a9c38
+2022-09-23 20:34:14 INFO [LanguageCommand] Page to process = home
+2022-09-23 20:34:14 INFO [AppController-doGet] URL processed
+2022-09-23 20:34:14 INFO [AppController-doGet] URL processed

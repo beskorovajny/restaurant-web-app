@@ -8,7 +8,6 @@ import com.october.to.finish.app.web.restaurant.command.user.RegistrationFormCom
 import com.october.to.finish.app.web.restaurant.dao.*;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
 import com.october.to.finish.app.web.restaurant.dao.impl.*;
-import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.service.*;
 import com.october.to.finish.app.web.restaurant.service.impl.*;
 import org.apache.logging.log4j.LogManager;
@@ -18,7 +17,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.sql.Connection;
@@ -47,14 +45,15 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         try {
             initServices(context);
             LOGGER.info("{} Services initialized", CONTEXT_LISTENER_MSG);
-        } catch (DAOException | SQLException e) {
+        } catch (SQLException e) {
             LOGGER.error("{} Services initialization failed!..", CONTEXT_LISTENER_MSG);
             throw new RuntimeException(e);
         }
     }
 
-    private void initServices(ServletContext context) throws DAOException, SQLException {
+    private void initServices(ServletContext context) throws SQLException {
         Connection connection = ConnectionPoolHolder.getConnection();
+        connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
         LOGGER.info("{} Connection created. {}", CONTEXT_LISTENER_MSG, connection.getMetaData());
 
         UserDAO userDAO = new UserDAOImpl(connection);

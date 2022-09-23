@@ -58,7 +58,7 @@
                     <div class="mb-3">
                       <button class="btn btn-success d-block w-100" type="submit"><fmt:message key="text.login"/></button>
                     </div>
-                    <p class="text-muted"><a href=""><fmt:message key="text.forgot.password"/></a></p>
+                    <a href="" class="text-muted"><fmt:message key="text.forgot.password"/></a>
                   </form>
                 </div>
               </div>

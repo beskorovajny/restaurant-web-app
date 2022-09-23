@@ -46,8 +46,6 @@ N
 logs/app-info-2022-09-22-3.log,7\5\75aa0f7359cfff01c543041b01d4a73ce168c6d0
 ~
 Nsrc/main/java/com/october/to/finish/app/web/restaurant/command/AppCommand.java,4\8\48f28a7aaf7aa213c0c99c565883a33f846d31fc
-ˆ
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserServiceImpl.java,f\6\f6632e82853123e60a4f02bb58d831c2706fe6cd
 ‹
 [src/main/java/com/october/to/finish/app/web/restaurant/security/PasswordEncryptionUtil.java,f\1\f17f3f94cec59ccef523bdc184e5e8381f3bcdce
 ˆ
@@ -60,5 +58,3 @@ Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginComman
 \src/main/java/com/october/to/finish/app/web/restaurant/command/user/RegistrationCommand.java,6\4\64d219b1d791a1673c747ac9210f22ff0f420524
 O
 logs/app-error-2022-09-22-2.log,6\6\663acaf17452c30240ba5bd4300860fc034dd99c
-A
-logs/app-info.log,c\e\ce3ca7c14210b327debf71c6d04fb5663b3e042d

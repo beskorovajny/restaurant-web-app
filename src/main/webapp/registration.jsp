@@ -79,7 +79,7 @@
                                                     value=""><fmt:message key="text.sign.up"/>
                                             </button>
                                         </div>
-                                        <a class="text-muted" href="controller?command=loginForm" style="color: #f700b1;"><fmt:message key="text.account.exists"/> </a>
+                                        <a class="text-muted" href="controller?command=loginForm"><fmt:message key="text.account.exists"/> </a>
                                     </form>
                                 </div>
                             </div>
