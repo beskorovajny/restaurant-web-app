@@ -1,27 +1,70 @@
-2022-09-23 14:17:20 INFO [ContextListener] Context initialization started...
-2022-09-23 14:17:21 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@7df1de3c
-2022-09-23 14:17:21 INFO [ContextListener] UserDAO created.
-2022-09-23 14:17:21 INFO [ContextListener] CreditCardDAO created.
-2022-09-23 14:17:21 INFO [ContextListener] ReceiptDAO created.
-2022-09-23 14:17:21 INFO [ContextListener] AddressDAO created.
-2022-09-23 14:17:21 INFO [ContextListener] DishDAO created.
-2022-09-23 14:17:21 INFO [ContextListener] UserService created.
-2022-09-23 14:17:21 INFO [ContextListener] CreditCardService created.
-2022-09-23 14:17:21 INFO [ContextListener] ReceiptService created.
-2022-09-23 14:17:21 INFO [ContextListener] AddressService created.
-2022-09-23 14:17:21 INFO [ContextListener] DishService created.
-2022-09-23 14:17:21 INFO [ContextListener] CommandContainer created.
-2022-09-23 14:17:21 INFO [ContextListener] Language command created.
-2022-09-23 14:17:21 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-23 14:17:21 INFO [ContextListener] Registration command created.
-2022-09-23 14:17:21 INFO [ContextListener] LoginFormCommand created.
-2022-09-23 14:17:21 INFO [ContextListener] LoginCommand created.
-2022-09-23 14:17:21 INFO [ContextListener] Services initialized
-2022-09-23 14:17:22 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@f0e03cf
-2022-09-23 14:17:22 INFO [JspEncodingFilter] request code : null
-2022-09-23 14:17:24 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@f0e03cf
-2022-09-23 14:17:24 INFO [JspEncodingFilter] request code : null
-2022-09-23 14:17:30 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@f0e03cf
-2022-09-23 14:17:30 INFO [JspEncodingFilter] request code : null
-2022-09-23 14:22:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@f0e03cf
-2022-09-23 14:22:01 INFO [JspEncodingFilter] request code : null
+2022-09-23 15:00:25 INFO [ContextListener] Context initialization started...
+2022-09-23 15:00:26 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@80598ff
+2022-09-23 15:00:26 INFO [ContextListener] UserDAO created.
+2022-09-23 15:00:26 INFO [ContextListener] CreditCardDAO created.
+2022-09-23 15:00:26 INFO [ContextListener] ReceiptDAO created.
+2022-09-23 15:00:26 INFO [ContextListener] AddressDAO created.
+2022-09-23 15:00:26 INFO [ContextListener] DishDAO created.
+2022-09-23 15:00:26 INFO [ContextListener] UserService created.
+2022-09-23 15:00:26 INFO [ContextListener] CreditCardService created.
+2022-09-23 15:00:26 INFO [ContextListener] ReceiptService created.
+2022-09-23 15:00:26 INFO [ContextListener] AddressService created.
+2022-09-23 15:00:26 INFO [ContextListener] DishService created.
+2022-09-23 15:00:26 INFO [ContextListener] CommandContainer created.
+2022-09-23 15:00:26 INFO [ContextListener] Error command created.
+2022-09-23 15:00:26 INFO [ContextListener] Language command created.
+2022-09-23 15:00:26 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-23 15:00:26 INFO [ContextListener] Registration command created.
+2022-09-23 15:00:26 INFO [ContextListener] LoginFormCommand created.
+2022-09-23 15:00:26 INFO [ContextListener] LoginCommand created.
+2022-09-23 15:00:26 INFO [ContextListener] Services initialized
+2022-09-23 15:00:27 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@66c1b961
+2022-09-23 15:00:27 INFO [JspEncodingFilter] request code : null
+2022-09-23 15:00:29 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@66c1b961
+2022-09-23 15:00:29 INFO [JspEncodingFilter] request code : null
+2022-09-23 15:00:35 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@66c1b961
+2022-09-23 15:00:35 INFO [JspEncodingFilter] request code : null
+2022-09-23 15:01:09 INFO [ContextListener] Context initialization started...
+2022-09-23 15:01:10 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@62bd73b0
+2022-09-23 15:01:10 INFO [ContextListener] UserDAO created.
+2022-09-23 15:01:10 INFO [ContextListener] CreditCardDAO created.
+2022-09-23 15:01:10 INFO [ContextListener] ReceiptDAO created.
+2022-09-23 15:01:10 INFO [ContextListener] AddressDAO created.
+2022-09-23 15:01:10 INFO [ContextListener] DishDAO created.
+2022-09-23 15:01:10 INFO [ContextListener] UserService created.
+2022-09-23 15:01:10 INFO [ContextListener] CreditCardService created.
+2022-09-23 15:01:10 INFO [ContextListener] ReceiptService created.
+2022-09-23 15:01:10 INFO [ContextListener] AddressService created.
+2022-09-23 15:01:10 INFO [ContextListener] DishService created.
+2022-09-23 15:01:10 INFO [ContextListener] CommandContainer created.
+2022-09-23 15:01:10 INFO [ContextListener] Error command created.
+2022-09-23 15:01:10 INFO [ContextListener] Language command created.
+2022-09-23 15:01:10 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-23 15:01:10 INFO [ContextListener] Registration command created.
+2022-09-23 15:01:10 INFO [ContextListener] LoginFormCommand created.
+2022-09-23 15:01:10 INFO [ContextListener] LoginCommand created.
+2022-09-23 15:01:10 INFO [ContextListener] Services initialized
+2022-09-23 15:01:19 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@66c1b961
+2022-09-23 15:01:19 INFO [JspEncodingFilter] request code : null
+2022-09-23 15:02:19 INFO [ContextListener] Context initialization started...
+2022-09-23 15:02:20 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@45095b7
+2022-09-23 15:02:20 INFO [ContextListener] UserDAO created.
+2022-09-23 15:02:20 INFO [ContextListener] CreditCardDAO created.
+2022-09-23 15:02:20 INFO [ContextListener] ReceiptDAO created.
+2022-09-23 15:02:20 INFO [ContextListener] AddressDAO created.
+2022-09-23 15:02:20 INFO [ContextListener] DishDAO created.
+2022-09-23 15:02:20 INFO [ContextListener] UserService created.
+2022-09-23 15:02:20 INFO [ContextListener] CreditCardService created.
+2022-09-23 15:02:20 INFO [ContextListener] ReceiptService created.
+2022-09-23 15:02:20 INFO [ContextListener] AddressService created.
+2022-09-23 15:02:20 INFO [ContextListener] DishService created.
+2022-09-23 15:02:20 INFO [ContextListener] CommandContainer created.
+2022-09-23 15:02:20 INFO [ContextListener] Error command created.
+2022-09-23 15:02:20 INFO [ContextListener] Language command created.
+2022-09-23 15:02:20 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-23 15:02:20 INFO [ContextListener] Registration command created.
+2022-09-23 15:02:20 INFO [ContextListener] LoginFormCommand created.
+2022-09-23 15:02:20 INFO [ContextListener] LoginCommand created.
+2022-09-23 15:02:20 INFO [ContextListener] Services initialized
+2022-09-23 15:02:22 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@66c1b961
+2022-09-23 15:02:22 INFO [JspEncodingFilter] request code : null

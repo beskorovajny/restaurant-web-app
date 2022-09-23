@@ -31,8 +31,6 @@ Osrc/main/java/com/october/to/finish/app/web/restaurant/service/UserService.java
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/command/HomeCommand.java,8\7\8759fee7f1ab1eb317bf052b7a59000c36839e17
 Ñ
-Tsrc/main/java/com/october/to/finish/app/web/restaurant/command/ExceptionCommand.java,9\6\9629b556ca05318af8d99e922ca8185f53a17aa3
-Ñ
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/command/CommandContainer.java,7\e\7e18bab638574e3132e3d1995f6ef9090b946e85
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginFormCommand.java,f\7\f7d5e6cf48577819c7deb34b3f024bf6d6fec62a
@@ -68,9 +66,5 @@ Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserService
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-Ñ
-Tsrc/main/java/com/october/to/finish/app/web/restaurant/controller/AppController.java,5\b\5b41cfc81844490d76ceb47cec42d45764f2b29e
 ê
 `src/main/java/com/october/to/finish/app/web/restaurant/command/user/RegistrationFormCommand.java,a\e\ae7a0dddeda3d7f776bdf657deaa839472bf2b49
-Ñ
-Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2

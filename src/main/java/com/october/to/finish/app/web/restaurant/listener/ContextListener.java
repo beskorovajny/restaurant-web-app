@@ -1,9 +1,6 @@
 package com.october.to.finish.app.web.restaurant.listener;
 
-import com.october.to.finish.app.web.restaurant.command.AppCommand;
-import com.october.to.finish.app.web.restaurant.command.CommandContainer;
-import com.october.to.finish.app.web.restaurant.command.HomeCommand;
-import com.october.to.finish.app.web.restaurant.command.LanguageCommand;
+import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.user.LoginCommand;
 import com.october.to.finish.app.web.restaurant.command.user.LoginFormCommand;
 import com.october.to.finish.app.web.restaurant.command.user.RegistrationCommand;
@@ -101,6 +98,10 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
             commandContainer.addCommand("home", appCommand);
             commandContainer.addCommand("", appCommand);
             commandContainer.addCommand(null, appCommand);
+
+            appCommand = new ExceptionCommand();
+            commandContainer.addCommand("error", appCommand);
+            LOGGER.info("{} Error command created.", CONTEXT_LISTENER_MSG);
 
             appCommand = new LanguageCommand();
             commandContainer.addCommand("setLocale", appCommand);
