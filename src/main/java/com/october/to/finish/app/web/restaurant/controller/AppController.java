@@ -41,10 +41,10 @@ public class AppController extends HttpServlet {
         String url = null;
         try {
             url = getUrl(req, resp);
-            LOGGER.info("[AppController-doPost] URL processed");
+            LOGGER.info("[AppController-doPost] URL processed [{}]", url);
         } catch (CommandException | FatalApplicationException e) {
             LOGGER.error("An exception occurs: {}", e.getMessage());
-            resp.sendError(500, "Can`t process the command");
+            resp.sendError(500, "Can't process the command");
         }
         resp.sendRedirect(url);
     }

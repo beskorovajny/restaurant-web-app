@@ -24,7 +24,6 @@ public class JspEncodingFilter implements Filter {
             throws IOException, ServletException {
         LOGGER.info("[JspEncodingFilter] Filter started {},  {}", request.getParameterMap(), response);
         String codeRequest = request.getCharacterEncoding();
-        LOGGER.info("[JspEncodingFilter] request code : {}", codeRequest);
         if (code != null && !code.equalsIgnoreCase(codeRequest)) {
             request.setCharacterEncoding(code);
             response.setCharacterEncoding(code);

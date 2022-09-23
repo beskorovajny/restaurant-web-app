@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="l10n/messagesBundle"/>
-<html lang="en">
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
+<html lang="${sessionScope.lang}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -25,8 +25,8 @@
                         <fmt:message key="logo.globe"/>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="controller?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
-                        <li><a class="dropdown-item" href="controller?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
+                        <li><a class="dropdown-item" role="button" href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
+                        <li><a class="dropdown-item" role="button" href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
                     </ul>
                 </div>
             </div>
@@ -76,10 +76,10 @@
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-success d-block w-100" type="submit"
-                                                    value=""><fmt:message key="text.register"/>
+                                                    value=""><fmt:message key="text.sign.up"/>
                                             </button>
                                         </div>
-                                        <a class="text-muted" href="login.jsp" style="color: #f700b1;"><fmt:message key="text.account.exists"/> </a>
+                                        <a class="text-muted" href="controller?command=loginForm" style="color: #f700b1;"><fmt:message key="text.account.exists"/> </a>
                                     </form>
                                 </div>
                             </div>

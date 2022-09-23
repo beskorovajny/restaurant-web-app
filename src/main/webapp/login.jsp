@@ -1,10 +1,10 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<fmt:setLocale value="${sessionScope.locale}"/>
-<fmt:setBundle basename="l10n/messagesBundle"/>
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="messages"/>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${sessionScope.lang}">
 
 <head>
   <meta charset="utf-8">
@@ -26,8 +26,8 @@
             <fmt:message key="logo.globe"/>
           </button>
           <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <li><a class="dropdown-item" href="controller?command=setLocale&locale=uk_UA&pageToProcess=${param.command}">UA</a></li>
-            <li><a class="dropdown-item" href="controller?command=setLocale&locale&pageToProcess=${param.command}">ENG</a></li>
+            <li><a class="dropdown-item" href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
+            <li><a class="dropdown-item" href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
           </ul>
         </div>
       </div>
@@ -58,7 +58,7 @@
                     <div class="mb-3">
                       <button class="btn btn-success d-block w-100" type="submit"><fmt:message key="text.login"/></button>
                     </div>
-                    <p class="text-muted"><fmt:message key="text.forgot.password"/></p>
+                    <p class="text-muted"><a href=""><fmt:message key="text.forgot.password"/></a></p>
                   </form>
                 </div>
               </div>

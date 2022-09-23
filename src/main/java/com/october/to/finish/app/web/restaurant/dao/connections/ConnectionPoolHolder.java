@@ -57,7 +57,6 @@ public class ConnectionPoolHolder {
             Context initContext = new InitialContext();
             DataSource dataSource = (DataSource) initContext.lookup("java:/comp/env/jdbc/mysqlDB");
             connection = dataSource.getConnection();
-
         } catch (SQLException | NamingException e) {
             LOGGER.error("Failed to create connection.");
         }
