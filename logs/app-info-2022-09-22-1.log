@@ -1,21 +1,48 @@
-2022-09-22 22:29:31 INFO [ContextListener] Context initialization started...
-2022-09-22 22:29:32 INFO [ContextListener] Connection created. org.apache.commons.dbcp2.DelegatingDatabaseMetaData@30a90afb
-2022-09-22 22:29:32 INFO [ContextListener] UserDAO created.
-2022-09-22 22:29:32 INFO [ContextListener] CreditCardDAO created.
-2022-09-22 22:29:32 INFO [ContextListener] ReceiptDAO created.
-2022-09-22 22:29:32 INFO [ContextListener] AddressDAO created.
-2022-09-22 22:29:32 INFO [ContextListener] DishDAO created.
-2022-09-22 22:29:32 INFO [ContextListener] UserService created.
-2022-09-22 22:29:32 INFO [ContextListener] CreditCardService created.
-2022-09-22 22:29:32 INFO [ContextListener] ReceiptService created.
-2022-09-22 22:29:32 INFO [ContextListener] AddressService created.
-2022-09-22 22:29:32 INFO [ContextListener] DishService created.
-2022-09-22 22:29:32 INFO [ContextListener] CommandContainer created.
-2022-09-22 22:29:32 INFO [ContextListener] Language command created.
-2022-09-22 22:29:32 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-22 22:29:32 INFO [ContextListener] Registration command created.
-2022-09-22 22:29:32 INFO [ContextListener] LoginFormCommand created.
-2022-09-22 22:29:32 INFO [ContextListener] LoginCommand created.
-2022-09-22 22:29:32 INFO [ContextListener] Services initialized
-2022-09-22 22:29:37 INFO [AppController-doGet] URL processed
-2022-09-22 22:29:49 INFO [RegistrationCommand] User from view : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-22 22:39:20 INFO [ContextListener] Context initialization started...
+2022-09-22 22:39:21 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@2195ede8
+2022-09-22 22:39:21 INFO [ContextListener] UserDAO created.
+2022-09-22 22:39:21 INFO [ContextListener] CreditCardDAO created.
+2022-09-22 22:39:21 INFO [ContextListener] ReceiptDAO created.
+2022-09-22 22:39:21 INFO [ContextListener] AddressDAO created.
+2022-09-22 22:39:21 INFO [ContextListener] DishDAO created.
+2022-09-22 22:39:21 INFO [ContextListener] UserService created.
+2022-09-22 22:39:21 INFO [ContextListener] CreditCardService created.
+2022-09-22 22:39:21 INFO [ContextListener] ReceiptService created.
+2022-09-22 22:39:21 INFO [ContextListener] AddressService created.
+2022-09-22 22:39:21 INFO [ContextListener] DishService created.
+2022-09-22 22:39:21 INFO [ContextListener] CommandContainer created.
+2022-09-22 22:39:21 INFO [ContextListener] Language command created.
+2022-09-22 22:39:21 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-22 22:39:21 INFO [ContextListener] Registration command created.
+2022-09-22 22:39:21 INFO [ContextListener] LoginFormCommand created.
+2022-09-22 22:39:21 INFO [ContextListener] LoginCommand created.
+2022-09-22 22:39:21 INFO [ContextListener] Services initialized
+2022-09-22 22:39:21 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:39:21 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:39:23 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:39:23 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:39:26 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:39:26 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:39:26 INFO [AppController-doGet] URL processed
+2022-09-22 22:39:50 INFO [JspEncodingFilter] Filter started {command=[registration], email=[beskorovaj22ny@gmail.com], firstName=[Andrew], lastName=[Block], phoneNumber=[0631988022], password=[Aa12345678]},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:39:50 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:39:50 INFO [RegistrationCommand] User from view : User{id=0, email='beskorovaj22ny@gmail.com', firstName='Andrew', lastName='Block', phoneNumber='0631988022', role=CLIENT, creditCard=null, password=e980e149d40e7dfda86e816e4d6efe0bf6335cf781fe59af37bd1c32c8de916b, receipts=null}
+2022-09-22 22:39:50 INFO User : User{id=0, email='beskorovaj22ny@gmail.com', firstName='Andrew', lastName='Block', phoneNumber='0631988022', role=CLIENT, creditCard=null, password=e980e149d40e7dfda86e816e4d6efe0bf6335cf781fe59af37bd1c32c8de916b, receipts=null} was saved successfully
+2022-09-22 22:39:50 INFO [UserService] User saved. (email: beskorovaj22ny@gmail.com)
+2022-09-22 22:39:50 INFO [RegistrationCommand] User saved : User{id=9, email='beskorovaj22ny@gmail.com', firstName='Andrew', lastName='Block', phoneNumber='0631988022', role=CLIENT, creditCard=null, password=e980e149d40e7dfda86e816e4d6efe0bf6335cf781fe59af37bd1c32c8de916b, receipts=null}
+2022-09-22 22:39:50 INFO [AppController-doPost] URL processed
+2022-09-22 22:39:50 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:39:50 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:40:08 INFO [JspEncodingFilter] Filter started {email=[beskorovaj22ny@gmail.com], password=[aA12345678]},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:40:08 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:40:08 INFO [AppController-doPost] URL processed
+2022-09-22 22:40:08 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:40:08 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:40:13 INFO [JspEncodingFilter] Filter started {command=[setLocale], locale=[], pageToProcess=[]},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:40:13 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:40:13 INFO [AppController-doGet] URL processed
+2022-09-22 22:40:13 INFO [AppController-doGet] URL processed
+2022-09-22 22:40:15 INFO [JspEncodingFilter] Filter started {command=[setLocale], locale=[uk_UA], pageToProcess=[]},  org.apache.catalina.connector.ResponseFacade@5ef5b012
+2022-09-22 22:40:15 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:40:15 INFO [AppController-doGet] URL processed
+2022-09-22 22:40:15 INFO [AppController-doGet] URL processed

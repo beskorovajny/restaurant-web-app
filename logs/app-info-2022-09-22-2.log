@@ -1,28 +1,30 @@
-2022-09-22 22:32:00 INFO [ContextListener] Context initialization started...
-2022-09-22 22:32:01 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@13576149
-2022-09-22 22:32:01 INFO [ContextListener] UserDAO created.
-2022-09-22 22:32:01 INFO [ContextListener] CreditCardDAO created.
-2022-09-22 22:32:01 INFO [ContextListener] ReceiptDAO created.
-2022-09-22 22:32:01 INFO [ContextListener] AddressDAO created.
-2022-09-22 22:32:01 INFO [ContextListener] DishDAO created.
-2022-09-22 22:32:01 INFO [ContextListener] UserService created.
-2022-09-22 22:32:01 INFO [ContextListener] CreditCardService created.
-2022-09-22 22:32:01 INFO [ContextListener] ReceiptService created.
-2022-09-22 22:32:01 INFO [ContextListener] AddressService created.
-2022-09-22 22:32:01 INFO [ContextListener] DishService created.
-2022-09-22 22:32:01 INFO [ContextListener] CommandContainer created.
-2022-09-22 22:32:01 INFO [ContextListener] Language command created.
-2022-09-22 22:32:01 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-22 22:32:01 INFO [ContextListener] Registration command created.
-2022-09-22 22:32:01 INFO [ContextListener] LoginFormCommand created.
-2022-09-22 22:32:01 INFO [ContextListener] LoginCommand created.
-2022-09-22 22:32:01 INFO [ContextListener] Services initialized
-2022-09-22 22:32:09 INFO [AppController-doGet] URL processed
-2022-09-22 22:32:22 INFO [RegistrationCommand] User from view : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null}
-2022-09-22 22:32:23 INFO User : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null} was saved successfully
-2022-09-22 22:32:23 INFO [UserService] User saved. (email: beskorovajny@gmail.com)
-2022-09-22 22:32:23 INFO [RegistrationCommand] User saved : User{id=8, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Blob', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f, receipts=null}
-2022-09-22 22:32:23 INFO [AppController-doPost] URL processed
-2022-09-22 22:33:03 INFO [AppController-doPost] URL processed
-2022-09-22 22:33:13 INFO [AppController-doGet] URL processed
-2022-09-22 22:33:26 INFO [AppController-doPost] URL processed
+2022-09-22 22:42:34 INFO [ContextListener] Context initialization started...
+2022-09-22 22:42:35 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@25e6c5c2
+2022-09-22 22:42:35 INFO [ContextListener] UserDAO created.
+2022-09-22 22:42:35 INFO [ContextListener] CreditCardDAO created.
+2022-09-22 22:42:35 INFO [ContextListener] ReceiptDAO created.
+2022-09-22 22:42:35 INFO [ContextListener] AddressDAO created.
+2022-09-22 22:42:35 INFO [ContextListener] DishDAO created.
+2022-09-22 22:42:35 INFO [ContextListener] UserService created.
+2022-09-22 22:42:35 INFO [ContextListener] CreditCardService created.
+2022-09-22 22:42:35 INFO [ContextListener] ReceiptService created.
+2022-09-22 22:42:35 INFO [ContextListener] AddressService created.
+2022-09-22 22:42:35 INFO [ContextListener] DishService created.
+2022-09-22 22:42:35 INFO [ContextListener] CommandContainer created.
+2022-09-22 22:42:35 INFO [ContextListener] Language command created.
+2022-09-22 22:42:35 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-22 22:42:35 INFO [ContextListener] Registration command created.
+2022-09-22 22:42:35 INFO [ContextListener] LoginFormCommand created.
+2022-09-22 22:42:35 INFO [ContextListener] LoginCommand created.
+2022-09-22 22:42:35 INFO [ContextListener] Services initialized
+2022-09-22 22:42:36 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-22 22:42:36 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:42:38 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-22 22:42:38 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:46:14 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-22 22:46:14 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:46:14 INFO [AppController-doGet] URL processed
+2022-09-22 22:46:39 INFO [JspEncodingFilter] Filter started {command=[registration], email=[beskorovajny@gmail.com], firstName=[Andrew], lastName=[Bake], phoneNumber=[0631988021], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-22 22:46:39 INFO [JspEncodingFilter] request code : null
+2022-09-22 22:46:39 INFO [RegistrationCommand] User from view : User{id=0, email='beskorovajny@gmail.com', firstName='Andrew', lastName='Bake', phoneNumber='0631988021', role=CLIENT, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-22 22:46:39 INFO User received : [8], [beskorovajny@gmail.com]

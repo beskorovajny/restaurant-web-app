@@ -18,8 +18,6 @@ Vsrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/UserMapp
 \src/main/java/com/october/to/finish/app/web/restaurant/utils/validation/ValidationUtils.java,b\8\b808c949a6e4b2713db79403233132922056d108
 I
 src/main/webapp/home.html,9\b\9bde92c0bcc9cf103ee0cc55fb3f5437fd754c0f
-M
-src/main/webapp/register.html,9\4\940f7dd52a25b6865fee37b1080b6b288bad68a4
 R
 "src/main/webapp/include/footer.jsp,c\9\c92887d375bc63c0ad72d55c591476936db9c51b
 v
@@ -38,8 +36,6 @@ Tsrc/main/java/com/october/to/finish/app/web/restaurant/command/ExceptionCommand
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/command/CommandContainer.java,7\e\7e18bab638574e3132e3d1995f6ef9090b946e85
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginFormCommand.java,f\7\f7d5e6cf48577819c7deb34b3f024bf6d6fec62a
-T
-$src/main/webapp/META-INF/context.xml,c\b\cbfb0d2e9b2b9fbf9d54374577c894a38643c6d0
 Ü
 Vsrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/CreditCardDAOImpl.java,d\5\d549ce65346ff878226b2bfcd877c8da2f55959a
 x
@@ -62,3 +58,19 @@ B
 logs/app-debug.log,d\1\d1d4d955397bdc8f37816b2db2f75d637ac43003
 N
 logs/app-info-2022-09-22-3.log,7\5\75aa0f7359cfff01c543041b01d4a73ce168c6d0
+~
+Nsrc/main/java/com/october/to/finish/app/web/restaurant/command/AppCommand.java,4\8\48f28a7aaf7aa213c0c99c565883a33f846d31fc
+à
+Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserServiceImpl.java,f\6\f6632e82853123e60a4f02bb58d831c2706fe6cd
+ã
+[src/main/java/com/october/to/finish/app/web/restaurant/security/PasswordEncryptionUtil.java,f\1\f17f3f94cec59ccef523bdc184e5e8381f3bcdce
+à
+Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+Ñ
+Tsrc/main/java/com/october/to/finish/app/web/restaurant/controller/AppController.java,5\b\5b41cfc81844490d76ceb47cec42d45764f2b29e
+ê
+`src/main/java/com/october/to/finish/app/web/restaurant/command/user/RegistrationFormCommand.java,a\e\ae7a0dddeda3d7f776bdf657deaa839472bf2b49
+Ñ
+Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
