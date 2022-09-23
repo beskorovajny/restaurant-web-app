@@ -16,6 +16,6 @@
     </div>
     <!-- Copyright -->
     <div class="container mt-5">
-        <div class="small text-center text-muted">Copyright &copy; 2022 - SWDream</div>
+        <div class="small text-center text-muted">Copyright &copy; 2022 - WSDream</div>
     </div>
 </footer>
