@@ -1,30 +1,40 @@
-2022-09-24 15:36:13 INFO [ContextListener] Context initialization started...
-2022-09-24 15:36:14 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@2f761d0f
-2022-09-24 15:36:14 INFO [ContextListener] UserDAO created.
-2022-09-24 15:36:14 INFO [ContextListener] CreditCardDAO created.
-2022-09-24 15:36:14 INFO [ContextListener] ReceiptDAO created.
-2022-09-24 15:36:14 INFO [ContextListener] AddressDAO created.
-2022-09-24 15:36:14 INFO [ContextListener] DishDAO created.
-2022-09-24 15:36:14 INFO [ContextListener] UserService created.
-2022-09-24 15:36:14 INFO [ContextListener] CreditCardService created.
-2022-09-24 15:36:14 INFO [ContextListener] ReceiptService created.
-2022-09-24 15:36:14 INFO [ContextListener] AddressService created.
-2022-09-24 15:36:14 INFO [ContextListener] DishService created.
-2022-09-24 15:36:14 INFO [ContextListener] CommandContainer created.
-2022-09-24 15:36:14 INFO [ContextListener] Language command created.
-2022-09-24 15:36:14 INFO [ContextListener] Error command created.
-2022-09-24 15:36:14 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-24 15:36:14 INFO [ContextListener] Registration command created.
-2022-09-24 15:36:14 INFO [ContextListener] LoginFormCommand created.
-2022-09-24 15:36:14 INFO [ContextListener] LoginCommand created.
-2022-09-24 15:36:14 INFO [ContextListener] Services initialized
-2022-09-24 15:36:15 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616872e4
-2022-09-24 15:36:16 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616872e4
-2022-09-24 15:36:19 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@616872e4
-2022-09-24 15:36:19 INFO [AppController-doGet] URL processed
-2022-09-24 15:36:46 INFO [JspEncodingFilter] Filter started {command=[login], email=[johndoe@example.com], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@616872e4
-2022-09-24 15:36:46 INFO User received : [1], [johndoe@example.com]
-2022-09-24 15:36:46 INFO [LoginCommand] User received from db: User{id=1, email='johndoe@example.com', firstName='John', lastName='Doe', phoneNumber='1111', roleId=2, creditCard=null, password=d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb, receipts=[]}
-2022-09-24 15:36:46 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
-2022-09-24 15:36:46 INFO [AppController-doPost] URL processed [home.jsp]
-2022-09-24 15:36:46 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616872e4
+2022-09-24 16:18:39 INFO [ContextListener] Context initialization started...
+2022-09-24 16:18:40 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@1af65fff
+2022-09-24 16:18:40 INFO [ContextListener] UserDAO created.
+2022-09-24 16:18:40 INFO [ContextListener] CreditCardDAO created.
+2022-09-24 16:18:40 INFO [ContextListener] ReceiptDAO created.
+2022-09-24 16:18:40 INFO [ContextListener] AddressDAO created.
+2022-09-24 16:18:40 INFO [ContextListener] DishDAO created.
+2022-09-24 16:18:40 INFO [ContextListener] UserService created.
+2022-09-24 16:18:40 INFO [ContextListener] CreditCardService created.
+2022-09-24 16:18:40 INFO [ContextListener] ReceiptService created.
+2022-09-24 16:18:40 INFO [ContextListener] AddressService created.
+2022-09-24 16:18:40 INFO [ContextListener] DishService created.
+2022-09-24 16:18:40 INFO [ContextListener] CommandContainer created.
+2022-09-24 16:18:40 INFO [ContextListener] Language command created.
+2022-09-24 16:18:40 INFO [ContextListener] Error command created.
+2022-09-24 16:18:40 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-24 16:18:40 INFO [ContextListener] Registration command created.
+2022-09-24 16:18:40 INFO [ContextListener] LoginFormCommand created.
+2022-09-24 16:18:40 INFO [ContextListener] LoginCommand created.
+2022-09-24 16:18:40 INFO [ContextListener] MenuCommand created.
+2022-09-24 16:18:40 INFO [ContextListener] LogoutCommand created.
+2022-09-24 16:18:40 INFO [ContextListener] Services initialized
+2022-09-24 16:18:40 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:42 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:46 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:46 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:48 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:48 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:49 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:49 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:51 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:51 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:55 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:55 INFO [LanguageCommand] Page to process = 
+2022-09-24 16:18:55 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:55 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:56 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:56 INFO [AppController-doGet] URL processed
+2022-09-24 16:18:58 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@34418cb5
+2022-09-24 16:18:58 INFO [AppController-doGet] URL processed

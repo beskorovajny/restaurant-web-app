@@ -2,10 +2,7 @@ package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.MenuCommand;
-import com.october.to.finish.app.web.restaurant.command.user.LoginCommand;
-import com.october.to.finish.app.web.restaurant.command.user.LoginFormCommand;
-import com.october.to.finish.app.web.restaurant.command.user.RegistrationCommand;
-import com.october.to.finish.app.web.restaurant.command.user.RegistrationFormCommand;
+import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.*;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
 import com.october.to.finish.app.web.restaurant.dao.impl.*;
@@ -127,6 +124,11 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new MenuCommand(dishService);
         commandContainer.addCommand("menu", appCommand);
         LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new LogoutCommand();
+        commandContainer.addCommand("logout", appCommand);
+        LOGGER.info("{} LogoutCommand created.", CONTEXT_LISTENER_MSG);
+
 
 
         context.setAttribute("commandContainer", commandContainer);

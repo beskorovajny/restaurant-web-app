@@ -14,7 +14,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -22,25 +22,39 @@
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <c:if test="${sessionScope.user == null}">
                     <div class="col-md-15 text-end">
-                        <a href = "controller?command=loginForm"> <button type="button" class="btn btn-outline-secondary"><fmt:message key="text.login"/></button></a>
-                        <a href = "controller?command=registrationForm"> <button type="button" class="btn btn-outline-success"><fmt:message key="text.register"/></button></a>
+                        <a href="controller?command=loginForm" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-secondary">
+                                <fmt:message key="text.login"/></button>
+                        </a>
+                        <a href="controller?command=registrationForm" style="text-decoration:none;">
+                            <button type="button"
+                                    class="btn btn-outline-success"><fmt:message key="text.register"/></button>
+                        </a>
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
                     <div class="col-md-15 text-end">
-                        <a href=><fmt:message key="text.greetings"/>
-                                ${sessionScope.user.firstName} ${sessionScope.user.lastName}
+                        <h6><fmt:message key="text.greetings"/>
+                                ${sessionScope.user.firstName}${sessionScope.user.lastName}
+                        </h6>
+                    </div>
+                    <div class="col-md-15 text-end">
+                        <a href="controller?command=logout" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-warning">
+                                <fmt:message key="text.logout"/></button>
                         </a>
-                        <a href="controller?command=logout"><button type="button" class="btn btn-outline-danger"><fmt:message key="text.logout"/></button></a>
                     </div>
                 </c:if>
                 <div class="btn-group btn-group-sm" role="group" style="margin-left: 5px">
-                    <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-expanded="false">
                         <fmt:message key="logo.globe"/>
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <li><a class="dropdown-item" href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
-                        <li><a class="dropdown-item" href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
+                        <li><a class="dropdown-item"
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
+                        <li><a class="dropdown-item"
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
                     </ul>
                 </div>
             </div>

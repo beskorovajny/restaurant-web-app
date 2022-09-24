@@ -46,10 +46,6 @@ Tsrc/main/java/com/october/to/finish/app/web/restaurant/controller/AppController
 Vsrc/main/java/com/october/to/finish/app/web/restaurant/filter/SessionLocaleFilter.java,f\e\fe149b36082fe8caae127954810bad4cfafc4de0
 „
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/filter/JspEncodingFilter.java,8\f\8fa4c8d52b9fc6ec7774de02ca1531fcfb366d62
-I
-src/main/webapp/error.jsp,c\b\cba3df22242d379bdb72d00919d2e8d49101d1bf
-P
- src/main/webapp/registration.jsp,d\d\dd51f7041d5a8d7bb17c79a85099a350e198ae09
 N
 logs/app-info-2022-09-23-1.log,e\0\e0836cfcbdc64fb56d4b2f689c150e15e98e3cf2
 N
@@ -60,8 +56,6 @@ N
 logs/app-info-2022-09-23-3.log,2\e\2ee335563724b53e7c4952cbd0249c94fdfd441c
 O
 logs/app-error-2022-09-23-3.log,e\9\e94f8a9f729d31e9e4b45b0eef461887d4f2a76e
-H
-src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
 I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
 O

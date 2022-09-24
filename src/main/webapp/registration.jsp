@@ -14,7 +14,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="#">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>

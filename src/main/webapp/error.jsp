@@ -23,7 +23,7 @@
             <div class="col">
                 <h1 style="text-align: center;">IT&#39;S NOT YOU<br/>IT&#39;S ME
                     </h1>
-                <h3 style="text-align: center;"><a class="text-muted" href="home.jsp"
+                <h3 style="text-align: center;"><a class="text-muted" href="controller?command?=home"
                        style="color: #008000;"><fmt:message key="text.home"/> </a></h3>
                 <p class="lead shadow-none"
                    style="text-align: center;font-size: 15px;margin: 54px;">
