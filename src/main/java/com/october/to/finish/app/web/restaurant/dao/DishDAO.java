@@ -15,11 +15,11 @@ public interface DishDAO {
 
     Dish findByTitle(String title) throws DAOException;
 
-    List<Dish> findAll() throws DAOException;
+    List<Dish> findAll(int offset) throws DAOException;
 
     boolean update(long dishId, Dish dish) throws DAOException;
 
     void delete(long dishId) throws DAOException;
 
-
+    int countRecords();
 }

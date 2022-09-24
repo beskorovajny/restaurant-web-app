@@ -1,7 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
-import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,6 +21,7 @@ public class UserMapper implements ObjectMapper<User> {
                 .setFirstName(resultSet.getString("first_name"))
                 .setLastName(resultSet.getString("last_name"))
                 .setPhoneNumber(resultSet.getString("phone_number"))
+                .setRoleId(resultSet.getInt("role_id"))
                 .setPassword(resultSet.getString("password").toCharArray())
                 .build();
 
@@ -42,7 +43,7 @@ public class UserMapper implements ObjectMapper<User> {
         preparedStatement.setString(3, user.getLastName());
         preparedStatement.setString(4, user.getPhoneNumber());
         preparedStatement.setString(5, String.valueOf(user.getPassword()));
-        preparedStatement.setLong(6, user.getRole().getId());
+        preparedStatement.setInt(6, user.getRoleId());
     }
 
     public List<User> extractUsers(List<User> users, PreparedStatement preparedStatement) throws SQLException {

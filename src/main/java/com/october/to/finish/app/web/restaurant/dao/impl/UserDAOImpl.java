@@ -1,10 +1,10 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
+import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.dao.mapper.impl.UserMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
-import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +26,8 @@ public class UserDAOImpl implements UserDAO {
             "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
             "role_Id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM user WHERE id = ?";
+
+    private static final String FIND_ROLE_BY_NAME = "SELECT * FROM role WHERE name = ?";
     private final Connection connection;
     private final UserMapper userMapper = new UserMapper();
 
@@ -148,6 +150,23 @@ public class UserDAOImpl implements UserDAO {
             LOGGER.error("User with ID : [{}] was not removed. An exception occurs : {}",
                     userId, e.getMessage());
             throw new DAOException("[UserDAO] exception while removing User" + e.getMessage(), e);
+        }
+    }
+
+    public User.Role getRoleByName(String roleName) throws DAOException {
+        Optional<User.Role> userRole = Optional.empty();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ROLE_BY_NAME)) {
+            preparedStatement.setString(1, roleName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                userRole = Optional.of(User.Role.valueOf(resultSet.getString(1)));
+            }
+            userRole.ifPresent(r -> LOGGER.info("UserRole received : [{}, {}]", r.getId(), r.getRoleName()));
+            return userRole.get();
+        } catch (SQLException e) {
+            LOGGER.error("User for given Email : [{}] was not found. An exception occurs : {}", roleName, e.getMessage());
+            throw new DAOException("[UserDAO] exception while receiving User", e);
         }
     }
 }

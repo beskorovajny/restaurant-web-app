@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserService {
     boolean save(User user) throws ServiceException, FatalApplicationException;
 
-    User findById(long userId) throws ServiceException;
+    User findById(long id) throws ServiceException;
 
     User findByEmail(String eMail) throws ServiceException;
 

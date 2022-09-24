@@ -13,7 +13,7 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private Role role;
+    private int roleId;
     private CreditCard creditCard;
     private char[] password;
     private Set<Receipt> receipts;
@@ -49,15 +49,15 @@ public class User implements Serializable {
         return phoneNumber;
     }
 
-    public Role getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(Role role) {
-        if (role == null) {
-            throw new IllegalArgumentException();
+    public void setRoleId(int roleId) {
+        if (roleId == 0) {
+            throw new IllegalArgumentException("RoleId can't be < 1");
         }
-        this.role = role;
+        this.roleId = roleId;
     }
 
     public CreditCard getCreditCard() {
@@ -91,12 +91,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Objects.equals(creditCard, user.creditCard) && Arrays.equals(password, user.password);
+        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && roleId == user.roleId && Objects.equals(creditCard, user.creditCard) && Arrays.equals(password, user.password);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, role, creditCard);
+        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, roleId, creditCard);
         result = 31 * result + Arrays.hashCode(password);
         return result;
     }
@@ -109,7 +109,7 @@ public class User implements Serializable {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", role=" + role +
+                ", roleId=" + roleId +
                 ", creditCard=" + creditCard +
                 ", password=" + String.valueOf(password) +
                 ", receipts=" + receipts +
@@ -118,17 +118,16 @@ public class User implements Serializable {
 
     public enum Role {
         CLIENT(1, "Client"),
-        MANAGER(2, "Manager"),
-        UNAUTHORIZED_USER(3, "Unauthorized_user");
-        private final long id;
+        MANAGER(2, "Manager");
+        private final int id;
         private final String roleName;
 
-        Role(long id, String roleName) {
+        Role(int id, String roleName) {
             this.id = id;
             this.roleName = roleName;
         }
 
-        public long getId() {
+        public int getId() {
             return id;
         }
 
@@ -182,11 +181,11 @@ public class User implements Serializable {
             return this;
         }
 
-        public Builder setRole(Role role) {
-            if (role == null) {
-                throw new IllegalArgumentException("Role can't be null!");
+        public Builder setRoleId(int roleId) {
+            if (roleId == 0) {
+                throw new IllegalArgumentException("RoleId can't be < 0!");
             }
-            User.this.role = role;
+            User.this.roleId = roleId;
             return this;
         }
 

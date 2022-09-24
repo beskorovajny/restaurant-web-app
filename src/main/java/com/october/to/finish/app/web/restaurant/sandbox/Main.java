@@ -155,7 +155,7 @@ public class Main {
                     .setLastName("Smith")
                     .setPhoneNumber("545-000-11211")
                     .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).
-                    setRole(User.Role.UNAUTHORIZED_USER).build();
+                    setRoleId(User.Role.CLIENT.getId()).build();
             user.setId(5);
 
             UserDAO userDAO = new UserDAOImpl(ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection());

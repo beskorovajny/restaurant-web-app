@@ -1,9 +1,10 @@
 package com.october.to.finish.app.web.restaurant.model;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class CreditCard {
+public class CreditCard implements Serializable {
     private String cardNumber;
     private String bankName;
     private double balance;
@@ -43,6 +44,7 @@ public class CreditCard {
         }
         this.cardNumber = cardNumber;
     }
+
     public double getBalance() {
         return balance;
     }

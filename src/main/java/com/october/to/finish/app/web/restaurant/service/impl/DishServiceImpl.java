@@ -4,8 +4,8 @@ import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import com.october.to.finish.app.web.restaurant.service.DishService;
+import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -95,13 +95,17 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public List<Dish> findAll() throws ServiceException {
+    public List<Dish> findAll(int offset) throws ServiceException {
         try {
-            return dishDAO.findAll();
+            return dishDAO.findAll(getOffset(offset));
         } catch (DAOException e) {
             LOGGER.error("[DishService] An exception occurs while receiving Dishes. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
+    }
+
+    private int getOffset(int offset) {
+        return offset * 10 - 10;
     }
 
     @Override
@@ -130,5 +134,9 @@ public class DishServiceImpl implements DishService {
                     , dishId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
+    }
+
+    public int getRecordsCount() {
+        return dishDAO.countRecords();
     }
 }

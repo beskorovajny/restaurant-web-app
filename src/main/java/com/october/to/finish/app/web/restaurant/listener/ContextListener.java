@@ -1,6 +1,7 @@
 package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
+import com.october.to.finish.app.web.restaurant.command.dish.MenuCommand;
 import com.october.to.finish.app.web.restaurant.command.user.LoginCommand;
 import com.october.to.finish.app.web.restaurant.command.user.LoginFormCommand;
 import com.october.to.finish.app.web.restaurant.command.user.RegistrationCommand;
@@ -122,6 +123,11 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new LoginCommand(userService);
         commandContainer.addCommand("login", appCommand);
         LOGGER.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new MenuCommand(dishService);
+        commandContainer.addCommand("menu", appCommand);
+        LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
+
 
         context.setAttribute("commandContainer", commandContainer);
 

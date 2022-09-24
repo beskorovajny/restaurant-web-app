@@ -1,11 +1,16 @@
 package com.october.to.finish.app.web.restaurant.security;
 
+import com.october.to.finish.app.web.restaurant.command.user.RegistrationCommand;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class PasswordEncryptionUtil {
+    private static final Logger LOGGER = LogManager.getLogger(PasswordEncryptionUtil.class);
     private PasswordEncryptionUtil() {
     }
 
@@ -43,6 +48,7 @@ public class PasswordEncryptionUtil {
         if (password == null || userPassword == null) {
             throw new IllegalArgumentException("Can't validate null!");
         }
+        LOGGER.info("[PasswordEncrypt] password: [{}], user.password: [{}]", password, userPassword);
         return password.equals(userPassword);
     }
 

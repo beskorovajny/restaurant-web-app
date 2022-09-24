@@ -29,7 +29,7 @@ public class RegistrationCommand implements AppCommand {
                 .setLastName(request.getParameter("lastName"))
                 .setPhoneNumber(request.getParameter("phoneNumber"))
                 .setPassword(PasswordEncryptionUtil.getEncrypted(request.getParameter("password")).toCharArray())
-                .setRole(User.Role.CLIENT)
+                .setRoleId(User.Role.CLIENT.getId())
                 .build();
         LOGGER.info("[RegistrationCommand] User from view : {}" , user);
         try {

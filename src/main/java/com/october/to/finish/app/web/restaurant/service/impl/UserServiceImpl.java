@@ -1,13 +1,13 @@
 package com.october.to.finish.app.web.restaurant.service.impl;
 
+import com.october.to.finish.app.web.restaurant.dao.CreditCardDAO;
+import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.CreditCard;
 import com.october.to.finish.app.web.restaurant.model.User;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
-import com.october.to.finish.app.web.restaurant.dao.CreditCardDAO;
-import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.service.UserService;
+import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -77,16 +77,16 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public User findById(long userId) throws ServiceException {
-        if (userId < 1) {
+    public User findById(long id) throws ServiceException {
+        if (id < 1) {
             LOGGER.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
-            return userDAO.findById(userId);
+            return userDAO.findById(id);
         } catch (DAOException e) {
             LOGGER.error("[UserService] An exception occurs while receiving User. (id: {}). Exc: {}"
-                    , userId, e.getMessage());
+                    , id, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

@@ -20,4 +20,6 @@ public interface UserDAO {
     boolean update(long userId, User user) throws DAOException;
 
     void delete(long userId) throws DAOException;
+
+    User.Role getRoleByName(String name) throws DAOException;
 }

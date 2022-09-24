@@ -12,9 +12,11 @@ public interface DishService {
 
     Dish findByTitle(String title) throws ServiceException;
 
-    List<Dish> findAll() throws ServiceException;
+    List<Dish> findAll(int offset) throws ServiceException;
 
     boolean update(long dishId, Dish dish) throws ServiceException;
 
     void delete(long dishId) throws ServiceException;
+
+    int getRecordsCount();
 }

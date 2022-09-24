@@ -47,6 +47,7 @@
               <div class="card mb-5">
                 <div class="card-body d-flex flex-column align-items-center">
                   <form class="text-center" action="controller" method="post">
+                    <input hidden name="command" value="login">
                     <div class="mb-3"><input class="form-control" type="email" name="email"
                                              placeholder="Email" minlength="4" maxlength="45"
                                              pattern="([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$" required="">

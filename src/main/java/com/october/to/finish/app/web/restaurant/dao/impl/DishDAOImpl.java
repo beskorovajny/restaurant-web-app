@@ -4,7 +4,6 @@ import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.dao.mapper.impl.DishMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,18 +16,20 @@ public class DishDAOImpl implements DishDAO {
     private static final Logger LOGGER = LogManager.getLogger(DishDAOImpl.class);
     private static final String DISH_RECEIVED_MSG = "Dish received : [{}], [{}], [{}]";
     private static final String DISH_RECEIVING_EXCEPTION_MSG = "[DishDAO] exception while receiving Dish";
+    private static final String DISH_DAO_MSG = "[DishDAO]";
 
     private static final String INSERT =
             "INSERT INTO dish (title, description, price, weight, count, " +
                     "minutes_to_cook, date_created, image, category_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String FIND_ALL = "SELECT * FROM dish";
+    private static final String FIND_ALL = "SELECT * FROM dish LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
     private static final String FIND_BY_TITLE = "SELECT * FROM dish WHERE title = ?";
     private static final String UPDATE = "UPDATE dish SET title = ?," +
             "description = ?, price = ?, weight = ?, " +
             "count = ?, minutes_to_cook = ?, date_created = ?, image = ?, category_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM dish WHERE id = ?";
+    private static final String COUNT_DISH_RECORDS = "SELECT COUNT(*) FROM dish";
     private final Connection connection;
     private final DishMapper dishMapper = new DishMapper();
 
@@ -36,7 +37,9 @@ public class DishDAOImpl implements DishDAO {
         this.connection = connection;
     }
 
-    public Connection getConnection() {return connection;}
+    public Connection getConnection() {
+        return connection;
+    }
 
     @Override
     public long save(Dish dish) throws DAOException {
@@ -48,12 +51,12 @@ public class DishDAOImpl implements DishDAO {
             long key = 0;
             if (resultSet.next()) {
                 key = resultSet.getLong(1);
-                LOGGER.info("Dish : {} was saved successfully", dish);
+                LOGGER.info("{} Dish : {} was saved successfully", DISH_DAO_MSG, dish);
             }
             return key;
         } catch (SQLException e) {
-            LOGGER.error("Dish : [{}] was not saved. An exception occurs.: {}", dish, e.getMessage());
-            throw new DAOException("[DishDAO] exception while saving Dish" + e.getMessage(), e);
+            LOGGER.error("{} Dish : [{}] was not saved. An exception occurs.: {}", DISH_DAO_MSG, dish, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while saving Dish" + e.getMessage(), e);
         }
     }
 
@@ -71,7 +74,8 @@ public class DishDAOImpl implements DishDAO {
                     d.getId(), d.getTitle(), d.getDescription()));
             return dish.orElse(new Dish());
         } catch (SQLException e) {
-            LOGGER.error("Dish for given ID : [{}] was not found. An exception occurs : {}", dishId, e.getMessage());
+            LOGGER.error("{} Dish for given ID : [{}] was not found. An exception occurs : {}",
+                    DISH_DAO_MSG, dishId, e.getMessage());
             throw new DAOException(DISH_RECEIVING_EXCEPTION_MSG, e);
         }
     }
@@ -90,26 +94,27 @@ public class DishDAOImpl implements DishDAO {
                     d.getId(), d.getTitle(), d.getDescription()));
             return dish.orElse(new Dish());
         } catch (SQLException e) {
-            LOGGER.error("Dish for given title : [{}] was not found. An exception occurs : {}",
-                    title, e.getMessage());
+            LOGGER.error("{} Dish for given title : [{}] was not found. An exception occurs : {}",
+                    DISH_DAO_MSG, title, e.getMessage());
             throw new DAOException(DISH_RECEIVING_EXCEPTION_MSG, e);
         }
     }
 
     @Override
-    public List<Dish> findAll() throws DAOException {
+    public List<Dish> findAll(int offset) throws DAOException {
         List<Dish> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL)) {
+            preparedStatement.setInt(1, offset);
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("Dishes was found successfully.");
+                LOGGER.info("{} Dishes was found successfully.", DISH_DAO_MSG);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("Dishes was not found. An exception occurs : {}", e.getMessage());
-            throw new DAOException("[DishDAO] exception while receiving all dishes", e);
+            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes", e);
         }
         return result;
     }
@@ -123,15 +128,15 @@ public class DishDAOImpl implements DishDAO {
 
             int rowUpdated = preparedStatement.executeUpdate();
             if (rowUpdated > 0 && rowUpdated < 10) {
-                LOGGER.info("Dish with ID : [{}] was updated.", dishId);
+                LOGGER.info("{} Dish with ID : [{}] was updated.", DISH_DAO_MSG, dishId);
                 return true;
             } else {
-                LOGGER.info("Dish with ID : [{}] was not found for update", dishId);
+                LOGGER.info("{} Dish with ID : [{}] was not found for update", DISH_DAO_MSG, dishId);
                 return false;
             }
         } catch (SQLException e) {
-            DBUtils.rollback(connection);
-            throw new DAOException(e.getMessage(), e);
+            LOGGER.error("{} Dish was not update. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + " exception while updating Dish" + e.getMessage(), e);
         }
     }
 
@@ -142,14 +147,27 @@ public class DishDAOImpl implements DishDAO {
             preparedStatement.setLong(1, dishId);
             int rowDeleted = preparedStatement.executeUpdate();
             if (rowDeleted > 0) {
-                LOGGER.info("Dish with ID : [{}] was removed.", dishId);
+                LOGGER.info("{} Dish with ID : [{}] was removed.", DISH_DAO_MSG, dishId);
             } else {
-                LOGGER.info("Dish with ID : [{}] was not found to remove.", dishId);
+                LOGGER.info("{} Dish with ID : [{}] was not found to remove.", DISH_DAO_MSG, dishId);
             }
         } catch (SQLException e) {
-            LOGGER.error("Dish with ID : [{}] was not removed. An exception occurs : {}",
-                    dishId, e.getMessage());
-            throw new DAOException("[DishDAO] exception while removing Dish" + e.getMessage(), e);
+            LOGGER.error("{} Dish with ID : [{}] was not removed. An exception occurs : {}",
+                    DISH_DAO_MSG, dishId, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + " exception while removing Dish" + e.getMessage(), e);
         }
+    }
+
+    public int countRecords() {
+        int recordsCount = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_DISH_RECORDS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            resultSet.next();
+            recordsCount = resultSet.getInt(1);
+            return recordsCount;
+        } catch (SQLException e) {
+            LOGGER.error("{} Failed to count dishes! An exception occurs :[{}]", DISH_DAO_MSG, e.getMessage());
+        }
+        return recordsCount;
     }
 }
