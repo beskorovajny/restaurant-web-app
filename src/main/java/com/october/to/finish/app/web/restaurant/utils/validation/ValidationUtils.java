@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 public class ValidationUtils {
     private static final String EMAIL_PATTERN = "^(?=.{4,45}$)([\\w-\\.]{1,})+@([\\w-]+\\.)+([\\w-]{2,4})$";
     private static final String PASSWORD_PATTERN = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$";
-    private static final String INPUT_TEXT_PATTERN = "^[а-яА-яa-zA-z ]{2,45}$";
+    private static final String INPUT_TEXT_PATTERN = "^\\p{L}{2,45}$";
     private static final String PHONE_PATTERN = "^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\\s\\./0-9]*$";
     private static final String CARD_NUMBER_PATTERN = "\\b\\d{13,16}\\b";
 

@@ -55,13 +55,13 @@
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="First Name"
                                                                                  name="firstName"
-                                                                                 pattern="^[а-яА-яa-zA-z ]{2,45}$"
+                                                                                 pattern="^\p{L}{2,45}$"
                                                                                  minlength="1" required=""
                                                                                  maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="Last name"
                                                                                  name="lastName" minlength="1"
-                                                                                 pattern="^[а-яА-яa-zA-z ]{2,45}$+"
+                                                                                 pattern="^\p{L}{2,45}$"
                                                                                  required="" maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  name="phoneNumber"
