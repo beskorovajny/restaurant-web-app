@@ -1,5 +1,5 @@
 # restaurant-web-app
-_Servlet-API, JDBC, MySql, Apache Tomcat, JSP..._
+_Servlet-API, JDBC, MySql 8.0.30, Apache Tomcat 9.0.67, JSP..._
 
 ***PROJECT DESCRIPTION***
 

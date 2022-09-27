@@ -1,0 +1,3 @@
+2022-09-25 22:12:57 ERROR [UserService] User with given email is already registered! (email: test03@test.com)
+2022-09-25 22:12:57 ERROR An exception occurs while saving User [test03@test.com]
+2022-09-25 22:12:57 ERROR An exception occurs: [UserService] User with given email is already registered! (email: {})

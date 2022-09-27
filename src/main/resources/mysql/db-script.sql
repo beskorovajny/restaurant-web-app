@@ -41,8 +41,8 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`user`
 (
     `id`           INT         NOT NULL AUTO_INCREMENT,
     `email`        VARCHAR(45) NOT NULL,
-    `first_name`   VARCHAR(45) NOT NULL,
-    `last_name`    VARCHAR(45) NOT NULL,
+    `first_name`   VARCHAR(45) NOT NULL ,
+    `last_name`    VARCHAR(45)  NOT NULL,
     `phone_number` VARCHAR(45) NULL,
     `password`     VARCHAR(65) NOT NULL,
     `role_id`      INT         NOT NULL,
@@ -313,7 +313,7 @@ VALUES (DEFAULT, 1, 2),
 INSERT INTO user(id, email, first_name, last_name, phone_number, password, role_id)
 VALUES (DEFAULT, 'johndoe@example.com', 'John', 'Doe', '1111', '132331', 2),
        (DEFAULT, 'johndoe1@example.com', 'John1', 'Doe1', '111', '132331', 1),
-       (DEFAULT, 'johndoe2@example.com', 'John2', 'Doe', '1113', '132331', 3),
+       (DEFAULT, 'johndoe2@example.com', 'John2', 'Doe', '1113', '132331', 1),
        (DEFAULT, 'johndoe3@example.com', 'John3', 'Doe', '1114', '132331', 2),
        (DEFAULT, 'johndoe4@example.com', 'John4', 'Doe', '1115', '132331', 1);
 

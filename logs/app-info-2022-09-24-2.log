@@ -1,24 +1,46 @@
-2022-09-24 16:14:48 INFO [ContextListener] Context initialization started...
-2022-09-24 16:14:49 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@6ea66112
-2022-09-24 16:14:49 INFO [ContextListener] UserDAO created.
-2022-09-24 16:14:49 INFO [ContextListener] CreditCardDAO created.
-2022-09-24 16:14:49 INFO [ContextListener] ReceiptDAO created.
-2022-09-24 16:14:49 INFO [ContextListener] AddressDAO created.
-2022-09-24 16:14:49 INFO [ContextListener] DishDAO created.
-2022-09-24 16:14:49 INFO [ContextListener] UserService created.
-2022-09-24 16:14:49 INFO [ContextListener] CreditCardService created.
-2022-09-24 16:14:49 INFO [ContextListener] ReceiptService created.
-2022-09-24 16:14:49 INFO [ContextListener] AddressService created.
-2022-09-24 16:14:49 INFO [ContextListener] DishService created.
-2022-09-24 16:14:49 INFO [ContextListener] CommandContainer created.
-2022-09-24 16:14:49 INFO [ContextListener] Language command created.
-2022-09-24 16:14:49 INFO [ContextListener] Error command created.
-2022-09-24 16:14:49 INFO [ContextListener] RegistrationFormCommand created.
-2022-09-24 16:14:49 INFO [ContextListener] Registration command created.
-2022-09-24 16:14:49 INFO [ContextListener] LoginFormCommand created.
-2022-09-24 16:14:49 INFO [ContextListener] LoginCommand created.
-2022-09-24 16:14:49 INFO [ContextListener] MenuCommand created.
-2022-09-24 16:14:49 INFO [ContextListener] LogoutCommand created.
-2022-09-24 16:14:49 INFO [ContextListener] Services initialized
-2022-09-24 16:14:49 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@10c276eb
-2022-09-24 16:14:51 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@10c276eb
+2022-09-24 19:35:39 INFO [ContextListener] Context initialization started...
+2022-09-24 19:35:40 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@518bc1c8
+2022-09-24 19:35:40 INFO [ContextListener] UserDAO created.
+2022-09-24 19:35:40 INFO [ContextListener] CreditCardDAO created.
+2022-09-24 19:35:40 INFO [ContextListener] ReceiptDAO created.
+2022-09-24 19:35:40 INFO [ContextListener] AddressDAO created.
+2022-09-24 19:35:40 INFO [ContextListener] DishDAO created.
+2022-09-24 19:35:40 INFO [ContextListener] UserService created.
+2022-09-24 19:35:40 INFO [ContextListener] CreditCardService created.
+2022-09-24 19:35:40 INFO [ContextListener] ReceiptService created.
+2022-09-24 19:35:40 INFO [ContextListener] AddressService created.
+2022-09-24 19:35:40 INFO [ContextListener] DishService created.
+2022-09-24 19:35:40 INFO [ContextListener] CommandContainer created.
+2022-09-24 19:35:40 INFO [ContextListener] Language command created.
+2022-09-24 19:35:40 INFO [ContextListener] Error command created.
+2022-09-24 19:35:41 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-24 19:35:41 INFO [ContextListener] Registration command created.
+2022-09-24 19:35:41 INFO [ContextListener] LoginFormCommand created.
+2022-09-24 19:35:41 INFO [ContextListener] LoginCommand created.
+2022-09-24 19:35:41 INFO [ContextListener] MenuCommand created.
+2022-09-24 19:35:41 INFO [ContextListener] LogoutCommand created.
+2022-09-24 19:35:41 INFO [ContextListener] Services initialized
+2022-09-24 19:35:42 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:35:44 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:35:46 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:35:46 INFO [AppController-doGet] URL processed
+2022-09-24 19:36:16 INFO [JspEncodingFilter] Filter started {command=[registration], email=[test3@test.com], firstName=[???°??????], lastName=[?»????????], phoneNumber=[232323232], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:36:16 INFO [RegistrationCommand] User from view : User{id=0, email='test3@test.com', firstName='???°??????', lastName='?»????????', phoneNumber='232323232', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-24 19:36:16 INFO User : User{id=0, email='test3@test.com', firstName='???°??????', lastName='?»????????', phoneNumber='232323232', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null} was saved successfully
+2022-09-24 19:36:16 INFO [UserService] User saved. (email: test3@test.com)
+2022-09-24 19:36:16 INFO [RegistrationCommand] User saved : User{id=15, email='test3@test.com', firstName='???°??????', lastName='?»????????', phoneNumber='232323232', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-24 19:36:16 INFO [AppController-doPost] URL processed [login.jsp]
+2022-09-24 19:36:16 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:36:29 INFO [JspEncodingFilter] Filter started {command=[login], email=[test3@test.com], password=[aA11111111]},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:36:29 INFO User received : [15], [test3@test.com]
+2022-09-24 19:36:29 INFO [LoginCommand] User received from db: User{id=15, email='test3@test.com', firstName='???°??????', lastName='?»????????', phoneNumber='232323232', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=[]}
+2022-09-24 19:36:29 INFO [PasswordEncrypt] password: [90de1ed7dbb331b2afe4b6f0ec641a9cf239573cdda01e32cb37ab563717ef5f], user.password: [95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3]
+2022-09-24 19:36:29 INFO Cannot Login
+2022-09-24 19:36:29 INFO [AppController-doPost] URL processed [errorPage.jsp]
+2022-09-24 19:36:29 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:36:41 INFO [JspEncodingFilter] Filter started {command=[login], email=[test3@test.com], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@43b7bc52
+2022-09-24 19:36:41 INFO User received : [15], [test3@test.com]
+2022-09-24 19:36:41 INFO [LoginCommand] User received from db: User{id=15, email='test3@test.com', firstName='???°??????', lastName='?»????????', phoneNumber='232323232', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=[]}
+2022-09-24 19:36:41 INFO [PasswordEncrypt] password: [95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3], user.password: [95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3]
+2022-09-24 19:36:41 INFO [AppController-doPost] URL processed [home.jsp]
+2022-09-24 19:36:41 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@43b7bc52

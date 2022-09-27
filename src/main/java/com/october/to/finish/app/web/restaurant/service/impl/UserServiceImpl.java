@@ -60,9 +60,8 @@ public class UserServiceImpl implements UserService {
                 LOGGER.error(REGISTERED_EMAIL_EXC
                         , user.getEmail());
                 throw new ServiceException(REGISTERED_EMAIL_EXC);
-            } else {
-                user.setId(userDAO.save(user));
             }
+            user.setId(userDAO.save(user));
             userDAO.getConnection().commit();
             userDAO.getConnection().setAutoCommit(true);
             LOGGER.info("[UserService] User saved. (email: {})", user.getEmail());

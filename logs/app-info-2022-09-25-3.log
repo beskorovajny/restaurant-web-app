@@ -1,0 +1,38 @@
+2022-09-25 22:32:28 INFO [ContextListener] Context initialization started...
+2022-09-25 22:32:28 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@6f3172e
+2022-09-25 22:32:28 INFO [ContextListener] UserDAO created.
+2022-09-25 22:32:28 INFO [ContextListener] CreditCardDAO created.
+2022-09-25 22:32:28 INFO [ContextListener] ReceiptDAO created.
+2022-09-25 22:32:28 INFO [ContextListener] AddressDAO created.
+2022-09-25 22:32:28 INFO [ContextListener] DishDAO created.
+2022-09-25 22:32:28 INFO [ContextListener] UserService created.
+2022-09-25 22:32:28 INFO [ContextListener] CreditCardService created.
+2022-09-25 22:32:28 INFO [ContextListener] ReceiptService created.
+2022-09-25 22:32:28 INFO [ContextListener] AddressService created.
+2022-09-25 22:32:28 INFO [ContextListener] DishService created.
+2022-09-25 22:32:28 INFO [ContextListener] CommandContainer created.
+2022-09-25 22:32:28 INFO [ContextListener] Language command created.
+2022-09-25 22:32:28 INFO [ContextListener] Error command created.
+2022-09-25 22:32:28 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-25 22:32:28 INFO [ContextListener] Registration command created.
+2022-09-25 22:32:28 INFO [ContextListener] LoginFormCommand created.
+2022-09-25 22:32:28 INFO [ContextListener] LoginCommand created.
+2022-09-25 22:32:28 INFO [ContextListener] MenuCommand created.
+2022-09-25 22:32:28 INFO [ContextListener] LogoutCommand created.
+2022-09-25 22:32:28 INFO [ContextListener] Services initialized
+2022-09-25 22:32:29 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:29 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:31 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:31 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:33 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:33 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:32:33 INFO [AppController-doGet] URL processed
+2022-09-25 22:33:02 INFO [JspEncodingFilter] Filter started {command=[registration], email=[test111@test.com], firstName=[???»?µ??], lastName=[???°???°??????], phoneNumber=[231312321], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:33:02 INFO [JspEncodingFilter] Filter started {command=[registration], email=[test111@test.com], firstName=[???»?µ??], lastName=[???°???°??????], phoneNumber=[231312321], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:33:02 INFO [RegistrationCommand] User from view : User{id=0, email='test111@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='231312321', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-25 22:33:02 INFO User : User{id=0, email='test111@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='231312321', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null} was saved successfully
+2022-09-25 22:33:02 INFO [UserService] User saved. (email: test111@test.com)
+2022-09-25 22:33:02 INFO [RegistrationCommand] User saved : User{id=7, email='test111@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='231312321', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-25 22:33:02 INFO [AppController-doPost] URL processed [login.jsp]
+2022-09-25 22:33:02 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9
+2022-09-25 22:33:02 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1f86eac9

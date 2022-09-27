@@ -1,0 +1,48 @@
+2022-09-25 22:20:10 INFO [ContextListener] Context initialization started...
+2022-09-25 22:20:10 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@a13359
+2022-09-25 22:20:10 INFO [ContextListener] UserDAO created.
+2022-09-25 22:20:10 INFO [ContextListener] CreditCardDAO created.
+2022-09-25 22:20:10 INFO [ContextListener] ReceiptDAO created.
+2022-09-25 22:20:10 INFO [ContextListener] AddressDAO created.
+2022-09-25 22:20:10 INFO [ContextListener] DishDAO created.
+2022-09-25 22:20:10 INFO [ContextListener] UserService created.
+2022-09-25 22:20:10 INFO [ContextListener] CreditCardService created.
+2022-09-25 22:20:10 INFO [ContextListener] ReceiptService created.
+2022-09-25 22:20:10 INFO [ContextListener] AddressService created.
+2022-09-25 22:20:10 INFO [ContextListener] DishService created.
+2022-09-25 22:20:10 INFO [ContextListener] CommandContainer created.
+2022-09-25 22:20:10 INFO [ContextListener] Language command created.
+2022-09-25 22:20:10 INFO [ContextListener] Error command created.
+2022-09-25 22:20:10 INFO [ContextListener] RegistrationFormCommand created.
+2022-09-25 22:20:10 INFO [ContextListener] Registration command created.
+2022-09-25 22:20:10 INFO [ContextListener] LoginFormCommand created.
+2022-09-25 22:20:10 INFO [ContextListener] LoginCommand created.
+2022-09-25 22:20:10 INFO [ContextListener] MenuCommand created.
+2022-09-25 22:20:10 INFO [ContextListener] LogoutCommand created.
+2022-09-25 22:20:10 INFO [ContextListener] Services initialized
+2022-09-25 22:20:11 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-25 22:20:11 INFO [JspEncodingFilter] codeRequest = null
+2022-09-25 22:20:11 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7cb2a5bf
+2022-09-25 22:20:11 INFO [JspEncodingFilter] codeRequest = UTF-8
+2022-09-25 22:20:13 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:13 INFO [JspEncodingFilter] codeRequest = null
+2022-09-25 22:20:13 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:13 INFO [JspEncodingFilter] codeRequest = UTF-8
+2022-09-25 22:20:15 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:15 INFO [JspEncodingFilter] codeRequest = null
+2022-09-25 22:20:15 INFO [JspEncodingFilter] Filter started {command=[registrationForm]},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:15 INFO [JspEncodingFilter] codeRequest = UTF-8
+2022-09-25 22:20:15 INFO [AppController-doGet] URL processed
+2022-09-25 22:20:45 INFO [JspEncodingFilter] Filter started {command=[registration], email=[testo5@test.com], firstName=[???»?µ??], lastName=[???°???°??????], phoneNumber=[4234234234], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:45 INFO [JspEncodingFilter] codeRequest = null
+2022-09-25 22:20:45 INFO [JspEncodingFilter] Filter started {command=[registration], email=[testo5@test.com], firstName=[???»?µ??], lastName=[???°???°??????], phoneNumber=[4234234234], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:45 INFO [JspEncodingFilter] codeRequest = UTF-8
+2022-09-25 22:20:45 INFO [RegistrationCommand] User from view : User{id=0, email='testo5@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='4234234234', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-25 22:20:45 INFO User : User{id=0, email='testo5@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='4234234234', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null} was saved successfully
+2022-09-25 22:20:45 INFO [UserService] User saved. (email: testo5@test.com)
+2022-09-25 22:20:45 INFO [RegistrationCommand] User saved : User{id=24, email='testo5@test.com', firstName='???»?µ??', lastName='???°???°??????', phoneNumber='4234234234', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-09-25 22:20:45 INFO [AppController-doPost] URL processed [login.jsp]
+2022-09-25 22:20:45 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:45 INFO [JspEncodingFilter] codeRequest = null
+2022-09-25 22:20:45 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@41bd22ad
+2022-09-25 22:20:45 INFO [JspEncodingFilter] codeRequest = UTF-8

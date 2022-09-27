@@ -1,20 +1,20 @@
-<!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+
+<%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="messages"/>
 <html lang="${sessionScope.lang}">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="UTF-8" http-equiv="Content-Type" name="viewport"
+          content="text/html, width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title><fmt:message key="text.register"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command=home">
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>

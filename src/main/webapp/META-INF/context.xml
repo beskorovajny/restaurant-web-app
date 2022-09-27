@@ -3,5 +3,5 @@
     <Resource name="jdbc/mysqlDB" auth="Container" type="javax.sql.DataSource"
               maxTotal="100" maxIdle="30" minilde="5" maxWaitMillis="1000"
               username="root" password="root" driverClassName="com.mysql.cj.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/restaurant"/>
+              url="jdbc:mysql://localhost:3306/restaurant?useUnicode=true&amp;characterEncoding=UTF-8"/>
 </Context>
