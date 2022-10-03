@@ -19,15 +19,15 @@ public class DishDAOImpl implements DishDAO {
     private static final String DISH_DAO_MSG = "[DishDAO]";
 
     private static final String INSERT =
-            "INSERT INTO dish (title, description, price, weight, count, " +
-                    "minutes_to_cook, date_created, image, category_id) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            "INSERT INTO dish (title, description, price, weight, " +
+                    "cooking, created, category_id) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String FIND_ALL = "SELECT * FROM dish LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
     private static final String FIND_BY_TITLE = "SELECT * FROM dish WHERE title = ?";
     private static final String UPDATE = "UPDATE dish SET title = ?," +
             "description = ?, price = ?, weight = ?, " +
-            "count = ?, minutes_to_cook = ?, date_created = ?, image = ?, category_id = ? WHERE id = ?";
+            "cooking = ?, created = ?, category_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM dish WHERE id = ?";
     private static final String COUNT_DISH_RECORDS = "SELECT COUNT(*) FROM dish";
     private final Connection connection;
@@ -109,7 +109,7 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes was found successfully.", DISH_DAO_MSG);
+                LOGGER.info("{} Dishes was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {

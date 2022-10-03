@@ -1,10 +1,8 @@
 package com.october.to.finish.app.web.restaurant.service.impl;
 
-import com.october.to.finish.app.web.restaurant.dao.CreditCardDAO;
 import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
-import com.october.to.finish.app.web.restaurant.model.CreditCard;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.service.UserService;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
@@ -17,24 +15,17 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
     private static final String NULL_USER_DAO_EXC = "[UserService] Can't create UserService with null input UserDAO";
-    private static final String NULL_CARD_DAO_EXC = "[UserService] Can't create UserService with null input CreditCardDAO";
     private static final String NULL_USER_INPUT_EXC = "[UserService] Can't operate null input!";
     private static final String REGISTERED_EMAIL_EXC =
             "[UserService] User with given email is already registered! (email: {})";
     private final UserDAO userDAO;
-    private final CreditCardDAO creditCardDAO;
 
-    public UserServiceImpl(UserDAO userDAO, CreditCardDAO creditCardDAO) {
+    public UserServiceImpl(UserDAO userDAO) {
         if (userDAO == null) {
             LOGGER.error(NULL_USER_DAO_EXC);
             throw new IllegalArgumentException(NULL_USER_DAO_EXC);
         }
-        if (creditCardDAO == null) {
-            LOGGER.error(NULL_CARD_DAO_EXC);
-            throw new IllegalArgumentException(NULL_CARD_DAO_EXC);
-        }
         this.userDAO = userDAO;
-        this.creditCardDAO = creditCardDAO;
     }
 
     @Override
@@ -141,65 +132,6 @@ public class UserServiceImpl implements UserService {
         } catch (DAOException e) {
             LOGGER.error("[UserService] An exception occurs while deleting User. (id: {}). Exc: {}"
                     , userId, e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public void saveCreditCard(User user, CreditCard creditCard) throws ServiceException {
-        if (user == null || creditCard == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
-            throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
-        }
-        try {
-            creditCardDAO.save(user.getId(), creditCard);
-        } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while saving CreditCard for User." +
-                    " (id: {}, card: {}). Exc: {}", user.getId(), creditCard.getCardNumber(), e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public CreditCard findCreditCard(User user) throws ServiceException {
-        if (user == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
-            throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
-        }
-        try {
-            return creditCardDAO.findByUser(user.getId());
-        } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while receiving CreditCard for User. (user id: {}). Exc: {}"
-                    , user.getId(), e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public void updateCreditCard(User user, CreditCard creditCard) throws ServiceException {
-        if (user.getCreditCard().getCardNumber() == null) {
-            throw new IllegalArgumentException("[UserService] Can't update null CreditCard");
-        }
-        try {
-            creditCardDAO.update(user.getCreditCard().getCardNumber(), creditCard);
-        } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while updating CreditCard for User. (user id: {}). Exc: {}"
-                    , user.getId(), e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    @Override
-    public void deleteCreditCard(User user) throws ServiceException {
-        if (user == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
-            throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
-        }
-        try {
-            creditCardDAO.deleteByUserId(user.getId());
-        } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while deleting CreditCard for User. (user id: {}). Exc: {}"
-                    , user.getId(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

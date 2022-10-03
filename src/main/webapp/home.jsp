@@ -32,9 +32,9 @@
                     </div>
                 </c:if>
                 <c:if test="${sessionScope.user != null}">
-                    <div class="col-md-15 text-end">
+                    <div class="col-md-15 text-center" style="margin: 10px">
                         <h6><fmt:message key="text.greetings"/>
-                                ${sessionScope.user.firstName}${sessionScope.user.lastName}
+                                ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                         </h6>
                     </div>
                     <div class="col-md-15 text-end">

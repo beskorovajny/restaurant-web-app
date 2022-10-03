@@ -14,9 +14,6 @@ public interface AddressService {
 
     boolean update(long addressId, Address address) throws ServiceException;
 
-    boolean updateByReceiptId(long receiptId, Address address) throws ServiceException;
-
     void delete(long addressId) throws ServiceException;
 
-    void deleteByReceiptId(long receiptId) throws ServiceException;
 }

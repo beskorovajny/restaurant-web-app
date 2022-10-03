@@ -1,0 +1,40 @@
+2022-10-03 18:53:59 INFO [ContextListener] Context initialization started...
+2022-10-03 18:54:00 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@4857d5e
+2022-10-03 18:54:00 INFO [ContextListener] UserDAO created.
+2022-10-03 18:54:00 INFO [ContextListener] ReceiptDAO created.
+2022-10-03 18:54:00 INFO [ContextListener] AddressDAO created.
+2022-10-03 18:54:00 INFO [ContextListener] DishDAO created.
+2022-10-03 18:54:00 INFO [ContextListener] UserService created.
+2022-10-03 18:54:00 INFO [ContextListener] ReceiptService created.
+2022-10-03 18:54:00 INFO [ContextListener] AddressService created.
+2022-10-03 18:54:00 INFO [ContextListener] DishService created.
+2022-10-03 18:54:00 INFO [ContextListener] CommandContainer created.
+2022-10-03 18:54:00 INFO [ContextListener] Language command created.
+2022-10-03 18:54:00 INFO [ContextListener] Error command created.
+2022-10-03 18:54:00 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] Registration command created.
+2022-10-03 18:54:00 INFO [ContextListener] LoginFormCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] LoginCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] AdminCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] DishFormCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] CreateDishCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] MenuCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] LogoutCommand created.
+2022-10-03 18:54:00 INFO [ContextListener] Services initialized
+2022-10-03 18:54:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:03 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:03 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:11 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:11 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:11 INFO [AppController-doGet] URL processed
+2022-10-03 18:54:30 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:30 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:30 INFO User received : [1], [admin@admin.app]
+2022-10-03 18:54:30 INFO [LoginCommand] User received from db: User{id=1, email='admin@admin.app', firstName='Admin', lastName='Admin', phoneNumber='1111', roleId=2, password=d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb, receipts=[]}
+2022-10-03 18:54:30 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
+2022-10-03 18:54:30 INFO [AppController-doPost] URL processed [controller?command=admin], resp encoding: ISO-8859-1
+2022-10-03 18:54:30 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:30 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@7c880956
+2022-10-03 18:54:30 INFO [DishDAO] Dishes was found successfully.
+2022-10-03 18:54:30 INFO [AppController-doGet] URL processed

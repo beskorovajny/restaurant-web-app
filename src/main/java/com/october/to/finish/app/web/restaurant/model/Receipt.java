@@ -69,31 +69,6 @@ public class Receipt {
         this.orderedDishes = orderedDishes;
     }
 
-    public double getTotalPrice() {
-        if (totalPrice == 0) {
-            totalPrice = calculateTotalPrice();
-        }
-        return totalPrice;
-    }
-
-    private double calculateTotalPrice() {
-        if (discount > 0) {
-            return orderedDishes.entrySet().stream()
-                    .flatMapToDouble(e -> DoubleStream
-                            .of((e.getValue().getPrice() -
-                                    ((e.getValue().getPrice() / 100) * discount)) * e.getValue().getCount())).sum();
-        }
-        return orderedDishes.entrySet().stream()
-                .flatMapToDouble(e -> DoubleStream.of(e.getValue().getPrice() * e.getValue().getCount())).sum();
-    }
-
-    public void setTotalPrice(double totalPrice) {
-        if (totalPrice < 0) {
-            throw new IllegalArgumentException("Price can't be < 0");
-        }
-        this.totalPrice = totalPrice;
-    }
-
 
     @Override
     public boolean equals(Object o) {

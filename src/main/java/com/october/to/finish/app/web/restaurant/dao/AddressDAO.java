@@ -17,9 +17,6 @@ public interface AddressDAO {
 
     boolean update(long addressId, Address address) throws DAOException;
 
-    boolean updateByReceiptId(long receiptId, Address address) throws DAOException;
-
     void delete(long addressId) throws DAOException;
 
-    void deleteByReceiptId(long receiptId) throws DAOException;
 }

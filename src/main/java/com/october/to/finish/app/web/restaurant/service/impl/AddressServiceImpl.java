@@ -107,21 +107,6 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public boolean updateByReceiptId(long receiptId, Address address) throws ServiceException {
-        if (receiptId < 1 || address == null) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
-            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
-        }
-        try {
-            return addressDAO.updateByReceiptId(receiptId, address);
-        } catch (DAOException e) {
-            LOGGER.error("[AddressService] An exception occurs while updating Address(id:{}) for Receipt(id: {}. Exc: {}"
-                    , address.getId(), receiptId, e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    @Override
     public void delete(long addressId) throws ServiceException {
         if (addressId < 1) {
             LOGGER.error(NULL_ADDRESS_INPUT_EXC);
@@ -136,18 +121,4 @@ public class AddressServiceImpl implements AddressService {
         }
     }
 
-    @Override
-    public void deleteByReceiptId(long receiptId) throws ServiceException {
-        if (receiptId < 1) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
-            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
-        }
-        try {
-            addressDAO.deleteByReceiptId(receiptId);
-        } catch (DAOException e) {
-            LOGGER.error("[AddressService] An exception occurs while deleting Address for Receipt(id:{}). Exc: {}"
-                    , receiptId, e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
 }

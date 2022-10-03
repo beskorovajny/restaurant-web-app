@@ -1,6 +1,8 @@
 package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
+import com.october.to.finish.app.web.restaurant.command.dish.CreateDishCommand;
+import com.october.to.finish.app.web.restaurant.command.dish.DishFormCommand;
 import com.october.to.finish.app.web.restaurant.command.dish.MenuCommand;
 import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.*;
@@ -57,9 +59,6 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         UserDAO userDAO = new UserDAOImpl(connection);
         LOGGER.info("{} UserDAO created.", CONTEXT_LISTENER_MSG);
 
-        CreditCardDAO creditCardDAO = new CreditCardDAOImpl(connection);
-        LOGGER.info("{} CreditCardDAO created.", CONTEXT_LISTENER_MSG);
-
         ReceiptDAO receiptDAO = new ReceiptDAOImpl(connection);
         LOGGER.info("{} ReceiptDAO created.", CONTEXT_LISTENER_MSG);
 
@@ -69,13 +68,9 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         DishDAO dishDAO = new DishDAOImpl(connection);
         LOGGER.info("{} DishDAO created.", CONTEXT_LISTENER_MSG);
 
-        UserService userService = new UserServiceImpl(userDAO, creditCardDAO);
+        UserService userService = new UserServiceImpl(userDAO);
         context.setAttribute("userService", userService);
         LOGGER.info("{} UserService created.", CONTEXT_LISTENER_MSG);
-
-        CreditCardService creditCardService = new CreditCardServiceImpl(creditCardDAO);
-        context.setAttribute("creditCardService", creditCardService);
-        LOGGER.info("{} CreditCardService created.", CONTEXT_LISTENER_MSG);
 
         ReceiptService receiptService = new ReceiptServiceImpl(receiptDAO);
         context.setAttribute("receiptService", receiptService);
@@ -120,6 +115,18 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new LoginCommand(userService);
         commandContainer.addCommand("login", appCommand);
         LOGGER.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new AdminCommand(receiptService, dishService, userService);
+        commandContainer.addCommand("admin", appCommand);
+        LOGGER.info("{} AdminCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new DishFormCommand();
+        commandContainer.addCommand("dishForm", appCommand);
+        LOGGER.info("{} DishFormCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new CreateDishCommand(dishService);
+        commandContainer.addCommand("createDish", appCommand);
+        LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new MenuCommand(dishService);
         commandContainer.addCommand("menu", appCommand);

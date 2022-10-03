@@ -14,9 +14,9 @@ class ReceiptTest {
     void builderTest() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         LocalDateTime dateTime = LocalDateTime.parse("2022-09-09 16:25:53", formatter);
-        Map<String, Dish> dishMap = Map.of("1", Dish.newBuilder().setPrice(10).setCount(1).build()
-                , "2", Dish.newBuilder().setPrice(40).setCount(1).build()
-                , "3", Dish.newBuilder().setPrice(50).setCount(1).build());
+        Map<String, Dish> dishMap = Map.of("1", Dish.newBuilder().setPrice(10).build()
+                , "2", Dish.newBuilder().setPrice(40).build()
+                , "3", Dish.newBuilder().setPrice(50).build());
         User user = User.newBuilder().setFirstName("John").build();
         Receipt receipt = Receipt.newBuilder().
                 setId(1).
@@ -33,30 +33,21 @@ class ReceiptTest {
         assertEquals(Receipt.Status.NEW, receipt.getStatus());
         assertEquals(10, receipt.getDiscount());
         assertEquals(dishMap, receipt.getOrderedDishes());
-        assertEquals(90, receipt.getTotalPrice());
         assertEquals(address, receipt.getAddress());
-
-        receipt.setTotalPrice(150);
-        assertEquals(150, receipt.getTotalPrice());
     }
 
     @Test
     void getSetTest() {
-        Map<String, Dish> dishMap = Map.of("1", Dish.newBuilder().setPrice(10).setCount(1).build()
-                , "2", Dish.newBuilder().setPrice(40).setCount(1).build()
-                , "3", Dish.newBuilder().setPrice(50).setCount(1).build());
+        Map<String, Dish> dishMap = Map.of("1", Dish.newBuilder().setPrice(10).build()
+                , "2", Dish.newBuilder().setPrice(40).build()
+                , "3", Dish.newBuilder().setPrice(50).build());
         Receipt receipt = new Receipt();
         assertNull(receipt.getOrderedDishes());
         assertNull(receipt.getAddress());
 
-        receipt.setTotalPrice(20);
-        assertEquals(20, receipt.getTotalPrice());
-
-        receipt.setTotalPrice(0);
         receipt.setOrderedDishes(dishMap);
         receipt.setAddress(address);
         assertEquals(dishMap, receipt.getOrderedDishes());
-        assertEquals(100, receipt.getTotalPrice());
         assertEquals(address, receipt.getAddress());
     }
 
@@ -73,7 +64,6 @@ class ReceiptTest {
                         setOrderedDishes(null).
                         setAddress(null).
                         build());
-        assertThrows(IllegalArgumentException.class, () -> receipt.setTotalPrice(-29));
         assertThrows(IllegalArgumentException.class, () -> receipt.setOrderedDishes(null));
         assertThrows(IllegalArgumentException.class, () -> receipt.setAddress(null));
 

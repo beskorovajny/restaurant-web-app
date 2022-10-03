@@ -41,7 +41,7 @@ public class LoginCommand implements AppCommand {
                 , String.valueOf(user.getPassword()))) {
             session.setAttribute("user", user);
             if (user.getRoleId() == User.Role.MANAGER.getId()) {
-                page = "home.jsp";
+                page = "controller?command=admin";
             }
             if (user.getRoleId() == User.Role.CLIENT.getId()) {
                 page = "home.jsp";

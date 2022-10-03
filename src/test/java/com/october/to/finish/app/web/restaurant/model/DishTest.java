@@ -19,21 +19,18 @@ class DishTest {
                 .setTitle("Coffee")
                 .setDescription("description")
                 .setDateCreated(dateTime)
-                .setMinutesToCook(5)
+                .setCooking(5)
                 .setCategory(Dish.Category.DRINK)
-                .setWeightInGrams(350)
-                .setCount(40)
-                .setImage(new byte[]{1})
+                .setWeight(350)
                 .setPrice(70).build();
         assertNotNull(dish);
         assertEquals(1, dish.getId());
         assertEquals("Coffee", dish.getTitle());
         assertEquals("description", dish.getDescription());
         assertEquals("2022-09-09 16:25:53", dish.getDateCreated().format(formatter));
-        assertEquals(5, dish.getMinutesToCook());
+        assertEquals(5, dish.getCooking());
         assertEquals(Dish.Category.DRINK.getId(), dish.getCategory().getId());
-        assertEquals(350, dish.getWeightInGrams());
-        assertEquals(40, dish.getCount());
+        assertEquals(350, dish.getWeight());
         assertEquals(70, dish.getPrice());
         assertEquals(Arrays.toString(new byte[]{1}), Arrays.toString(dish.getImage()));
 
@@ -52,9 +49,8 @@ class DishTest {
                 setDescription(null).
                 setPrice(-1).
                 setCategory(null).
-                setWeightInGrams(0).
-                setCount(-1).
-                setMinutesToCook(-1).
+                setWeight(0).
+                setCooking(-1).
                 setDateCreated(null).
                 build());
         assertThrows(IllegalArgumentException.class, () -> dish.setId(-1));

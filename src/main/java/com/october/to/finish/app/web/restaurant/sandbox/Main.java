@@ -1,14 +1,11 @@
 package com.october.to.finish.app.web.restaurant.sandbox;
 
-import com.october.to.finish.app.web.restaurant.dao.CreditCardDAO;
 import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
-import com.october.to.finish.app.web.restaurant.dao.impl.CreditCardDAOImpl;
 import com.october.to.finish.app.web.restaurant.dao.impl.UserDAOImpl;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
-import com.october.to.finish.app.web.restaurant.model.CreditCard;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.security.PasswordEncryptionUtil;
 import com.october.to.finish.app.web.restaurant.service.UserService;
@@ -143,12 +140,7 @@ public class Main {
         }*/
         try {
             String password = "426HemiSixPack";
-            CreditCard creditCard3 = new CreditCard("Bank Of Canada",
-                    "2555555555555561", 5000.0, PasswordEncryptionUtil.getEncrypted("12343").toCharArray());
-            CreditCard creditCard = new CreditCard("Bank Of Granada",
-                    "4555555555555561", 5000.0, PasswordEncryptionUtil.getEncrypted("1234").toCharArray());
-            CreditCard creditCard2 = new CreditCard("Bank Of Granada",
-                    "5555-5555-5555-5555", 5000.0, PasswordEncryptionUtil.getEncrypted("1234").toCharArray());
+
             User user = User.newBuilder()
                     .setEmail("janov34222424e@example.com")
                     .setFirstName("2111")
@@ -160,16 +152,12 @@ public class Main {
 
             UserDAO userDAO = new UserDAOImpl(ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection());
 
-            CreditCardDAO creditCardDAO = new CreditCardDAOImpl(ConnectionPoolHolder.getDataSource(DBUtils.MYSQL_PROPS_PATH).getConnection());
-            UserService userService = new UserServiceImpl(userDAO, creditCardDAO);
 
-            user.setCreditCard(userService.findCreditCard(user));
             /*userService.updateCreditCard(user, creditCard);*/
             /*userService.deleteCreditCard(user);*/
             /*userService.delete(6);*/
-            userService.delete(3);
             System.out.println(user.getId());
-        } catch (ServiceException | DAOException | SQLException e) {
+        } catch (DAOException | SQLException e) {
             throw new FatalApplicationException(e.getMessage(), e);
         }
     }

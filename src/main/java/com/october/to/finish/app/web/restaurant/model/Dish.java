@@ -1,7 +1,6 @@
 package com.october.to.finish.app.web.restaurant.model;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -11,9 +10,8 @@ public class Dish {
     private String description;
     private Category category;
     private double price;
-    private int weightInGrams;
-    private int count;
-    private int minutesToCook;
+    private int weight;
+    private int cooking;
     private LocalDateTime dateCreated;
     private byte[] image;
 
@@ -48,16 +46,12 @@ public class Dish {
         return price;
     }
 
-    public int getWeightInGrams() {
-        return weightInGrams;
+    public int getWeight() {
+        return weight;
     }
 
-    public int getCount() {
-        return count;
-    }
-
-    public int getMinutesToCook() {
-        return minutesToCook;
+    public int getCooking() {
+        return cooking;
     }
 
     public LocalDateTime getDateCreated() {
@@ -80,12 +74,12 @@ public class Dish {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dish dish = (Dish) o;
-        return id == dish.id && Double.compare(dish.price, price) == 0 && weightInGrams == dish.weightInGrams && count == dish.count && minutesToCook == dish.minutesToCook && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated) && Arrays.equals(image, dish.image);
+        return id == dish.id && Double.compare(dish.price, price) == 0 && weight == dish.weight && cooking == dish.cooking && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated) && Arrays.equals(image, dish.image);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, title, description, category, price, weightInGrams, count, minutesToCook, dateCreated);
+        int result = Objects.hash(id, title, description, category, price, weight, cooking, dateCreated);
         result = 31 * result + Arrays.hashCode(image);
         return result;
     }
@@ -98,11 +92,9 @@ public class Dish {
                 ", description='" + description + '\'' +
                 ", category=" + category +
                 ", price=" + price +
-                ", weightInGrams=" + weightInGrams +
-                ", count=" + count +
-                ", minutesToCook=" + minutesToCook +
-                ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
-                ", image=" + Arrays.toString(image) +
+                ", weight=" + weight +
+                ", cooking=" + cooking +
+                ", dateCreated=" + dateCreated +
                 '}';
     }
 
@@ -173,27 +165,19 @@ public class Dish {
             return this;
         }
 
-        public Builder setWeightInGrams(int weightInGrams) {
+        public Builder setWeight(int weightInGrams) {
             if (weightInGrams < 1) {
                 throw new IllegalArgumentException("Weight can't be < 0");
             }
-            Dish.this.weightInGrams = weightInGrams;
+            Dish.this.weight = weightInGrams;
             return this;
         }
 
-        public Builder setCount(int count) {
-            if (count < 1) {
-                throw new IllegalArgumentException("Can't add less than one dish!");
-            }
-            Dish.this.count = count;
-            return this;
-        }
-
-        public Builder setMinutesToCook(int minutes) {
+        public Builder setCooking(int minutes) {
             if (minutes < 0) {
                 throw new IllegalArgumentException("Time can't be < 0");
             }
-            Dish.this.minutesToCook = minutes;
+            Dish.this.cooking = minutes;
             return this;
         }
 
@@ -202,14 +186,6 @@ public class Dish {
                 throw new IllegalArgumentException("Creation time can't be null");
             }
             Dish.this.dateCreated = dateCreated;
-            return this;
-        }
-
-        public Builder setImage(byte[] image) {
-            /*if (image == null) {
-                throw new IllegalArgumentException("Image can't be null");
-            }*/
-            Dish.this.image = image;
             return this;
         }
 

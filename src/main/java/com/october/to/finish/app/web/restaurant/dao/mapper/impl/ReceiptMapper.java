@@ -19,10 +19,9 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
         Map<String, Receipt> receiptMap = new HashMap<>();
         Receipt receipt = Receipt.newBuilder().
                 setId(resultSet.getLong("id")).
-                setTimeCreated(resultSet.getTimestamp("time_created").toLocalDateTime()).
+                setTimeCreated(resultSet.getTimestamp("created").toLocalDateTime()).
                 setDiscount(resultSet.getInt("discount")).
                 build();
-        receipt.setTotalPrice(resultSet.getBigDecimal("total_price").doubleValue());
         receiptMap.put(String.valueOf(receipt.getId()), receipt);
 
         receipt = this.makeUnique(receiptMap, receipt);
@@ -38,7 +37,6 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     public void setReceiptParams(Receipt receipt, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setTimestamp(1, Timestamp.valueOf(receipt.getDateCreated()));
         preparedStatement.setInt(2, receipt.getDiscount());
-        preparedStatement.setBigDecimal(3, BigDecimal.valueOf(receipt.getTotalPrice()));
         preparedStatement.setLong(4, receipt.getCustomer().getId());
         preparedStatement.setLong(5, receipt.getStatus().getId());
     }

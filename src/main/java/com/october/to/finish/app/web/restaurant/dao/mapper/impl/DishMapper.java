@@ -21,11 +21,10 @@ public class DishMapper implements ObjectMapper<Dish> {
                 setTitle(resultSet.getString("title")).
                 setDescription(resultSet.getString("description")).
                 setPrice(resultSet.getBigDecimal("price").doubleValue()).
-                setWeightInGrams(resultSet.getInt("weight")).
-                setCount(resultSet.getInt("count")).
-                setMinutesToCook(resultSet.getInt("minutes_to_cook")).
-                setDateCreated(resultSet.getTimestamp("date_created").toLocalDateTime()).
-                setImage(resultSet.getBytes("image")).
+                setWeight(resultSet.getInt("weight")).
+                setCooking(resultSet.getInt("cooking")).
+                setDateCreated(resultSet.getTimestamp("created").toLocalDateTime()).
+                setCategory(getById(resultSet.getLong("category_id"))).
                 build();
 
 
@@ -33,6 +32,13 @@ public class DishMapper implements ObjectMapper<Dish> {
 
         dish = this.makeUnique(dishMap, dish);
         return dish;
+    }
+
+    private Dish.Category getById(Long id) {
+        for(Dish.Category c : Dish.Category.values()) {
+            if(c.getId() == (id)) return c;
+        }
+        return null;
     }
 
     @Override
@@ -45,11 +51,9 @@ public class DishMapper implements ObjectMapper<Dish> {
         preparedStatement.setString(1, dish.getTitle());
         preparedStatement.setString(2, dish.getDescription());
         preparedStatement.setBigDecimal(3, BigDecimal.valueOf(dish.getPrice()));
-        preparedStatement.setInt(4, dish.getWeightInGrams());
-        preparedStatement.setInt(5, dish.getCount());
-        preparedStatement.setInt(6, dish.getMinutesToCook());
+        preparedStatement.setInt(4, dish.getWeight());
+        preparedStatement.setInt(6, dish.getCooking());
         preparedStatement.setTimestamp(7, Timestamp.valueOf(dish.getDateCreated()));
-        preparedStatement.setBytes(8, dish.getImage());
         preparedStatement.setLong(9, dish.getCategory().getId());
     }
 

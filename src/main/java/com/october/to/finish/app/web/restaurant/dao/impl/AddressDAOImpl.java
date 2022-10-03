@@ -19,16 +19,13 @@ public class AddressDAOImpl implements AddressDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(AddressDAOImpl.class);
     private static final String INSERT = "INSERT INTO address" +
-            " (country, city, street, building_number, receipt_id)" +
-            " VALUES (?, ?, ?, ?, ?)";
+            " (country, city, street, building)" +
+            " VALUES (?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM address WHERE id = ?";
     private static final String FIND_ALL = "SELECT * FROM address";
     private static final String UPDATE = "UPDATE address SET country = ?," +
-            " city = ?, street = ?, building_number = ? WHERE id = ?";
-    private static final String UPDATE_BY_USER_ID = "UPDATE address SET country = ?," +
-            " city = ?, street = ?, building_number = ? WHERE receipt_id = ?";
+            " city = ?, street = ?, building = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM address WHERE id = ?";
-    private static final String DELETE_BY_USER_ID = "DELETE FROM address WHERE receipt_id = ?";
 
     private final Connection connection;
 
@@ -118,27 +115,6 @@ public class AddressDAOImpl implements AddressDAO {
         }
     }
 
-    @Override
-    public boolean updateByReceiptId(long receiptId, Address address) throws DAOException {
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(UPDATE_BY_USER_ID)) {
-            addressMapper.setAddressParams(address, preparedStatement);
-            preparedStatement.setLong(6, receiptId);
-
-            int rowUpdated = preparedStatement.executeUpdate();
-            if (rowUpdated > 0 && rowUpdated < 6) {
-                LOGGER.info("Address for UserID : [{}] was updated.", receiptId);
-                return true;
-            } else {
-                LOGGER.info("Address for UserID : [{}] was not  found for update", receiptId);
-                return false;
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Address for UserID : [{}] was not updated. An exception occurs : {}",
-                    receiptId, e.getMessage());
-            throw new DAOException("[AddressDAO] exception while updating Address" + e.getMessage(), e);
-        }
-    }
 
     @Override
     public void delete(long addressId) throws DAOException {
@@ -158,20 +134,4 @@ public class AddressDAOImpl implements AddressDAO {
         }
     }
 
-    public void deleteByReceiptId(long receiptId) throws DAOException {
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(DELETE_BY_USER_ID)) {
-            preparedStatement.setLong(1, receiptId);
-            int rowDeleted = preparedStatement.executeUpdate();
-            if (rowDeleted > 0) {
-                LOGGER.info("Address for UserID : [{}] was removed.", receiptId);
-            } else {
-                LOGGER.info("Address for UserID : [{}] was not found to remove.", receiptId);
-            }
-        } catch (SQLException e) {
-            LOGGER.error("Address for UserID : [{}] was not removed. An exception occurs : {}",
-                    receiptId, e.getMessage());
-            throw new DAOException("[AddressDAO] exception while removing Address" + e.getMessage(), e);
-        }
-    }
 }

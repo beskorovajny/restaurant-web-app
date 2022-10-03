@@ -12,9 +12,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 public class RegistrationCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(RegistrationCommand.class);

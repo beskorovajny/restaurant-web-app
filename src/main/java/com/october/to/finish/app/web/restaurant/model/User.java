@@ -14,7 +14,6 @@ public class User implements Serializable {
     private String lastName;
     private String phoneNumber;
     private int roleId;
-    private CreditCard creditCard;
     private char[] password;
     private Set<Receipt> receipts;
 
@@ -60,17 +59,6 @@ public class User implements Serializable {
         this.roleId = roleId;
     }
 
-    public CreditCard getCreditCard() {
-        return creditCard;
-    }
-
-    public void setCreditCard(CreditCard creditCard) {
-        if (creditCard == null) {
-            throw new IllegalArgumentException();
-        }
-        this.creditCard = creditCard;
-    }
-
     public char[] getPassword() {
         return password;
     }
@@ -91,12 +79,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(receipts, user.receipts) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && roleId == user.roleId && Objects.equals(creditCard, user.creditCard) && Arrays.equals(password, user.password);
+        return id == user.id && roleId == user.roleId && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && Arrays.equals(password, user.password) && Objects.equals(receipts, user.receipts);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(receipts, id, email, firstName, lastName, phoneNumber, roleId, creditCard);
+        int result = Objects.hash(id, email, firstName, lastName, phoneNumber, roleId, receipts);
         result = 31 * result + Arrays.hashCode(password);
         return result;
     }
@@ -110,7 +98,6 @@ public class User implements Serializable {
                 ", lastName='" + lastName + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", roleId=" + roleId +
-                ", creditCard=" + creditCard +
                 ", password=" + String.valueOf(password) +
                 ", receipts=" + receipts +
                 '}';
@@ -188,15 +175,6 @@ public class User implements Serializable {
             User.this.roleId = roleId;
             return this;
         }
-
-        public Builder setCreditCard(CreditCard creditCard) {
-            if (creditCard == null) {
-                throw new IllegalArgumentException("Credit card can't be null!");
-            }
-            User.this.creditCard = creditCard;
-            return this;
-        }
-
         public Builder setPassword(char[] password) {
             if (password == null) {
                 throw new IllegalArgumentException("Password can't be null!");

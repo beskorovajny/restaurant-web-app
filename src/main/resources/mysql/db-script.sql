@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`address` (
                                                       `country` VARCHAR(45) NOT NULL,
                                                       `city` VARCHAR(45) NOT NULL,
                                                       `street` VARCHAR(45) NOT NULL,
-                                                      `building_number` VARCHAR(45) NOT NULL,
+                                                      `building` VARCHAR(45) NOT NULL,
                                                       PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
@@ -56,12 +56,11 @@ DROP TABLE IF EXISTS `restaurant`.`dish` ;
 CREATE TABLE IF NOT EXISTS `restaurant`.`dish` (
                                                    `id` INT NOT NULL AUTO_INCREMENT,
                                                    `title` VARCHAR(45) NOT NULL,
-                                                   `description` LONGTEXT NULL,
+                                                   `description` VARCHAR(255) NULL,
                                                    `price` DECIMAL(10,2) NOT NULL,
                                                    `weight` INT NOT NULL,
-                                                   `minutes_to_cook` INT NULL,
-                                                   `date_created` TIMESTAMP(2) NOT NULL,
-                                                   `image` BLOB NULL,
+                                                   `cooking` INT NULL,
+                                                   `created` TIMESTAMP(2) NOT NULL,
                                                    `category_id` INT NOT NULL,
                                                    PRIMARY KEY (`id`),
                                                    CONSTRAINT `fk_dish_category1`
@@ -73,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`dish` (
 
 CREATE FULLTEXT INDEX `idx_dish_title` ON `restaurant`.`dish` (`title`) INVISIBLE;
 
-CREATE INDEX `idx_dish_date_created` ON `restaurant`.`dish` (`date_created` ASC) VISIBLE;
+CREATE INDEX `idx_dish_created` ON `restaurant`.`dish` (`created` ASC) VISIBLE;
 
 CREATE UNIQUE INDEX `title_UNIQUE` ON `restaurant`.`dish` (`title` ASC) VISIBLE;
 
@@ -145,9 +144,8 @@ DROP TABLE IF EXISTS `restaurant`.`receipt` ;
 
 CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
                                                       `id` INT NOT NULL AUTO_INCREMENT,
-                                                      `time_created` DATETIME NOT NULL,
+                                                      `created` TIMESTAMP(2) NOT NULL,
                                                       `discount` INT NULL,
-                                                      `total_price` DECIMAL(10,2) NOT NULL,
                                                       `user_id` INT NOT NULL,
                                                       `receipt_status_id` INT NOT NULL,
                                                       `address_id` INT NOT NULL,
@@ -169,9 +167,7 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
                                                               ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
-CREATE INDEX `idx_time_created` ON `restaurant`.`receipt` (`time_created` ASC) INVISIBLE;
-
-CREATE INDEX `idx_price` ON `restaurant`.`receipt` (`total_price` ASC) VISIBLE;
+CREATE INDEX `idx_time_created` ON `restaurant`.`receipt` (`created` ASC) INVISIBLE;
 
 CREATE INDEX `fk_receipt_person1_idx` ON `restaurant`.`receipt` (`user_id` ASC) VISIBLE;
 
@@ -188,7 +184,7 @@ DROP TABLE IF EXISTS `restaurant`.`receipt_has_dish` ;
 CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_has_dish` (
                                                                `receipt_id` INT NOT NULL,
                                                                `dish_id` INT NOT NULL,
-                                                               `totla_price` DECIMAL(10,2) NULL,
+                                                               `total_price` DECIMAL(10,2) NULL,
                                                                `count` INT NULL,
                                                                PRIMARY KEY (`receipt_id`, `dish_id`),
                                                                CONSTRAINT `fk_receipt_has_dish_receipt1`
@@ -240,6 +236,8 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
+
+
 INSERT INTO role (id, name)
 VALUES (DEFAULT, 'Client'),
        (DEFAULT, 'Manager');
@@ -262,20 +260,40 @@ VALUES (DEFAULT, 1, 2),
        (DEFAULT, 3, 4);
 
 INSERT INTO user(id, email, first_name, last_name, phone_number, password, role_id)
-VALUES (DEFAULT, 'johndoe@example.com', 'John', 'Doe', '1111', '132331', 2),
-       (DEFAULT, 'johndoe1@example.com', 'John1', 'Doe1', '111', '132331', 1),
-       (DEFAULT, 'johndoe2@example.com', 'John2', 'Doe', '1113', '132331', 1),
-       (DEFAULT, 'johndoe3@example.com', 'John3', 'Doe', '1114', '132331', 2),
-       (DEFAULT, 'johndoe4@example.com', 'John4', 'Doe', '1115', '132331', 1);
+VALUES (DEFAULT, 'admin@admin.app', 'Admin', 'Admin', '1111', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 2),
+       (DEFAULT, 'user@user.app', 'John', 'Doe', '+380111111111', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 1);
 
-INSERT INTO address(id, country, city, street, building_number)
+INSERT INTO address(id, country, city, street, building)
 VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111'),
        (DEFAULT, 'USA', 'Washington', '1st', '84'),
        (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1'),
        (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45');
 
-INSERT INTO receipt (id, time_created, discount, total_price, user_id, receipt_status_id, address_id)
-VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 0, 1, 1, 1),
-       (DEFAULT, '2012-05-18 10:34:09', 0, 200, 2, 1, 2),
-       (DEFAULT, '2012-04-18 10:34:09', 5, 0, 1, 3, 2),
-       (DEFAULT, '2012-03-18 10:34:09', 5, 0, 3, 4, 3);
+INSERT INTO dish(id, title, description, price, weight, cooking, created, category_id)
+VALUES (DEFAULT, 'Pizza1', 'Mmmmmm very nice', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Pizza2', 'Mmmmmm very nice', 30.00, 1000, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Pizza3', 'Mmmmmm very nice', 25.00, 400, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Pizza4', 'Mmmmmm very nice', 22.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Pizza5', 'Mmmmmm very nice', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Salad1', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Salad2', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Salad3', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Salad4', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Salad5', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Appetizer1', 'Delicious', 15.00, 300, 10, '2012-06-18 10:34:09', 3),
+       (DEFAULT, 'Appetizer2', 'Delicious', 15.00, 300, 10, '2012-06-18 10:34:09', 3),
+       (DEFAULT, 'Appetizer3', 'Delicious', 25.00, 300, 10, '2012-06-18 10:34:09', 3),
+       (DEFAULT, 'Appetizer4', 'Delicious', 19.00, 300, 10, '2012-06-18 10:34:09', 3),
+       (DEFAULT, 'Appetizer5', 'Delicious', 5.00, 300, 10, '2012-06-18 10:34:09', 3),
+       (DEFAULT, 'Drink1', 'Strong', 90.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Drink2', 'Strong', 190.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Drink3', 'Strong', 290.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Drink4', 'Strong', 390.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Drink5', 'Strong', 490.00, 750, 0, '2012-06-18 10:34:09', 4);
+
+
+INSERT INTO receipt (id, created, discount, user_id, receipt_status_id, address_id)
+VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 2, 1, 1),
+       (DEFAULT, '2012-05-18 10:34:09', 0, 2, 1, 2),
+       (DEFAULT, '2012-04-18 10:34:09', 5, 2, 3, 2),
+       (DEFAULT, '2012-03-18 10:34:09', 5, 2, 4, 3);
