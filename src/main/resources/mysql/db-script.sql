@@ -1,32 +1,94 @@
 -- MySQL Workbench Forward Engineering
 
-SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
-SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
-SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE =
-        'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
 -- Schema restaurant
 -- -----------------------------------------------------
-DROP SCHEMA IF EXISTS `restaurant`;
+DROP SCHEMA IF EXISTS `restaurant` ;
 
 -- -----------------------------------------------------
 -- Schema restaurant
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8;
-USE `restaurant`;
+CREATE SCHEMA IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8 ;
+USE `restaurant` ;
+
+-- -----------------------------------------------------
+-- Table `restaurant`.`address`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant`.`address` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant`.`address` (
+                                                      `id` INT NOT NULL AUTO_INCREMENT,
+                                                      `country` VARCHAR(45) NOT NULL,
+                                                      `city` VARCHAR(45) NOT NULL,
+                                                      `street` VARCHAR(45) NOT NULL,
+                                                      `building_number` VARCHAR(45) NOT NULL,
+                                                      PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
+
+CREATE INDEX `idx_address_country` ON `restaurant`.`address` (`country` ASC) INVISIBLE;
+
+CREATE INDEX `idx_address_city_street` ON `restaurant`.`address` (`city` ASC, `street` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `restaurant`.`category`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant`.`category` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant`.`category` (
+                                                       `id` INT NOT NULL AUTO_INCREMENT,
+                                                       `name` VARCHAR(45) NOT NULL,
+                                                       PRIMARY KEY (`id`))
+    ENGINE = InnoDB;
+
+CREATE UNIQUE INDEX `name_UNIQUE` ON `restaurant`.`category` (`name` ASC) VISIBLE;
+
+
+-- -----------------------------------------------------
+-- Table `restaurant`.`dish`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `restaurant`.`dish` ;
+
+CREATE TABLE IF NOT EXISTS `restaurant`.`dish` (
+                                                   `id` INT NOT NULL AUTO_INCREMENT,
+                                                   `title` VARCHAR(45) NOT NULL,
+                                                   `description` LONGTEXT NULL,
+                                                   `price` DECIMAL(10,2) NOT NULL,
+                                                   `weight` INT NOT NULL,
+                                                   `minutes_to_cook` INT NULL,
+                                                   `date_created` TIMESTAMP(2) NOT NULL,
+                                                   `image` BLOB NULL,
+                                                   `category_id` INT NOT NULL,
+                                                   PRIMARY KEY (`id`),
+                                                   CONSTRAINT `fk_dish_category1`
+                                                       FOREIGN KEY (`category_id`)
+                                                           REFERENCES `restaurant`.`category` (`id`)
+                                                           ON DELETE CASCADE
+                                                           ON UPDATE CASCADE)
+    ENGINE = InnoDB;
+
+CREATE FULLTEXT INDEX `idx_dish_title` ON `restaurant`.`dish` (`title`) INVISIBLE;
+
+CREATE INDEX `idx_dish_date_created` ON `restaurant`.`dish` (`date_created` ASC) VISIBLE;
+
+CREATE UNIQUE INDEX `title_UNIQUE` ON `restaurant`.`dish` (`title` ASC) VISIBLE;
+
+CREATE INDEX `fk_dish_category1_idx` ON `restaurant`.`dish` (`category_id` ASC) VISIBLE;
+
 
 -- -----------------------------------------------------
 -- Table `restaurant`.`role`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`role`;
+DROP TABLE IF EXISTS `restaurant`.`role` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`role`
-(
-    `id`   INT         NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`)
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`role` (
+                                                   `id` INT NOT NULL AUTO_INCREMENT,
+                                                   `name` VARCHAR(45) NOT NULL,
+                                                   PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `name_UNIQUE` ON `restaurant`.`role` (`name` ASC) VISIBLE;
@@ -35,24 +97,22 @@ CREATE UNIQUE INDEX `name_UNIQUE` ON `restaurant`.`role` (`name` ASC) VISIBLE;
 -- -----------------------------------------------------
 -- Table `restaurant`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`user`;
+DROP TABLE IF EXISTS `restaurant`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`user`
-(
-    `id`           INT         NOT NULL AUTO_INCREMENT,
-    `email`        VARCHAR(45) NOT NULL,
-    `first_name`   VARCHAR(45) NOT NULL ,
-    `last_name`    VARCHAR(45)  NOT NULL,
-    `phone_number` VARCHAR(45) NULL,
-    `password`     VARCHAR(65) NOT NULL,
-    `role_id`      INT         NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_person_role1`
-        FOREIGN KEY (`role_id`)
-            REFERENCES `restaurant`.`role` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`user` (
+                                                   `id` INT NOT NULL AUTO_INCREMENT,
+                                                   `email` VARCHAR(45) NOT NULL,
+                                                   `first_name` VARCHAR(45) NOT NULL,
+                                                   `last_name` VARCHAR(45) NOT NULL,
+                                                   `phone_number` VARCHAR(45) NULL,
+                                                   `password` VARCHAR(65) NOT NULL,
+                                                   `role_id` INT NOT NULL,
+                                                   PRIMARY KEY (`id`),
+                                                   CONSTRAINT `fk_person_role1`
+                                                       FOREIGN KEY (`role_id`)
+                                                           REFERENCES `restaurant`.`role` (`id`)
+                                                           ON DELETE CASCADE
+                                                           ON UPDATE CASCADE)
     ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `email_UNIQUE` ON `restaurant`.`user` (`email` ASC) INVISIBLE;
@@ -65,44 +125,14 @@ CREATE INDEX `fk_person_role1_idx` ON `restaurant`.`user` (`role_id` ASC) VISIBL
 
 
 -- -----------------------------------------------------
--- Table `restaurant`.`credit_card`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`credit_card`;
-
-CREATE TABLE IF NOT EXISTS `restaurant`.`credit_card`
-(
-    `card_number` VARCHAR(20)    NOT NULL,
-    `bank_name`   VARCHAR(45)    NOT NULL,
-    `balance`     DECIMAL(10, 2) NOT NULL,
-    `password`    VARCHAR(65)    NOT NULL,
-    `user_id`     INT            NOT NULL,
-    PRIMARY KEY (`card_number`),
-    CONSTRAINT `fk_credit_card_person1`
-        FOREIGN KEY (`user_id`)
-            REFERENCES `restaurant`.`user` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
-    ENGINE = InnoDB;
-
-CREATE INDEX `fk_credit_card_person1_idx` ON `restaurant`.`credit_card` (`user_id` ASC) VISIBLE;
-
-CREATE INDEX `idx_card_number` ON `restaurant`.`credit_card` (`card_number` ASC) VISIBLE;
-
-CREATE UNIQUE INDEX `user_id_UNIQUE` ON `restaurant`.`credit_card` (`user_id` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
 -- Table `restaurant`.`receipt_status`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`receipt_status`;
+DROP TABLE IF EXISTS `restaurant`.`receipt_status` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_status`
-(
-    `id`     INT         NOT NULL AUTO_INCREMENT,
-    `status` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`)
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_status` (
+                                                             `id` INT NOT NULL AUTO_INCREMENT,
+                                                             `status` VARCHAR(45) NOT NULL,
+                                                             PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
 CREATE UNIQUE INDEX `status_UNIQUE` ON `restaurant`.`receipt_status` (`status` ASC) VISIBLE;
@@ -111,28 +141,32 @@ CREATE UNIQUE INDEX `status_UNIQUE` ON `restaurant`.`receipt_status` (`status` A
 -- -----------------------------------------------------
 -- Table `restaurant`.`receipt`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`receipt`;
+DROP TABLE IF EXISTS `restaurant`.`receipt` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`receipt`
-(
-    `id`                INT            NOT NULL AUTO_INCREMENT,
-    `time_created`      DATETIME       NOT NULL,
-    `discount`          INT            NULL,
-    `total_price`       DECIMAL(10, 2) NOT NULL,
-    `user_id`           INT            NOT NULL,
-    `receipt_status_id` INT            NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_receipt_person1`
-        FOREIGN KEY (`user_id`)
-            REFERENCES `restaurant`.`user` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-    CONSTRAINT `fk_receipt_receipt_status1`
-        FOREIGN KEY (`receipt_status_id`)
-            REFERENCES `restaurant`.`receipt_status` (`id`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
+                                                      `id` INT NOT NULL AUTO_INCREMENT,
+                                                      `time_created` DATETIME NOT NULL,
+                                                      `discount` INT NULL,
+                                                      `total_price` DECIMAL(10,2) NOT NULL,
+                                                      `user_id` INT NOT NULL,
+                                                      `receipt_status_id` INT NOT NULL,
+                                                      `address_id` INT NOT NULL,
+                                                      PRIMARY KEY (`id`, `address_id`),
+                                                      CONSTRAINT `fk_receipt_person1`
+                                                          FOREIGN KEY (`user_id`)
+                                                              REFERENCES `restaurant`.`user` (`id`)
+                                                              ON DELETE CASCADE
+                                                              ON UPDATE CASCADE,
+                                                      CONSTRAINT `fk_receipt_receipt_status1`
+                                                          FOREIGN KEY (`receipt_status_id`)
+                                                              REFERENCES `restaurant`.`receipt_status` (`id`)
+                                                              ON DELETE NO ACTION
+                                                              ON UPDATE NO ACTION,
+                                                      CONSTRAINT `fk_receipt_address1`
+                                                          FOREIGN KEY (`address_id`)
+                                                              REFERENCES `restaurant`.`address` (`id`)
+                                                              ON DELETE NO ACTION
+                                                              ON UPDATE NO ACTION)
     ENGINE = InnoDB;
 
 CREATE INDEX `idx_time_created` ON `restaurant`.`receipt` (`time_created` ASC) INVISIBLE;
@@ -143,111 +177,30 @@ CREATE INDEX `fk_receipt_person1_idx` ON `restaurant`.`receipt` (`user_id` ASC) 
 
 CREATE INDEX `fk_receipt_receipt_status1_idx` ON `restaurant`.`receipt` (`receipt_status_id` ASC) VISIBLE;
 
-
--- -----------------------------------------------------
--- Table `restaurant`.`address`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`address`;
-
-CREATE TABLE IF NOT EXISTS `restaurant`.`address`
-(
-    `id`              INT         NOT NULL AUTO_INCREMENT,
-    `country`         VARCHAR(45) NOT NULL,
-    `city`            VARCHAR(45) NOT NULL,
-    `street`          VARCHAR(45) NOT NULL,
-    `building_number` VARCHAR(45) NOT NULL,
-    `receipt_id`      INT         NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_address_receipt1`
-        FOREIGN KEY (`receipt_id`)
-            REFERENCES `restaurant`.`receipt` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
-    ENGINE = InnoDB;
-
-CREATE INDEX `idx_address_country` ON `restaurant`.`address` (`country` ASC) INVISIBLE;
-
-CREATE INDEX `idx_address_city_street` ON `restaurant`.`address` (`city` ASC, `street` ASC) VISIBLE;
-
-CREATE INDEX `fk_address_receipt1_idx` ON `restaurant`.`address` (`receipt_id` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
--- Table `restaurant`.`category`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`category`;
-
-CREATE TABLE IF NOT EXISTS `restaurant`.`category`
-(
-    `id`   INT         NOT NULL AUTO_INCREMENT,
-    `name` VARCHAR(45) NOT NULL,
-    PRIMARY KEY (`id`)
-)
-    ENGINE = InnoDB;
-
-CREATE UNIQUE INDEX `name_UNIQUE` ON `restaurant`.`category` (`name` ASC) VISIBLE;
-
-
--- -----------------------------------------------------
--- Table `restaurant`.`dish`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`dish`;
-
-CREATE TABLE IF NOT EXISTS `restaurant`.`dish`
-(
-    `id`              INT            NOT NULL AUTO_INCREMENT,
-    `title`           VARCHAR(45)    NOT NULL,
-    `description`     LONGTEXT       NULL,
-    `price`           DECIMAL(10, 2) NOT NULL,
-    `weight`          INT            NOT NULL,
-    `count`           INT            NOT NULL,
-    `minutes_to_cook` INT            NULL,
-    `date_created`    TIMESTAMP(2)   NOT NULL,
-    `image`           BLOB           NULL,
-    `category_id`     INT            NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_dish_category1`
-        FOREIGN KEY (`category_id`)
-            REFERENCES `restaurant`.`category` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
-    ENGINE = InnoDB;
-
-CREATE FULLTEXT INDEX `idx_dish_title` ON `restaurant`.`dish` (`title`) INVISIBLE;
-
-CREATE INDEX `idx_dish_category_count` ON `restaurant`.`dish` (`count` ASC) INVISIBLE;
-
-CREATE INDEX `idx_dish_date_created` ON `restaurant`.`dish` (`date_created` ASC) VISIBLE;
-
-CREATE UNIQUE INDEX `title_UNIQUE` ON `restaurant`.`dish` (`title` ASC) VISIBLE;
-
-CREATE INDEX `fk_dish_category1_idx` ON `restaurant`.`dish` (`category_id` ASC) VISIBLE;
+CREATE INDEX `fk_receipt_address1_idx` ON `restaurant`.`receipt` (`address_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
 -- Table `restaurant`.`receipt_has_dish`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`receipt_has_dish`;
+DROP TABLE IF EXISTS `restaurant`.`receipt_has_dish` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_has_dish`
-(
-    `receipt_id`  INT            NOT NULL,
-    `dish_id`     INT            NOT NULL,
-    `totla_price` DECIMAL(10, 2) NULL,
-    PRIMARY KEY (`receipt_id`, `dish_id`),
-    CONSTRAINT `fk_receipt_has_dish_receipt1`
-        FOREIGN KEY (`receipt_id`)
-            REFERENCES `restaurant`.`receipt` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-    CONSTRAINT `fk_receipt_has_dish_dish1`
-        FOREIGN KEY (`dish_id`)
-            REFERENCES `restaurant`.`dish` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_has_dish` (
+                                                               `receipt_id` INT NOT NULL,
+                                                               `dish_id` INT NOT NULL,
+                                                               `totla_price` DECIMAL(10,2) NULL,
+                                                               `count` INT NULL,
+                                                               PRIMARY KEY (`receipt_id`, `dish_id`),
+                                                               CONSTRAINT `fk_receipt_has_dish_receipt1`
+                                                                   FOREIGN KEY (`receipt_id`)
+                                                                       REFERENCES `restaurant`.`receipt` (`id`)
+                                                                       ON DELETE CASCADE
+                                                                       ON UPDATE CASCADE,
+                                                               CONSTRAINT `fk_receipt_has_dish_dish1`
+                                                                   FOREIGN KEY (`dish_id`)
+                                                                       REFERENCES `restaurant`.`dish` (`id`)
+                                                                       ON DELETE CASCADE
+                                                                       ON UPDATE CASCADE)
     ENGINE = InnoDB;
 
 CREATE INDEX `fk_receipt_has_dish_dish1_idx` ON `restaurant`.`receipt_has_dish` (`dish_id` ASC) VISIBLE;
@@ -258,25 +211,23 @@ CREATE INDEX `fk_receipt_has_dish_receipt1_idx` ON `restaurant`.`receipt_has_dis
 -- -----------------------------------------------------
 -- Table `restaurant`.`status_flow`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`status_flow`;
+DROP TABLE IF EXISTS `restaurant`.`status_flow` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`status_flow`
-(
-    `id`   INT NOT NULL AUTO_INCREMENT,
-    `from` INT NOT NULL,
-    `to`   INT NOT NULL,
-    PRIMARY KEY (`id`),
-    CONSTRAINT `fk_status_flow_from`
-        FOREIGN KEY (`from`)
-            REFERENCES `restaurant`.`receipt_status` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE,
-    CONSTRAINT `fk_status_flow_to`
-        FOREIGN KEY (`to`)
-            REFERENCES `restaurant`.`receipt_status` (`id`)
-            ON DELETE CASCADE
-            ON UPDATE CASCADE
-)
+CREATE TABLE IF NOT EXISTS `restaurant`.`status_flow` (
+                                                          `id` INT NOT NULL AUTO_INCREMENT,
+                                                          `from` INT NOT NULL,
+                                                          `to` INT NOT NULL,
+                                                          PRIMARY KEY (`id`),
+                                                          CONSTRAINT `fk_status_flow_from`
+                                                              FOREIGN KEY (`from`)
+                                                                  REFERENCES `restaurant`.`receipt_status` (`id`)
+                                                                  ON DELETE CASCADE
+                                                                  ON UPDATE CASCADE,
+                                                          CONSTRAINT `fk_status_flow_to`
+                                                              FOREIGN KEY (`to`)
+                                                                  REFERENCES `restaurant`.`receipt_status` (`id`)
+                                                                  ON DELETE CASCADE
+                                                                  ON UPDATE CASCADE)
     ENGINE = InnoDB;
 
 CREATE INDEX `fk_status_flow_receipt_status1_idx` ON `restaurant`.`status_flow` (`from` ASC) VISIBLE;
@@ -284,9 +235,9 @@ CREATE INDEX `fk_status_flow_receipt_status1_idx` ON `restaurant`.`status_flow` 
 CREATE INDEX `fk_status_flow_receipt_status2_idx` ON `restaurant`.`status_flow` (`to` ASC) VISIBLE;
 
 
-SET SQL_MODE = @OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS = @OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS = @OLD_UNIQUE_CHECKS;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 INSERT INTO role (id, name)
@@ -317,25 +268,14 @@ VALUES (DEFAULT, 'johndoe@example.com', 'John', 'Doe', '1111', '132331', 2),
        (DEFAULT, 'johndoe3@example.com', 'John3', 'Doe', '1114', '132331', 2),
        (DEFAULT, 'johndoe4@example.com', 'John4', 'Doe', '1115', '132331', 1);
 
-INSERT INTO receipt (id, time_created, discount, total_price, user_id, receipt_status_id)
-VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 0, 1, 1),
-       (DEFAULT, '2012-05-18 10:34:09', 0, 200, 2, 1),
-       (DEFAULT, '2012-04-18 10:34:09', 5, 0, 1, 3),
-       (DEFAULT, '2012-03-18 10:34:09', 5, 0, 3, 4);
+INSERT INTO address(id, country, city, street, building_number)
+VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111'),
+       (DEFAULT, 'USA', 'Washington', '1st', '84'),
+       (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1'),
+       (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45');
 
-INSERT INTO address(id, country, city, street, building_number, receipt_id)
-VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111', 1),
-       (DEFAULT, 'USA', 'Washington', '1st', '84', 2),
-       (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1', 3),
-       (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45', 4);
-INSERT INTO credit_card(card_number, bank_name, balance, password, user_id)
-VALUES ('5555-5555-5555-5555', 'Bank of America', 99999,
-        '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8', 1),
-       ('5555-5555-5555-5556', 'Bank of America', 5000,
-        'daaad6e5604e8e17bd9f108d91e26afe6281dac8fda0091040a7a6d7bd9b43b5', 2),
-       ('5555-5555-5555-5557', '1st credit bank', 456000,
-        '0be64ae89ddd24e225434de95d501711339baeee18f009ba9b4369af27d30d60', 3),
-       ('5555-5555-5555-5558', 'Washington Capital', 1900,
-        '15e2b0d3c33891ebb0f1ef609ec419420c20e320ce94c65fbc8c3312448eb225', 4),
-       ('5555-5555-5555-5559', 'Big Apple Investment', 200,
-        'ee79976c9380d5e337fc1c095ece8c8f22f91f306ceeb161fa51fecede2c4ba1', 5);
+INSERT INTO receipt (id, time_created, discount, total_price, user_id, receipt_status_id, address_id)
+VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 0, 1, 1, 1),
+       (DEFAULT, '2012-05-18 10:34:09', 0, 200, 2, 1, 2),
+       (DEFAULT, '2012-04-18 10:34:09', 5, 0, 1, 3, 2),
+       (DEFAULT, '2012-03-18 10:34:09', 5, 0, 3, 4, 3);

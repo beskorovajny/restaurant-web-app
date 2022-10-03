@@ -106,3 +106,5 @@ O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
 „
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/controller/AppController.java,5\b\5b41cfc81844490d76ceb47cec42d45764f2b29e
+P
+ src/main/webapp/registration.jsp,d\d\dd51f7041d5a8d7bb17c79a85099a350e198ae09
