@@ -50,7 +50,7 @@
 
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
-    <table class="table justify-content-center">
+    <table class="table">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -85,32 +85,31 @@
             </tr>
         </c:forEach>
         </tbody>
-        </table>
-        <nav>
-            <ul class="pagination justify-content-center">
-                <c:if test="${param.page-1 >= 1}">
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
-                    </li>
-                </c:if>
+    </table>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <c:if test="${param.page-1 >= 1}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                </li>
+            </c:if>
 
-                <c:forEach var="page" items="${pages}">
+            <c:forEach var="page" items="${pages}">
 
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${page}">${page}</a>
-                    </li>
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${page}">${page}</a>
+                </li>
 
-                </c:forEach>
-                <c:set var="size" scope="page" value="${requestScope.pages}"/>
+            </c:forEach>
+            <c:set var="size" scope="page" value="${requestScope.pages}"/>
 
-                <c:if test="${param.page+1 <= size.size()}">
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${param.page+1}">Next</a>
-                    </li>
-                </c:if>
-            </ul>
-        </nav>
-    </div>
+            <c:if test="${param.page+1 <= size.size()}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                </li>
+            </c:if>
+        </ul>
+    </nav>
 </div>
 <script src="js/bootstrap.min.js"></script>
 </body>

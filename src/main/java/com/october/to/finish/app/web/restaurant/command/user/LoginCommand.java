@@ -40,10 +40,10 @@ public class LoginCommand implements AppCommand {
         if (user != null && PasswordEncryptionUtil.validate(PasswordEncryptionUtil.getEncrypted(password)
                 , String.valueOf(user.getPassword()))) {
             session.setAttribute("user", user);
-            if (user.getRoleId() == User.Role.MANAGER.getId()) {
+            if (user.getRole().getId() == User.Role.MANAGER.getId()) {
                 page = "controller?command=admin";
             }
-            if (user.getRoleId() == User.Role.CLIENT.getId()) {
+            if (user.getRole().getId() == User.Role.CLIENT.getId()) {
                 page = "controller?command=menu";
             }
         } else {

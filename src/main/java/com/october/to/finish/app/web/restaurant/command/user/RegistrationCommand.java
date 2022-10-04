@@ -31,7 +31,7 @@ public class RegistrationCommand implements AppCommand {
                     .setLastName(request.getParameter("lastName"))
                     .setPhoneNumber(request.getParameter("phoneNumber"))
                     .setPassword(PasswordEncryptionUtil.getEncrypted(request.getParameter("password")).toCharArray())
-                    .setRoleId(User.Role.CLIENT.getId())
+                    .setRole(User.Role.CLIENT)
                     .build();
             LOGGER.info("[RegistrationCommand] User from view : {} + fN: {}", user, request.getParameter("firstName"));
             userService.save(user);

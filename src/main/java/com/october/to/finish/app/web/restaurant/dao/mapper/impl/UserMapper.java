@@ -1,6 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.sql.PreparedStatement;
@@ -21,7 +22,7 @@ public class UserMapper implements ObjectMapper<User> {
                 .setFirstName(resultSet.getString("first_name"))
                 .setLastName(resultSet.getString("last_name"))
                 .setPhoneNumber(resultSet.getString("phone_number"))
-                .setRoleId(resultSet.getInt("role_id"))
+                .setRole(getById(resultSet.getLong("role_id")))
                 .setPassword(resultSet.getString("password").toCharArray())
                 .build();
 
@@ -37,13 +38,20 @@ public class UserMapper implements ObjectMapper<User> {
         return cache.get(String.valueOf(user.getId()));
     }
 
+    private User.Role getById(Long id) {
+        for(User.Role r : User.Role.values()) {
+            if(r.getId() == (id)) return r;
+        }
+        return null;
+    }
+
     public void setPersonParams(User user, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, user.getEmail());
         preparedStatement.setString(2, user.getFirstName());
         preparedStatement.setString(3, user.getLastName());
         preparedStatement.setString(4, user.getPhoneNumber());
         preparedStatement.setString(5, String.valueOf(user.getPassword()));
-        preparedStatement.setInt(6, user.getRoleId());
+        preparedStatement.setInt(6, user.getRole().getId());
     }
 
     public List<User> extractUsers(List<User> users, PreparedStatement preparedStatement) throws SQLException {

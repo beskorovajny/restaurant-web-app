@@ -13,14 +13,14 @@ class UserTest {
     @Test
     void builderTest() {
         User user = User.newBuilder().setId(1).setEmail(email).setFirstName("Janke").setLastName("Donuts").
-                setPhoneNumber(phone).setRoleId(User.Role.CLIENT.getId()).
+                setPhoneNumber(phone).setRole(User.Role.CLIENT).
                 setPassword(password.toCharArray()).build();
         assertEquals(1, user.getId());
         assertEquals(email, user.getEmail());
         assertEquals("Janke", user.getFirstName());
         assertEquals("Donuts", user.getLastName());
         assertEquals(phone, user.getPhoneNumber());
-        assertEquals(User.Role.CLIENT.getId(), user.getRoleId());
+        assertEquals(User.Role.CLIENT.getId(), user.getRole().getId());
         assertEquals(password, String.valueOf(user.getPassword()));
     }
 
@@ -28,7 +28,7 @@ class UserTest {
     void getSetTest() {
         User user = new User();
         assertEquals(0, user.getId());
-        assertEquals(0, user.getRoleId());
+        assertNull(user.getRole());
         assertNull(user.getFirstName());
         assertNull(user.getLastName());
         assertNull(user.getEmail());
@@ -36,18 +36,19 @@ class UserTest {
         assertNull(user.getPassword());
 
         user.setId(1);
-        user.setRoleId(User.Role.MANAGER.getId());
+        user.setRole(User.Role.MANAGER);
 
         assertEquals(1, user.getId());
-        assertEquals(User.Role.MANAGER.getId(), user.getRoleId());
+        assertEquals(User.Role.MANAGER.getId(), user.getRole().getId());
     }
 
     @Test
     void wrongInputTest() {
         User user = User.newBuilder().build();
-        assertThrows(IllegalArgumentException.class, () -> User.newBuilder().setId(0).setEmail(null).setFirstName(null).setLastName(null).setPhoneNumber(null).setRoleId(0).setPassword(null).build());
+        assertThrows(IllegalArgumentException.class, () -> User.newBuilder().setId(0).setEmail(null).setFirstName(null).setLastName(null)
+                .setPhoneNumber(null).setRole(null).setPassword(null).build());
         assertThrows(IllegalArgumentException.class, () -> user.setOrders(null));
         assertThrows(IllegalArgumentException.class, () -> user.setId(0));
-        assertThrows(IllegalArgumentException.class, () -> user.setRoleId(0));
+        assertThrows(IllegalArgumentException.class, () -> user.setRole(null));
     }
 }

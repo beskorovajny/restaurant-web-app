@@ -58,17 +58,6 @@ public class Dish {
         return dateCreated;
     }
 
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        if (image == null) {
-            throw new IllegalArgumentException();
-        }
-        this.image = image;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

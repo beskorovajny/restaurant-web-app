@@ -1,6 +1,7 @@
 package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
+import com.october.to.finish.app.web.restaurant.command.dish.AllDishesCommand;
 import com.october.to.finish.app.web.restaurant.command.dish.CreateDishCommand;
 import com.october.to.finish.app.web.restaurant.command.dish.DishFormCommand;
 import com.october.to.finish.app.web.restaurant.command.dish.MenuCommand;
@@ -124,6 +125,11 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("dishForm", appCommand);
         LOGGER.info("{} DishFormCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new AllDishesCommand(dishService);
+        commandContainer.addCommand("dishes", appCommand);
+        LOGGER.info("{} AllDishesCommand created.", CONTEXT_LISTENER_MSG);
+
+
         appCommand = new CreateDishCommand(dishService);
         commandContainer.addCommand("createDish", appCommand);
         LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
@@ -131,6 +137,11 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new MenuCommand(dishService);
         commandContainer.addCommand("menu", appCommand);
         LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new AllUsersCommand(userService);
+        commandContainer.addCommand("users", appCommand);
+        LOGGER.info("{} AllUsersCommand created.", CONTEXT_LISTENER_MSG);
+
 
         appCommand = new LogoutCommand();
         commandContainer.addCommand("logout", appCommand);
