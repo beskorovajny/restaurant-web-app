@@ -124,10 +124,10 @@ public class DishDAOImpl implements DishDAO {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             dishMapper.setDishParams(dish, preparedStatement);
-            preparedStatement.setLong(10, dishId);
+            preparedStatement.setLong(8, dishId);
 
             int rowUpdated = preparedStatement.executeUpdate();
-            if (rowUpdated > 0 && rowUpdated < 10) {
+            if (rowUpdated > 0 && rowUpdated < 8) {
                 LOGGER.info("{} Dish with ID : [{}] was updated.", DISH_DAO_MSG, dishId);
                 return true;
             } else {

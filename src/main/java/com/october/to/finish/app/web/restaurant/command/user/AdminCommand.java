@@ -5,6 +5,7 @@ import com.october.to.finish.app.web.restaurant.exceptions.CommandException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
+import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.service.DishService;
 import com.october.to.finish.app.web.restaurant.service.ReceiptService;
 import com.october.to.finish.app.web.restaurant.service.UserService;
@@ -36,14 +37,14 @@ public class AdminCommand implements AppCommand {
         } else {
             page = Integer.parseInt(request.getParameter("page"));
         }
-        List<Dish> dishes = null;
+        List<Receipt> receipts = null;
         try {
-            dishes = dishService.findAll(page);
+             receipts = receiptService.findAll(page);
         } catch (ServiceException e) {
             throw new CommandException(e.getMessage(), e);
         }
-        request.setAttribute("dishes", dishes);
-        int countPages = dishService.getRecordsCount() / 10 + 1;
+        request.setAttribute("receipts", receipts);
+        int countPages = receiptService.getRecordsCount() / 10 + 1;
         List<Integer> pages = new ArrayList<>();
         for (int i = 1; i <= countPages; i++) {
             pages.add(i);

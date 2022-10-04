@@ -37,8 +37,8 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     public void setReceiptParams(Receipt receipt, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setTimestamp(1, Timestamp.valueOf(receipt.getDateCreated()));
         preparedStatement.setInt(2, receipt.getDiscount());
-        preparedStatement.setLong(4, receipt.getCustomer().getId());
-        preparedStatement.setLong(5, receipt.getStatus().getId());
+        preparedStatement.setLong(3, receipt.getCustomer().getId());
+        preparedStatement.setLong(4, receipt.getStatus().getId());
     }
 
     public List<Receipt> extractReceipts(List<Receipt> receipts, PreparedStatement preparedStatement) throws SQLException {

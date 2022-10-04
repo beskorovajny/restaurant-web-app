@@ -15,7 +15,7 @@
 <nav class="navbar navbar-light navbar-expand-md py-3" aria-label="header">
     <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
         <span><fmt:message key="text.brand"/></span></a>
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navcol-2"><span
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="nav-col-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
@@ -65,42 +65,33 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-receipt" role="tabpanel" aria-labelledby="nav-receipt-tab">
-            Receipts table
-        </div>
-        <div class="tab-pane fade" id="nav-dish" role="tabpanel" aria-labelledby="nav-dish-tab">
             <table class="table">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Weight</th>
-                    <th scope="col">Cooking</th>
-                    <th scope="col">Created</th>
-                    <th scope="col">Category</th>
+                    <th scope="col">Date created</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Address</th>
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="dish" items="${dishes}">
-                <tr>
-                    <td><c:out value="${dish.id}"/>
-                    </td>
-                    <td><c:out value="${dish.title}"/>
-                    </td>
-                    <td><c:out value="${dish.description}"/>
-                    </td>
-                    <td><c:out value="${dish.price}"/>
-                    </td>
-                    <td><c:out value="${dish.weight}"/>
-                    </td>
-                    <td><c:out value="${dish.cooking}"/>
-                    </td>
-                    <td><c:out value="${dish.dateCreated}"/>
-                    </td>
-                    <td><c:out value="${dish.category}"/>
-                    </td>
-                </tr>
+                <c:forEach var="receipt" items="${receipts}">
+                    <tr>
+                        <td><c:out value="${receipt.id}"/>
+                        </td>
+                        <td><c:out value="${receipt.dateCreated}"/>
+                        </td>
+                        <td><c:out value="${receipt.discount}"/>
+                        </td>
+                        <td><c:out value="${receipt.customer}"/>
+                        </td>
+                        <td><c:out value="${receipt.status}"/>
+                        </td>
+                        <td><c:out value="${receipt.address}"/>
+                        </td>
+                    </tr>
                 </c:forEach>c
                 </tbody>
             </table>
@@ -129,7 +120,124 @@
                 </ul>
             </nav>
         </div>
-        <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">Users table</div>
+        <div class="tab-pane fade" id="nav-dish" role="tabpanel" aria-labelledby="nav-dish-tab">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Weight</th>
+                    <th scope="col">Cooking</th>
+                    <th scope="col">Created</th>
+                    <th scope="col">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="dish" items="${dishes}">
+                    <tr>
+                        <td><c:out value="${dish.id}"/>
+                        </td>
+                        <td><c:out value="${dish.title}"/>
+                        </td>
+                        <td><c:out value="${dish.description}"/>
+                        </td>
+                        <td><c:out value="${dish.price}"/>
+                        </td>
+                        <td><c:out value="${dish.weight}"/>
+                        </td>
+                        <td><c:out value="${dish.cooking}"/>
+                        </td>
+                        <td><c:out value="${dish.dateCreated}"/>
+                        </td>
+                        <td><c:out value="${dish.category}"/>
+                        </td>
+                    </tr>
+                </c:forEach>c
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <c:if test="${param.page-1 >= 1}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach var="page" items="${pages}">
+
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${page}">${page}</a>
+                        </li>
+
+                    </c:forEach>
+                    <c:set var="size" scope="page" value="${requestScope.pages}"/>
+
+                    <c:if test="${param.page+1 <= size.size()}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </div>
+        <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Role</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="user" items="${users}">
+                    <tr>
+                        <td><c:out value="${user.id}"/>
+                        </td>
+                        <td><c:out value="${user.eMail}"/>
+                        </td>
+                        <td><c:out value="${user.firstName}"/>
+                        </td>
+                        <td><c:out value="${user.lastName}"/>
+                        </td>
+                        <td><c:out value="${user.phoneNumber}"/>
+                        </td>
+                        <td><c:out value="${user.role}"/>
+                        </td>
+                    </tr>
+                </c:forEach>c
+                </tbody>
+            </table>
+            <nav>
+                <ul class="pagination justify-content-center">
+                    <c:if test="${param.page-1 >= 1}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                        </li>
+                    </c:if>
+
+                    <c:forEach var="page" items="${pages}">
+
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${page}">${page}</a>
+                        </li>
+
+                    </c:forEach>
+                    <c:set var="size" scope="page" value="${requestScope.pages}"/>
+
+                    <c:if test="${param.page+1 <= size.size()}">
+                        <li class="page-item"><a class="page-link"
+                                                 href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                        </li>
+                    </c:if>
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 <script src="js/bootstrap.min.js"></script>

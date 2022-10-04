@@ -22,10 +22,12 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
 
     private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ?";
-    private static final String FIND_ALL = "SELECT * FROM receipt";
+    private static final String FIND_ALL = "SELECT * FROM receipt LIMIT 10 OFFSET ?";
     private static final String UPDATE = "UPDATE receipt SET created = ?," +
             " discount = ?, user_id = ?, receipt_status_id = ?, address_id = ? WHERE id  = ?";
     private static final String DELETE = "DELETE FROM receipt WHERE id = ?";
+
+    private static final String COUNT_RECEIPT_RECORDS = "SELECT COUNT(*) FROM receipt";
     private final Connection connection;
 
     private final ReceiptMapper receiptMapper = new ReceiptMapper();
@@ -41,7 +43,6 @@ public class ReceiptDAOImpl implements ReceiptDAO {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             receiptMapper.setReceiptParams(receipt, preparedStatement);
-            preparedStatement.setLong(6, userId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             long key = 0;
@@ -96,10 +97,11 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     }
 
     @Override
-    public List<Receipt> findAll() throws DAOException {
+    public List<Receipt> findAll(int offset) throws DAOException {
         List<Receipt> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL)) {
+            preparedStatement.setInt(1, offset);
             receiptMapper.extractReceipts(result, preparedStatement);
 
             if (!result.isEmpty()) {
@@ -150,5 +152,18 @@ public class ReceiptDAOImpl implements ReceiptDAO {
                     receiptId, e.getMessage());
             throw new DAOException("[ReceiptDAO] exception while removing Receipt" + e.getMessage(), e);
         }
+    }
+
+    public int countRecords() {
+        int recordsCount = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECEIPT_RECORDS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            resultSet.next();
+            recordsCount = resultSet.getInt(1);
+            return recordsCount;
+        } catch (SQLException e) {
+            LOGGER.error("{} Failed to count receipts! An exception occurs :[{}]", "[ReceiptDAO]", e.getMessage());
+        }
+        return recordsCount;
     }
 }

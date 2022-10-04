@@ -15,11 +15,13 @@ public interface UserDAO {
 
     User findByEmail(String eMail) throws DAOException;
 
-    List<User> findAll() throws DAOException;
+    List<User> findAll(int offset) throws DAOException;
 
     boolean update(long userId, User user) throws DAOException;
 
     void delete(long userId) throws DAOException;
 
     User.Role getRoleByName(String name) throws DAOException;
+
+    int countRecords();
 }

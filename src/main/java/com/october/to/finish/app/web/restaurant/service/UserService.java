@@ -13,9 +13,11 @@ public interface UserService {
 
     User findByEmail(String eMail) throws ServiceException;
 
-    List<User> findAll() throws ServiceException;
+    List<User> findAll(int offset) throws ServiceException;
 
     boolean update(long userId, User user) throws ServiceException;
 
     void delete(long userId) throws ServiceException;
+
+    int getRecordsCount();
 }

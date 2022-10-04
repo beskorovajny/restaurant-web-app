@@ -15,10 +15,12 @@ public interface ReceiptDAO {
 
     Receipt findByUserId(long userId) throws DAOException;
 
-    List<Receipt> findAll() throws DAOException;
+    List<Receipt> findAll(int offset) throws DAOException;
 
     boolean update(long receiptId, Receipt receipt) throws DAOException;
 
     void delete(long receiptId) throws DAOException;
+
+    int countRecords();
 
 }

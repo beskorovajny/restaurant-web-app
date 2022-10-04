@@ -19,15 +19,15 @@ public class UserDAOImpl implements UserDAO {
     private static final String INSERT =
             "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
-    private static final String FIND_ALL = "SELECT * FROM user";
+    private static final String FIND_ALL = "SELECT * FROM user LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM user WHERE id = ?";
     private static final String FIND_BY_EMAIL = "SELECT * FROM user WHERE email = ?";
     private static final String UPDATE = "UPDATE user SET email = ?," +
             "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
             "role_Id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM user WHERE id = ?";
-
     private static final String FIND_ROLE_BY_NAME = "SELECT * FROM role WHERE name = ?";
+    private static final String COUNT_USERS_RECORDS = "SELECT COUNT(*) FROM user";
     private final Connection connection;
     private final UserMapper userMapper = new UserMapper();
 
@@ -97,10 +97,11 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> findAll() throws DAOException {
+    public List<User> findAll(int offset) throws DAOException {
         List<User> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_ALL)) {
+            preparedStatement.setInt(1, offset);
             userMapper.extractUsers(result, preparedStatement);
 
             if (!result.isEmpty()) {
@@ -168,5 +169,18 @@ public class UserDAOImpl implements UserDAO {
             LOGGER.error("User for given Email : [{}] was not found. An exception occurs : {}", roleName, e.getMessage());
             throw new DAOException("[UserDAO] exception while receiving User", e);
         }
+    }
+
+    public int countRecords() {
+        int recordsCount = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_USERS_RECORDS);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            resultSet.next();
+            recordsCount = resultSet.getInt(1);
+            return recordsCount;
+        } catch (SQLException e) {
+            LOGGER.error("{} Failed to count users! An exception occurs :[{}]", "[UserDAO]", e.getMessage());
+        }
+        return recordsCount;
     }
 }

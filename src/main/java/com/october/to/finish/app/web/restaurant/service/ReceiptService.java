@@ -10,9 +10,11 @@ public interface ReceiptService {
 
     Receipt findById(long receiptId) throws ServiceException;
 
-    List<Receipt> findAll() throws ServiceException;
+    List<Receipt> findAll(int offset) throws ServiceException;
 
     boolean update(long receiptId, Receipt receipt) throws ServiceException;
 
     void delete(long receiptId) throws ServiceException;
+
+    int getRecordsCount();
 }

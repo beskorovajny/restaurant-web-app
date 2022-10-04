@@ -81,13 +81,16 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public List<Receipt> findAll() throws ServiceException {
+    public List<Receipt> findAll(int offset) throws ServiceException {
         try {
-            return receiptDAO.findAll();
+            return receiptDAO.findAll(getOffset(offset));
         } catch (DAOException e) {
             LOGGER.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
+    }
+    private int getOffset(int offset) {
+        return offset * 10 - 10;
     }
 
     @Override
@@ -118,5 +121,9 @@ public class ReceiptServiceImpl implements ReceiptService {
                     , receiptId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
+    }
+
+    public int getRecordsCount() {
+        return receiptDAO.countRecords();
     }
 }

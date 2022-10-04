@@ -44,7 +44,7 @@ public class LoginCommand implements AppCommand {
                 page = "controller?command=admin";
             }
             if (user.getRoleId() == User.Role.CLIENT.getId()) {
-                page = "home.jsp";
+                page = "controller?command=menu";
             }
         } else {
             LOGGER.info("Cannot Login");
