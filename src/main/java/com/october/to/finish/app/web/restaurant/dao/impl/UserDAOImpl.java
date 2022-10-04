@@ -15,7 +15,7 @@ import java.util.Optional;
 
 public class UserDAOImpl implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
-
+    private static final String USER_DAO_EXC_MSG = "[UserDAO] exception while receiving User";
     private static final String INSERT =
             "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
@@ -54,7 +54,7 @@ public class UserDAOImpl implements UserDAO {
             return key;
         } catch (SQLException e) {
             LOGGER.error("User : [{}] was not saved. An exception occurs.: {}", user, e.getMessage());
-            throw new DAOException("[UserDAO] exception while saving User" + e.getMessage(), e);
+            throw new DAOException(USER_DAO_EXC_MSG + e.getMessage(), e);
         }
     }
 
@@ -73,7 +73,7 @@ public class UserDAOImpl implements UserDAO {
             return user.orElse(new User());
         } catch (SQLException e) {
             LOGGER.error("User for given ID : [{}] was not found. An exception occurs : {}", userId, e.getMessage());
-            throw new DAOException("[UserDAO] exception while receiving User", e);
+            throw new DAOException(USER_DAO_EXC_MSG, e);
         }
     }
 
@@ -92,7 +92,7 @@ public class UserDAOImpl implements UserDAO {
             return user.orElse(new User());
         } catch (SQLException e) {
             LOGGER.error("User for given Email : [{}] was not found. An exception occurs : {}", eMail, e.getMessage());
-            throw new DAOException("[UserDAO] exception while receiving User", e);
+            throw new DAOException(USER_DAO_EXC_MSG, e);
         }
     }
 
@@ -167,7 +167,7 @@ public class UserDAOImpl implements UserDAO {
             return userRole.get();
         } catch (SQLException e) {
             LOGGER.error("User for given Email : [{}] was not found. An exception occurs : {}", roleName, e.getMessage());
-            throw new DAOException("[UserDAO] exception while receiving User", e);
+            throw new DAOException(USER_DAO_EXC_MSG, e);
         }
     }
 

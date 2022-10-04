@@ -20,4 +20,6 @@ public interface UserService {
     void delete(long userId) throws ServiceException;
 
     int getRecordsCount();
+
+    boolean isUserExists(User user) throws ServiceException;
 }

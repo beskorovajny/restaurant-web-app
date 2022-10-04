@@ -1,10 +1,10 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
+import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
 import com.october.to.finish.app.web.restaurant.dao.mapper.impl.ReceiptMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
-import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,14 +29,15 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     private static final String COUNT_RECEIPT_RECORDS = "SELECT COUNT(*) FROM receipt";
     private final Connection connection;
-
     private final ReceiptMapper receiptMapper = new ReceiptMapper();
 
     public ReceiptDAOImpl(Connection connection) {
         this.connection = connection;
     }
 
-    public Connection getConnection() {return connection;}
+    public Connection getConnection() {
+        return connection;
+    }
 
     @Override
     public long save(long userId, Receipt receipt) throws DAOException {
@@ -77,6 +78,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             throw new DAOException("[ReceiptDAO] exception while receiving Receipt", e);
         }
     }
+
     @Override
     public Receipt findByUserId(long userId) throws DAOException {
         Optional<Receipt> receipt = Optional.empty();

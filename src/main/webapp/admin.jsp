@@ -61,62 +61,61 @@
             <a class="nav-link" href="controller?command=users">Users</a>
         </li>
     </ul>
-    <div class="container">
-        <table class="table">
-            <thead>
+    <hr class="bg-secondary border-2 border-top border-secondary">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date created</th>
+            <th scope="col">Discount</th>
+            <th scope="col">User</th>
+            <th scope="col">Status</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="receipt" items="${receipts}">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Date created</th>
-                <th scope="col">Discount</th>
-                <th scope="col">User</th>
-                <th scope="col">Status</th>
-                <th scope="col">Address</th>
+                <td><c:out value="${receipt.id}"/>
+                </td>
+                <td><c:out value="${receipt.dateCreated}"/>
+                </td>
+                <td><c:out value="${receipt.discount}"/>
+                </td>
+                <td><c:out value="${receipt.customer}"/>
+                </td>
+                <td><c:out value="${receipt.status}"/>
+                </td>
+                <td><c:out value="${receipt.address}"/>
+                </td>
             </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="receipt" items="${receipts}">
-                <tr>
-                    <td><c:out value="${receipt.id}"/>
-                    </td>
-                    <td><c:out value="${receipt.dateCreated}"/>
-                    </td>
-                    <td><c:out value="${receipt.discount}"/>
-                    </td>
-                    <td><c:out value="${receipt.customer}"/>
-                    </td>
-                    <td><c:out value="${receipt.status}"/>
-                    </td>
-                    <td><c:out value="${receipt.address}"/>
-                    </td>
-                </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <c:if test="${param.page-1 >= 1}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                </li>
+            </c:if>
+
+            <c:forEach var="page" items="${pages}">
+
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${page}">${page}</a>
+                </li>
+
             </c:forEach>
-            </tbody>
-        </table>
-        <nav>
-            <ul class="pagination justify-content-center">
-                <c:if test="${param.page-1 >= 1}">
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
-                    </li>
-                </c:if>
+            <c:set var="size" scope="page" value="${requestScope.pages}"/>
 
-                <c:forEach var="page" items="${pages}">
-
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${page}">${page}</a>
-                    </li>
-
-                </c:forEach>
-                <c:set var="size" scope="page" value="${requestScope.pages}"/>
-
-                <c:if test="${param.page+1 <= size.size()}">
-                    <li class="page-item"><a class="page-link"
-                                             href="controller?command=${param.command}&page=${param.page+1}">Next</a>
-                    </li>
-                </c:if>
-            </ul>
-        </nav>
-    </div>
+            <c:if test="${param.page+1 <= size.size()}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                </li>
+            </c:if>
+        </ul>
+    </nav>
 </div>
 <script src="js/bootstrap.min.js"></script>
 </body>

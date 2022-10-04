@@ -62,10 +62,11 @@
   </ul>
   <div class="container justify-content-center">
     <a href="controller?command=dish_form" style="text-decoration:none;">
-      <button type="button" class="btn btn-outline-danger">
+      <button type="button" class="btn btn-outline-success">
         New dish</button>
     </a>
   </div>
+  <hr class="bg-secondary border-2 border-top border-secondary">
   <table class="table">
     <thead>
     <tr>
@@ -98,6 +99,16 @@
         </td>
         <td><c:out value="${dish.category}"/>
         </td>
+        <td>
+            <button type="button" class="btn btn-outline-warning" onclick="window.location='controller?command=edit_dish&dishId=${dish.id}'">
+              Edit</button>
+        </td>
+        <td>
+          <button type="button" class="btn btn-outline-danger" onclick="window.location='controller?command=remove_dish&dishId=${dish.id}'">
+            Remove</button>
+        </td>
+        <%--<td><input type="button" class="btn-outline-warning" value="Edit" onclick="window.location='home?command=edit_dish&dishId=${dish.id}'"></td>
+        <td><input type="button" class="btn-outline-danger" value="Remove" onclick="window.location='home?command=remove_dish&dishId=${dish.id}'"></td>--%>
       </tr>
     </c:forEach>
     </tbody>

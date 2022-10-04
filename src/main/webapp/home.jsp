@@ -21,11 +21,11 @@
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
                 <c:if test="${sessionScope.user == null}">
                     <div class="col-md-15 text-end">
-                        <a href="controller?command=loginForm" style="text-decoration:none;">
+                        <a href="controller?command=login_form" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-secondary">
                                 <fmt:message key="text.login"/></button>
                         </a>
-                        <a href="controller?command=registrationForm" style="text-decoration:none;">
+                        <a href="controller?command=registration_form" style="text-decoration:none;">
                             <button type="button"
                                     class="btn btn-outline-success"><fmt:message key="text.register"/></button>
                         </a>

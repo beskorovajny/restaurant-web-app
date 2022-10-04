@@ -1,10 +1,7 @@
 package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
-import com.october.to.finish.app.web.restaurant.command.dish.AllDishesCommand;
-import com.october.to.finish.app.web.restaurant.command.dish.CreateDishCommand;
-import com.october.to.finish.app.web.restaurant.command.dish.DishFormCommand;
-import com.october.to.finish.app.web.restaurant.command.dish.MenuCommand;
+import com.october.to.finish.app.web.restaurant.command.dish.*;
 import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.*;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
@@ -102,7 +99,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         LOGGER.info("{} Error command created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RegistrationFormCommand();
-        commandContainer.addCommand("registrationForm", appCommand);
+        commandContainer.addCommand("registration_form", appCommand);
         LOGGER.info("{} RegistrationFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RegistrationCommand(userService);
@@ -110,7 +107,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         LOGGER.info("{} Registration command created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new LoginFormCommand();
-        commandContainer.addCommand("loginForm", appCommand);
+        commandContainer.addCommand("login_form", appCommand);
         LOGGER.info("{} LoginFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new LoginCommand(userService);
@@ -129,10 +126,13 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("dishes", appCommand);
         LOGGER.info("{} AllDishesCommand created.", CONTEXT_LISTENER_MSG);
 
-
         appCommand = new CreateDishCommand(dishService);
         commandContainer.addCommand("create_dish", appCommand);
         LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new RemoveDishCommand(dishService);
+        commandContainer.addCommand("remove_dish", appCommand);
+        LOGGER.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new MenuCommand(dishService);
         commandContainer.addCommand("menu", appCommand);

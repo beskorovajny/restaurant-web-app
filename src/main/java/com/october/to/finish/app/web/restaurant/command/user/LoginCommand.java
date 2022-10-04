@@ -32,24 +32,26 @@ public class LoginCommand implements AppCommand {
         User user = null;
         try {
             user = userService.findByEmail(email);
-            LOGGER.info("{} User received from db: {}", LOGIN_COMMAND, user);
+            if (user.getEmail() == null) {
+                LOGGER.info("Cannot Login");
+                page = "controller?command=registration_form";
+                return page;
+            }
+            if (PasswordEncryptionUtil.validate(PasswordEncryptionUtil.getEncrypted(password)
+                    , String.valueOf(user.getPassword()))) {
+                LOGGER.info("{} User received from db: {}", LOGIN_COMMAND, user.getEmail());
+                session.setAttribute("user", user);
+                if (user.getRole().getId() == User.Role.MANAGER.getId()) {
+                    page = "controller?command=admin";
+                }
+                if (user.getRole().getId() == User.Role.CLIENT.getId()) {
+                    page = "controller?command=menu";
+                }
+            }
+            return page;
         } catch (ServiceException e) {
             LOGGER.error("{} An exception occurs : {}", LOGIN_COMMAND, e.getMessage());
             throw new FatalApplicationException(e.getMessage(), e);
         }
-        if (user != null && PasswordEncryptionUtil.validate(PasswordEncryptionUtil.getEncrypted(password)
-                , String.valueOf(user.getPassword()))) {
-            session.setAttribute("user", user);
-            if (user.getRole().getId() == User.Role.MANAGER.getId()) {
-                page = "controller?command=admin";
-            }
-            if (user.getRole().getId() == User.Role.CLIENT.getId()) {
-                page = "controller?command=menu";
-            }
-        } else {
-            LOGGER.info("Cannot Login");
-            return "errorPage.jsp";
-        }
-        return page;
     }
 }

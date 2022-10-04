@@ -35,30 +35,25 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
-            return checkAndSave(user);
-        } catch (SQLException e) {
+            user.setId(userDAO.save(user));
+            LOGGER.info("[UserService] User saved. (email: {})", user.getEmail());
+            return true;
+        } catch (DAOException e) {
             LOGGER.error("[UserService] SQLException while saving User (email: {}). Exc: {}"
                     , user.getEmail(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
 
-    private boolean checkAndSave(User user) throws ServiceException, SQLException {
-        userDAO.getConnection().setAutoCommit(false);
+    public boolean isUserExists(User user) throws ServiceException {
         try {
             if (userDAO.findByEmail(user.getEmail()).getId() != 0) {
-                DBUtils.rollback(userDAO.getConnection());
-                LOGGER.error(REGISTERED_EMAIL_EXC
+                LOGGER.info(REGISTERED_EMAIL_EXC
                         , user.getEmail());
-                throw new ServiceException(REGISTERED_EMAIL_EXC);
+                return true;
             }
-            user.setId(userDAO.save(user));
-            userDAO.getConnection().commit();
-            userDAO.getConnection().setAutoCommit(true);
-            LOGGER.info("[UserService] User saved. (email: {})", user.getEmail());
-            return true;
+            return false;
         } catch (DAOException e) {
-            userDAO.getConnection().rollback();
             LOGGER.error("[UserService] Connection rolled back while saving User. (email: {}). Exc: {}"
                     , user.getEmail(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);

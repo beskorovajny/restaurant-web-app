@@ -1,74 +1,172 @@
-2022-10-04 13:40:22 INFO [ContextListener] Context initialization started...
-2022-10-04 13:40:24 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@2cdd8690
-2022-10-04 13:40:24 INFO [ContextListener] UserDAO created.
-2022-10-04 13:40:24 INFO [ContextListener] ReceiptDAO created.
-2022-10-04 13:40:24 INFO [ContextListener] AddressDAO created.
-2022-10-04 13:40:24 INFO [ContextListener] DishDAO created.
-2022-10-04 13:40:24 INFO [ContextListener] UserService created.
-2022-10-04 13:40:24 INFO [ContextListener] ReceiptService created.
-2022-10-04 13:40:24 INFO [ContextListener] AddressService created.
-2022-10-04 13:40:24 INFO [ContextListener] DishService created.
-2022-10-04 13:40:24 INFO [ContextListener] CommandContainer created.
-2022-10-04 13:40:24 INFO [ContextListener] Language command created.
-2022-10-04 13:40:24 INFO [ContextListener] Error command created.
-2022-10-04 13:40:24 INFO [ContextListener] RegistrationFormCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] Registration command created.
-2022-10-04 13:40:24 INFO [ContextListener] LoginFormCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] LoginCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] AdminCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] DishFormCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] AllDishesCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] CreateDishCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] MenuCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] AllUsersCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] LogoutCommand created.
-2022-10-04 13:40:24 INFO [ContextListener] Services initialized
-2022-10-04 13:40:25 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:25 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:27 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:27 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:33 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:33 INFO [JspEncodingFilter] Filter started {command=[loginForm]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:33 INFO [AppController-doGet] URL processed
-2022-10-04 13:40:47 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:47 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:47 INFO User received : [1], [admin@admin.app]
-2022-10-04 13:40:47 INFO [LoginCommand] User received from db: User{id=1, email='admin@admin.app', firstName='Admin', lastName='Admin', phoneNumber='1111', role=MANAGER, password=d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb, receipts=[]}
-2022-10-04 13:40:47 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
-2022-10-04 13:40:47 INFO [AppController-doPost] URL processed [controller?command=admin], resp encoding: ISO-8859-1
-2022-10-04 13:40:47 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:47 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:47 INFO Receipts was found successfully.
-2022-10-04 13:40:47 INFO [AppController-doGet] URL processed
-2022-10-04 13:40:50 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:50 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:50 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
-2022-10-04 13:40:50 INFO [AllDishesCommand] Dishes found.
-2022-10-04 13:40:50 INFO [AppController-doGet] URL processed
-2022-10-04 13:40:52 INFO [JspEncodingFilter] Filter started {command=[dish_form]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:52 INFO [JspEncodingFilter] Filter started {command=[dish_form]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:40:52 INFO [AppController-doGet] URL processed
-2022-10-04 13:41:21 INFO [JspEncodingFilter] Filter started {command=[create_dish], title=[New pizza], description=[Homemade bakery], price=[35.99], weight=[700], timeToCreate=[45], dishCategory=[pizza]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:21 INFO [JspEncodingFilter] Filter started {command=[create_dish], title=[New pizza], description=[Homemade bakery], price=[35.99], weight=[700], timeToCreate=[45], dishCategory=[pizza]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:21 INFO [CreateDishCommand] Dish from view : Dish{id=0, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.659124};
-2022-10-04 13:41:21 INFO [DishDAO] Dish : Dish{id=0, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.659124} was saved successfully
-2022-10-04 13:41:21 INFO [DishService] Dish saved. (id: 21)
-2022-10-04 13:41:21 INFO [CreateDishCommand] Dish saved : Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.659124}
-2022-10-04 13:41:21 INFO [AppController-doPost] URL processed [home.jsp], resp encoding: ISO-8859-1
-2022-10-04 13:41:21 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:21 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:35 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:35 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:35 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
-2022-10-04 13:41:35 INFO [MenuCommand] Dishes found.
-2022-10-04 13:41:35 INFO [AppController-doGet] URL processed
-2022-10-04 13:41:49 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:49 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:49 INFO [DishDAO] Dishes was found successfully. [[Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.660}]]
-2022-10-04 13:41:49 INFO [AllDishesCommand] Dishes found.
-2022-10-04 13:41:49 INFO [AppController-doGet] URL processed
-2022-10-04 13:41:52 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:52 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@600e849a
-2022-10-04 13:41:52 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
-2022-10-04 13:41:52 INFO [AllDishesCommand] Dishes found.
-2022-10-04 13:41:52 INFO [AppController-doGet] URL processed
+2022-10-04 17:07:31 INFO [ContextListener] Context initialization started...
+2022-10-04 17:07:32 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@24044d64
+2022-10-04 17:07:32 INFO [ContextListener] UserDAO created.
+2022-10-04 17:07:32 INFO [ContextListener] ReceiptDAO created.
+2022-10-04 17:07:32 INFO [ContextListener] AddressDAO created.
+2022-10-04 17:07:32 INFO [ContextListener] DishDAO created.
+2022-10-04 17:07:32 INFO [ContextListener] UserService created.
+2022-10-04 17:07:32 INFO [ContextListener] ReceiptService created.
+2022-10-04 17:07:32 INFO [ContextListener] AddressService created.
+2022-10-04 17:07:32 INFO [ContextListener] DishService created.
+2022-10-04 17:07:32 INFO [ContextListener] CommandContainer created.
+2022-10-04 17:07:32 INFO [ContextListener] Language command created.
+2022-10-04 17:07:32 INFO [ContextListener] Error command created.
+2022-10-04 17:07:32 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] Registration command created.
+2022-10-04 17:07:32 INFO [ContextListener] LoginFormCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] LoginCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] AdminCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] DishFormCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] AllDishesCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] CreateDishCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] MenuCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] AllUsersCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] LogoutCommand created.
+2022-10-04 17:07:32 INFO [ContextListener] Services initialized
+2022-10-04 17:07:33 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:33 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:35 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:35 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:39 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:39 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:39 INFO [AppController-doGet] URL processed
+2022-10-04 17:07:50 INFO [JspEncodingFilter] Filter started {command=[login], email=[start@mail.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:50 INFO [JspEncodingFilter] Filter started {command=[login], email=[start@mail.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:51 INFO Cannot Login
+2022-10-04 17:07:51 INFO [AppController-doPost] URL processed [controller?command=registration_form], resp encoding: ISO-8859-1
+2022-10-04 17:07:51 INFO [JspEncodingFilter] Filter started {command=[registration_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:51 INFO [JspEncodingFilter] Filter started {command=[registration_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:07:51 INFO [AppController-doGet] URL processed
+2022-10-04 17:08:00 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:00 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:00 INFO [AppController-doGet] URL processed
+2022-10-04 17:08:13 INFO [JspEncodingFilter] Filter started {command=[login], email=[sta@sts.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:13 INFO [JspEncodingFilter] Filter started {command=[login], email=[sta@sts.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:13 INFO Cannot Login
+2022-10-04 17:08:13 INFO [AppController-doPost] URL processed [controller?command=registration_form], resp encoding: ISO-8859-1
+2022-10-04 17:08:13 INFO [JspEncodingFilter] Filter started {command=[registration_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:13 INFO [JspEncodingFilter] Filter started {command=[registration_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:13 INFO [AppController-doGet] URL processed
+2022-10-04 17:08:47 INFO [JspEncodingFilter] Filter started {command=[registration], email=[test@user.app], firstName=[User], lastName=[Test], phoneNumber=[3806111111111], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:47 INFO [JspEncodingFilter] Filter started {command=[registration], email=[test@user.app], firstName=[User], lastName=[Test], phoneNumber=[3806111111111], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:47 INFO [RegistrationCommand] User from view : User{id=0, email='test@user.app', firstName='User', lastName='Test', phoneNumber='3806111111111', role=CLIENT, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null} + fN: User
+2022-10-04 17:08:47 INFO User : User{id=0, email='test@user.app', firstName='User', lastName='Test', phoneNumber='3806111111111', role=CLIENT, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null} was saved successfully
+2022-10-04 17:08:47 INFO [UserService] User saved. (email: test@user.app)
+2022-10-04 17:08:47 INFO [RegistrationCommand] User saved : User{id=5, email='test@user.app', firstName='User', lastName='Test', phoneNumber='3806111111111', role=CLIENT, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}
+2022-10-04 17:08:47 INFO [AppController-doPost] URL processed [login.jsp], resp encoding: ISO-8859-1
+2022-10-04 17:08:47 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:47 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[test@user.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[test@user.app], password=[Aa11111111]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:59 INFO User received : [5], [test@user.app]
+2022-10-04 17:08:59 INFO [PasswordEncrypt] password: [95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3], user.password: [95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3]
+2022-10-04 17:08:59 INFO [LoginCommand] User received from db: test@user.app
+2022-10-04 17:08:59 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
+2022-10-04 17:08:59 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:59 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:08:59 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:08:59 INFO [MenuCommand] Dishes found.
+2022-10-04 17:08:59 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:12 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:12 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:12 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:14 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:14 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:14 INFO [LanguageCommand] Page to process = 
+2022-10-04 17:09:14 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:14 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:21 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:21 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:21 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:09:21 INFO [MenuCommand] Dishes found.
+2022-10-04 17:09:21 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:27 INFO [JspEncodingFilter] Filter started {command=[logout]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:27 INFO [JspEncodingFilter] Filter started {command=[logout]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:27 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:28 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:28 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:28 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:49 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:49 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:49 INFO User received : [1], [admin@admin.app]
+2022-10-04 17:09:49 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
+2022-10-04 17:09:49 INFO [LoginCommand] User received from db: admin@admin.app
+2022-10-04 17:09:49 INFO [AppController-doPost] URL processed [controller?command=admin], resp encoding: ISO-8859-1
+2022-10-04 17:09:49 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:49 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:49 INFO Receipts was found successfully.
+2022-10-04 17:09:49 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:56 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:56 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:56 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:09:56 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:09:56 INFO [AppController-doGet] URL processed
+2022-10-04 17:09:59 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:59 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:09:59 INFO [DishDAO] Dishes was found successfully. [[Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.660}, Dish{id=22, title='Chivas Regal', description='12 years', category=DRINK, price=50.0, weight=1000, cooking=0, dateCreated=2022-10-04T14:02:01.060}, Dish{id=23, title='Vodka', description='Ugly', category=DRINK, price=10.0, weight=500, cooking=0, dateCreated=2022-10-04T14:03:26.640}, Dish{id=24, title='Pinacolada', description='Mmmm this taste', category=DRINK, price=70.0, weight=1000, cooking=0, dateCreated=2022-10-04T15:49:07.260}]]
+2022-10-04 17:09:59 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:09:59 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:02 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:02 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:02 INFO [DishDAO] Dishes was found successfully. [[Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.660}, Dish{id=22, title='Chivas Regal', description='12 years', category=DRINK, price=50.0, weight=1000, cooking=0, dateCreated=2022-10-04T14:02:01.060}, Dish{id=23, title='Vodka', description='Ugly', category=DRINK, price=10.0, weight=500, cooking=0, dateCreated=2022-10-04T14:03:26.640}, Dish{id=24, title='Pinacolada', description='Mmmm this taste', category=DRINK, price=70.0, weight=1000, cooking=0, dateCreated=2022-10-04T15:49:07.260}]]
+2022-10-04 17:10:02 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:02 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:03 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:03 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:03 INFO [DishDAO] Dishes was found successfully. [[Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=12, title='Appetizer2', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=16, title='Drink1', description='Strong', category=DRINK, price=90.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=17, title='Drink2', description='Strong', category=DRINK, price=190.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=18, title='Drink3', description='Strong', category=DRINK, price=290.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=19, title='Drink4', description='Strong', category=DRINK, price=390.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=20, title='Drink5', description='Strong', category=DRINK, price=490.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:03 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:03 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:07 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:07 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:07 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:07 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:07 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:09 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:09 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:09 INFO [DishDAO] Dishes was found successfully. [[Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=12, title='Appetizer2', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=16, title='Drink1', description='Strong', category=DRINK, price=90.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=17, title='Drink2', description='Strong', category=DRINK, price=190.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=18, title='Drink3', description='Strong', category=DRINK, price=290.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=19, title='Drink4', description='Strong', category=DRINK, price=390.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=20, title='Drink5', description='Strong', category=DRINK, price=490.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:09 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:09 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:10 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:10 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:10 INFO [DishDAO] Dishes was found successfully. [[Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.660}, Dish{id=22, title='Chivas Regal', description='12 years', category=DRINK, price=50.0, weight=1000, cooking=0, dateCreated=2022-10-04T14:02:01.060}, Dish{id=23, title='Vodka', description='Ugly', category=DRINK, price=10.0, weight=500, cooking=0, dateCreated=2022-10-04T14:03:26.640}, Dish{id=24, title='Pinacolada', description='Mmmm this taste', category=DRINK, price=70.0, weight=1000, cooking=0, dateCreated=2022-10-04T15:49:07.260}]]
+2022-10-04 17:10:10 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:10 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:13 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:13 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:13 INFO [DishDAO] Dishes was found successfully. [[Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=12, title='Appetizer2', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=16, title='Drink1', description='Strong', category=DRINK, price=90.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=17, title='Drink2', description='Strong', category=DRINK, price=190.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=18, title='Drink3', description='Strong', category=DRINK, price=290.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=19, title='Drink4', description='Strong', category=DRINK, price=390.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=20, title='Drink5', description='Strong', category=DRINK, price=490.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:13 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:13 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:16 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:16 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:16 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Pizza1', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=5, title='Pizza5', description='Mmmmmm very nice', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18T10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=7, title='Salad2', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=9, title='Salad4', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}, Dish{id=10, title='Salad5', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:16 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:16 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:20 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:20 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[2]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:20 INFO [DishDAO] Dishes was found successfully. [[Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=12, title='Appetizer2', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18T10:34:09}, Dish{id=16, title='Drink1', description='Strong', category=DRINK, price=90.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=17, title='Drink2', description='Strong', category=DRINK, price=190.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=18, title='Drink3', description='Strong', category=DRINK, price=290.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=19, title='Drink4', description='Strong', category=DRINK, price=390.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}, Dish{id=20, title='Drink5', description='Strong', category=DRINK, price=490.0, weight=750, cooking=0, dateCreated=2012-06-18T10:34:09}]]
+2022-10-04 17:10:20 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:20 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:22 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:22 INFO [JspEncodingFilter] Filter started {command=[dishes], page=[3]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:22 INFO [DishDAO] Dishes was found successfully. [[Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04T13:41:21.660}, Dish{id=22, title='Chivas Regal', description='12 years', category=DRINK, price=50.0, weight=1000, cooking=0, dateCreated=2022-10-04T14:02:01.060}, Dish{id=23, title='Vodka', description='Ugly', category=DRINK, price=10.0, weight=500, cooking=0, dateCreated=2022-10-04T14:03:26.640}, Dish{id=24, title='Pinacolada', description='Mmmm this taste', category=DRINK, price=70.0, weight=1000, cooking=0, dateCreated=2022-10-04T15:49:07.260}]]
+2022-10-04 17:10:22 INFO [AllDishesCommand] Dishes found.
+2022-10-04 17:10:22 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:26 INFO [JspEncodingFilter] Filter started {command=[users]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:26 INFO [JspEncodingFilter] Filter started {command=[users]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:26 INFO Users was found successfully.
+2022-10-04 17:10:26 INFO [AllUsersCommand] Dishes found.
+2022-10-04 17:10:26 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:29 INFO [JspEncodingFilter] Filter started {command=[users], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:29 INFO [JspEncodingFilter] Filter started {command=[users], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:29 INFO Users was found successfully.
+2022-10-04 17:10:29 INFO [AllUsersCommand] Dishes found.
+2022-10-04 17:10:29 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:31 INFO [JspEncodingFilter] Filter started {command=[users], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:31 INFO [JspEncodingFilter] Filter started {command=[users], page=[1]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:31 INFO Users was found successfully.
+2022-10-04 17:10:31 INFO [AllUsersCommand] Dishes found.
+2022-10-04 17:10:31 INFO [AppController-doGet] URL processed
+2022-10-04 17:10:40 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:40 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@616a947f
+2022-10-04 17:10:40 INFO Receipts was found successfully.
+2022-10-04 17:10:40 INFO [AppController-doGet] URL processed

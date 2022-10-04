@@ -60,6 +60,7 @@
             <a class="nav-link active" aria-current="page">Users</a>
         </li>
     </ul>
+    <hr class="bg-secondary border-2 border-top border-secondary">
     <table class="table">
         <thead>
         <tr>
