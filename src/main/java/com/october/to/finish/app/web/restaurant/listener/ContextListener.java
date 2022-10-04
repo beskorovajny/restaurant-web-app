@@ -122,7 +122,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         LOGGER.info("{} AdminCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new DishFormCommand();
-        commandContainer.addCommand("dishForm", appCommand);
+        commandContainer.addCommand("dish_form", appCommand);
         LOGGER.info("{} DishFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesCommand(dishService);
@@ -131,7 +131,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
 
 
         appCommand = new CreateDishCommand(dishService);
-        commandContainer.addCommand("createDish", appCommand);
+        commandContainer.addCommand("create_dish", appCommand);
         LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new MenuCommand(dishService);

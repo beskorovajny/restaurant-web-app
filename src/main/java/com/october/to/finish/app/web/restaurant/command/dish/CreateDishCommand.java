@@ -40,6 +40,6 @@ public class CreateDishCommand implements AppCommand {
             LOGGER.error("An exception occurs while saving Dish");
             throw new CommandException(e.getMessage(), e);
         }
-        return "home.jsp";
+        return "dishes.jsp";
     }
 }

@@ -1,0 +1,4 @@
+2022-10-04 13:38:26 ERROR [DishDAO] Dish : [Dish{id=0, title='New pizza', description='Home bakery', category=PIZZA, price=35.0, weight=600, cooking=35, dateCreated=2022-10-04T13:38:26.834130100}] was not saved. An exception occurs.: Parameter index out of range (9 > number of parameters, which is 7).
+2022-10-04 13:38:26 ERROR [DishService] Connection rolled back while saving Dish. (title: New pizza). Exc: [DishDAO]exception while saving DishParameter index out of range (9 > number of parameters, which is 7).
+2022-10-04 13:38:26 ERROR An exception occurs while saving Dish
+2022-10-04 13:38:26 ERROR An exception occurs: [DishDAO]exception while saving DishParameter index out of range (9 > number of parameters, which is 7).

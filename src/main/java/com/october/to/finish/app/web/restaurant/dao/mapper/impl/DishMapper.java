@@ -52,9 +52,9 @@ public class DishMapper implements ObjectMapper<Dish> {
         preparedStatement.setString(2, dish.getDescription());
         preparedStatement.setBigDecimal(3, BigDecimal.valueOf(dish.getPrice()));
         preparedStatement.setInt(4, dish.getWeight());
-        preparedStatement.setInt(6, dish.getCooking());
-        preparedStatement.setTimestamp(7, Timestamp.valueOf(dish.getDateCreated()));
-        preparedStatement.setLong(9, dish.getCategory().getId());
+        preparedStatement.setInt(5, dish.getCooking());
+        preparedStatement.setTimestamp(6, Timestamp.valueOf(dish.getDateCreated()));
+        preparedStatement.setLong(7, dish.getCategory().getId());
     }
 
     public List<Dish> extractDishes(List<Dish> dishes, PreparedStatement preparedStatement) throws SQLException {

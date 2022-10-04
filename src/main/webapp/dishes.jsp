@@ -60,6 +60,12 @@
       <a class="nav-link" href="controller?command=users">Users</a>
     </li>
   </ul>
+  <div class="container justify-content-center">
+    <a href="controller?command=dish_form" style="text-decoration:none;">
+      <button type="button" class="btn btn-outline-danger">
+        New dish</button>
+    </a>
+  </div>
   <table class="table">
     <thead>
     <tr>

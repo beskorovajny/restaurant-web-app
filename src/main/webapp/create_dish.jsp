@@ -48,7 +48,7 @@
                             <div class="card mb-5">
                                 <div class="card-body d-flex flex-column align-items-center">
                                     <form class="text-center" action="controller" method="post">
-                                        <input hidden name="command" value="createDish"/>
+                                        <input hidden name="command" value="create_dish"/>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="Title"
                                                                                  name="title"
