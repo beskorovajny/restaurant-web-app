@@ -21,7 +21,7 @@ public class RemoveDishCommand implements AppCommand {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException {
         try {
-            dishService.delete(Integer.parseInt(request.getParameter("dishId")));
+            dishService.delete(Long.parseLong(request.getParameter("dishId")));
             return "controller?command=dishes";
         } catch (ServiceException e) {
             LOGGER.error("[RemoveDishCommand] Dish wasn't removed. An exception occurs: [{}]", e.getMessage());

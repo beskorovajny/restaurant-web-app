@@ -72,8 +72,6 @@ Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/AddressService.j
 [src/main/java/com/october/to/finish/app/web/restaurant/service/impl/AddressServiceImpl.java,4\c\4c943ed00a538c7d9e31c38fdc7ef71db311585a
 ˆ
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
-
-Osrc/main/java/com/october/to/finish/app/web/restaurant/service/DishService.java,d\b\db37933c89e29c48c430eea6a2827e7204bdbfdb
 ‹
 [src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1
 w
