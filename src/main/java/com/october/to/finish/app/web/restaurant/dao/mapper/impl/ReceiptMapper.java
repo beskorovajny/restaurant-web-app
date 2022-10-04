@@ -1,5 +1,6 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
+import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
 
@@ -21,11 +22,19 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
                 setId(resultSet.getLong("id")).
                 setTimeCreated(resultSet.getTimestamp("created").toLocalDateTime()).
                 setDiscount(resultSet.getInt("discount")).
+                setStatus(getById(resultSet.getLong("receipt_status_id"))).
                 build();
         receiptMap.put(String.valueOf(receipt.getId()), receipt);
 
         receipt = this.makeUnique(receiptMap, receipt);
         return receipt;
+    }
+
+    private Receipt.Status getById(Long id) {
+        for(Receipt.Status s : Receipt.Status.values()) {
+            if(s.getId() == (id)) return s;
+        }
+        return null;
     }
 
     @Override
