@@ -150,6 +150,10 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("menu", appCommand);
         LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new UserReceiptsCommand(receiptService, addressService);
+        commandContainer.addCommand("user_receipts", appCommand);
+        LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
+
         appCommand = new AllUsersCommand(userService);
         commandContainer.addCommand("users", appCommand);
         LOGGER.info("{} AllUsersCommand created.", CONTEXT_LISTENER_MSG);
@@ -165,11 +169,6 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new EditDishCommand(dishService);
         commandContainer.addCommand("edit_dish", appCommand);
         LOGGER.info("{} EditDishCommand created.", CONTEXT_LISTENER_MSG);
-
-        appCommand = new UserReceiptsCommand(receiptService);
-        commandContainer.addCommand("user_receipts", appCommand);
-        LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
-
 
         context.setAttribute("commandContainer", commandContainer);
 
