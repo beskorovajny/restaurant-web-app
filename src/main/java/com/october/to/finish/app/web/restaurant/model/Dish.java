@@ -105,7 +105,7 @@ public class Dish {
             return id;
         }
 
-        public String getCategoryName() {
+        public String getName() {
             return categoryName;
         }
     }

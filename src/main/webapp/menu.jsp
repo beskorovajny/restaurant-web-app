@@ -59,8 +59,8 @@
             <th scope="col">Price</th>
             <th scope="col">Weight</th>
             <th scope="col">Cooking</th>
-            <th scope="col">Created</th>
             <th scope="col">Category</th>
+            <th scope="col">Quantity</th>
         </tr>
         </thead>
         <tbody>
@@ -78,10 +78,10 @@
                 </td>
                 <td><c:out value="${dish.cooking}"/>
                 </td>
-                <td><c:out value="${dish.dateCreated}"/>
+                <td><c:out value="${dish.category.getName()}"/>
                 </td>
-                <td><c:out value="${dish.category}"/>
-                </td>
+                <td> <input type="number" id="quantity" name="quantity"
+                            min="0" max="5" placeholder="0"></td>
             </tr>
         </c:forEach>
         </tbody>

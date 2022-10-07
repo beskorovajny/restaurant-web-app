@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Dell
-  Date: 02.10.2022
-  Time: 19:58
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -21,7 +14,6 @@
 
 <body>
 <main>
-
     <!-- DEMO HTML -->
     <div class="container">
         <div class="py-5 text-center">

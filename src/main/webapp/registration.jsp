@@ -71,8 +71,9 @@
                                                                                  pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
-                                                                 placeholder="Password" required="" minlength="8"
+                                                                 placeholder="Password" required="" minlength="8" id="passInput"
                                                                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$"/>
+                                            <input class="form-check-input" type="checkbox" onclick="myFunction()"> Show password
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-success d-block w-100" type="submit"
@@ -92,6 +93,7 @@
 </div>
 <%@ include file = "include/footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
 </body>
 
 </html>

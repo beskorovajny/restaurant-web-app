@@ -1,0 +1,39 @@
+2022-10-07 13:50:32 INFO [ContextListener] Context initialization started...
+2022-10-07 13:50:33 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@4bf9c33b
+2022-10-07 13:50:33 INFO [ContextListener] UserDAO created.
+2022-10-07 13:50:33 INFO [ContextListener] ReceiptDAO created.
+2022-10-07 13:50:33 INFO [ContextListener] AddressDAO created.
+2022-10-07 13:50:33 INFO [ContextListener] DishDAO created.
+2022-10-07 13:50:33 INFO [ContextListener] UserService created.
+2022-10-07 13:50:33 INFO [ContextListener] ReceiptService created.
+2022-10-07 13:50:33 INFO [ContextListener] AddressService created.
+2022-10-07 13:50:33 INFO [ContextListener] DishService created.
+2022-10-07 13:50:33 INFO [ContextListener] CommandContainer created.
+2022-10-07 13:50:33 INFO [ContextListener] Language command created.
+2022-10-07 13:50:33 INFO [ContextListener] Error command created.
+2022-10-07 13:50:33 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] Registration command created.
+2022-10-07 13:50:33 INFO [ContextListener] LoginFormCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] LoginCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] AdminCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] DishFormCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] AllDishesCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] CreateDishCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] RemoveDishCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] MenuCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] AllUsersCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] LogoutCommand created.
+2022-10-07 13:50:33 INFO [ContextListener] Services initialized
+2022-10-07 13:50:34 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:34 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:36 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:36 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:40 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:40 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:40 INFO [AppController-doGet] URL processed
+2022-10-07 13:50:40 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:40 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:43 INFO [JspEncodingFilter] Filter started {command=[register]},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:43 INFO [JspEncodingFilter] Filter started {command=[register]},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:43 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
+2022-10-07 13:50:43 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@16e16c40
