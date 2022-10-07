@@ -6,7 +6,7 @@ import com.october.to.finish.app.web.restaurant.model.Address;
 import java.util.List;
 
 public interface AddressService {
-    boolean save(long userId, Address address) throws ServiceException;
+    void save(long userId, Address address) throws ServiceException;
 
     Address findById(long addressId) throws ServiceException;
 

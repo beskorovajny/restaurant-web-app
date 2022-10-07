@@ -34,6 +34,9 @@ public class CreateDishCommand implements AppCommand {
                     setCategory(Dish.Category.valueOf(request.getParameter("dishCategory").toUpperCase())).
                     build();
             LOGGER.info("[CreateDishCommand] Dish from view : {};",dish);
+            if (dishService.isDishExists(dish)) {
+                return "controller?command=dishes";
+            }
             dishService.save(dish);
             LOGGER.info("[CreateDishCommand] Dish saved : {}", dish);
         } catch (ServiceException e) {

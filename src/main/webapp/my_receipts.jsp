@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title><fmt:message key="text.home"/></title>
+    <title>My receipts</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -19,34 +19,15 @@
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="nav-col-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
-                <c:if test="${sessionScope.user == null}">
-                    <div class="col-md-15 text-end">
-                        <a href="controller?command=login_form" style="text-decoration:none;">
-                            <button type="button" class="btn btn-outline-secondary">
-                                <fmt:message key="text.login"/></button>
-                        </a>
-                        <a href="controller?command=registration_form" style="text-decoration:none;">
-                            <button type="button"
-                                    class="btn btn-outline-success"><fmt:message key="text.register"/></button>
-                        </a>
-                    </div>
-                </c:if>
-                <c:if test="${sessionScope.user != null}">
                     <div class="col-md-15 text-center" style="margin: 10px">
                         <h6><fmt:message key="text.greetings"/>
                                 ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                         </h6>
                     </div>
                     <div class="col-md-15 text-end" style="margin-right: 10px;">
-                        <a href="controller?command=user_receipts" style="text-decoration:none;">
+                        <a href="controller?command=menu" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-success">
                                 Catalogue</button>
-                        </a>
-                    </div>
-                    <div class="col-md-15 text-end" style="margin-right: 10px;">
-                        <a href="controller?command=user_receipts&userId=${sessionScope.user.id}" style="text-decoration:none;">
-                            <button type="button" class="btn btn-outline-primary">
-                                History</button>
                         </a>
                     </div>
                     <div class="col-md-15 text-end">
@@ -55,7 +36,6 @@
                                 <fmt:message key="text.logout"/></button>
                         </a>
                     </div>
-                </c:if>
                 <div class="btn-group btn-group-sm" role="group" style="margin-left: 5px">
                     <button id="btnGroupDrop1" type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -74,12 +54,58 @@
 </nav>
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
-    <div class="row mb-5">
-        <div class="col-md-8 col-xl-6 text-center mx-auto">
-            <h2><fmt:message key="text.about.us"/></h2>
-            <p class="w-lg-50"><fmt:message key="text.long.text"/></p>
-        </div>
-    </div>
+    <hr class="bg-secondary border-2 border-top border-secondary">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Date created</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="receipt" items="${receipts}">
+            <tr>
+                <td><c:out value="${receipt.id}"/>
+                </td>
+                <td><c:out value="${receipt.dateCreated}"/>
+                </td>
+                <td><c:out value="${receipt.discount}"/>
+                </td>
+                <td><c:out value="${receipt.status}"/>
+                </td>
+                <td><c:out value="${receipt.address}"/>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <nav>
+        <ul class="pagination justify-content-center">
+            <c:if test="${param.page-1 >= 1}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                </li>
+            </c:if>
+
+            <c:forEach var="page" items="${pages}">
+
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${page}">${page}</a>
+                </li>
+
+            </c:forEach>
+            <c:set var="size" scope="page" value="${requestScope.pages}"/>
+
+            <c:if test="${param.page+1 <= size.size()}">
+                <li class="page-item"><a class="page-link"
+                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                </li>
+            </c:if>
+        </ul>
+    </nav>
 </div>
 <%@ include file="include/footer.jsp" %>
 

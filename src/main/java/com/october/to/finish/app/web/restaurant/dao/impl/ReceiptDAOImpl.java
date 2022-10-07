@@ -21,7 +21,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
 
-    private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ?";
+    private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ? LIMIT 10 OFFSET ?";
     private static final String FIND_ALL = "SELECT * FROM receipt LIMIT 10 OFFSET ?";
     private static final String UPDATE = "UPDATE receipt SET created = ?," +
             " discount = ?, user_id = ?, receipt_status_id = ?, address_id = ? WHERE id  = ?";
@@ -80,22 +80,23 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     }
 
     @Override
-    public Receipt findByUserId(long userId) throws DAOException {
-        Optional<Receipt> receipt = Optional.empty();
+    public List<Receipt> findByUserId(long userId, int offset) throws DAOException {
+        List<Receipt> result = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_USER_ID)) {
             preparedStatement.setLong(1, userId);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                receipt = Optional.ofNullable(receiptMapper.extractFromResultSet(resultSet));
+            preparedStatement.setInt(2, offset);
+            receiptMapper.extractReceipts(result, preparedStatement);
+
+            if (!result.isEmpty()) {
+                LOGGER.info("Receipts was found successfully.");
+                return result;
             }
-            receipt.ifPresent(d -> LOGGER.info("Receipt for UserID [{}] received from db successfully ",
-                    userId));
-            return receipt.orElse(new Receipt());
         } catch (SQLException e) {
-            LOGGER.error("Receipt for given UserID : [{}] was not found. An exception occurs : {}", userId, e.getMessage());
-            throw new DAOException("[ReceiptDAO] exception while receiving Receipt", e);
+            LOGGER.error("Receipts for User[id:{}] was not found. An exception occurs : {}", userId, e.getMessage());
+            throw new DAOException("[ReceiptDAO] exception while receiving all receipts", e);
         }
+        return result;
     }
 
     @Override

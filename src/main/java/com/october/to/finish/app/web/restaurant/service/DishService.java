@@ -6,7 +6,7 @@ import com.october.to.finish.app.web.restaurant.model.Dish;
 import java.util.List;
 
 public interface DishService {
-    boolean save(Dish dish) throws ServiceException;
+    void save(Dish dish) throws ServiceException;
 
     Dish findById(long dishId) throws ServiceException;
 
@@ -19,4 +19,6 @@ public interface DishService {
     void delete(long dishId) throws ServiceException;
 
     int getRecordsCount();
+
+    boolean isDishExists(Dish dish) throws ServiceException;
 }

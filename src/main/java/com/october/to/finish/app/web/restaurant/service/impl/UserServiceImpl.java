@@ -5,11 +5,9 @@ import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.service.UserService;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
@@ -17,7 +15,7 @@ public class UserServiceImpl implements UserService {
     private static final String NULL_USER_DAO_EXC = "[UserService] Can't create UserService with null input UserDAO";
     private static final String NULL_USER_INPUT_EXC = "[UserService] Can't operate null input!";
     private static final String REGISTERED_EMAIL_EXC =
-            "[UserService] User with given email is already registered! (email: {})";
+            "[UserService] User with given email is already registered! (email:) [{}]";
     private final UserDAO userDAO;
 
     public UserServiceImpl(UserDAO userDAO) {
@@ -29,7 +27,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean save(User user) throws ServiceException {
+    public void save(User user) throws ServiceException {
         if (user == null) {
             LOGGER.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
@@ -37,7 +35,6 @@ public class UserServiceImpl implements UserService {
         try {
             user.setId(userDAO.save(user));
             LOGGER.info("[UserService] User saved. (email: {})", user.getEmail());
-            return true;
         } catch (DAOException e) {
             LOGGER.error("[UserService] SQLException while saving User (email: {}). Exc: {}"
                     , user.getEmail(), e.getMessage());
@@ -45,7 +42,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
-    public boolean isUserExists(User user) throws ServiceException {
+    public boolean isUserExist(User user) throws ServiceException {
         try {
             if (userDAO.findByEmail(user.getEmail()).getId() != 0) {
                 LOGGER.info(REGISTERED_EMAIL_EXC
@@ -54,8 +51,7 @@ public class UserServiceImpl implements UserService {
             }
             return false;
         } catch (DAOException e) {
-            LOGGER.error("[UserService] Connection rolled back while saving User. (email: {}). Exc: {}"
-                    , user.getEmail(), e.getMessage());
+            LOGGER.error("[UserService] User is exists.");
             throw new ServiceException(e.getMessage(), e);
         }
     }

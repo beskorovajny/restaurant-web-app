@@ -1,35 +1,32 @@
-2022-10-07 13:47:59 INFO [ContextListener] Context initialization started...
-2022-10-07 13:48:00 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@f1029f3
-2022-10-07 13:48:00 INFO [ContextListener] UserDAO created.
-2022-10-07 13:48:00 INFO [ContextListener] ReceiptDAO created.
-2022-10-07 13:48:00 INFO [ContextListener] AddressDAO created.
-2022-10-07 13:48:00 INFO [ContextListener] DishDAO created.
-2022-10-07 13:48:00 INFO [ContextListener] UserService created.
-2022-10-07 13:48:00 INFO [ContextListener] ReceiptService created.
-2022-10-07 13:48:00 INFO [ContextListener] AddressService created.
-2022-10-07 13:48:00 INFO [ContextListener] DishService created.
-2022-10-07 13:48:00 INFO [ContextListener] CommandContainer created.
-2022-10-07 13:48:00 INFO [ContextListener] Language command created.
-2022-10-07 13:48:00 INFO [ContextListener] Error command created.
-2022-10-07 13:48:00 INFO [ContextListener] RegistrationFormCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] Registration command created.
-2022-10-07 13:48:00 INFO [ContextListener] LoginFormCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] LoginCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] AdminCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] DishFormCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] AllDishesCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] CreateDishCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] RemoveDishCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] MenuCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] AllUsersCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] LogoutCommand created.
-2022-10-07 13:48:00 INFO [ContextListener] Services initialized
-2022-10-07 13:48:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:05 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:05 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:07 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:07 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:07 INFO [AppController-doGet] URL processed
-2022-10-07 13:48:08 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
-2022-10-07 13:48:08 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@724c1b80
+2022-10-07 16:02:54 INFO [ContextListener] Context initialization started...
+2022-10-07 16:02:55 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@49c98ca7
+2022-10-07 16:02:55 INFO [ContextListener] UserDAO created.
+2022-10-07 16:02:55 INFO [ContextListener] ReceiptDAO created.
+2022-10-07 16:02:55 INFO [ContextListener] AddressDAO created.
+2022-10-07 16:02:55 INFO [ContextListener] DishDAO created.
+2022-10-07 16:02:55 INFO [ContextListener] UserService created.
+2022-10-07 16:02:55 INFO [ContextListener] ReceiptService created.
+2022-10-07 16:02:55 INFO [ContextListener] AddressService created.
+2022-10-07 16:02:55 INFO [ContextListener] DishService created.
+2022-10-07 16:02:55 INFO [ContextListener] CommandContainer created.
+2022-10-07 16:02:55 INFO [ContextListener] Language command created.
+2022-10-07 16:02:55 INFO [ContextListener] Error command created.
+2022-10-07 16:02:55 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] Registration command created.
+2022-10-07 16:02:55 INFO [ContextListener] LoginFormCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] LoginCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] AdminCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] DishFormCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] AllDishesCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] CreateDishCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] RemoveDishCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] MenuCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] AllUsersCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] LogoutCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] EditDishFormCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] EditDishCommand created.
+2022-10-07 16:02:55 INFO [ContextListener] Services initialized
+2022-10-07 16:02:56 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@3114b1d2
+2022-10-07 16:02:56 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@3114b1d2
+2022-10-07 16:02:59 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@3114b1d2
+2022-10-07 16:02:59 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@3114b1d2

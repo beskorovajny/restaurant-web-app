@@ -29,39 +29,17 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public boolean save(long userId, Address address) throws ServiceException {
-        if (userId < 1 || address == null) {
+    public void save(long receiptId, Address address) throws ServiceException {
+        if (receiptId < 1 || address == null) {
             LOGGER.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
-            return checkAndSave(userId, address);
-        } catch (SQLException e) {
-            LOGGER.error("[AddressService] SQLException while saving Address (id: {}). Exc: {}"
-                    , address.getId(), e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    private boolean checkAndSave(long userId, Address address) throws ServiceException, SQLException {
-        addressDAO.getConnection().setAutoCommit(false);
-        try {
-            if (addressDAO.findById(address.getId()).getId() != 0) {
-                DBUtils.rollback(addressDAO.getConnection());
-                LOGGER.error(EXISTED_ADDRESS_EXC
-                        , address.getId());
-                throw new ServiceException(EXISTED_ADDRESS_EXC);
-            } else {
-                address.setId(addressDAO.save(userId, address));
-            }
-            addressDAO.getConnection().commit();
-            addressDAO.getConnection().setAutoCommit(true);
+            address.setId(addressDAO.save(receiptId, address));
             LOGGER.info("[AddressService] Address saved. (id: {})", address.getId());
-            return true;
         } catch (DAOException e) {
-            addressDAO.getConnection().rollback();
-            LOGGER.error("[AddressService] Connection rolled back while saving Address. (id: {}). Exc: {}"
-                    , address.getId(), e.getMessage());
+            LOGGER.error("[AddressService] SQLException while saving Address; Exc: {}"
+                    , e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }

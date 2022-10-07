@@ -13,7 +13,7 @@ public interface ReceiptDAO {
 
     Receipt findById(long receiptId) throws DAOException;
 
-    Receipt findByUserId(long userId) throws DAOException;
+    List<Receipt> findByUserId(long userId, int offset) throws DAOException;
 
     List<Receipt> findAll(int offset) throws DAOException;
 

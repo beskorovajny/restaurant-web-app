@@ -4,6 +4,7 @@ import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
+import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.service.DishService;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
@@ -30,38 +31,31 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
-    public boolean save(Dish dish) throws ServiceException {
+    public void save(Dish dish) throws ServiceException {
         if (dish == null) {
+            LOGGER.error(NULL_INPUT_EXC);
             throw new IllegalArgumentException(NULL_INPUT_EXC);
         }
         try {
-            return checkAndSave(dish);
-        } catch (SQLException e) {
+            dish.setId(dishDAO.save(dish));
+            LOGGER.info("[DishService] Dish saved. (title: {})", dish.getTitle());
+        } catch (DAOException e) {
             LOGGER.error("[DishService] SQLException while saving Dish (title: {}). Exc: {}"
                     , dish.getTitle(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
-
-    private boolean checkAndSave(Dish dish) throws ServiceException, SQLException {
-        dishDAO.getConnection().setAutoCommit(false);
+    @Override
+    public boolean isDishExists(Dish dish) throws ServiceException {
         try {
-            if (dishDAO.findById(dish.getId()).getId() != 0) {
-                DBUtils.rollback(dishDAO.getConnection());
-                LOGGER.error(EXISTED_DISH_EXC
-                        , dish.getId());
-                throw new ServiceException(EXISTED_DISH_EXC);
-            } else {
-                dish.setId(dishDAO.save(dish));
+            if (dishDAO.findByTitle(dish.getTitle()).getId() != 0) {
+                LOGGER.info(EXISTED_DISH_EXC
+                        , dish.getTitle());
+                return true;
             }
-            dishDAO.getConnection().commit();
-            dishDAO.getConnection().setAutoCommit(true);
-            LOGGER.info("[DishService] Dish saved. (id: {})", dish.getId());
-            return true;
+            return false;
         } catch (DAOException e) {
-            dishDAO.getConnection().rollback();
-            LOGGER.error("[DishService] Connection rolled back while saving Dish. (title: {}). Exc: {}"
-                    , dish.getTitle(), e.getMessage());
+            LOGGER.error("[DishService] Dish already exist");
             throw new ServiceException(e.getMessage(), e);
         }
     }

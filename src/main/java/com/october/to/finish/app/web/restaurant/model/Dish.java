@@ -1,6 +1,7 @@
 package com.october.to.finish.app.web.restaurant.model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -13,7 +14,7 @@ public class Dish {
     private int weight;
     private int cooking;
     private LocalDateTime dateCreated;
-    private byte[] image;
+
 
     public static Builder newBuilder() {
         return new Dish().new Builder();
@@ -58,19 +59,45 @@ public class Dish {
         return dateCreated;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
+    }
+
+    public void setCooking(int cooking) {
+        this.cooking = cooking;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Dish dish = (Dish) o;
-        return id == dish.id && Double.compare(dish.price, price) == 0 && weight == dish.weight && cooking == dish.cooking && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated) && Arrays.equals(image, dish.image);
+        return id == dish.id && Double.compare(dish.price, price) == 0 && weight == dish.weight && cooking == dish.cooking && Objects.equals(title, dish.title) && Objects.equals(description, dish.description) && category == dish.category && Objects.equals(dateCreated, dish.dateCreated);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, title, description, category, price, weight, cooking, dateCreated);
-        result = 31 * result + Arrays.hashCode(image);
-        return result;
+        return Objects.hash(id, title, description, category, price, weight, cooking, dateCreated);
     }
 
     @Override
@@ -83,7 +110,7 @@ public class Dish {
                 ", price=" + price +
                 ", weight=" + weight +
                 ", cooking=" + cooking +
-                ", dateCreated=" + dateCreated +
+                ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
                 '}';
     }
 

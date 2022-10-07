@@ -1,10 +1,8 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
-import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.Receipt;
 
-import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,8 +29,8 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     }
 
     private Receipt.Status getById(Long id) {
-        for(Receipt.Status s : Receipt.Status.values()) {
-            if(s.getId() == (id)) return s;
+        for (Receipt.Status s : Receipt.Status.values()) {
+            if (s.getId() == (id)) return s;
         }
         return null;
     }

@@ -1,7 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
-import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.Dish;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -35,8 +35,8 @@ public class DishMapper implements ObjectMapper<Dish> {
     }
 
     private Dish.Category getById(Long id) {
-        for(Dish.Category c : Dish.Category.values()) {
-            if(c.getId() == (id)) return c;
+        for (Dish.Category c : Dish.Category.values()) {
+            if (c.getId() == (id)) return c;
         }
         return null;
     }

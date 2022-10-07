@@ -7,7 +7,7 @@ import com.october.to.finish.app.web.restaurant.model.User;
 import java.util.List;
 
 public interface UserService {
-    boolean save(User user) throws ServiceException, FatalApplicationException;
+    void save(User user) throws ServiceException, FatalApplicationException;
 
     User findById(long id) throws ServiceException;
 
@@ -21,5 +21,5 @@ public interface UserService {
 
     int getRecordsCount();
 
-    boolean isUserExists(User user) throws ServiceException;
+    boolean isUserExist(User user) throws ServiceException;
 }

@@ -100,7 +100,7 @@
         <td><c:out value="${dish.category}"/>
         </td>
         <td>
-            <button type="button" class="btn btn-outline-warning" onclick="window.location='controller?command=edit_dish&dishId=${dish.id}'">
+            <button type="button" class="btn btn-outline-warning" onclick="window.location='controller?command=edit_dish_form&dishId=${dish.id}'">
               Edit</button>
         </td>
         <td>

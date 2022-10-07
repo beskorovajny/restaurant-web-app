@@ -29,42 +29,20 @@ public class ReceiptServiceImpl implements ReceiptService {
     }
 
     @Override
-    public boolean save(long userId, Receipt receipt) throws ServiceException {
+    public void save(long userId, Receipt receipt) throws ServiceException {
         if (userId < 1 || receipt == null) {
             LOGGER.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
-            return checkAndSave(userId, receipt);
-        } catch (SQLException e) {
-            LOGGER.error("[ReceiptService] SQLException while saving Receipt for UserID: [{}]. Exc: {}"
-                    , userId, e.getMessage());
-            throw new ServiceException(e.getMessage(), e);
-        }
-    }
-
-    private boolean checkAndSave(long userId, Receipt receipt) throws ServiceException, SQLException {
-        receiptDAO.getConnection().setAutoCommit(false);
-        try {
-            if (receiptDAO.findByUserId(userId).getId() != 0) {
-                DBUtils.rollback(receiptDAO.getConnection());
-                LOGGER.error(EXISTED_RECEIPT_EXC);
-                throw new ServiceException(EXISTED_RECEIPT_EXC);
-            } else {
-                receipt.setId(receiptDAO.save(userId, receipt));
-            }
-            receiptDAO.getConnection().commit();
-            receiptDAO.getConnection().setAutoCommit(true);
-            LOGGER.info("[ReceiptService] Receipt saved. (id: {})", receipt.getId());
-            return true;
+            receipt.setId(receiptDAO.save(userId, receipt));
+            LOGGER.info("[ReceiptService] Receipt saved. (title: {})", receipt.getId());
         } catch (DAOException e) {
-            receiptDAO.getConnection().rollback();
-            LOGGER.error("[ReceiptService] Connection rolled back while saving Receipt. (id: {}). Exc: {}"
-                    , receipt.getId(), e.getMessage());
+            LOGGER.error("[ReceiptService] SQLException while saving Receipt; Exc: {}"
+                    , e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
-
     @Override
     public Receipt findById(long receiptId) throws ServiceException {
         if (receiptId < 1) {
@@ -84,6 +62,15 @@ public class ReceiptServiceImpl implements ReceiptService {
     public List<Receipt> findAll(int offset) throws ServiceException {
         try {
             return receiptDAO.findAll(getOffset(offset));
+        } catch (DAOException e) {
+            LOGGER.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    public List<Receipt> findAllByUser(long userId, int offset) throws ServiceException {
+        try {
+            return receiptDAO.findByUserId(userId, getOffset(offset));
         } catch (DAOException e) {
             LOGGER.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);

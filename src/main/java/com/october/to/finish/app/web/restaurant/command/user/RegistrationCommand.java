@@ -34,7 +34,7 @@ public class RegistrationCommand implements AppCommand {
                     .setRole(User.Role.CLIENT)
                     .build();
             LOGGER.info("[RegistrationCommand] User from view : {} + fN: {}", user, request.getParameter("firstName"));
-            if (userService.isUserExists(user)) {
+            if (userService.isUserExist(user)) {
                 return "controller?command=login_form";
             }
             userService.save(user);

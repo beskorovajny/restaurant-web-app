@@ -3,11 +3,23 @@ package com.october.to.finish.app.web.restaurant.listener;
 import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.*;
 import com.october.to.finish.app.web.restaurant.command.user.*;
-import com.october.to.finish.app.web.restaurant.dao.*;
+import com.october.to.finish.app.web.restaurant.dao.AddressDAO;
+import com.october.to.finish.app.web.restaurant.dao.DishDAO;
+import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
+import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
-import com.october.to.finish.app.web.restaurant.dao.impl.*;
-import com.october.to.finish.app.web.restaurant.service.*;
-import com.october.to.finish.app.web.restaurant.service.impl.*;
+import com.october.to.finish.app.web.restaurant.dao.impl.AddressDAOImpl;
+import com.october.to.finish.app.web.restaurant.dao.impl.DishDAOImpl;
+import com.october.to.finish.app.web.restaurant.dao.impl.ReceiptDAOImpl;
+import com.october.to.finish.app.web.restaurant.dao.impl.UserDAOImpl;
+import com.october.to.finish.app.web.restaurant.service.AddressService;
+import com.october.to.finish.app.web.restaurant.service.DishService;
+import com.october.to.finish.app.web.restaurant.service.ReceiptService;
+import com.october.to.finish.app.web.restaurant.service.UserService;
+import com.october.to.finish.app.web.restaurant.service.impl.AddressServiceImpl;
+import com.october.to.finish.app.web.restaurant.service.impl.DishServiceImpl;
+import com.october.to.finish.app.web.restaurant.service.impl.ReceiptServiceImpl;
+import com.october.to.finish.app.web.restaurant.service.impl.UserServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -142,11 +154,21 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("users", appCommand);
         LOGGER.info("{} AllUsersCommand created.", CONTEXT_LISTENER_MSG);
 
-
         appCommand = new LogoutCommand();
         commandContainer.addCommand("logout", appCommand);
         LOGGER.info("{} LogoutCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new EditDishFormCommand(dishService);
+        commandContainer.addCommand("edit_dish_form", appCommand);
+        LOGGER.info("{} EditDishFormCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new EditDishCommand(dishService);
+        commandContainer.addCommand("edit_dish", appCommand);
+        LOGGER.info("{} EditDishCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new UserReceiptsCommand(receiptService);
+        commandContainer.addCommand("user_receipts", appCommand);
+        LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
 
 
         context.setAttribute("commandContainer", commandContainer);
