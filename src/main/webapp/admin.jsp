@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="custom" uri="WEB-INF/tld/customDateTimeTag.tld" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="messages"/>
 <html lang="${sessionScope.lang}">
@@ -13,8 +14,8 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" aria-label="header">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command=home">
-        <span><fmt:message key="text.brand"/></span></a>
+    <div class="container"><a class="navbar-brand d-flex align-items-center" >
+        <span><custom:today/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="nav-col-2" class="collapse navbar-collapse">
