@@ -1,3 +1,4 @@
-2022-10-09 16:31:00 INFO [AddressService] Address saved. (id: 2)
-2022-10-09 16:31:01 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-09 16:31:01 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 19:03:07 INFO Address with ID : [1] was updated.
+2022-10-09 19:03:07 INFO Address with ID : [1] was updated.
+2022-10-09 19:03:07 INFO Address with ID : [1] was not found for update
+2022-10-09 19:03:07 INFO Address with ID : [1] was not found for update

@@ -1,5 +1,7 @@
-2022-10-09 16:46:33 INFO [AddressService] Address saved. (id: 2)
-2022-10-09 16:46:34 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-09 16:46:34 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-09 16:46:34 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-09 16:46:34 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 19:12:47 INFO Address with ID : [1] was updated.
+2022-10-09 19:12:47 INFO Address with ID : [1] was updated.
+2022-10-09 19:12:47 INFO Address with ID : [1] was removed.
+2022-10-09 19:12:47 INFO Address with ID : [1] was not found to remove.
+2022-10-09 19:12:47 INFO Address with ID : [1] was not found for update
+2022-10-09 19:12:47 INFO Address with ID : [1] was not found for update
+2022-10-09 19:12:47 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully

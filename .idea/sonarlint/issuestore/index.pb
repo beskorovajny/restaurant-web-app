@@ -78,8 +78,6 @@ O
 logs/app-error-2022-09-22-3.log,d\9\d9aa6bd63ce24ef9bfd0706b0cb493bfd2980b3a
 w
 Gsrc/main/java/com/october/to/finish/app/web/restaurant/dao/UserDAO.java,5\7\5784ceecf52e9b84e5a394527ff6a3af8d91b649
-€
-Psrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/UserDAOImpl.java,8\b\8b91bc304185b4ae20504d221994264e2b1cf58e
 Š
 Zsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/RemoveDishCommand.java,9\f\9f41a01b7ba8253adb70e9c463ea065f56dea08b
 I
@@ -154,8 +152,6 @@ M
 Vsrc/main/java/com/october/to/finish/app/web/restaurant/filter/SessionLocaleFilter.java,f\e\fe149b36082fe8caae127954810bad4cfafc4de0
 Œ
 \src/main/java/com/october/to/finish/app/web/restaurant/command/user/UserReceiptsCommand.java,a\7\a7d9b34bd09576bd69d651b42bf8928c4a7aa9ba
-‹
-[src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1
 z
 Jsrc/main/java/com/october/to/finish/app/web/restaurant/dao/ReceiptDAO.java,f\d\fdb1fdf2ab34acff7fdcc59699c684091ef251dd
 ƒ

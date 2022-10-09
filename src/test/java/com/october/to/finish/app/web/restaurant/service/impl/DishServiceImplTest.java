@@ -1,12 +1,9 @@
 package com.october.to.finish.app.web.restaurant.service.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.impl.DishDAOImpl;
-import com.october.to.finish.app.web.restaurant.dao.impl.UserDAOImpl;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.model.User;
-import com.october.to.finish.app.web.restaurant.security.PasswordEncryptionUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -35,7 +32,7 @@ class DishServiceImplTest {
     private int offset;
 
     @BeforeEach
-    public void init() {
+    public void setUp() {
         offset = 3;
         expected = Dish.newBuilder().setId(1)
                 .setTitle("Pizza")
@@ -53,19 +50,19 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldGetRecordsCount() {
+    void shouldGetRecordsCountTest() {
         final int records = 5;
         when(dishDAO.countRecords()).thenReturn(records);
         assertEquals(records, dishService.getRecordsCount());
     }
 
     @Test
-    void shouldNotInjectDAO() {
+    void shouldNotInjectDAOTest() {
         assertThrows(IllegalArgumentException.class, () -> new DishServiceImpl(null));
     }
 
     @Test
-    void shouldSave() throws DAOException, ServiceException {
+    void shouldSaveTest() throws DAOException, ServiceException {
         final long dishId = 1L;
         when(dishDAO.save(expected)).thenReturn(dishId);
         dishService.save(expected);
@@ -74,18 +71,18 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotSaveIfInputIncorrect() {
+    void shouldNotSaveIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> dishService.save(null));
     }
 
     @Test
-    void shouldNotSave() throws DAOException {
+    void shouldNotSaveTest() throws DAOException {
         when(dishDAO.save(expected)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> dishService.save(expected));
     }
 
     @Test
-    void shouldFindById() throws DAOException, ServiceException {
+    void shouldFindByIdTest() throws DAOException, ServiceException {
         final long dishId = 1L;
         expected.setId(dishId);
         when(dishDAO.findById(expected.getId())).thenReturn(expected);
@@ -94,20 +91,20 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotFindByIfIdIncorrect() {
+    void shouldNotFindByIfIdIncorrectTest() {
         final long dishId = 0L;
         assertThrows(IllegalArgumentException.class, () -> dishService.findById(dishId));
     }
 
     @Test
-    void shouldNotFindById() throws DAOException {
+    void shouldNotFindByIdTest() throws DAOException {
         final long dishId = 1L;
         when(dishDAO.findById(dishId)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> dishService.findById(dishId));
     }
 
     @Test
-    void shouldFindByTitle() throws DAOException, ServiceException {
+    void shouldFindByTitleTest() throws DAOException, ServiceException {
         final String title = "Title";
         when(dishDAO.findByTitle(title)).thenReturn(expected);
         final Dish actual = dishService.findByTitle(title);
@@ -115,12 +112,12 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotFindByIfTitleIncorrect() {
+    void shouldNotFindByIfTitleIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> dishService.findByTitle(null));
     }
 
     @Test
-    void shouldNotFindByTitle() throws DAOException {
+    void shouldNotFindByTitleTest() throws DAOException {
         final String title = "title1";
         when(dishDAO.findByTitle(title)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> dishService.findByTitle(title));
@@ -128,7 +125,7 @@ class DishServiceImplTest {
 
 
     @Test
-    void shouldFindAll() throws DAOException, ServiceException {
+    void shouldFindAllTest() throws DAOException, ServiceException {
         List<Dish> expectedList = List.of(
                 Dish.newBuilder().setId(1)
                         .setTitle("Pizza")
@@ -161,14 +158,14 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotFindAll() throws DAOException {
+    void shouldNotFindAllTest() throws DAOException {
         final int daoOffset = 20;
         when(dishDAO.findAll(daoOffset)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> dishService.findAll(offset));
     }
 
     @Test
-    void update() throws ServiceException, DAOException {
+    void shouldUpdateTest() throws ServiceException, DAOException {
         final long dishId = 1L;
 
         dishService.update(dishId, expected);
@@ -178,21 +175,21 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotUpdateIfInputIncorrect() {
+    void shouldNotUpdateIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> dishService.update(0, new Dish()));
         assertThrows(IllegalArgumentException.class, () -> dishService.update(1, null));
         assertThrows(IllegalArgumentException.class, () -> dishService.update(-1, null));
     }
 
     @Test
-    void shouldNotUpdate() throws DAOException {
+    void shouldNotUpdateTest() throws DAOException {
         final long dishId = 1L;
         when(dishDAO.update(dishId, expected)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> dishService.update(dishId, expected));
     }
 
     @Test
-    void shouldDelete() throws ServiceException, DAOException {
+    void shouldDeleteTest() throws ServiceException, DAOException {
         final long dishId = 1L;
 
         dishService.delete(dishId);
@@ -201,13 +198,13 @@ class DishServiceImplTest {
     }
 
     @Test
-    void shouldNotDeleteIfIdIncorrect() throws ServiceException {
+    void shouldNotDeleteIfIdIncorrectTest() throws ServiceException {
         final long dishId = 0L;
         assertThrows(IllegalArgumentException.class, () -> dishService.delete(dishId));
     }
 
     @Test
-    void shouldNotDeleteThrows() throws DAOException {
+    void shouldNotDeleteThrowsTest() throws DAOException {
         final long dishId = 1L;
         doThrow(DAOException.class).when(dishDAO).delete(dishId);
         assertThrows(ServiceException.class, () -> dishService.delete(dishId));

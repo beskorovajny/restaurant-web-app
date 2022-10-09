@@ -24,30 +24,29 @@ class AddressServiceImplTest {
     private AddressServiceImpl addressService;
 
     @Test
-    void shouldNotInjectDAO() {
+    void shouldNotInjectDAOTest() {
         assertThrows(IllegalArgumentException.class, () -> new AddressServiceImpl(null));
     }
 
     @Test
-    void shouldSave() throws DAOException, ServiceException {
+    void shouldSaveTest() throws DAOException, ServiceException {
         final long receiptId = 1L;
         final long addressId = 2L;
         final Address expected = new Address("Country", "City", "Street", "Building");
         when(addressDAO.save(receiptId, expected)).thenReturn(addressId);
         addressService.save(receiptId, expected);
         verify(addressDAO, times(1)).save(receiptId, expected);
-
     }
 
     @Test
-    void shouldNotSaveIfInputIncorrect() {
+    void shouldNotSaveIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> addressService.save(0, new Address()));
         assertThrows(IllegalArgumentException.class, () -> addressService.save(1, null));
         assertThrows(IllegalArgumentException.class, () -> addressService.save(-1, null));
     }
 
     @Test
-    void shouldNotSave() throws DAOException {
+    void shouldNotSaveTest() throws DAOException {
         final long receiptId = 1L;
         final Address expected = new Address("Country", "City", "Street", "Building");
         when(addressDAO.save(receiptId, expected)).thenThrow(DAOException.class);
@@ -55,7 +54,7 @@ class AddressServiceImplTest {
     }
 
     @Test
-    void shouldFindById() throws DAOException, ServiceException {
+    void shouldFindByIdTest() throws DAOException, ServiceException {
         final Address expected = new Address("Country", "City", "Street", "Building");
         expected.setId(1L);
         when(addressDAO.findById(expected.getId())).thenReturn(expected);
@@ -64,20 +63,20 @@ class AddressServiceImplTest {
     }
 
     @Test
-    void shouldNotFindByIfIdIncorrect() {
+    void shouldNotFindByIfIdIncorrectTest() {
         final long addressId = 0L;
         assertThrows(IllegalArgumentException.class, () -> addressService.findById(addressId));
     }
 
     @Test
-    void shouldNotFindById() throws DAOException {
+    void shouldNotFindByIdTest() throws DAOException {
         when(addressDAO.findById(1L)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> addressService.findById(1L));
     }
 
 
     @Test
-    void shouldFindAll() throws DAOException, ServiceException {
+    void shouldFindAllTest() throws DAOException, ServiceException {
         List<Address> expected = List.of(
                 new Address("Country1", "City1", "Street1", "Building1"),
                 new Address("Country2", "City2", "Street2", "Building2"),
@@ -88,13 +87,13 @@ class AddressServiceImplTest {
     }
 
     @Test
-    void shouldNotFindAll() throws DAOException {
+    void shouldNotFindAllTest() throws DAOException {
         when(addressDAO.findAll()).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> addressService.findAll());
     }
 
     @Test
-    void update() throws ServiceException, DAOException {
+    void shouldUpdateTest() throws ServiceException, DAOException {
         final long addressId = 1L;
         final Address expected = new Address("Country", "City", "Street", "Building");
 
@@ -102,14 +101,14 @@ class AddressServiceImplTest {
         verify(addressDAO, times(1)).update(addressId, expected);
     }
     @Test
-    void shouldNotUpdateIfInputIncorrect() {
+    void shouldNotUpdateIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> addressService.update(0, new Address()));
         assertThrows(IllegalArgumentException.class, () -> addressService.update(1, null));
         assertThrows(IllegalArgumentException.class, () -> addressService.update(-1, null));
     }
 
     @Test
-    void shouldNotUpdate() throws DAOException {
+    void shouldNotUpdateTest() throws DAOException {
         final long addressId = 1L;
         final Address expected = new Address("Country", "City", "Street", "Building");
         when(addressDAO.update(addressId, expected)).thenThrow(DAOException.class);
@@ -117,7 +116,7 @@ class AddressServiceImplTest {
     }
 
     @Test
-    void shouldDelete() throws ServiceException, DAOException {
+    void shouldDeleteTest() throws ServiceException, DAOException {
         final long addressId = 1L;
 
         addressService.delete(addressId);
@@ -126,13 +125,13 @@ class AddressServiceImplTest {
     }
 
     @Test
-    void shouldNotDeleteIfIdIncorrect() throws ServiceException {
+    void shouldNotDeleteIfIdIncorrectTest() throws ServiceException {
         final long addressId = 0L;
         assertThrows(IllegalArgumentException.class, () -> addressService.delete(addressId));
     }
 
     @Test
-    void shouldNotDeleteThrows() throws DAOException {
+    void shouldNotDeleteThrowsTest() throws DAOException {
         final long addressId = 1L;
         doThrow(DAOException.class).when(addressDAO).delete(addressId);
         assertThrows(ServiceException.class, () -> addressService.delete(addressId));

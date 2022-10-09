@@ -18,6 +18,8 @@ import java.util.Optional;
 public class AddressDAOImpl implements AddressDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(AddressDAOImpl.class);
+    private static final String NULL_CONNECTION_MSG = "[AddressDaoImpl] Connection cannot be null!";
+    private static final String NULL_ADDRESS_INPUT_EXC = "[AddressDAO] Can't operate null (or < 1) input!";
     private static final String INSERT = "INSERT INTO address" +
             " (country, city, street, building)" +
             " VALUES (?, ?, ?, ?)";
@@ -32,6 +34,10 @@ public class AddressDAOImpl implements AddressDAO {
     private final AddressMapper addressMapper = new AddressMapper();
 
     public AddressDAOImpl(Connection connection) {
+        if (connection == null) {
+            LOGGER.error(NULL_CONNECTION_MSG);
+            throw new IllegalArgumentException(NULL_CONNECTION_MSG);
+        }
         this.connection = connection;
     }
 
@@ -39,10 +45,14 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public long save(long receiptId, Address address) throws DAOException {
+        if (receiptId < 1 || address == null) {
+            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT)) {
             addressMapper.setAddressParams(address, preparedStatement);
-            preparedStatement.setLong(6, receiptId);
+            preparedStatement.setLong(4, receiptId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             long key = 0;
@@ -60,6 +70,10 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public Address findById(long addressId) throws DAOException {
+        if (addressId < 1) {
+            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
+        }
         Optional<Address> address = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_ID)) {
@@ -95,13 +109,17 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public boolean update(long addressId, Address address) throws DAOException {
+        if (addressId < 1 || address == null) {
+            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             addressMapper.setAddressParams(address, preparedStatement);
-            preparedStatement.setLong(6, addressId);
+            preparedStatement.setLong(5, addressId);
 
             int rowUpdated = preparedStatement.executeUpdate();
-            if (rowUpdated > 0 && rowUpdated < 6) {
+            if (rowUpdated > 0 && rowUpdated < 5) {
                 LOGGER.info("Address with ID : [{}] was updated.", addressId);
                 return true;
             } else {
@@ -118,6 +136,10 @@ public class AddressDAOImpl implements AddressDAO {
 
     @Override
     public void delete(long addressId) throws DAOException {
+        if (addressId < 1) {
+            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(DELETE)) {
             preparedStatement.setLong(1, addressId);

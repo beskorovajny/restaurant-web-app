@@ -15,7 +15,7 @@ import java.util.List;
 public class AddressServiceImpl implements AddressService {
     private static final Logger LOGGER = LogManager.getLogger(AddressServiceImpl.class);
     private static final String NULL_ADDRESS_DAO_EXC = "[AddressService] Can't create AddressService with null input AddressDAO";
-    private static final String NULL_ADDRESS_INPUT_EXC = "[AddressService] Can't operate null input!";
+    private static final String NULL_ADDRESS_INPUT_EXC = "[AddressService] Can't operate null (or < 1) input!";
     private static final String EXISTED_ADDRESS_EXC =
             "[AddressService] Address with given [ID: {}] is already existed!";
     private final AddressDAO addressDAO;

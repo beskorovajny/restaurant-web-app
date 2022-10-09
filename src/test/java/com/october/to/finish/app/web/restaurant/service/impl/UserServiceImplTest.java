@@ -29,11 +29,10 @@ class UserServiceImplTest {
 
     private User expected;
     private final String password = "pa88w0rd";
-    private int offset;
+    private final int offset = 3;
 
     @BeforeEach
-    public void init() {
-        offset = 3;
+    public void setUp() {
         expected = User.newBuilder()
                 .setEmail("test@examp.com")
                 .setFirstName("fTest")
@@ -50,19 +49,19 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldGetRecordsCount() {
+    void shouldGetRecordsCountTest() {
         final int records = 5;
         when(userDAO.countRecords()).thenReturn(records);
         assertEquals(records, userService.getRecordsCount());
     }
 
     @Test
-    void shouldNotInjectDAO() {
+    void shouldNotInjectDAOTest() {
         assertThrows(IllegalArgumentException.class, () -> new UserServiceImpl(null));
     }
 
     @Test
-    void shouldSave() throws DAOException, ServiceException {
+    void shouldSaveTest() throws DAOException, ServiceException {
         final long userId = 1L;
         when(userDAO.save(expected)).thenReturn(userId);
         userService.save(expected);
@@ -71,18 +70,18 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotSaveIfInputIncorrect() {
+    void shouldNotSaveIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> userService.save(null));
     }
 
     @Test
-    void shouldNotSave() throws DAOException {
+    void shouldNotSaveTest() throws DAOException {
         when(userDAO.save(expected)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> userService.save(expected));
     }
 
     @Test
-    void shouldFindById() throws DAOException, ServiceException {
+    void shouldFindByIdTest() throws DAOException, ServiceException {
         final long userId = 1L;
         expected.setId(userId);
         when(userDAO.findById(expected.getId())).thenReturn(expected);
@@ -91,20 +90,20 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotFindByIfIdIncorrect() {
+    void shouldNotFindByIfIdIncorrectTest() {
         final long userId = 0L;
         assertThrows(IllegalArgumentException.class, () -> userService.findById(userId));
     }
 
     @Test
-    void shouldNotFindById() throws DAOException {
+    void shouldNotFindByIdTest() throws DAOException {
         final long userId = 1L;
         when(userDAO.findById(userId)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> userService.findById(userId));
     }
 
     @Test
-    void shouldFindByEmail() throws DAOException, ServiceException {
+    void shouldFindByEmailTest() throws DAOException, ServiceException {
         final String email = "test1@examp.app";
         when(userDAO.findByEmail(email)).thenReturn(expected);
         final User actual = userService.findByEmail(email);
@@ -112,12 +111,12 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotFindByIfEmailIncorrect() {
+    void shouldNotFindByIfEmailIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> userService.findByEmail(null));
     }
 
     @Test
-    void shouldNotFindByEmail() throws DAOException {
+    void shouldNotFindByEmailTest() throws DAOException {
         final String email = "test1@example.app";
         when(userDAO.findByEmail(email)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> userService.findByEmail(email));
@@ -125,7 +124,7 @@ class UserServiceImplTest {
 
 
     @Test
-    void shouldFindAll() throws DAOException, ServiceException {
+    void shouldFindAllTest() throws DAOException, ServiceException {
         List<User> expectedList = List.of(
                 User.newBuilder()
                         .setEmail("test@examp.com")
@@ -155,14 +154,14 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotFindAll() throws DAOException {
+    void shouldNotFindAllTest() throws DAOException {
         final int daoOffset = 20;
         when(userDAO.findAll(daoOffset)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> userService.findAll(offset));
     }
 
     @Test
-    void update() throws ServiceException, DAOException {
+    void shouldUpdateTest() throws ServiceException, DAOException {
         final long userId = 1L;
 
         userService.update(userId, expected);
@@ -172,21 +171,21 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotUpdateIfInputIncorrect() {
+    void shouldNotUpdateIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> userService.update(0, new User()));
         assertThrows(IllegalArgumentException.class, () -> userService.update(1, null));
         assertThrows(IllegalArgumentException.class, () -> userService.update(-1, null));
     }
 
     @Test
-    void shouldNotUpdate() throws DAOException {
+    void shouldNotUpdateTest() throws DAOException {
         final long userId = 1L;
         when(userDAO.update(userId, expected)).thenThrow(DAOException.class);
         assertThrows(ServiceException.class, () -> userService.update(userId, expected));
     }
 
     @Test
-    void shouldDelete() throws ServiceException, DAOException {
+    void shouldDeleteTest() throws ServiceException, DAOException {
         final long userId = 1L;
 
         userService.delete(userId);
@@ -195,13 +194,13 @@ class UserServiceImplTest {
     }
 
     @Test
-    void shouldNotDeleteIfIdIncorrect() throws ServiceException {
+    void shouldNotDeleteIfIdIncorrectTest() throws ServiceException {
         final long userId = 0L;
         assertThrows(IllegalArgumentException.class, () -> userService.delete(userId));
     }
 
     @Test
-    void shouldNotDeleteThrows() throws DAOException {
+    void shouldNotDeleteThrowsTest() throws DAOException {
         final long userId = 1L;
         doThrow(DAOException.class).when(userDAO).delete(userId);
         assertThrows(ServiceException.class, () -> userService.delete(userId));
