@@ -15,6 +15,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -81,11 +83,56 @@ class AddressDAOImplTest {
     }
 
     @Test
-    void shouldFindByIdTest() {
+    void shouldFindByIdTest() throws SQLException, DAOException {
+        expected.setId(addressId);
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
+        when(resultSet.next()).thenReturn(true);
+        when(resultSet.getLong("id")).thenReturn(expected.getId());
+        when(resultSet.getString("country")).thenReturn(expected.getCountry());
+        when(resultSet.getString("city")).thenReturn(expected.getCity());
+        when(resultSet.getString("street")).thenReturn(expected.getStreet());
+        when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
+        final Address actual = addressDAO.findById(addressId);
+        assertEquals(expected, actual);
+        verify(preparedStatement, times(1)).executeQuery();
+    }
+    @Test
+    void shouldNotFindByIdIfInvalidInput() {
+        assertThrows(IllegalArgumentException.class, () -> addressDAO.findById(0));
+    }
+    @Test
+    void shouldNotFindById() throws SQLException {
+        when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
+        assertThrows(DAOException.class, () -> addressDAO.findById(addressId));
     }
 
+   /* @Test
+    void shouldFindAllTest() throws SQLException, DAOException {
+       *//* final List<Address> expectedList = List.of(
+                new Address("Country1", "City1", "Street1", "Building1"),
+                new Address("Country2", "City2", "Street2", "Building2"),
+                new Address("Country3", "City3", "Street3", "Building3"));
+        final List<Address> addresses = new ArrayList<>();
+        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(preparedStatement.executeQuery()).thenReturn(resultSet);
+        when(resultSet.next()).thenReturn(true);
+        when(resultSet.getLong("id")).thenReturn(expected.getId());
+        when(resultSet.getString("country")).thenReturn(expected.getCountry());
+        when(resultSet.getString("city")).thenReturn(expected.getCity());
+        when(resultSet.getString("street")).thenReturn(expected.getStreet());
+        when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
+        when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
+        final List<Address> actual = addressDAO.findAll();
+        assertEquals(expectedList, actual);
+        verify(preparedStatement, times(1)).executeQuery();
+*//*
+    }*/
+
     @Test
-    void shouldFindAllTest() {
+    void shouldNotFindAll() throws SQLException {
+        when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
+        assertThrows(DAOException.class, () -> addressDAO.findAll());
     }
 
 

@@ -1,12 +1,13 @@
-2022-10-09 19:14:30 INFO [AddressService] Address saved. (id: 2)
-2022-10-09 19:14:31 INFO Address with ID : [1] was updated.
-2022-10-09 19:14:31 INFO Address with ID : [1] was updated.
-2022-10-09 19:14:31 INFO Address with ID : [1] was removed.
-2022-10-09 19:14:31 INFO Address with ID : [1] was not found to remove.
-2022-10-09 19:14:31 INFO Address with ID : [1] was not found for update
-2022-10-09 19:14:31 INFO Address with ID : [1] was not found for update
-2022-10-09 19:14:32 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
-2022-10-09 19:14:32 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-09 19:14:32 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-09 19:14:32 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-09 19:14:32 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 21:35:28 INFO [AddressService] Address saved. (id: 2)
+2022-10-09 21:35:29 INFO Address with ID : [1] was updated.
+2022-10-09 21:35:29 INFO Address with ID : [1] was updated.
+2022-10-09 21:35:29 INFO Address received from db: [Address{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
+2022-10-09 21:35:29 INFO Address with ID : [1] was removed.
+2022-10-09 21:35:29 INFO Address with ID : [1] was not found to remove.
+2022-10-09 21:35:29 INFO Address with ID : [1] was not found for update
+2022-10-09 21:35:29 INFO Address with ID : [1] was not found for update
+2022-10-09 21:35:29 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
+2022-10-09 21:35:29 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 21:35:29 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 21:35:29 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 21:35:29 INFO [UserService] User saved. (email: test@examp.com)

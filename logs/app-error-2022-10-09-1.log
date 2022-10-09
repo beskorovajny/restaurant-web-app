@@ -1,9 +1,11 @@
-2022-10-09 19:03:07 ERROR Address : [Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'}] was not saved. An exception occurs : null
-2022-10-09 19:03:07 ERROR [AddressDaoImpl] Connection cannot be null!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:03:07 ERROR Address with ID : [1] was not updated. An exception occurs : null
+2022-10-09 19:12:46 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR Address : [Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'}] was not saved. An exception occurs : null
+2022-10-09 19:12:47 ERROR Address with ID : [1] was not removed. An exception occurs : null
+2022-10-09 19:12:47 ERROR [AddressDaoImpl] Connection cannot be null!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:12:47 ERROR Address with ID : [1] was not updated. An exception occurs : null

@@ -1,11 +1,47 @@
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR Address : [Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'}] was not saved. An exception occurs : null
-2022-10-09 19:11:00 ERROR Address with ID : [1] was not removed. An exception occurs : null
-2022-10-09 19:11:00 ERROR [AddressDaoImpl] Connection cannot be null!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR [AddressDAO] Can't operate null (or < 1) input!
-2022-10-09 19:11:00 ERROR Address with ID : [1] was not updated. An exception occurs : null
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] An exception occurs while receiving Address. (id: 1). Exc: null
+2022-10-09 19:14:30 ERROR [AddressService] SQLException while saving Address; Exc: null
+2022-10-09 19:14:30 ERROR [AddressService] Can't create AddressService with null input AddressDAO
+2022-10-09 19:14:30 ERROR [AddressService] An exception occurs while deleting Address. (id: 1). Exc: null
+2022-10-09 19:14:30 ERROR [AddressService] An exception occurs while receiving Addresses. Exc: null
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] Can't operate null (or < 1) input!
+2022-10-09 19:14:30 ERROR [AddressService] An exception occurs while updating Address. (id: 1). Exc: null
+2022-10-09 19:14:31 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:31 ERROR Address : [Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'}] was not saved. An exception occurs : null
+2022-10-09 19:14:31 ERROR Address with ID : [1] was not removed. An exception occurs : null
+2022-10-09 19:14:31 ERROR [AddressDaoImpl] Connection cannot be null!
+2022-10-09 19:14:31 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:31 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:31 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:32 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:32 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:32 ERROR [AddressDAO] Can't operate null (or < 1) input!
+2022-10-09 19:14:32 ERROR Address with ID : [1] was not updated. An exception occurs : null
+2022-10-09 19:14:32 ERROR [DishService] An exception occurs while receiving Dish. (id: 1). Exc: null
+2022-10-09 19:14:32 ERROR [DishService] SQLException while saving Dish (title: Pizza). Exc: null
+2022-10-09 19:14:32 ERROR [DishService] Can't create DishService with null input DishDAO
+2022-10-09 19:14:32 ERROR [DishService] An exception occurs while deleting Dish. (id: 1). Exc: null
+2022-10-09 19:14:32 ERROR [DishService] An exception occurs while receiving Dishes. Exc: null
+2022-10-09 19:14:32 ERROR [DishService] An exception occurs while receiving Dish. (title: title1). Exc: null
+2022-10-09 19:14:32 ERROR [DishService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [DishService] An exception occurs while updating Dish. (id: 1). Exc: null
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] An exception occurs while receiving User. (id: 1). Exc: null
+2022-10-09 19:14:32 ERROR [UserService] SQLException while saving User (email: test@examp.com). Exc: null
+2022-10-09 19:14:32 ERROR [UserService] Can't create UserService with null input UserDAO
+2022-10-09 19:14:32 ERROR [UserService] An exception occurs while deleting User. (id: 1). Exc: null
+2022-10-09 19:14:32 ERROR [UserService] An exception occurs while receiving Users. Exc: null
+2022-10-09 19:14:32 ERROR [UserService] An exception occurs while receiving User. (email: test1@example.app). Exc: null
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] Can't operate null input!
+2022-10-09 19:14:32 ERROR [UserService] An exception occurs while updating User. (id: 1). Exc: null
