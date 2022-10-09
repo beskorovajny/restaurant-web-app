@@ -1,46 +1,5 @@
-2022-10-08 19:58:35 INFO [ContextListener] Context initialization started...
-2022-10-08 19:58:36 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@3cf806a9
-2022-10-08 19:58:36 INFO [ContextListener] UserDAO created.
-2022-10-08 19:58:36 INFO [ContextListener] ReceiptDAO created.
-2022-10-08 19:58:36 INFO [ContextListener] AddressDAO created.
-2022-10-08 19:58:36 INFO [ContextListener] DishDAO created.
-2022-10-08 19:58:36 INFO [ContextListener] UserService created.
-2022-10-08 19:58:36 INFO [ContextListener] ReceiptService created.
-2022-10-08 19:58:36 INFO [ContextListener] AddressService created.
-2022-10-08 19:58:36 INFO [ContextListener] DishService created.
-2022-10-08 19:58:36 INFO [ContextListener] CommandContainer created.
-2022-10-08 19:58:36 INFO [ContextListener] Language command created.
-2022-10-08 19:58:36 INFO [ContextListener] Error command created.
-2022-10-08 19:58:36 INFO [ContextListener] RegistrationFormCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] Registration command created.
-2022-10-08 19:58:36 INFO [ContextListener] LoginFormCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] LoginCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] AdminCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] DishFormCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] AllDishesCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] CreateDishCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] RemoveDishCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] MenuCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] UserReceiptsCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] AllUsersCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] LogoutCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] EditDishFormCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] EditDishCommand created.
-2022-10-08 19:58:36 INFO [ContextListener] Services initialized
-2022-10-08 19:58:37 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:37 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:40 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:40 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:43 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:43 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:43 INFO [AppController-doGet] URL processed
-2022-10-08 19:58:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:59 INFO User received : [1], [admin@admin.app]
-2022-10-08 19:58:59 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
-2022-10-08 19:58:59 INFO [LoginCommand] User received from db: admin@admin.app
-2022-10-08 19:58:59 INFO [AppController-doPost] URL processed [controller?command=admin], resp encoding: ISO-8859-1
-2022-10-08 19:58:59 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:59 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@1bd51b52
-2022-10-08 19:58:59 INFO Receipts was found successfully.
-2022-10-08 19:58:59 INFO [AppController-doGet] URL processed
+2022-10-09 16:48:04 INFO [AddressService] Address saved. (id: 2)
+2022-10-09 16:48:05 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 16:48:05 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 16:48:05 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 16:48:05 INFO [UserService] User saved. (email: test@examp.com)

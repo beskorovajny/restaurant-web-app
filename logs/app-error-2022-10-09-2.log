@@ -1,0 +1,28 @@
+2022-10-09 16:31:45 ERROR [AddressService] Can't create AddressService with null input AddressDAO
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] An exception occurs while receiving Address. (id: 1). Exc: null
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] An exception occurs while updating Address. (id: 1). Exc: null
+2022-10-09 16:31:45 ERROR [AddressService] An exception occurs while receiving Addresses. Exc: null
+2022-10-09 16:31:45 ERROR [AddressService] An exception occurs while deleting Address. (id: 1). Exc: null
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [AddressService] SQLException while saving Address; Exc: null
+2022-10-09 16:31:45 ERROR [UserService] Can't create UserService with null input UserDAO
+2022-10-09 16:31:45 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:45 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] An exception occurs while receiving User. (id: 1). Exc: null
+2022-10-09 16:31:46 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] An exception occurs while updating User. (id: 1). Exc: null
+2022-10-09 16:31:46 ERROR [UserService] An exception occurs while receiving Users. Exc: null
+2022-10-09 16:31:46 ERROR [UserService] An exception occurs while deleting User. (id: 1). Exc: null
+2022-10-09 16:31:46 ERROR [UserService] An exception occurs while receiving User. (email: test1@example.app). Exc: null
+2022-10-09 16:31:46 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] Can't operate null input!
+2022-10-09 16:31:46 ERROR [UserService] SQLException while saving User (email: test@examp.com). Exc: null

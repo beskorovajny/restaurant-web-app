@@ -1,0 +1,5 @@
+2022-10-09 16:46:33 INFO [AddressService] Address saved. (id: 2)
+2022-10-09 16:46:34 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 16:46:34 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-09 16:46:34 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-09 16:46:34 INFO [UserService] User saved. (email: test@examp.com)
