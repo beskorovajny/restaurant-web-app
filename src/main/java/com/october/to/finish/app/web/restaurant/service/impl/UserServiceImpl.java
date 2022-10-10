@@ -13,7 +13,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
     private static final String NULL_USER_DAO_EXC = "[UserService] Can't create UserService with null input UserDAO";
-    private static final String NULL_USER_INPUT_EXC = "[UserService] Can't operate null input!";
+    private static final String NULL_USER_INPUT_EXC = "[UserService] Can't operate null (or < 1) input!";
     private static final String REGISTERED_EMAIL_EXC =
             "[UserService] User with given email is already registered! (email:) [{}]";
     private final UserDAO userDAO;

@@ -17,6 +17,7 @@ public class DishDAOImpl implements DishDAO {
     private static final String DISH_RECEIVED_MSG = "Dish received : [{}], [{}], [{}]";
     private static final String DISH_RECEIVING_EXCEPTION_MSG = "[DishDAO] exception while receiving Dish";
     private static final String DISH_DAO_MSG = "[DishDAO]";
+    private static final String NULL_INPUT_EXC = "[DishDAO] Can't operate null (or < 1) input!";
 
     private static final String INSERT =
             "INSERT INTO dish (title, description, price, weight, " +
@@ -34,6 +35,10 @@ public class DishDAOImpl implements DishDAO {
     private final DishMapper dishMapper = new DishMapper();
 
     public DishDAOImpl(Connection connection) {
+        if (connection == null) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         this.connection = connection;
     }
 
@@ -43,6 +48,10 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public long save(Dish dish) throws DAOException {
+        if (dish == null) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             dishMapper.setDishParams(dish, preparedStatement);
@@ -62,6 +71,9 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public Dish findById(long dishId) throws DAOException {
+        if (dishId < 1) {
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         Optional<Dish> dish = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_ID)) {
@@ -82,6 +94,9 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public Dish findByTitle(String title) throws DAOException {
+        if (title == null || title.isEmpty()) {
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         Optional<Dish> dish = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_TITLE)) {
@@ -121,6 +136,9 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public boolean update(long dishId, Dish dish) throws DAOException {
+        if (dishId < 1 || dish == null) {
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             dishMapper.setDishParams(dish, preparedStatement);
@@ -142,6 +160,9 @@ public class DishDAOImpl implements DishDAO {
 
     @Override
     public void delete(long dishId) throws DAOException {
+        if (dishId < 1) {
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(DELETE)) {
             preparedStatement.setLong(1, dishId);

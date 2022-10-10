@@ -11,10 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,17 +21,15 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class AddressDAOImplTest {
     @Mock
-    Connection connection;
+    private Connection connection;
     @Mock
-    PreparedStatement preparedStatement;
+    private PreparedStatement preparedStatement;
     @Mock
-    ResultSet resultSet;
-    @Mock
-    AddressMapper addressMapper = new AddressMapper();
+    private ResultSet resultSet;
     @InjectMocks
-    AddressDAOImpl addressDAO;
+    private AddressDAOImpl addressDAO;
     private Address expected;
-    private long addressId = 100;
+    private final long addressId = 100;
 
     @BeforeEach
     public void setUp() throws SQLException {
@@ -60,7 +55,7 @@ class AddressDAOImplTest {
     void shouldSaveTest() throws SQLException, DAOException {
         final long receiptId = 1L;
 
-        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
+        when(connection.prepareStatement(anyString(), anyInt())).thenReturn(preparedStatement);
         when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
         when(resultSet.next()).thenReturn(true);
         when(resultSet.getLong(anyInt())).thenReturn(1L);
@@ -77,9 +72,9 @@ class AddressDAOImplTest {
 
     @Test
     void shouldNotSaveTest() throws DAOException, SQLException {
-        final long addressId = 1L;
-        when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.save(addressId, expected));
+        final long receiptId = 1L;
+        when(connection.prepareStatement(anyString(), anyInt())).thenThrow(SQLException.class);
+        assertThrows(DAOException.class, () -> addressDAO.save(receiptId, expected));
     }
 
     @Test
@@ -123,7 +118,7 @@ class AddressDAOImplTest {
         when(resultSet.getString("street")).thenReturn(expected.getStreet());
         when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
         when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-        final List<Address> actual = addressDAO.findAll();
+        final List<Address> actual = dishDAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
 *//*
@@ -177,10 +172,10 @@ class AddressDAOImplTest {
     @Test
     void shouldUpdateByReceiptIdTest() throws SQLException, DAOException {
         final long addressId = 1L;
-        final int rowsDeletedFalse = 1;
+        final int rowsDeletedTrue = 1;
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
-        when(preparedStatement.executeUpdate()).thenReturn(rowsDeletedFalse);
+        when(preparedStatement.executeUpdate()).thenReturn(rowsDeletedTrue);
         addressDAO.delete(addressId);
         verify(preparedStatement, times(1)).executeUpdate();
     }

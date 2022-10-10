@@ -7,10 +7,7 @@ import com.october.to.finish.app.web.restaurant.dao.AddressDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +47,7 @@ public class AddressDAOImpl implements AddressDAO {
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
-                prepareStatement(INSERT)) {
+                prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             addressMapper.setAddressParams(address, preparedStatement);
             preparedStatement.setLong(4, receiptId);
             preparedStatement.executeUpdate();

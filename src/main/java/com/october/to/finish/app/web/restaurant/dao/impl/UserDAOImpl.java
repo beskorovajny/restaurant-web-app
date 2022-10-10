@@ -16,6 +16,7 @@ import java.util.Optional;
 public class UserDAOImpl implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
     private static final String USER_DAO_EXC_MSG = "[UserDAO] exception while receiving User";
+    private static final String NULL_INPUT_EXC = "[UserDAO] Can't operate null (or < 1) input!";
     private static final String INSERT =
             "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?)";
@@ -32,6 +33,10 @@ public class UserDAOImpl implements UserDAO {
     private final UserMapper userMapper = new UserMapper();
 
     public UserDAOImpl(Connection connection) {
+        if (connection == null) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         this.connection = connection;
     }
 
@@ -41,6 +46,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public long save(User user) throws DAOException {
+        if (user == null) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             userMapper.setPersonParams(user, preparedStatement);
@@ -60,6 +69,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findById(long userId) throws DAOException {
+        if (userId < 1) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         Optional<User> user = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_ID)) {
@@ -79,6 +92,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User findByEmail(String eMail) throws DAOException {
+        if (eMail == null || eMail.isEmpty()) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         Optional<User> user = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_EMAIL)) {
@@ -117,6 +134,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public boolean update(long userId, User user) throws DAOException {
+        if (userId < 1 || user == null) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             userMapper.setPersonParams(user, preparedStatement);
@@ -138,6 +159,10 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void delete(long userId) throws DAOException {
+        if (userId < 1) {
+            LOGGER.error(NULL_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(DELETE)) {
             preparedStatement.setLong(1, userId);
@@ -154,22 +179,7 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-    public User.Role getRoleByName(String roleName) throws DAOException {
-        Optional<User.Role> userRole = Optional.empty();
-        try (PreparedStatement preparedStatement = connection.
-                prepareStatement(FIND_ROLE_BY_NAME)) {
-            preparedStatement.setString(1, roleName);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            if (resultSet.next()) {
-                userRole = Optional.of(User.Role.valueOf(resultSet.getString(1)));
-            }
-            userRole.ifPresent(r -> LOGGER.info("UserRole received : [{}, {}]", r.getId(), r.getRoleName()));
-            return userRole.get();
-        } catch (SQLException e) {
-            LOGGER.error("User for given Email : [{}] was not found. An exception occurs : {}", roleName, e.getMessage());
-            throw new DAOException(USER_DAO_EXC_MSG, e);
-        }
-    }
+
 
     public int countRecords() {
         int recordsCount = 0;

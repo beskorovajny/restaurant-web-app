@@ -76,7 +76,7 @@ public class DishServiceImpl implements DishService {
 
     @Override
     public Dish findByTitle(String title) throws ServiceException {
-        if (title == null) {
+        if (title == null || title.isEmpty()) {
             throw new IllegalArgumentException(NULL_INPUT_EXC);
         }
         try {

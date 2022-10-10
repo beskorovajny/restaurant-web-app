@@ -21,7 +21,6 @@ public interface UserDAO {
 
     void delete(long userId) throws DAOException;
 
-    User.Role getRoleByName(String name) throws DAOException;
 
     int countRecords();
 }
