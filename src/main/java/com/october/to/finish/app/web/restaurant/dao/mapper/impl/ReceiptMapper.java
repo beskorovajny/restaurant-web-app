@@ -1,7 +1,9 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.Address;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
+import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,11 +18,16 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     @Override
     public Receipt extractFromResultSet(ResultSet resultSet) throws SQLException {
         Map<String, Receipt> receiptMap = new HashMap<>();
+        Address address = new Address();
+        address.setId(resultSet.getLong("address_id"));
+        User user = User.newBuilder().setId(resultSet.getLong("user_id")).build();
         Receipt receipt = Receipt.newBuilder().
                 setId(resultSet.getLong("id")).
                 setTimeCreated(resultSet.getTimestamp("created").toLocalDateTime()).
                 setDiscount(resultSet.getInt("discount")).
                 setStatus(getById(resultSet.getLong("receipt_status_id"))).
+                setAddress(address).
+                setCustomer(user).
                 build();
         receiptMap.put(String.valueOf(receipt.getId()), receipt);
 
@@ -46,6 +53,7 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
         preparedStatement.setInt(2, receipt.getDiscount());
         preparedStatement.setLong(3, receipt.getCustomer().getId());
         preparedStatement.setLong(4, receipt.getStatus().getId());
+        preparedStatement.setLong(5, receipt.getAddress().getId());
     }
 
     public List<Receipt> extractReceipts(List<Receipt> receipts, PreparedStatement preparedStatement) throws SQLException {

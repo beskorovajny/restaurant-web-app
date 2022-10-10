@@ -180,7 +180,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
 
-
     public int countRecords() {
         int recordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_USERS_RECORDS);

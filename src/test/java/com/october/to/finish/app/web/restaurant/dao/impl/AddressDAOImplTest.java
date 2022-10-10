@@ -1,6 +1,5 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
-import com.october.to.finish.app.web.restaurant.dao.mapper.impl.AddressMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.Address;
 import org.junit.jupiter.api.AfterEach;
@@ -11,9 +10,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -92,10 +92,12 @@ class AddressDAOImplTest {
         assertEquals(expected, actual);
         verify(preparedStatement, times(1)).executeQuery();
     }
+
     @Test
     void shouldNotFindByIdIfInvalidInput() {
         assertThrows(IllegalArgumentException.class, () -> addressDAO.findById(0));
     }
+
     @Test
     void shouldNotFindById() throws SQLException {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);

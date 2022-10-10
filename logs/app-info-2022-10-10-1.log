@@ -1,31 +1,39 @@
-2022-10-10 16:36:43 INFO [AddressService] Address saved. (id: 2)
-2022-10-10 16:36:43 INFO User with ID : [100] was updated.
-2022-10-10 16:36:43 INFO User with ID : [100] was updated.
-2022-10-10 16:36:44 INFO User received : [100], [test@examp.com]
-2022-10-10 16:36:44 INFO User with ID : [100] was removed.
-2022-10-10 16:36:44 INFO User with ID : [100] was not found to remove.
-2022-10-10 16:36:44 INFO User with ID : [100] was not found for update
-2022-10-10 16:36:44 INFO User with ID : [100] was not found for update
-2022-10-10 16:36:44 INFO User : User{id=0, email='test@examp.com', firstName='fTest', lastName='lTest', phoneNumber='000-000-0000', role=CLIENT, password=88960d9c7eaf249bff77c6d6180625fbaf6e9f0ae7c014b6fe2ff7ffa14dc927, receipts=null} was saved successfully
-2022-10-10 16:36:44 INFO User received : [100], [test@examp.com]
-2022-10-10 16:36:44 INFO Address with ID : [1] was updated.
-2022-10-10 16:36:44 INFO Address with ID : [1] was updated.
-2022-10-10 16:36:44 INFO Address received from db: [Address{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
-2022-10-10 16:36:44 INFO Address with ID : [1] was removed.
-2022-10-10 16:36:44 INFO Address with ID : [1] was not found to remove.
-2022-10-10 16:36:44 INFO Address with ID : [1] was not found for update
-2022-10-10 16:36:44 INFO Address with ID : [1] was not found for update
-2022-10-10 16:36:44 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
-2022-10-10 16:36:44 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-10 16:36:45 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-10 16:36:45 INFO Dish received : [100], [Pizza], [description]
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was removed.
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was not found to remove.
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-10 16:36:45 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-10 16:36:45 INFO [DishDAO] Dish : Dish{id=1, title='Pizza', description='description', category=PIZZA, price=200.0, weight=425, cooking=25, dateCreated=2022-10-10 16:36:45} was saved successfully
-2022-10-10 16:36:45 INFO Dish received : [100], [Pizza], [description]
-2022-10-10 16:36:45 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-10 16:36:45 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was updated.
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was updated.
+2022-10-10 17:29:21 INFO Receipt with ID [100] received from db successfully 
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was removed.
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was not found to remove.
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was not found for update
+2022-10-10 17:29:21 INFO Receipt with ID : [100] was not found for update
+2022-10-10 17:29:21 INFO Receipt : 1, 2022-10-10T17:29:21.938118700 was saved successfully
+2022-10-10 17:29:22 INFO [AddressService] Address saved. (id: 2)
+2022-10-10 17:29:22 INFO User with ID : [100] was updated.
+2022-10-10 17:29:22 INFO User with ID : [100] was updated.
+2022-10-10 17:29:22 INFO User received : [100], [test@examp.com]
+2022-10-10 17:29:22 INFO User with ID : [100] was removed.
+2022-10-10 17:29:22 INFO User with ID : [100] was not found to remove.
+2022-10-10 17:29:22 INFO User with ID : [100] was not found for update
+2022-10-10 17:29:22 INFO User with ID : [100] was not found for update
+2022-10-10 17:29:22 INFO User : User{id=0, email='test@examp.com', firstName='fTest', lastName='lTest', phoneNumber='000-000-0000', role=CLIENT, password=88960d9c7eaf249bff77c6d6180625fbaf6e9f0ae7c014b6fe2ff7ffa14dc927, receipts=null} was saved successfully
+2022-10-10 17:29:22 INFO User received : [100], [test@examp.com]
+2022-10-10 17:29:22 INFO Address with ID : [1] was updated.
+2022-10-10 17:29:22 INFO Address with ID : [1] was updated.
+2022-10-10 17:29:22 INFO Address received from db: [Address{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
+2022-10-10 17:29:22 INFO Address with ID : [1] was removed.
+2022-10-10 17:29:22 INFO Address with ID : [1] was not found to remove.
+2022-10-10 17:29:22 INFO Address with ID : [1] was not found for update
+2022-10-10 17:29:23 INFO Address with ID : [1] was not found for update
+2022-10-10 17:29:23 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
+2022-10-10 17:29:23 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-10 17:29:23 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was updated.
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was updated.
+2022-10-10 17:29:23 INFO Dish received : [100], [Pizza], [description]
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was removed.
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was not found to remove.
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was not found for update
+2022-10-10 17:29:23 INFO [DishDAO] Dish with ID : [100] was not found for update
+2022-10-10 17:29:23 INFO [DishDAO] Dish : Dish{id=1, title='Pizza', description='description', category=PIZZA, price=200.0, weight=425, cooking=25, dateCreated=2022-10-10 17:29:23} was saved successfully
+2022-10-10 17:29:23 INFO Dish received : [100], [Pizza], [description]
+2022-10-10 17:29:23 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-10 17:29:23 INFO [UserService] User saved. (email: test@examp.com)

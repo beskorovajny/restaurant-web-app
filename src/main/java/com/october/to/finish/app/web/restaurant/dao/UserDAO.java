@@ -21,6 +21,5 @@ public interface UserDAO {
 
     void delete(long userId) throws DAOException;
 
-
     int countRecords();
 }

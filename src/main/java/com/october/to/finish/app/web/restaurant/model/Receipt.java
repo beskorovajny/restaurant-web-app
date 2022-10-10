@@ -62,6 +62,22 @@ public class Receipt {
         return orderedDishes;
     }
 
+    public void setCustomer(User customer) {
+        this.customer = customer;
+    }
+
+    public void setDateCreated(LocalDateTime dateCreated) {
+        this.dateCreated = dateCreated;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
     public void setOrderedDishes(Map<String, Dish> orderedDishes) {
         if (orderedDishes == null) {
             throw new IllegalArgumentException("Dishes can't be null!");
@@ -88,12 +104,11 @@ public class Receipt {
         return "Receipt{" +
                 "id=" + id +
                 ", customer=" + customer +
-                ", dateCreated=" + dateCreated.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) +
+                ", dateCreated=" + dateCreated +
                 ", status=" + status +
                 ", discount=" + discount +
                 ", totalPrice=" + totalPrice +
                 ", address=" + address +
-                ", orderedDishes=" + orderedDishes +
                 '}';
     }
 

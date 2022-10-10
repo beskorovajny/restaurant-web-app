@@ -16,6 +16,7 @@ import java.util.Optional;
 public class ReceiptDAOImpl implements ReceiptDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(ReceiptDAOImpl.class);
+    private static final String NULL_RECEIPT_INPUT_EXC = "[ReceiptService] Can't operate null (or < 1) input!";
     private static final String INSERT = "INSERT INTO receipt" +
             " (created, discount, user_id, receipt_status_id, address_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
@@ -32,6 +33,10 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private final ReceiptMapper receiptMapper = new ReceiptMapper();
 
     public ReceiptDAOImpl(Connection connection) {
+        if (connection == null) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
         this.connection = connection;
     }
 
@@ -41,6 +46,10 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     @Override
     public long save(long userId, Receipt receipt) throws DAOException {
+        if (userId < 1 || receipt == null) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             receiptMapper.setReceiptParams(receipt, preparedStatement);
@@ -62,6 +71,10 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     @Override
     public Receipt findById(long receiptId) throws DAOException {
+        if (receiptId < 1) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
         Optional<Receipt> receipt = Optional.empty();
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(FIND_BY_ID)) {
@@ -120,6 +133,10 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     @Override
     public boolean update(long receiptId, Receipt receipt) throws DAOException {
+        if (receiptId < 1 || receipt == null) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             receiptMapper.setReceiptParams(receipt, preparedStatement);
@@ -141,6 +158,10 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     @Override
     public void delete(long receiptId) throws DAOException {
+        if (receiptId < 1) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(DELETE)) {
             preparedStatement.setLong(1, receiptId);
