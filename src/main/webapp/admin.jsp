@@ -8,13 +8,14 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Admin panel</title>
+    <title>
+        <fmt:message key="text.admin.panel"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" aria-label="header">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" >
+    <div class="container"><a class="navbar-brand d-flex align-items-center">
         <span><custom:today/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -23,7 +24,7 @@
 
                 <div class="col-md-15 text-center" style="margin: 10px">
                     <h6><fmt:message key="text.greetings"/>
-                        ${sessionScope.user.firstName} ${sessionScope.user.lastName}
+                            ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                     </h6>
                 </div>
                 <div class="col-md-15 text-end">
@@ -53,13 +54,13 @@
 <div class="container py-4 py-xl-5">
     <ul class="nav nav-pills nav-justified">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page">Receipts</a>
+            <a class="nav-link active" aria-current="page"><fmt:message key="text.receipts"/></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="controller?command=dishes">Dishes</a>
+            <a class="nav-link" href="controller?command=dishes"><fmt:message key="text.dishes"/></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="controller?command=users">Users</a>
+            <a class="nav-link" href="controller?command=users"><fmt:message key="text.users"/></a>
         </li>
     </ul>
     <hr class="bg-secondary border-2 border-top border-secondary">
@@ -67,11 +68,11 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Date created</th>
-            <th scope="col">Discount</th>
-            <th scope="col">User</th>
-            <th scope="col">Status</th>
-            <th scope="col">Address</th>
+            <th scope="col"><fmt:message key="text.date.created"/></th>
+            <th scope="col"><fmt:message key="text.discount"/></th>
+            <th scope="col"><fmt:message key="text.user"/></th>
+            <th scope="col"><fmt:message key="text.status"/></th>
+            <th scope="col"><fmt:message key="text.address"/></th>
         </tr>
         </thead>
         <tbody>
@@ -83,12 +84,12 @@
                 </td>
                 <td><c:out value="${receipt.discount}"/>
                 </td>
-                <td><c:out value="${receipt.customer}"/>
-                </td>
+               <%-- <td><c:out value="${receipt.customer}"/>
+                </td>--%>
                 <td><c:out value="${receipt.status}"/>
                 </td>
-                <td><c:out value="${receipt.address}"/>
-                </td>
+               <%-- <td><c:out value="${receipt.address}"/>
+                </td>--%>
             </tr>
         </c:forEach>
         </tbody>
@@ -97,7 +98,8 @@
         <ul class="pagination justify-content-center">
             <c:if test="${param.page-1 >= 1}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                                         href="controller?command=${param.command}&page=${param.page-1}"><fmt:message
+                        key="text.previous"/></a>
                 </li>
             </c:if>
 
@@ -112,7 +114,8 @@
 
             <c:if test="${param.page+1 <= size.size()}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                                         href="controller?command=${param.command}&page=${param.page+1}"><fmt:message
+                        key="text.next"/></a>
                 </li>
             </c:if>
         </ul>
@@ -120,5 +123,4 @@
 </div>
 <script src="js/bootstrap.min.js"></script>
 </body>
-
 </html>

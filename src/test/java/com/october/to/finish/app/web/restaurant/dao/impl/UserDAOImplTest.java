@@ -1,8 +1,6 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
-import com.october.to.finish.app.web.restaurant.dao.mapper.impl.AddressMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
-import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.security.PasswordEncryptionUtil;
 import org.junit.jupiter.api.AfterEach;
@@ -13,15 +11,17 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.math.BigDecimal;
-import java.sql.*;
-import java.time.LocalDateTime;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 class UserDAOImplTest {
     @Mock
@@ -34,7 +34,7 @@ class UserDAOImplTest {
     private UserDAOImpl userDAO;
     private User expected;
 
-    private  final String eMail = "title";
+    private final String eMail = "title";
     private final long userId = 100;
     private final int offset = 4;
 
@@ -99,7 +99,7 @@ class UserDAOImplTest {
         when(resultSet.getString("first_name")).thenReturn(expected.getFirstName());
         when(resultSet.getString("last_name")).thenReturn(expected.getLastName());
         when(resultSet.getString("phone_number")).thenReturn(expected.getPhoneNumber());
-        when(resultSet.getLong("role_id")).thenReturn((long)expected.getRole().getId());
+        when(resultSet.getLong("role_id")).thenReturn((long) expected.getRole().getId());
         when(resultSet.getString("password")).thenReturn(String.valueOf(expected.getPassword()));
         expected.setOrders(new HashSet<>());
         final User actual = userDAO.findById(userId);
@@ -129,7 +129,7 @@ class UserDAOImplTest {
         when(resultSet.getString("first_name")).thenReturn(expected.getFirstName());
         when(resultSet.getString("last_name")).thenReturn(expected.getLastName());
         when(resultSet.getString("phone_number")).thenReturn(expected.getPhoneNumber());
-        when(resultSet.getLong("role_id")).thenReturn((long)expected.getRole().getId());
+        when(resultSet.getLong("role_id")).thenReturn((long) expected.getRole().getId());
         when(resultSet.getString("password")).thenReturn(String.valueOf(expected.getPassword()));
         expected.setOrders(new HashSet<>());
         final User actual = userDAO.findByEmail(eMail);
@@ -208,7 +208,7 @@ class UserDAOImplTest {
     }
 
     @Test
-    void shouldNotUpdateTest() throws  SQLException {
+    void shouldNotUpdateTest() throws SQLException {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> userDAO.update(userId, expected));
     }

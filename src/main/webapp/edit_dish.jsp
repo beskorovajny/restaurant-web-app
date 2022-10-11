@@ -7,7 +7,7 @@
 <head>
   <meta charset="UTF-8" http-equiv="Content-Type" name="viewport"
         content="text/html, width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
-  <title>Create dish</title>
+  <title><fmt:message key="text.edit.dish"/></title>
   <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -36,9 +36,6 @@
   </div>
 </nav>
 <div class="container">
-  <div class="col-md-8 col-xl-6 text-center mx-auto">
-    <h2>Dish form</h2>
-  </div>
   <div class="row">
     <div class="col">
       <section class="position-relative py-4 py-xl-5">
@@ -80,15 +77,15 @@
                                                              pattern="^\d+$"/>
                     </div>
                     <select name="category" style="margin-bottom: 10px">
-                      <option disabled>Category</option>
-                      <option value="salad">Salad</option>
-                      <option value="pizza">Pizza</option>
-                      <option value="appetizer">Appetizer</option>
-                      <option value="drink">Drink</option>
+                      <option disabled><fmt:message key="text.category"/></option>
+                      <option value="salad"><fmt:message key="text.salad"/></option>
+                      <option value="pizza"><fmt:message key="text.pizza"/></option>
+                      <option value="appetizer"><fmt:message key="text.appetizer"/></option>
+                      <option value="drink"><fmt:message key="text.drink"/></option>
                     </select>
                     <div class="mb-3">
                       <button class="btn btn-success d-block w-100" type="submit"
-                              value="">Update
+                              value=""><fmt:message key="text.update"/>
                       </button>
                     </div>
                   </form>

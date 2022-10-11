@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>My receipts</title>
+    <title><fmt:message key="text.my.orders"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -27,7 +27,7 @@
                     <div class="col-md-15 text-end" style="margin-right: 10px;">
                         <a href="controller?command=menu" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-success">
-                                Catalogue</button>
+                                <fmt:message key="text.menu"/></button>
                         </a>
                     </div>
                     <div class="col-md-15 text-end">
@@ -59,10 +59,10 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Date created</th>
-            <th scope="col">Discount</th>
-            <th scope="col">Status</th>
-            <th scope="col">Address</th>
+            <th scope="col"><fmt:message key="text.date.created"/></th>
+            <th scope="col"><fmt:message key="text.discount"/></th>
+            <th scope="col"><fmt:message key="text.status"/></th>
+            <th scope="col"><fmt:message key="text.address"/></th>
         </tr>
         </thead>
         <tbody>
@@ -86,7 +86,9 @@
         <ul class="pagination justify-content-center">
             <c:if test="${param.page-1 >= 1}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                                         href="controller?command=${param.command}&page=${param.page-1}">
+                    <fmt:message key="text.previous"/>
+                </a>
                 </li>
             </c:if>
 
@@ -101,7 +103,9 @@
 
             <c:if test="${param.page+1 <= size.size()}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                                         href="controller?command=${param.command}&page=${param.page+1}">
+                    <fmt:message key="text.next"/>
+                </a>
                 </li>
             </c:if>
         </ul>

@@ -7,7 +7,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Catalogue</title>
+    <title><fmt:message key="text.menu"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -54,13 +54,13 @@
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Title</th>
-            <th scope="col">Description</th>
-            <th scope="col">Price</th>
-            <th scope="col">Weight</th>
-            <th scope="col">Cooking</th>
-            <th scope="col">Category</th>
-            <th scope="col">Quantity</th>
+            <th scope="col"><fmt:message key="text.title"/></th>
+            <th scope="col"><fmt:message key="text.description"/></th>
+            <th scope="col"><fmt:message key="text.price"/></th>
+            <th scope="col"><fmt:message key="text.weight"/></th>
+            <th scope="col"><fmt:message key="text.cooking.time"/></th>
+            <th scope="col"><fmt:message key="text.category"/></th>
+            <th scope="col"><fmt:message key="text.quantity"/></th>
         </tr>
         </thead>
         <tbody>
@@ -80,8 +80,8 @@
                 </td>
                 <td><c:out value="${dish.category.getName()}"/>
                 </td>
-                <td> <input type="number" id="quantity" name="quantity"
-                            min="0" max="5" placeholder="0"></td>
+                <td><input type="number" id="quantity" name="quantity"
+                           min="0" max="5" placeholder="0"></td>
             </tr>
         </c:forEach>
         </tbody>
@@ -90,7 +90,8 @@
         <ul class="pagination justify-content-center">
             <c:if test="${param.page-1 >= 1}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page-1}">Previous</a>
+                                         href="controller?command=${param.command}&page=${param.page-1}">
+                    <fmt:message key="text.previous"/></a>
                 </li>
             </c:if>
 
@@ -105,7 +106,9 @@
 
             <c:if test="${param.page+1 <= size.size()}">
                 <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page+1}">Next</a>
+                                         href="controller?command=${param.command}&page=${param.page+1}">
+                    <fmt:message key="text.next"/>
+                </a>
                 </li>
             </c:if>
         </ul>

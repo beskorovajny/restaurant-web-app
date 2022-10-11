@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8" http-equiv="Content-Type" name="viewport"
           content="text/html, width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
-    <title>Create dish</title>
+    <title><fmt:message key="text.new.dish"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -36,9 +36,6 @@
     </div>
 </nav>
 <div class="container">
-    <div class="col-md-8 col-xl-6 text-center mx-auto">
-        <h2>Dish form</h2>
-    </div>
     <div class="row">
         <div class="col">
             <section class="position-relative py-4 py-xl-5">
@@ -50,44 +47,44 @@
                                     <form class="text-center" action="controller" method="post">
                                         <input hidden name="command" value="create_dish"/>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
-                                                                                 placeholder="Title"
+                                                                                 placeholder="<fmt:message key="text.title"/>"
                                                                                  name="title"
                                                                                  pattern="^(?=.{3,45}$)\w+( \w+)*$"
                                                                                  minlength="2"
                                                                                  maxlength="45"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
-                                                                                 placeholder="Description"
+                                                                                 placeholder="<fmt:message key="text.description"/>"
                                                                                  name="description" minlength="2"
                                                                                  pattern="^(?=.{3,255}$)\w+( \w+)*$"
                                                                                  maxlength="255"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                                                  name="price"
-                                                                                 placeholder="Price"
+                                                                                 placeholder="<fmt:message key="text.price"/>"
                                                                                  minlength="1"
                                                                                  step=".01"
                                                                                  pattern="^\d+(.\d{1,2})?$"/>
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="number"
                                                                  name="weight"
-                                                                 placeholder="Weight"
+                                                                 placeholder="<fmt:message key="text.weight"/>"
                                                                  step=".01"
                                                                  pattern="^\d+$"/>
                                         </div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                                                  name="timeToCreate"
-                                                                                 placeholder="Time to create"
+                                                                                 placeholder="<fmt:message key="text.cooking.time"/>"
                                                                                  pattern="^\d+$"/>
                                         </div>
                                         <select name="dishCategory" style="margin-bottom: 10px">
-                                            <option disabled>Category</option>
-                                            <option value="salad">Salad</option>
-                                            <option value="pizza">Pizza</option>
-                                            <option value="appetizer">Appetizer</option>
-                                            <option value="drink">Drink</option>
+                                            <option disabled><fmt:message key="text.category"/></option>
+                                            <option value="salad"><fmt:message key="text.salad"/></option>
+                                            <option value="pizza"><fmt:message key="text.pizza"/></option>
+                                            <option value="appetizer"><fmt:message key="text.appetizer"/></option>
+                                            <option value="drink"><fmt:message key="text.drink"/></option>
                                         </select>
                                         <div class="mb-3">
                                             <button class="btn btn-success d-block w-100" type="submit"
-                                                    value="">Create dish
+                                                    value=""><fmt:message key="text.add.dish"/>
                                             </button>
                                         </div>
                                     </form>

@@ -37,7 +37,4 @@ build/
 ### Mac OS ###
 .DS_Store
 
-/src/main/logs/
 /logs/
-/.idea/sonarlint/
-!/logs/

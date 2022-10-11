@@ -56,16 +56,18 @@
                                                                  required="">
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
-                                                                 placeholder="Password(min 8)" required="" minlength="8"
+                                                                 placeholder="<fmt:message key="text.password"/>(min 8)" required="" minlength="8"
                                                                  maxlength="64" id="passInput"
                                                                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$">
-                                            <input class="form-check-input" type="checkbox" onclick="myFunction()"> Show password
+                                            <input class="form-check-input" type="checkbox" onclick="myFunction()">
+                                            <fmt:message key="text.show.password"/>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-success d-block w-100" type="submit"><fmt:message
                                                     key="text.login"/></button>
                                         </div>
-                                        <a href="controller?command=registration_form" class="text-muted"><fmt:message key="text.sign.up"/></a>
+                                        <a href="controller?command=registration_form" class="text-muted"><fmt:message
+                                                key="text.sign.up"/></a>
                                     </form>
                                 </div>
                             </div>

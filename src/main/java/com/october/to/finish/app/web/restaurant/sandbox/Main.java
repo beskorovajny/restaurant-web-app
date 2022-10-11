@@ -5,11 +5,8 @@ import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHo
 import com.october.to.finish.app.web.restaurant.dao.impl.UserDAOImpl;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
-import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.security.PasswordEncryptionUtil;
-import com.october.to.finish.app.web.restaurant.service.UserService;
-import com.october.to.finish.app.web.restaurant.service.impl.UserServiceImpl;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

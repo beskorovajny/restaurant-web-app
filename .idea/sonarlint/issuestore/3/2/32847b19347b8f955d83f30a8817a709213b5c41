@@ -1,0 +1,21 @@
+
+Y
+java:S1854–";Remove this useless assignment to local variable "userDAO".(Ÿ¢éá8Ç°¤ì¹0
+S	java:S106"9Replace this use of System.out or System.err by a logger.(³«ªúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ù«±¶üÿÿÿÿ
+V	java:S125"<This block of commented-out lines of code should be removed.(èú×¾úÿÿÿÿ
+V	java:S125A"<This block of commented-out lines of code should be removed.(ÔŞüÕıÿÿÿÿ
+Q	java:S125T"<This block of commented-out lines of code should be removed.(ı…¹±
+V	java:S125W"<This block of commented-out lines of code should be removed.(ç‹”°şÿÿÿÿ
+V	java:S125Y"<This block of commented-out lines of code should be removed.(Úºéàÿÿÿÿÿ
+Q	java:S125c"<This block of commented-out lines of code should be removed.(›ªÖ
+Q	java:S125h"<This block of commented-out lines of code should be removed.(›À¹œ
+V	java:S125z"<This block of commented-out lines of code should be removed.(¹Şüúÿÿÿÿ
+W	java:S125…"<This block of commented-out lines of code should be removed.(¹¶Şùÿÿÿÿ
+W	java:S125‡"<This block of commented-out lines of code should be removed.(ı‚Ã…üÿÿÿÿ
+J
+java:S1481–",Remove this unused "userDAO" local variable.(Ÿ¢éá8Ü°¤ì¹0
+O	java:S106œ"9Replace this use of System.out or System.err by a logger.(—ÊÇ½
+R	java:S125™"<This block of commented-out lines of code should be removed.(¿ÿ†
+E
+java:S1068"*Remove this unused "LOGGER" private field.(£’èûÿÿÿÿ

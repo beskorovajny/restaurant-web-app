@@ -32,7 +32,7 @@ class AddressDAOImplTest {
     private final long addressId = 100;
 
     @BeforeEach
-    public void setUp() throws SQLException {
+    public void setUp() {
         expected = new Address("Country", "City", "Street", "Building");
     }
 
