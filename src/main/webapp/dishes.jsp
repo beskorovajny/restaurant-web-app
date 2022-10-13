@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title><fmt:message key="text.admin.panel"/></</title>
+    <title><fmt:message key="text.admin.panel"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 

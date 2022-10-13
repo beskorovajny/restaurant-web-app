@@ -1,10 +1,12 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
+import com.october.to.finish.app.web.restaurant.dao.mapper.impl.AddressMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.Address;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,6 +16,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -26,6 +30,8 @@ class AddressDAOImplTest {
     private PreparedStatement preparedStatement;
     @Mock
     private ResultSet resultSet;
+    @Mock
+    private AddressMapper addressMapper;
     @InjectMocks
     private AddressDAOImpl addressDAO;
     private Address expected;
@@ -71,7 +77,7 @@ class AddressDAOImplTest {
     }
 
     @Test
-    void shouldNotSaveTest() throws DAOException, SQLException {
+    void shouldNotSaveTest() throws SQLException {
         final long receiptId = 1L;
         when(connection.prepareStatement(anyString(), anyInt())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> addressDAO.save(receiptId, expected));
@@ -104,26 +110,38 @@ class AddressDAOImplTest {
         assertThrows(DAOException.class, () -> addressDAO.findById(addressId));
     }
 
-   /* @Test
+    /*@Test
     void shouldFindAllTest() throws SQLException, DAOException {
-       *//* final List<Address> expectedList = List.of(
+        final List<Address> expectedList = List.of(
                 new Address("Country1", "City1", "Street1", "Building1"),
                 new Address("Country2", "City2", "Street2", "Building2"),
                 new Address("Country3", "City3", "Street3", "Building3"));
+
         final List<Address> addresses = new ArrayList<>();
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
-        when(resultSet.next()).thenReturn(true);
-        when(resultSet.getLong("id")).thenReturn(expected.getId());
-        when(resultSet.getString("country")).thenReturn(expected.getCountry());
-        when(resultSet.getString("city")).thenReturn(expected.getCity());
-        when(resultSet.getString("street")).thenReturn(expected.getStreet());
-        when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
+        *//*when(resultSet.next()).thenReturn(true);*//*
+
+       *//**//*
+        int i = 0;
+        for (Address address : expectedList) {
+            address.setId(++i);
+        }
+
+        for (Address address : expectedList) {
+            when(resultSet.next()).thenReturn(true);
+            when(resultSet.getLong("id")).thenReturn(address.getId());
+            when(resultSet.getString("country")).thenReturn(address.getCountry());
+            when(resultSet.getString("city")).thenReturn(address.getCity());
+            when(resultSet.getString("street")).thenReturn(address.getStreet());
+            when(resultSet.getString("building_number")).thenReturn(address.getBuildingNumber());
+        }
         when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-        final List<Address> actual = dishDAO.findAll();
+
+        final List<Address> actual = addressDAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
-*//*
+
     }*/
 
     @Test
@@ -165,7 +183,7 @@ class AddressDAOImplTest {
     }
 
     @Test
-    void shouldNotUpdateTest() throws DAOException, SQLException {
+    void shouldNotUpdateTest() throws SQLException {
         final long addressId = 1L;
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> addressDAO.update(addressId, expected));

@@ -13,6 +13,9 @@ public interface DishService {
     Dish findByTitle(String title) throws ServiceException;
 
     List<Dish> findAll(int offset) throws ServiceException;
+    List<Dish> findAllSortedByPrice(int offset) throws ServiceException;
+    List<Dish> findAllSortedByTitle(int offset) throws ServiceException;
+    List<Dish> findAllSortedByCategory(int offset) throws ServiceException;
 
     boolean update(long dishId, Dish dish) throws ServiceException;
 

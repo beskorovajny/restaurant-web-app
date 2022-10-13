@@ -38,8 +38,15 @@
                         </h6>
                     </div>
                     <div class="col-md-15 text-end" style="margin-right: 10px;">
-                        <a href="controller?command=user_receipts&userId=${sessionScope.user.id}" style="text-decoration:none;">
+                        <a href="controller?command=menu" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-success">
+                                <fmt:message key="text.menu"/>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-15 text-end" style="margin-right: 10px;">
+                        <a href="controller?command=user_receipts&userId=${sessionScope.user.id}" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-primary">
                                 <fmt:message key="text.my.orders"/>
                             </button>
                         </a>

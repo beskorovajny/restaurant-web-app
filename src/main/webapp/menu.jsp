@@ -50,6 +50,22 @@
 
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
+    <div class="container justify-content-center">
+        <div class="dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <fmt:message key="text.sort"/>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
+                    <fmt:message key="text.by.price"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
+                    <fmt:message key="text.by.title"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
+                    <fmt:message key="text.by.category"/></a></li>
+            </ul>
+        </div>
+    </div>
     <table class="table">
         <thead>
         <tr>

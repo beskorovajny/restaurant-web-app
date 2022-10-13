@@ -97,6 +97,36 @@ public class DishServiceImpl implements DishService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+    @Override
+    public List<Dish> findAllSortedByPrice(int offset) throws ServiceException {
+        try {
+            return dishDAO.findAllSortedByPrice(getOffset(offset));
+        } catch (DAOException e) {
+            LOGGER.error("[DishService] An exception occurs while receiving sorted by price Dishes. Exc: {}",
+                    e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public List<Dish> findAllSortedByTitle(int offset) throws ServiceException {
+        try {
+            return dishDAO.findAllSortedByTitle(getOffset(offset));
+        } catch (DAOException e) {
+            LOGGER.error("[DishService] An exception occurs while receiving sorted by title Dishes. Exc: {}",
+                    e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    @Override
+    public List<Dish> findAllSortedByCategory(int offset) throws ServiceException {
+        try {
+            return dishDAO.findAllSortedByCategory(getOffset(offset));
+        } catch (DAOException e) {
+            LOGGER.error("[DishService] An exception occurs while receiving sorted by category Dishes. Exc: {}",
+                    e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
 
     private int getOffset(int offset) {
         return offset * 10 - 10;

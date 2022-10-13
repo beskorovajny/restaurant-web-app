@@ -18,12 +18,16 @@ public class DishDAOImpl implements DishDAO {
     private static final String DISH_RECEIVING_EXCEPTION_MSG = "[DishDAO] exception while receiving Dish";
     private static final String DISH_DAO_MSG = "[DishDAO]";
     private static final String NULL_INPUT_EXC = "[DishDAO] Can't operate null (or < 1) input!";
+    private static final String DISHES_WAS_NOT_FOUND = "Dishes was not found. An exception occurs";
 
     private static final String INSERT =
             "INSERT INTO dish (title, description, price, weight, " +
                     "cooking, created, category_id) " +
                     "VALUES (?, ?, ?, ?, ?, ?, ?)";
     private static final String FIND_ALL = "SELECT * FROM dish LIMIT 10 OFFSET ?";
+    private static final String FIND_ALL_SORTED_BY_PRICE = "SELECT * FROM dish ORDER BY price , title , id LIMIT 10 OFFSET ?";
+    private static final String FIND_ALL_SORTED_BY_TITLE = "SELECT * FROM dish ORDER BY title, id LIMIT 10 OFFSET ?";
+    private static final String FIND_ALL_SORTED_BY_CATEGORY = "SELECT * FROM dish ORDER BY category_id , id LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
     private static final String FIND_BY_TITLE = "SELECT * FROM dish WHERE title = ?";
     private static final String UPDATE = "UPDATE dish SET title = ?," +
@@ -128,8 +132,65 @@ public class DishDAOImpl implements DishDAO {
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes", e);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Dish> findAllSortedByPrice(int offset) throws DAOException {
+        List<Dish> result = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ALL_SORTED_BY_PRICE)) {
+            preparedStatement.setInt(1, offset);
+            dishMapper.extractDishes(result, preparedStatement);
+
+            if (!result.isEmpty()) {
+                LOGGER.info("{} Dishes sorted by price was found successfully. [{}]", DISH_DAO_MSG, result);
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by price", e);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Dish> findAllSortedByTitle(int offset) throws DAOException {
+        List<Dish> result = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ALL_SORTED_BY_TITLE)) {
+            preparedStatement.setInt(1, offset);
+            dishMapper.extractDishes(result, preparedStatement);
+
+            if (!result.isEmpty()) {
+                LOGGER.info("{} Dishes sorted by title was found successfully. [{}]", DISH_DAO_MSG, result);
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by title", e);
+        }
+        return result;
+    }
+
+    @Override
+    public List<Dish> findAllSortedByCategory(int offset) throws DAOException {
+        List<Dish> result = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ALL_SORTED_BY_CATEGORY)) {
+            preparedStatement.setInt(1, offset);
+            dishMapper.extractDishes(result, preparedStatement);
+
+            if (!result.isEmpty()) {
+                LOGGER.info("{} Dishes sorted by category was found successfully. [{}]", DISH_DAO_MSG, result);
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by category", e);
         }
         return result;
     }

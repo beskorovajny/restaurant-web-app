@@ -138,6 +138,22 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("dishes", appCommand);
         LOGGER.info("{} AllDishesCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new MenuCommand(dishService);
+        commandContainer.addCommand("menu", appCommand);
+        LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new AllDishesSortedByPriceCommand(dishService);
+        commandContainer.addCommand("dishes_sorted_by_price", appCommand);
+        LOGGER.info("{} AllDishesSortedByPriceCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new AllDishesSortedByTitleCommand(dishService);
+        commandContainer.addCommand("dishes_sorted_by_title", appCommand);
+        LOGGER.info("{} AllDishesSortedByTitleCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new AllDishesSortedByCategoryCommand(dishService);
+        commandContainer.addCommand("dishes_sorted_by_category", appCommand);
+        LOGGER.info("{} AllDishesSortedByCategoryCommand created.", CONTEXT_LISTENER_MSG);
+
         appCommand = new CreateDishCommand(dishService);
         commandContainer.addCommand("create_dish", appCommand);
         LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
@@ -145,10 +161,6 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new RemoveDishCommand(dishService);
         commandContainer.addCommand("remove_dish", appCommand);
         LOGGER.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
-
-        appCommand = new MenuCommand(dishService);
-        commandContainer.addCommand("menu", appCommand);
-        LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new UserReceiptsCommand(receiptService, addressService);
         commandContainer.addCommand("user_receipts", appCommand);
