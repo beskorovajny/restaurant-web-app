@@ -13,15 +13,22 @@ public interface DishService {
     Dish findByTitle(String title) throws ServiceException;
 
     List<Dish> findAll(int offset) throws ServiceException;
+
     List<Dish> findAllSortedByPrice(int offset) throws ServiceException;
+
     List<Dish> findAllSortedByTitle(int offset) throws ServiceException;
+
     List<Dish> findAllSortedByCategory(int offset) throws ServiceException;
+
+    List<Dish> findAllFilteredByCategory(long categoryId, int offset) throws ServiceException;
 
     boolean update(long dishId, Dish dish) throws ServiceException;
 
     void delete(long dishId) throws ServiceException;
 
     int getRecordsCount();
+
+    int getRecordsCountForCategory(long categoryId);
 
     boolean isDishExists(Dish dish) throws ServiceException;
 }

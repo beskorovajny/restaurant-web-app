@@ -16,7 +16,7 @@ import java.util.List;
 
 public class AllDishesSortedByCategoryCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(AllDishesSortedByCategoryCommand.class);
-    private static final String ALL_DISH_COMMAND_MSG = "[AllDishesCommand]";
+    private static final String ALL_DISH_COMMAND_MSG = "[AllDishesSortedByCategoryCommand]";
     private final DishService dishService;
 
     public AllDishesSortedByCategoryCommand(DishService dishService) {

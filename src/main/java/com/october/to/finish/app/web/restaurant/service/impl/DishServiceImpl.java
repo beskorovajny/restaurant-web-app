@@ -4,13 +4,10 @@ import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.service.DishService;
-import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class DishServiceImpl implements DishService {
@@ -45,6 +42,7 @@ public class DishServiceImpl implements DishService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
     @Override
     public boolean isDishExists(Dish dish) throws ServiceException {
         try {
@@ -97,6 +95,7 @@ public class DishServiceImpl implements DishService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
     @Override
     public List<Dish> findAllSortedByPrice(int offset) throws ServiceException {
         try {
@@ -107,6 +106,7 @@ public class DishServiceImpl implements DishService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
     @Override
     public List<Dish> findAllSortedByTitle(int offset) throws ServiceException {
         try {
@@ -117,12 +117,24 @@ public class DishServiceImpl implements DishService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
+
     @Override
     public List<Dish> findAllSortedByCategory(int offset) throws ServiceException {
         try {
             return dishDAO.findAllSortedByCategory(getOffset(offset));
         } catch (DAOException e) {
             LOGGER.error("[DishService] An exception occurs while receiving sorted by category Dishes. Exc: {}",
+                    e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public List<Dish> findAllFilteredByCategory(long categoryId, int offset) throws ServiceException {
+        try {
+            return dishDAO.findAllFilteredByCategory(categoryId, getOffset(offset));
+        } catch (DAOException e) {
+            LOGGER.error("[DishService] An exception occurs while receiving filtered by category Dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -162,5 +174,9 @@ public class DishServiceImpl implements DishService {
 
     public int getRecordsCount() {
         return dishDAO.countRecords();
+    }
+
+    public int getRecordsCountForCategory(long categoryId) {
+        return dishDAO.countRecordsForCategory(categoryId);
     }
 }

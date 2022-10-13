@@ -1,70 +1,39 @@
-2022-10-13 15:45:31 INFO [ContextListener] Context initialization started...
-2022-10-13 15:45:32 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@1d073ed5
-2022-10-13 15:45:32 INFO [ContextListener] UserDAO created.
-2022-10-13 15:45:32 INFO [ContextListener] ReceiptDAO created.
-2022-10-13 15:45:32 INFO [ContextListener] AddressDAO created.
-2022-10-13 15:45:32 INFO [ContextListener] DishDAO created.
-2022-10-13 15:45:32 INFO [ContextListener] UserService created.
-2022-10-13 15:45:32 INFO [ContextListener] ReceiptService created.
-2022-10-13 15:45:32 INFO [ContextListener] AddressService created.
-2022-10-13 15:45:32 INFO [ContextListener] DishService created.
-2022-10-13 15:45:32 INFO [ContextListener] CommandContainer created.
-2022-10-13 15:45:32 INFO [ContextListener] Language command created.
-2022-10-13 15:45:32 INFO [ContextListener] Error command created.
-2022-10-13 15:45:32 INFO [ContextListener] RegistrationFormCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] Registration command created.
-2022-10-13 15:45:32 INFO [ContextListener] LoginFormCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] LoginCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AdminCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] DishFormCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AllDishesCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] MenuCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AllDishesSortedByPriceCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AllDishesSortedByTitleCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AllDishesSortedByCategoryCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] CreateDishCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] RemoveDishCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] UserReceiptsCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] AllUsersCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] LogoutCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] EditDishFormCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] EditDishCommand created.
-2022-10-13 15:45:32 INFO [ContextListener] Services initialized
-2022-10-13 15:45:32 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:32 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:35 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:35 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:38 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:38 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:38 INFO [AppController-doGet] URL processed
-2022-10-13 15:45:42 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[login_form]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:42 INFO [JspEncodingFilter] Filter started {command=[setLang], locale=[ua], pageToProcess=[login_form]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:42 INFO [LanguageCommand] Page to process = login_form
-2022-10-13 15:45:42 INFO [AppController-doGet] URL processed
-2022-10-13 15:45:42 INFO [AppController-doGet] URL processed
-2022-10-13 15:45:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@user.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:59 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@user.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:59 INFO User received : [2], [user@user.app]
-2022-10-13 15:45:59 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
-2022-10-13 15:45:59 INFO [LoginCommand] User received from db: user@user.app
-2022-10-13 15:45:59 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
-2022-10-13 15:45:59 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:59 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:45:59 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Hot', category=APPETIZER, price=25.0, weight=450, cooking=40, dateCreated=2022-10-07 15:43:28}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Caesar', description='Nice salad', category=SALAD, price=15.0, weight=225, cooking=50, dateCreated=2022-10-07 15:39:54}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}]]
-2022-10-13 15:45:59 INFO [MenuCommand] Dishes found.
-2022-10-13 15:45:59 INFO [AppController-doGet] URL processed
-2022-10-13 15:46:03 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_price]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:03 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_price]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:03 INFO [DishDAO] Dishes sorted by price was found successfully. [[Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=26, title='Pasta', description='Without tomatoes but with your lovely sause', category=APPETIZER, price=10.0, weight=200, cooking=15, dateCreated=2022-10-04 19:40:36}, Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=23, title='Vodka', description='Ugly', category=DRINK, price=10.0, weight=500, cooking=0, dateCreated=2022-10-04 14:03:26}, Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Caesar', description='Nice salad', category=SALAD, price=15.0, weight=225, cooking=50, dateCreated=2022-10-07 15:39:54}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}]]
-2022-10-13 15:46:03 INFO [AllDishesCommand] Dishes sorted by price found.
-2022-10-13 15:46:03 INFO [AppController-doGet] URL processed
-2022-10-13 15:46:05 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_category]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:05 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_category]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:05 INFO [DishDAO] Dishes sorted by category was found successfully. [[Dish{id=6, title='Salad1', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Caesar', description='Nice salad', category=SALAD, price=15.0, weight=225, cooking=50, dateCreated=2022-10-07 15:39:54}, Dish{id=8, title='Salad3', description='Nice salad', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Pizza2', description='Mmmmmm very nice', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pizza3', description='Mmmmmm very nice', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Pizza4', description='Mmmmmm very nice', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=21, title='New pizza', description='Homemade bakery', category=PIZZA, price=35.99, weight=700, cooking=45, dateCreated=2022-10-04 13:41:21}, Dish{id=1, title='Diabola', description='Hot', category=APPETIZER, price=25.0, weight=450, cooking=40, dateCreated=2022-10-07 15:43:28}, Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}]]
-2022-10-13 15:46:05 INFO [AllDishesCommand] Dishes sorted by category found.
-2022-10-13 15:46:05 INFO [AppController-doGet] URL processed
-2022-10-13 15:46:09 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_title]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:09 INFO [JspEncodingFilter] Filter started {command=[dishes_sorted_by_title]},  org.apache.catalina.connector.ResponseFacade@633556dc
-2022-10-13 15:46:09 INFO [DishDAO] Dishes sorted by title was found successfully. [[Dish{id=11, title='Appetizer1', description='Delicious', category=APPETIZER, price=15.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=13, title='Appetizer3', description='Delicious', category=APPETIZER, price=25.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=14, title='Appetizer4', description='Delicious', category=APPETIZER, price=19.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=15, title='Appetizer5', description='Delicious', category=APPETIZER, price=5.0, weight=300, cooking=10, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Caesar', description='Nice salad', category=SALAD, price=15.0, weight=225, cooking=50, dateCreated=2022-10-07 15:39:54}, Dish{id=22, title='Chivas Regal', description='12 years', category=DRINK, price=50.0, weight=1000, cooking=0, dateCreated=2022-10-04 14:02:01}, Dish{id=1, title='Diabola', description='Hot', category=APPETIZER, price=25.0, weight=450, cooking=40, dateCreated=2022-10-07 15:43:28}, Dish{id=16, title='Drink1', description='Strong', category=DRINK, price=90.0, weight=750, cooking=0, dateCreated=2012-06-18 10:34:09}, Dish{id=17, title='Drink2', description='Strong', category=DRINK, price=190.0, weight=750, cooking=0, dateCreated=2012-06-18 10:34:09}, Dish{id=18, title='Drink3', description='Strong', category=DRINK, price=290.0, weight=750, cooking=0, dateCreated=2012-06-18 10:34:09}]]
-2022-10-13 15:46:09 INFO [AllDishesCommand] Dishes sorted by title found.
-2022-10-13 15:46:09 INFO [AppController-doGet] URL processed
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was updated.
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was updated.
+2022-10-13 17:29:19 INFO Receipt with ID [100] received from db successfully 
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was removed.
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was not found to remove.
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was not found for update
+2022-10-13 17:29:19 INFO Receipt with ID : [100] was not found for update
+2022-10-13 17:29:19 INFO Receipt : 1, 2022-10-13T17:29:19.762201400 was saved successfully
+2022-10-13 17:29:20 INFO [AddressService] Address saved. (id: 2)
+2022-10-13 17:29:20 INFO User with ID : [100] was updated.
+2022-10-13 17:29:20 INFO User with ID : [100] was updated.
+2022-10-13 17:29:20 INFO User received : [100], [test@examp.com]
+2022-10-13 17:29:20 INFO User with ID : [100] was removed.
+2022-10-13 17:29:20 INFO User with ID : [100] was not found to remove.
+2022-10-13 17:29:20 INFO User with ID : [100] was not found for update
+2022-10-13 17:29:20 INFO User with ID : [100] was not found for update
+2022-10-13 17:29:20 INFO User : User{id=0, email='test@examp.com', firstName='fTest', lastName='lTest', phoneNumber='000-000-0000', role=CLIENT, password=88960d9c7eaf249bff77c6d6180625fbaf6e9f0ae7c014b6fe2ff7ffa14dc927, receipts=null} was saved successfully
+2022-10-13 17:29:20 INFO User received : [100], [test@examp.com]
+2022-10-13 17:29:20 INFO Address with ID : [1] was updated.
+2022-10-13 17:29:20 INFO Address with ID : [1] was updated.
+2022-10-13 17:29:20 INFO Address received from db: [Address{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
+2022-10-13 17:29:20 INFO Address with ID : [1] was removed.
+2022-10-13 17:29:20 INFO Address with ID : [1] was not found to remove.
+2022-10-13 17:29:20 INFO Address with ID : [1] was not found for update
+2022-10-13 17:29:20 INFO Address with ID : [1] was not found for update
+2022-10-13 17:29:20 INFO Address : Address{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
+2022-10-13 17:29:20 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-13 17:29:20 INFO [DishService] Dish saved. (title: Pizza)
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was updated.
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was updated.
+2022-10-13 17:29:21 INFO Dish received : [100], [Pizza], [description]
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was removed.
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was not found to remove.
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was not found for update
+2022-10-13 17:29:21 INFO [DishDAO] Dish with ID : [100] was not found for update
+2022-10-13 17:29:21 INFO [DishDAO] Dish : Dish{id=1, title='Pizza', description='description', category=PIZZA, price=200.0, weight=425, cooking=25, dateCreated=2022-10-13 17:29:21} was saved successfully
+2022-10-13 17:29:21 INFO Dish received : [100], [Pizza], [description]
+2022-10-13 17:29:21 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-13 17:29:21 INFO [UserService] User saved. (email: test@examp.com)

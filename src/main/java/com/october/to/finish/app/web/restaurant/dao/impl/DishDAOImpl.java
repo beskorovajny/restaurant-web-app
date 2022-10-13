@@ -28,6 +28,8 @@ public class DishDAOImpl implements DishDAO {
     private static final String FIND_ALL_SORTED_BY_PRICE = "SELECT * FROM dish ORDER BY price , title , id LIMIT 10 OFFSET ?";
     private static final String FIND_ALL_SORTED_BY_TITLE = "SELECT * FROM dish ORDER BY title, id LIMIT 10 OFFSET ?";
     private static final String FIND_ALL_SORTED_BY_CATEGORY = "SELECT * FROM dish ORDER BY category_id , id LIMIT 10 OFFSET ?";
+    private static final String FIND_ALL_FILTERED_BY_CATEGORY =
+            "SELECT * FROM dish WHERE category_id = ? ORDER BY id LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM dish WHERE id = ?";
     private static final String FIND_BY_TITLE = "SELECT * FROM dish WHERE title = ?";
     private static final String UPDATE = "UPDATE dish SET title = ?," +
@@ -35,6 +37,7 @@ public class DishDAOImpl implements DishDAO {
             "cooking = ?, created = ?, category_id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM dish WHERE id = ?";
     private static final String COUNT_DISH_RECORDS = "SELECT COUNT(*) FROM dish";
+    private static final String COUNT_DISH_RECORDS_FOR_CATEGORY = "SELECT COUNT(*) FROM dish WHERE category_id = ?";
     private final Connection connection;
     private final DishMapper dishMapper = new DishMapper();
 
@@ -196,6 +199,26 @@ public class DishDAOImpl implements DishDAO {
     }
 
     @Override
+    public List<Dish> findAllFilteredByCategory(long categoryId, int offset) throws DAOException {
+        List<Dish> result = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_ALL_FILTERED_BY_CATEGORY)) {
+            preparedStatement.setLong(1, categoryId);
+            preparedStatement.setInt(2, offset);
+            dishMapper.extractDishes(result, preparedStatement);
+
+            if (!result.isEmpty()) {
+                LOGGER.info("{} Dishes filtered by category was found successfully. [{}]", DISH_DAO_MSG, result);
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes filtered by category", e);
+        }
+        return result;
+    }
+
+    @Override
     public boolean update(long dishId, Dish dish) throws DAOException {
         if (dishId < 1 || dish == null) {
             throw new IllegalArgumentException(NULL_INPUT_EXC);
@@ -251,5 +274,19 @@ public class DishDAOImpl implements DishDAO {
             LOGGER.error("{} Failed to count dishes! An exception occurs :[{}]", DISH_DAO_MSG, e.getMessage());
         }
         return recordsCount;
+    }
+    public int countRecordsForCategory(long categoryId) {
+        int categoryRecordsCount = 0;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_DISH_RECORDS_FOR_CATEGORY)) {
+            preparedStatement.setLong(1, categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            categoryRecordsCount = resultSet.getInt(1);
+            return categoryRecordsCount;
+        } catch (SQLException e) {
+            LOGGER.error("{} Failed to count dishes filtered by category! An exception occurs :[{}]",
+                    DISH_DAO_MSG, e.getMessage());
+        }
+        return categoryRecordsCount;
     }
 }

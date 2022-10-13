@@ -133,8 +133,6 @@ Isrc/main/java/com/october/to/finish/app/web/restaurant/model/Address.java,4\1\
 \src/test/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImplTest.java,9\9\991efb6e617bd2dd57da4addcb7774eccdb82861
 v
 Fsrc/main/java/com/october/to/finish/app/web/restaurant/model/Dish.java,0\2\021b518f764ee67ddc0a2e8e7b60452060b92a71
-†
-Vsrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/DishMapper.java,f\5\f56b0a39d16b2464a79adbf52fd558b73b25c550
 ˆ
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserServiceImpl.java,f\6\f6632e82853123e60a4f02bb58d831c2706fe6cd
 Œ

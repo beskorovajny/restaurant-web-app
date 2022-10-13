@@ -14,13 +14,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllDishesSortedByTitleCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AllDishesSortedByTitleCommand.class);
-    private static final String ALL_DISH_COMMAND_MSG = "[AllDishesSortedByTitleCommand]";
+public class AllDishesFilteredByCategoryCommand implements AppCommand {
+    private static final Logger LOGGER = LogManager.getLogger(AllDishesFilteredByCategoryCommand.class);
+    private static final String ALL_DISH_COMMAND_MSG = "[AllDishesFilteredByCategoryCommand]";
     private final DishService dishService;
 
-    public AllDishesSortedByTitleCommand(DishService dishService) {
+    public AllDishesFilteredByCategoryCommand(DishService dishService) {
         this.dishService = dishService;
+
     }
 
     @Override
@@ -32,16 +33,16 @@ public class AllDishesSortedByTitleCommand implements AppCommand {
             page = Integer.parseInt(request.getParameter("page"));
         }
         List<Dish> dishes = null;
+        Dish.Category category = Dish.Category.valueOf(request.getParameter("category").toUpperCase());
         try {
-            dishes = dishService.findAllSortedByTitle(page);
-            LOGGER.info("{} Dishes sorted by title found.", ALL_DISH_COMMAND_MSG);
+            dishes = dishService.findAllFilteredByCategory(category.getId(), page);
+            LOGGER.info("{} Dishes found.", ALL_DISH_COMMAND_MSG);
         } catch (ServiceException e) {
-            LOGGER.error("{} Can't receive sorted by title dishes! An exception occurs: [{}]",
-                    ALL_DISH_COMMAND_MSG, e.getMessage());
+            LOGGER.error("{} Can't receive dishes! An exception occurs: [{}]", ALL_DISH_COMMAND_MSG, e.getMessage());
             throw new CommandException(e.getMessage(), e);
         }
         request.setAttribute("dishes", dishes);
-        int countPages = dishService.getRecordsCount() / 10 + 1;
+        int countPages = dishService.getRecordsCountForCategory(category.getId()) / 10 + 1;
         List<Integer> pages = new ArrayList<>();
         for (int i = 1; i <= countPages; i++) {
             pages.add(i);
