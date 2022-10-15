@@ -50,106 +50,105 @@
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
     <div class="container justify-content-center">
-        <div class="dropdown"">
-            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButtonSort"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    <fmt:message key="text.sort"/>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSort">
-                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
-                        <fmt:message key="text.by.price"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
-                        <fmt:message key="text.by.title"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
-                        <fmt:message key="text.by.category"/></a></li>
-                </ul>
-            </div>
-            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button"
-                        id="dropdownMenuButtonFilter"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                    <fmt:message key="text.filter.by.category"/>
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonFilter">
-                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=salad">
-                        <fmt:message key="text.salad"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=pizza">
-                        <fmt:message key="text.pizza"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=appetizer">
-                        <fmt:message key="text.appetizer"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=drink">
-                        <fmt:message key="text.drink"/></a></li>
-                    <li><a class="dropdown-item" href="controller?command=menu">
-                        <fmt:message key="text.menu"/></a></li>
-                </ul>
-            </div>
+        <div class="dropdown">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButtonSort"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <fmt:message key="text.sort"/>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSort">
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
+                    <fmt:message key="text.by.price"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
+                    <fmt:message key="text.by.title"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
+                    <fmt:message key="text.by.category"/></a></li>
+            </ul>
+        </div>
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                    id="dropdownMenuButtonFilter"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <fmt:message key="text.filter.by.category"/>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonFilter">
+                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=salad">
+                    <fmt:message key="text.salad"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=pizza">
+                    <fmt:message key="text.pizza"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=appetizer">
+                    <fmt:message key="text.appetizer"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=drink">
+                    <fmt:message key="text.drink"/></a></li>
+                <li><a class="dropdown-item" href="controller?command=menu">
+                    <fmt:message key="text.menu"/></a></li>
+            </ul>
         </div>
     </div>
-    <table class="table">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col"><fmt:message key="text.title"/></th>
-            <th scope="col"><fmt:message key="text.description"/></th>
-            <th scope="col"><fmt:message key="text.price"/></th>
-            <th scope="col"><fmt:message key="text.weight"/></th>
-            <th scope="col"><fmt:message key="text.cooking.time"/></th>
-            <th scope="col"><fmt:message key="text.category"/></th>
-            <th scope="col"><fmt:message key="text.quantity"/></th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach var="dish" items="${dishes}">
-            <tr>
-                <td><c:out value="${dish.id}"/>
-                </td>
-                <td><c:out value="${dish.title}"/>
-                </td>
-                <td><c:out value="${dish.description}"/>
-                </td>
-                <td><c:out value="${dish.price}"/>
-                </td>
-                <td><c:out value="${dish.weight}"/>
-                </td>
-                <td><c:out value="${dish.cooking}"/>
-                </td>
-                <td><c:out value="${dish.category.getName()}"/>
-                </td>
-                <td><input type="number" id="quantity" name="quantity"
-                           min="0" max="5" placeholder="0"></td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
-    <nav>
-        <ul class="pagination justify-content-center">
-            <c:if test="${param.page-1 >= 1}">
-                <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page-1}">
-                    <fmt:message key="text.previous"/></a>
-                </li>
-            </c:if>
-
-            <c:forEach var="page" items="${pages}">
-
-                <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${page}">${page}</a>
-                </li>
-
-            </c:forEach>
-            <c:set var="size" scope="page" value="${requestScope.pages}"/>
-
-            <c:if test="${param.page+1 <= size.size()}">
-                <li class="page-item"><a class="page-link"
-                                         href="controller?command=${param.command}&page=${param.page+1}">
-                    <fmt:message key="text.next"/>
-                </a>
-                </li>
-            </c:if>
-        </ul>
-    </nav>
 </div>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col"><fmt:message key="text.title"/></th>
+        <th scope="col"><fmt:message key="text.description"/></th>
+        <th scope="col"><fmt:message key="text.price"/></th>
+        <th scope="col"><fmt:message key="text.weight"/></th>
+        <th scope="col"><fmt:message key="text.cooking.time"/></th>
+        <th scope="col"><fmt:message key="text.category"/></th>
+        <th scope="col"><fmt:message key="text.quantity"/></th>
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach var="dish" items="${dishes}">
+        <tr>
+            <td><c:out value="${dish.id}"/>
+            </td>
+            <td><c:out value="${dish.title}"/>
+            </td>
+            <td><c:out value="${dish.description}"/>
+            </td>
+            <td><c:out value="${dish.price}"/>
+            </td>
+            <td><c:out value="${dish.weight}"/>
+            </td>
+            <td><c:out value="${dish.cooking}"/>
+            </td>
+            <td><c:out value="${dish.category.getName()}"/>
+            </td>
+            <td><input type="number" id="quantity" name="quantity"
+                       min="0" max="5" placeholder="0"></td>
+        </tr>
+    </c:forEach>
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination justify-content-center">
+        <c:if test="${param.page-1 >= 1}">
+            <li class="page-item"><a class="page-link"
+                                     href="controller?command=${param.command}&page=${param.page-1}">
+                <fmt:message key="text.previous"/></a>
+            </li>
+        </c:if>
+
+        <c:forEach var="page" items="${pages}">
+
+            <li class="page-item"><a class="page-link"
+                                     href="controller?command=${param.command}&page=${page}">${page}</a>
+            </li>
+
+        </c:forEach>
+        <c:set var="size" scope="page" value="${requestScope.pages}"/>
+
+        <c:if test="${param.page+1 <= size.size()}">
+            <li class="page-item"><a class="page-link"
+                                     href="controller?command=${param.command}&page=${param.page+1}">
+                <fmt:message key="text.next"/>
+            </a>
+            </li>
+        </c:if>
+    </ul>
+</nav>
 <script src="js/bootstrap.min.js"></script>
 </body>
 

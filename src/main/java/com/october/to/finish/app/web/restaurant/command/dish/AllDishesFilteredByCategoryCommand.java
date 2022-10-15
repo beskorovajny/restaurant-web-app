@@ -33,21 +33,23 @@ public class AllDishesFilteredByCategoryCommand implements AppCommand {
             page = Integer.parseInt(request.getParameter("page"));
         }
         List<Dish> dishes = null;
-        Dish.Category category = Dish.Category.valueOf(request.getParameter("category").toUpperCase());
-        try {
-            dishes = dishService.findAllFilteredByCategory(category.getId(), page);
-            LOGGER.info("{} Dishes found.", ALL_DISH_COMMAND_MSG);
-        } catch (ServiceException e) {
-            LOGGER.error("{} Can't receive dishes! An exception occurs: [{}]", ALL_DISH_COMMAND_MSG, e.getMessage());
-            throw new CommandException(e.getMessage(), e);
+        if (request.getParameter("category") != null) {
+            Dish.Category category = Dish.Category.valueOf(request.getParameter("category").toUpperCase());
+            try {
+                dishes = dishService.findAllFilteredByCategory(category.getId(), page);
+                LOGGER.info("{} Filtered dishes found.", ALL_DISH_COMMAND_MSG);
+            } catch (ServiceException e) {
+                LOGGER.error("{} Can't receive filtered dishes! An exception occurs: [{}]", ALL_DISH_COMMAND_MSG, e.getMessage());
+                throw new CommandException(e.getMessage(), e);
+            }
+            request.setAttribute("dishes", dishes);
+            int countPages = dishService.getRecordsCountForCategory(category.getId()) / 10 + 1;
+            List<Integer> pages = new ArrayList<>();
+            for (int i = 1; i <= countPages; i++) {
+                pages.add(i);
+            }
+            request.setAttribute("pages", pages);
         }
-        request.setAttribute("dishes", dishes);
-        int countPages = dishService.getRecordsCountForCategory(category.getId()) / 10 + 1;
-        List<Integer> pages = new ArrayList<>();
-        for (int i = 1; i <= countPages; i++) {
-            pages.add(i);
-        }
-        request.setAttribute("pages", pages);
         return "menu.jsp";
     }
 }

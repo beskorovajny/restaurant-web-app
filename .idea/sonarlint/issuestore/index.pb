@@ -183,8 +183,6 @@ fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSo
 fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByTitleCommand.java,6\a\6a26e9c864c98bab043b65797b061988aed29ebf
 €
 Psrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/DishDAOImpl.java,5\e\5ee17d37e18a471dbd03faea861835693dc1b6b0
-›
-ksrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesFilteredByCategoryCommand.java,d\5\d5d73ce4b4db746ce6ba908e451d172c23cec756
 „
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
 
