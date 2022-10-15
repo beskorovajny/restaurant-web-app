@@ -54,11 +54,6 @@ public class SessionFilter implements Filter {
         return false;
     }
 
-    public List<String> getRestrictedCommands(){
-        return restrictedCommands;
-    }
-
-
     @Override
     public void destroy() {
         Filter.super.destroy();
