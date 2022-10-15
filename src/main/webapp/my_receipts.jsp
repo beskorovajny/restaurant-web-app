@@ -111,7 +111,7 @@
         </ul>
     </nav>
 </div>
-<%@ include file="include/footer.jsp" %>
+<%@ include file="include/footer.jspf" %>
 
 <script src="js/bootstrap.min.js"></script>
 </body>

@@ -14,7 +14,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" aria-label="header">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command=home">
+    <div class="container"><a class="navbar-brand d-flex align-items-center">
         <span><custom:today/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>

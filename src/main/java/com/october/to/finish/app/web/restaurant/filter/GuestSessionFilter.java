@@ -1,5 +1,8 @@
 package com.october.to.finish.app.web.restaurant.filter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
@@ -10,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
-@WebFilter(filterName = "SessionFilter", urlPatterns = "/*",
+@WebFilter(filterName = "GuestSessionFilter", urlPatterns = "/*",
         initParams = {@WebInitParam(name = "restricted", value = "/restaurant_web_app/controller?command=admin," +
                 "/restaurant_web_app/controller?command=dish_form,/restaurant_web_app/controller?command=dishes," +
                 "/restaurant_web_app/controller?command=menu,/restaurant_web_app/controller?command=dishes_sorted_by_price," +
@@ -20,7 +23,8 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=remove_dish,/restaurant_web_app/controller?command=user_receipts," +
                 "/restaurant_web_app/controller?command=users,/restaurant_web_app/controller?command=logout," +
                 "/restaurant_web_app/controller?command=edit_dish_form,/restaurant_web_app/controller?command=edit_dish")})
-public class SessionFilter implements Filter {
+public class GuestSessionFilter implements Filter {
+    private static final Logger LOGGER = LogManager.getLogger(GuestSessionFilter.class);
     private List<String> restrictedCommands;
 
     @Override
@@ -35,12 +39,14 @@ public class SessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+        LOGGER.info("[GuestSessionFilter] Filter started.");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String requestCommand = req.getRequestURI() + "?" + req.getQueryString();
-        boolean shouldBeUnavailable = isRestricted(requestCommand);
-        if (shouldBeUnavailable && req.getSession().getAttribute("user") == null) {
+        boolean shouldBeRestricted = isRestricted(requestCommand);
+        if (shouldBeRestricted && req.getSession().getAttribute("user") == null) {
             res.sendRedirect(req.getContextPath() + "/controller?command=login_form");
+            LOGGER.info("[GuestSessionFilter] Access denied! Redirected to login form.");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

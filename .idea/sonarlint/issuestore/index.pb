@@ -153,18 +153,12 @@ M
 src/main/webapp/edit_dish.jsp,0\9\09319ea2f0e917566d64eb040e3e7d26adb8c8c5
 I
 src/main/webapp/login.jsp,8\5\85ee523d01e5e19376db640e846c91bbcb0a1c22
-P
- src/main/webapp/registration.jsp,d\d\dd51f7041d5a8d7bb17c79a85099a350e198ae09
-I
-src/main/webapp/users.jsp,2\7\27a8e25ae3121819d54adfe4e25e0b425d1cf9a7
 ‰
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/AddressMapper.java,7\4\740a55f5582f03de2828713a431ac2b741068ad2
 ƒ
 Ssrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/AddressDAOImpl.java,f\c\fcf4b94881dc356a3a66737f4bc96f1f8da7fa8c
 J
 src/main/webapp/dishes.jsp,a\c\acde694e77239f6084fd4b6f71541b0fea553004
-H
-src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
 †
 Vsrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/DishMapper.java,f\5\f56b0a39d16b2464a79adbf52fd558b73b25c550
 w

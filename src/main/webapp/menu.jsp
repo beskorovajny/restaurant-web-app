@@ -57,11 +57,11 @@
                 <fmt:message key="text.sort"/>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSort">
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
+                <li><a class="dropdown-item" href="controller?command=sorted_by_price">
                     <fmt:message key="text.by.price"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
+                <li><a class="dropdown-item" href="controller?command=sorted_by_title">
                     <fmt:message key="text.by.title"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
+                <li><a class="dropdown-item" href="controller?command=sorted_by_category">
                     <fmt:message key="text.by.category"/></a></li>
             </ul>
         </div>
@@ -72,13 +72,13 @@
                 <fmt:message key="text.filter.by.category"/>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonFilter">
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=salad">
+                <li><a class="dropdown-item" href="controller?command=filtered_dishes&category=salad">
                     <fmt:message key="text.salad"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=pizza">
+                <li><a class="dropdown-item" href="controller?command=filtered_dishes&category=pizza">
                     <fmt:message key="text.pizza"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=appetizer">
+                <li><a class="dropdown-item" href="controller?command=filtered_dishes&category=appetizer">
                     <fmt:message key="text.appetizer"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=drink">
+                <li><a class="dropdown-item" href="controller?command=filtered_dishes&category=drink">
                     <fmt:message key="text.drink"/></a></li>
                 <li><a class="dropdown-item" href="controller?command=menu">
                     <fmt:message key="text.menu"/></a></li>

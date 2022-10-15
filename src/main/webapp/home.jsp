@@ -37,6 +37,8 @@
                                 ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                         </h6>
                     </div>
+                </c:if>
+                <c:if test="${sessionScope.user.role.id == 1}">
                     <div class="col-md-15 text-end" style="margin-right: 10px;">
                         <a href="controller?command=menu" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-success">
@@ -48,6 +50,21 @@
                         <a href="controller?command=user_receipts&userId=${sessionScope.user.id}" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-primary">
                                 <fmt:message key="text.my.orders"/>
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-md-15 text-end">
+                        <a href="controller?command=logout" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-warning">
+                                <fmt:message key="text.logout"/></button>
+                        </a>
+                    </div>
+                </c:if>
+                <c:if test="${sessionScope.user.role.id == 2}">
+                    <div class="col-md-15 text-end" style="margin-right: 10px;">
+                        <a href="controller?command=admin" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-success">
+                                <fmt:message key="text.admin.panel"/>
                             </button>
                         </a>
                     </div>
@@ -83,7 +100,7 @@
         </div>
     </div>
 </div>
-<%@ include file="include/footer.jsp" %>
+<%@ include file="include/footer.jspf" %>
 
 <script src="js/bootstrap.min.js"></script>
 </body>
