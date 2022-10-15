@@ -187,7 +187,5 @@ Psrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/DishDAOImpl.jav
 ksrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesFilteredByCategoryCommand.java,d\5\d5d73ce4b4db746ce6ba908e451d172c23cec756
 „
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
-H
-src/main/webapp/menu.jsp,6\7\671fde2a78fbd3479793a5502b8584b419c99f8b
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/service/DishService.java,d\b\db37933c89e29c48c430eea6a2827e7204bdbfdb

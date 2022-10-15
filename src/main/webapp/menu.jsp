@@ -19,7 +19,6 @@
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
         <div id="nav-col-2" class="collapse navbar-collapse">
             <div class="btn-group col-md-5 w-auto ms-auto" role="group" aria-label="Button group with nested dropdown">
-
                 <div class="col-md-15 text-center" style="margin: 10px">
                     <h6><fmt:message key="text.greetings"/>
                         ${sessionScope.user.firstName} ${sessionScope.user.lastName}
@@ -51,35 +50,40 @@
 <hr class="bg-secondary border-2 border-top border-secondary">
 <div class="container py-4 py-xl-5">
     <div class="container justify-content-center">
-        <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <fmt:message key="text.sort"/>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSort">
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
-                    <fmt:message key="text.by.price"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
-                    <fmt:message key="text.by.title"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
-                    <fmt:message key="text.by.category"/></a></li>
-            </ul>
-        </div>
-        <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButtonFilter"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                <fmt:message key="text.filter.by.category"/>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=salad">
-                    <fmt:message key="text.salad"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=pizza">
-                    <fmt:message key="text.pizza"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=appetizer">
-                    <fmt:message key="text.appetizer"/></a></li>
-                <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=drink">
-                    <fmt:message key="text.drink"/></a></li>
-            </ul>
+        <div class="dropdown"">
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButtonSort"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <fmt:message key="text.sort"/>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonSort">
+                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_price">
+                        <fmt:message key="text.by.price"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_title">
+                        <fmt:message key="text.by.title"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=dishes_sorted_by_category">
+                        <fmt:message key="text.by.category"/></a></li>
+                </ul>
+            </div>
+            <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button"
+                        id="dropdownMenuButtonFilter"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                    <fmt:message key="text.filter.by.category"/>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonFilter">
+                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=salad">
+                        <fmt:message key="text.salad"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=pizza">
+                        <fmt:message key="text.pizza"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=appetizer">
+                        <fmt:message key="text.appetizer"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=dishes_filtered&category=drink">
+                        <fmt:message key="text.drink"/></a></li>
+                    <li><a class="dropdown-item" href="controller?command=menu">
+                        <fmt:message key="text.menu"/></a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <table class="table">
