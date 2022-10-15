@@ -1,3 +1,0 @@
-2022-09-22 22:29:49 ERROR [UserService] SQLException while saving User (email: beskorovajny@gmail.com). Exc: Connection is null.
-2022-09-22 22:29:49 ERROR An exception occurs while saving User [beskorovajny@gmail.com]
-2022-09-22 22:29:49 ERROR An exception occurs: Connection is null.

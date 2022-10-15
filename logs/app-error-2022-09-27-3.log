@@ -1,4 +1,0 @@
-2022-10-04 09:57:32 ERROR User : [User{id=0, email='test11@test.app', firstName='User', lastName='Customer', phoneNumber='+380111111111', roleId=1, password=d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb, receipts=null}] was not saved. An exception occurs.: Duplicate entry '+380111111111' for key 'user.phone_number_UNIQUE'
-2022-10-04 09:57:32 ERROR [UserService] Connection rolled back while saving User. (email: test11@test.app). Exc: [UserDAO] exception while saving UserDuplicate entry '+380111111111' for key 'user.phone_number_UNIQUE'
-2022-10-04 09:57:32 ERROR An exception occurs while saving User
-2022-10-04 09:57:32 ERROR An exception occurs: [UserDAO] exception while saving UserDuplicate entry '+380111111111' for key 'user.phone_number_UNIQUE'

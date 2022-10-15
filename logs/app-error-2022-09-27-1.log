@@ -1,4 +1,0 @@
-2022-09-27 20:58:43 ERROR User : [User{id=0, email='test@1test.com', firstName='%C3%90%C2%A2%C3%90%C2%B5%C3%91%C2%81%C3%91%C2%82', lastName='%C3%90%C2%A2%C3%90%C2%B5%C3%91%C2%81%C3%91%C2%82', phoneNumber='3123244444', roleId=1, creditCard=null, password=95106c0bb3a771afc1af94931e7c9d82105a781f96d52eadf882d089f73f64c3, receipts=null}] was not saved. An exception occurs.: Data truncation: Data too long for column 'first_name' at row 1
-2022-09-27 20:58:43 ERROR [UserService] Connection rolled back while saving User. (email: test@1test.com). Exc: [UserDAO] exception while saving UserData truncation: Data too long for column 'first_name' at row 1
-2022-09-27 20:58:43 ERROR An exception occurs while saving User
-2022-09-27 20:58:43 ERROR An exception occurs: [UserDAO] exception while saving UserData truncation: Data too long for column 'first_name' at row 1
