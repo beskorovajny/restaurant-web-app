@@ -46,8 +46,8 @@ public class SessionFilter implements Filter {
         }
     }
     private boolean isRestricted(String command){
-        for (String unavailableCommand : restrictedCommands){
-            if(command.startsWith(unavailableCommand)){
+        for (String restrictedCommand : restrictedCommands){
+            if(command.startsWith(restrictedCommand)){
                 return true;
             }
         }
