@@ -34,7 +34,7 @@ public class UserSessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        LOGGER.info("[AdminSessionFilter] Filter started.");
+        LOGGER.info("[UserSessionFilter] Filter started.");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String requestCommand = req.getRequestURI() + "?" + req.getQueryString();
@@ -42,9 +42,9 @@ public class UserSessionFilter implements Filter {
         if (req.getSession().getAttribute("user") != null) {
             user = (User) req.getSession().getAttribute("user");
         }
-        if (shouldBeRestricted && user.getRole() != User.Role.CLIENT) {
+        if (user != null && shouldBeRestricted && user.getRole() != User.Role.CLIENT) {
             res.sendRedirect(req.getContextPath() + "/controller?command=home");
-            LOGGER.info("[AdminSessionFilter] Access denied! Redirected to home.");
+            LOGGER.info("[UserSessionFilter] Access denied! Redirected to home.");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

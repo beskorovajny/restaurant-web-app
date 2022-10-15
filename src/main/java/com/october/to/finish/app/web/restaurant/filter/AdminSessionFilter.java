@@ -46,7 +46,7 @@ public class AdminSessionFilter implements Filter {
         if (req.getSession().getAttribute("user") != null) {
             user = (User) req.getSession().getAttribute("user");
         }
-        if (shouldBeRestricted && user.getRole() != User.Role.MANAGER) {
+        if (user != null && shouldBeRestricted && user.getRole() != User.Role.MANAGER) {
             res.sendRedirect(req.getContextPath() + "/controller?command=home");
             LOGGER.info("[AdminSessionFilter] Access denied! Redirected to home.");
         } else {
