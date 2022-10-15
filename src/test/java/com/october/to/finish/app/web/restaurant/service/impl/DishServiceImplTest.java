@@ -57,6 +57,13 @@ class DishServiceImplTest {
     }
 
     @Test
+    void shouldGetRecordsCountForCategoryTest() {
+        final int records = 5;
+        when(dishDAO.countRecordsForCategory(Dish.Category.PIZZA.getId())).thenReturn(records);
+        assertEquals(records, dishService.getRecordsCountForCategory(Dish.Category.PIZZA.getId()));
+    }
+
+    @Test
     void shouldNotInjectDAOTest() {
         assertThrows(IllegalArgumentException.class, () -> new DishServiceImpl(null));
     }
@@ -123,6 +130,159 @@ class DishServiceImplTest {
         assertThrows(ServiceException.class, () -> dishService.findByTitle(title));
     }
 
+
+    @Test
+    void shouldFindAllSortedByPriceTest() throws DAOException, ServiceException {
+        List<Dish> expectedList = List.of(
+                Dish.newBuilder().setId(1)
+                        .setTitle("Pizza")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(25)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(425)
+                        .setPrice(100).build(),
+                Dish.newBuilder().setId(2)
+                        .setTitle("Salad")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(5)
+                        .setCategory(Dish.Category.SALAD)
+                        .setWeight(225)
+                        .setPrice(200).build(),
+                Dish.newBuilder().setId(3)
+                        .setTitle("Pizza2")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(30)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(625)
+                        .setPrice(300).build());
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByPrice(daoOffset)).thenReturn(expectedList);
+        List<Dish> actual = dishService.findAllSortedByPrice(offset);
+        assertEquals(expectedList, actual);
+    }
+
+    @Test
+    void shouldNotFindAllSortedByPriceTest() throws DAOException {
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByPrice(daoOffset)).thenThrow(DAOException.class);
+        assertThrows(ServiceException.class, () -> dishService.findAllSortedByPrice(offset));
+    }
+
+    @Test
+    void shouldFindAllSortedByTitleTest() throws DAOException, ServiceException {
+        List<Dish> expectedList = List.of(
+                Dish.newBuilder().setId(1)
+                        .setTitle("Pizza")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(25)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(425)
+                        .setPrice(200).build(),
+                Dish.newBuilder().setId(3)
+                        .setTitle("Pizza2")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(30)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(625)
+                        .setPrice(300).build(),
+                Dish.newBuilder().setId(2)
+                        .setTitle("Salad")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(5)
+                        .setCategory(Dish.Category.SALAD)
+                        .setWeight(225)
+                        .setPrice(100).build());
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByTitle(daoOffset)).thenReturn(expectedList);
+        List<Dish> actual = dishService.findAllSortedByTitle(offset);
+        assertEquals(expectedList, actual);
+    }
+
+    @Test
+    void shouldNotFindAllSortedByTitleTest() throws DAOException {
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByTitle(daoOffset)).thenThrow(DAOException.class);
+        assertThrows(ServiceException.class, () -> dishService.findAllSortedByTitle(offset));
+    }
+
+    @Test
+    void shouldFindAllSortedByCategoryTest() throws DAOException, ServiceException {
+        List<Dish> expectedList = List.of(
+                Dish.newBuilder().setId(1)
+                        .setTitle("Pizza")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(25)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(425)
+                        .setPrice(200).build(),
+                Dish.newBuilder().setId(3)
+                        .setTitle("Pizza2")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(30)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(625)
+                        .setPrice(300).build(),
+                Dish.newBuilder().setId(2)
+                        .setTitle("Salad")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(5)
+                        .setCategory(Dish.Category.SALAD)
+                        .setWeight(225)
+                        .setPrice(100).build());
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByCategory(daoOffset)).thenReturn(expectedList);
+        List<Dish> actual = dishService.findAllSortedByCategory(offset);
+        assertEquals(expectedList, actual);
+    }
+
+    @Test
+    void shouldNotFindAllSortedByCategoryTest() throws DAOException {
+        final int daoOffset = 20;
+        when(dishDAO.findAllSortedByCategory(daoOffset)).thenThrow(DAOException.class);
+        assertThrows(ServiceException.class, () -> dishService.findAllSortedByCategory(offset));
+    }
+
+    @Test
+    void shouldFindAllFilteredTest() throws DAOException, ServiceException {
+        List<Dish> expectedList = List.of(
+                Dish.newBuilder().setId(1)
+                        .setTitle("Pizza")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(25)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(425)
+                        .setPrice(200).build(),
+                Dish.newBuilder().setId(3)
+                        .setTitle("Pizza2")
+                        .setDescription("description")
+                        .setDateCreated(LocalDateTime.now())
+                        .setCooking(30)
+                        .setCategory(Dish.Category.PIZZA)
+                        .setWeight(625)
+                        .setPrice(300).build());
+        final int daoOffset = 20;
+        when(dishDAO.findAllFilteredByCategory(Dish.Category.PIZZA.getId(), daoOffset)).thenReturn(expectedList);
+        List<Dish> actual = dishService.findAllFilteredByCategory(Dish.Category.PIZZA.getId(), offset);
+        assertEquals(expectedList, actual);
+    }
+
+    @Test
+    void shouldNotFindAllFilteredTest() throws DAOException {
+        final int daoOffset = 20;
+        when(dishDAO.findAllFilteredByCategory(Dish.Category.PIZZA.getId(), daoOffset)).thenThrow(DAOException.class);
+        assertThrows(ServiceException.class, () ->
+                dishService.findAllFilteredByCategory(Dish.Category.PIZZA.getId(), offset));
+    }
 
     @Test
     void shouldFindAllTest() throws DAOException, ServiceException {
