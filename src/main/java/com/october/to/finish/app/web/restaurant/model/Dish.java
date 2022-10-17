@@ -1,11 +1,11 @@
 package com.october.to.finish.app.web.restaurant.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.Objects;
 
-public class Dish {
+public class Dish implements Serializable {
     private long id;
     private String title;
     private String description;

@@ -13,7 +13,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3" aria-label="header">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command=home">
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -116,12 +116,22 @@
                 </td>
                 <td><c:out value="${dish.category.getName()}"/>
                 </td>
-                <td><input type="number" id="quantity" name="quantity"
-                           min="0" max="5" placeholder="0"></td>
+                <td>
+                    <form class="text-center" action="controller" method="post">
+                        <input hidden name="command" value="add_to_cart"/>
+                        <input hidden name="dishId" value="${dish.id}"/>
+                        <input hidden name="cart" value="${sessionScope.cart}">
+                        <input class="form-control" type="number" id="count" name="count"
+                               min="1" max="5" placeholder="0">
+                        <button type="submit" class="btn btn-outline-success">
+                            <fmt:message key="text.add.to.cart"/></button>
+                    </form>
+                </td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
+
     <nav>
         <ul class="pagination justify-content-center">
             <c:if test="${param.page-1 >= 1}">

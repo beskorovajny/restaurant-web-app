@@ -110,8 +110,6 @@
                             onclick="window.location='controller?command=remove_dish&dishId=${dish.id}'">
                         <fmt:message key="text.remove"/></button>
                 </td>
-                    <%--<td><input type="button" class="btn-outline-warning" value="Edit" onclick="window.location='home?command=edit_dish&dishId=${dish.id}'"></td>
-                    <td><input type="button" class="btn-outline-danger" value="Remove" onclick="window.location='home?command=remove_dish&dishId=${dish.id}'"></td>--%>
             </tr>
         </c:forEach>
         </tbody>
