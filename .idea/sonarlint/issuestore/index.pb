@@ -27,8 +27,6 @@ Zsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/RemoveDishC
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 O
 src/main/webapp/WEB-INF/web.xml,2\e\2e22b6edd746fa3dc40ad7276c87c8d87d72a392
-L
-src/main/webapp/checkout.jsp,6\e\6e85f28838dd8d2bcd8ae04f438e624ddec2bd39
 è
 _src/test/java/com/october/to/finish/app/web/restaurant/security/PasswordEncryptionUtilTest.java,0\8\084beca3900f770e119d9387927d2cf29ed669ed
 A
@@ -99,8 +97,6 @@ Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/ReceiptService.j
 [src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1
 z
 Jsrc/main/java/com/october/to/finish/app/web/restaurant/dao/ReceiptDAO.java,f\d\fdb1fdf2ab34acff7fdcc59699c684091ef251dd
-I
-src/main/webapp/login.jsp,8\5\85ee523d01e5e19376db640e846c91bbcb0a1c22
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/AddressMapper.java,7\4\740a55f5582f03de2828713a431ac2b741068ad2
 É
@@ -178,8 +174,6 @@ Tsrc/main/java/com/october/to/finish/app/web/restaurant/filter/JspEncodingFilter
 Usrc/main/java/com/october/to/finish/app/web/restaurant/filter/GuestSessionFilter.java,b\f\bf20d24d7b8709e71fa92fd357d6fb90c05aedee
 P
  src/main/webapp/registration.jsp,d\d\dd51f7041d5a8d7bb17c79a85099a350e198ae09
-H
-src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
 I
 src/main/webapp/error.jsp,c\b\cba3df22242d379bdb72d00919d2e8d49101d1bf
 O

@@ -53,6 +53,12 @@
                             </button>
                         </a>
                     </div>
+                    <div class="col-md-15 text-end" style="margin-right: 10px">
+                        <a href="controller?command=checkout_form" style="text-decoration:none;">
+                            <button type="button" class="btn btn-outline-secondary">
+                                <fmt:message key="logo.cart"/> ${sessionScope.cart.size()}</button>
+                        </a>
+                    </div>
                     <div class="col-md-15 text-end">
                         <a href="controller?command=logout" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-warning">

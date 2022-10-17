@@ -24,6 +24,12 @@
                         ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                     </h6>
                 </div>
+                <div class="col-md-15 text-end" style="margin-right: 10px">
+                    <a href="controller?command=checkout_form" style="text-decoration:none;">
+                        <button type="button" class="btn btn-outline-secondary">
+                            <fmt:message key="logo.cart"/> ${sessionScope.cart.size()}</button>
+                    </a>
+                </div>
                 <div class="col-md-15 text-end">
                     <a href="controller?command=logout" style="text-decoration:none;">
                         <button type="button" class="btn btn-outline-warning">
@@ -121,10 +127,12 @@
                         <input hidden name="command" value="add_to_cart"/>
                         <input hidden name="dishId" value="${dish.id}"/>
                         <input hidden name="cart" value="${sessionScope.cart}">
-                        <input class="form-control" type="number" id="count" name="count"
-                               min="1" max="5" placeholder="0">
-                        <button type="submit" class="btn btn-outline-success">
-                            <fmt:message key="text.add.to.cart"/></button>
+                        <div class="input-group mb-3">
+                            <input class="form-control" type="number" id="count" name="count"
+                                   min="1" max="5" placeholder="0">
+                            <button type="submit" class="btn btn-success">
+                                <fmt:message key="text.add.to.cart"/></button>
+                        </div>
                     </form>
                 </td>
             </tr>

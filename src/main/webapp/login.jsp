@@ -37,9 +37,6 @@
     </div>
 </nav>
 <div class="container">
-    <div class="col-md-8 col-xl-6 text-center mx-auto">
-        <h2><fmt:message key="text.login.form"/></h2>
-    </div>
     <div class="row">
         <div class="col">
             <section class="position-relative py-4 py-xl-5">

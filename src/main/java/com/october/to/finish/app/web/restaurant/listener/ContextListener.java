@@ -2,6 +2,7 @@ package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.*;
+import com.october.to.finish.app.web.restaurant.command.order.ReceiptDetailsCommand;
 import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.AddressDAO;
 import com.october.to.finish.app.web.restaurant.dao.DishDAO;
@@ -190,6 +191,18 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new AddToCartCommand(dishService);
         commandContainer.addCommand("add_to_cart", appCommand);
         LOGGER.info("{} AddToCartCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new CheckoutFormCommand();
+        commandContainer.addCommand("checkout_form", appCommand);
+        LOGGER.info("{} CheckoutFormCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new CheckoutCommand(receiptService, userService, addressService);
+        commandContainer.addCommand("checkout", appCommand);
+        LOGGER.info("{} CheckoutCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new ReceiptDetailsCommand(receiptService);
+        commandContainer.addCommand("receipt_details", appCommand);
+        LOGGER.info("{} ReceiptDetailsCommand created.", CONTEXT_LISTENER_MSG);
 
         context.setAttribute("commandContainer", commandContainer);
 
