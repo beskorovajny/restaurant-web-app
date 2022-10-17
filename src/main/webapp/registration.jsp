@@ -36,9 +36,6 @@
     </div>
 </nav>
 <div class="container">
-    <div class="col-md-8 col-xl-6 text-center mx-auto">
-        <h2><fmt:message key="text.registration.form"/></h2>
-    </div>
     <div class="row">
         <div class="col">
             <section class="position-relative py-4 py-xl-5">
@@ -53,7 +50,7 @@
                                                 class="form-control" type="email" name="email" placeholder="Email"
                                                 minlength="3" maxlength="44"
                                                 pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
-                                                required=""/></div>
+                                                required="" style="margin-top: 10px"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="<fmt:message key="text.first.name"/>"
                                                                                  name="firstName"
@@ -73,8 +70,9 @@
                                                                                  pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
-                                                                 placeholder="<fmt:message key="text.password"/>" required="" minlength="8"
-                                                                 id="passInput"
+                                                                 placeholder="<fmt:message key="text.password"/>"
+                                                                 required="" minlength="8"
+                                                                 id="passInput" style="margin-bottom: 10px"
                                                                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$"/>
                                             <input class="form-check-input" type="checkbox" onclick="myFunction()">
                                             <fmt:message key="text.show.password"/>

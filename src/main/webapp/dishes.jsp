@@ -97,7 +97,7 @@
                 <td><c:out value="${dish.cooking}"/>
                 </td>
                 <td><fmt:parseDate value="${dish.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
-                    <fmt:formatDate value="${parsedDate}" pattern="dd/MM/yyyy HH:mm"/>
+                    <fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm"/>
                 </td>
                 <td><c:out value="${dish.category}"/>
                 </td>

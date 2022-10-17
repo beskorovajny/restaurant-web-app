@@ -50,11 +50,11 @@
                                         <div class="mb-3"><input class="form-control" type="email" name="email"
                                                                  placeholder="Email" minlength="4" maxlength="45"
                                                                  pattern="([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
-                                                                 required="">
+                                                                 required="" style="margin-top: 10px">
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
                                                                  placeholder="<fmt:message key="text.password"/>(min 8)" required="" minlength="8"
-                                                                 maxlength="64" id="passInput"
+                                                                 maxlength="64" id="passInput" style="margin-bottom: 10px"
                                                                  pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,65}$">
                                             <input class="form-check-input" type="checkbox" onclick="myFunction()">
                                             <fmt:message key="text.show.password"/>

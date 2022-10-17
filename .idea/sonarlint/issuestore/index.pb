@@ -166,8 +166,6 @@ Vsrc/main/java/com/october/to/finish/app/web/restaurant/filter/SessionLocaleFilt
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/filter/JspEncodingFilter.java,8\f\8fa4c8d52b9fc6ec7774de02ca1531fcfb366d62
 …
 Usrc/main/java/com/october/to/finish/app/web/restaurant/filter/GuestSessionFilter.java,b\f\bf20d24d7b8709e71fa92fd357d6fb90c05aedee
-P
- src/main/webapp/registration.jsp,d\d\dd51f7041d5a8d7bb17c79a85099a350e198ae09
 I
 src/main/webapp/error.jsp,c\b\cba3df22242d379bdb72d00919d2e8d49101d1bf
 I
@@ -204,7 +202,5 @@ Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AddToCartCo
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginFormCommand.java,f\7\f7d5e6cf48577819c7deb34b3f024bf6d6fec62a
 O
 src/main/webapp/create_dish.jsp,f\c\fc91f304ba7257719327bd19d183849795b7dd8b
-I
-src/main/webapp/login.jsp,8\5\85ee523d01e5e19376db640e846c91bbcb0a1c22
 H
 src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
