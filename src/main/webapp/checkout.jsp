@@ -77,13 +77,6 @@
                                 </span>
                             </li>
                         </c:forEach>
-                        <li class="list-group-item d-flex justify-content-between bg-light">
-                            <div class="text-success">
-                                <h6 class="my-0">Promo code</h6>
-                                <small>EXAMPLECODE</small>
-                            </div>
-                            <span class="text-success">-$5</span>
-                        </li>
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total ($)</span>
                             <c:set var="total" value="${0}"/>
@@ -93,27 +86,20 @@
                             <strong><c:out value="${total}"/></strong>
                         </li>
                     </ul>
-
-                    <form class="card p-2">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Promo code">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-secondary">Redeem</button>
-                            </div>
-                        </div>
-                    </form>
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Billing address and contacts</h4>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" action="controller" method="post" novalidate>
+                        <input hidden name="command" value="checkout"/>
                         <div class="mb-3">
                             <label for="country"></label>
                             <input type="text" class="form-control" id="country" name="country" placeholder="Country"
-                                   required>
+                                   required pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                         </div>
                         <div class="mb-3">
                             <label for="city"></label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required>
+                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required
+                                   pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your city info.
                             </div>
@@ -121,14 +107,15 @@
                         <div class="mb-3">
                             <label for="street"></label>
                             <input type="text" class="form-control" id="street" name="Street" placeholder="street"
-                                   required>
+                                   required pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your street info.
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="building"></label>
-                            <input type="text" class="form-control" id="building" placeholder="Building" required>
+                            <input type="text" class="form-control" id="building" placeholder="Building" required
+                                   pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your building info.
                             </div>

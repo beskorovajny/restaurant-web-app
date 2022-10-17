@@ -24,6 +24,6 @@ public class CheckoutCommand implements AppCommand {
     }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
-        return null;
+        return "receipt_details.jsp";
     }
 }

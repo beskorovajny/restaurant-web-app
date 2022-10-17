@@ -49,13 +49,13 @@
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="<fmt:message key="text.title"/>"
                                                                                  name="title"
-                                                                                 pattern="^\p{L}{2,45}$"
+                                                                                 pattern="^(?=.{3,65}$)[\p{L}+(\s+\p{L}+)]+$"
                                                                                  minlength="2"
                                                                                  maxlength="45"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="<fmt:message key="text.description"/>"
                                                                                  name="description" minlength="2"
-                                                                                 pattern="^(?=.{3,65}$)\p{L}+(\s+\p{L}+)+$"
+                                                                                 pattern="^(?=.{3,65}$)[\p{L}+(\s+\p{L}+)]+$"
                                                                                  maxlength="65"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                                                  name="price"

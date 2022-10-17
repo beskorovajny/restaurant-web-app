@@ -188,10 +188,6 @@ H
 src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
 Ö
 Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginCommand.java,a\d\ada986d739395d37fafa7b165cbecb739e3f9a8c
-Ñ
-Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
-å
-\src/main/java/com/october/to/finish/app/web/restaurant/command/user/CheckoutFormCommand.java,e\7\e7e5dbecde9f9e237e617a2681ee2badddf93e86
 O
 logs/app-debug-2022-10-15-1.log,0\1\018248c7256f16365c316222bea25928245621c7
 O
@@ -206,8 +202,6 @@ a
 1src/main/webapp/WEB-INF/tld/customDateTimeTag.tld,f\6\f6759b58b3eff1c5d8469210ad74fdf6dca45633
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesCommand.java,3\9\395ce0646d71741ead5c4f2f9106e024d27938e2
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/CheckoutCommand.java,3\b\3b7f64c6577de821e87f7345bc0adf8aa9e75bdb
 Å
 Qsrc/main/java/com/october/to/finish/app/web/restaurant/tag/CustomDateTimeTag.java,9\d\9d41438bdab803b681e1984f25b7b1fce16a832a
 Ü
@@ -224,5 +218,7 @@ H
 src/main/webapp/menu.jsp,6\7\671fde2a78fbd3479793a5502b8584b419c99f8b
 ë
 asrc/main/java/com/october/to/finish/app/web/restaurant/command/receipt/ReceiptDetailsCommand.java,f\3\f3293882b5130290bf654d6a9cded3fca45fff89
+ñ
+fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByPriceCommand.java,1\f\1f7543c59a22c1e40cf47c85650851cbcfc31281
 L
-src/main/webapp/checkout.jsp,6\e\6e85f28838dd8d2bcd8ae04f438e624ddec2bd39
+src/main/webapp/js/custom.js,2\7\27d7d999aee22ad0f69d1790d9fc3d92f4b6dcf8
