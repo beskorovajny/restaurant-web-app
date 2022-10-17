@@ -13,8 +13,6 @@ T
 $src/main/webapp/META-INF/context.xml,c\b\cbfb0d2e9b2b9fbf9d54374577c894a38643c6d0
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-}
-Msrc/test/java/com/october/to/finish/app/web/restaurant/model/ReceiptTest.java,9\1\911db25ff77f0172ebef969abee07f6b4c07e3be
 z
 Jsrc/main/java/com/october/to/finish/app/web/restaurant/dao/AddressDAO.java,5\3\538a4580b951be928a464add49d375ca55cebcdb
 z
@@ -39,8 +37,6 @@ L
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/AllUsersCommand.java,f\2\f2b0f1dea948e761f86eea72e585a844462b1104
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/service/UserService.java,d\5\d5539f39ce3e2ad115825436424afbe864dca76e
-å
-\src/main/java/com/october/to/finish/app/web/restaurant/command/user/RegistrationCommand.java,6\4\64d219b1d791a1673c747ac9210f22ff0f420524
 Ç
 Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/AddressService.java,8\2\820504ecec367dc6b0154d4aa39d8a00674cca04
 ã
@@ -101,8 +97,6 @@ w
 Gsrc/main/java/com/october/to/finish/app/web/restaurant/dao/DishDAO.java,c\0\c0c6c99a0e1f8c868dbc112aeb4ef6b397ac9ac9
 ô
 isrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByCategoryCommand.java,8\0\8043a625617d52f72f923bbe7a9bbec2c3fd3c3f
-ñ
-fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByPriceCommand.java,1\f\1f7543c59a22c1e40cf47c85650851cbcfc31281
 ñ
 fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByTitleCommand.java,6\a\6a26e9c864c98bab043b65797b061988aed29ebf
 Ä
@@ -179,13 +173,9 @@ Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/AdminComman
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/command/HomeCommand.java,8\7\8759fee7f1ab1eb317bf052b7a59000c36839e17
 y
-Isrc/main/java/com/october/to/finish/app/web/restaurant/model/Receipt.java,7\5\75abafd34f5de874a2052002da9c2d5dc1dc2ef8
-y
 Isrc/main/java/com/october/to/finish/app/web/restaurant/model/Address.java,4\1\41f1dbdd7d2f7c059b3e0858445263c03ddacb37
 v
 Fsrc/main/java/com/october/to/finish/app/web/restaurant/model/User.java,c\9\c9bd035abeae950b04c00c967c6c049bf1117db9
-Ü
-Vsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LogoutCommand.java,0\c\0c029f6f7c1510b3866ceb1edb2ecfb8f2ee1134
 v
 Fsrc/main/java/com/october/to/finish/app/web/restaurant/model/Dish.java,0\2\021b518f764ee67ddc0a2e8e7b60452060b92a71
 M
@@ -197,10 +187,40 @@ Zsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/CreateDishC
 Ñ
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/MenuCommand.java,f\6\f6d0ae81b8e896eb9b3600e4c028815f1e35ed64
 â
-Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AddToCartCommand.java,6\3\638d0fdbc9d42f6f14997849274e3d7b03caeb97
-â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginFormCommand.java,f\7\f7d5e6cf48577819c7deb34b3f024bf6d6fec62a
 O
 src/main/webapp/create_dish.jsp,f\c\fc91f304ba7257719327bd19d183849795b7dd8b
 H
 src/main/webapp/home.jsp,6\8\6853166b9553bb500860233db274f93560c021c5
+Ö
+Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginCommand.java,a\d\ada986d739395d37fafa7b165cbecb739e3f9a8c
+S
+#src/main/webapp/receipt_details.jsp,e\6\e6d95606b8f957c7369a516342fb3aac1d165801
+Ñ
+Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
+å
+\src/main/java/com/october/to/finish/app/web/restaurant/command/user/CheckoutFormCommand.java,e\7\e7e5dbecde9f9e237e617a2681ee2badddf93e86
+O
+logs/app-debug-2022-10-15-1.log,0\1\018248c7256f16365c316222bea25928245621c7
+O
+logs/app-debug-2022-10-17-1.log,b\3\b3e974b9e5caeb3d76b0a581d29032087a5361fc
+O
+logs/app-debug-2022-10-17-2.log,d\a\da94cb54c1380a8146208b3edbbf74cfa7b8fa9f
+O
+logs/app-debug-2022-10-17-3.log,1\b\1b909538dd098e7672b7af5af8c0059ae57b3713
+B
+logs/app-debug.log,d\1\d1d4d955397bdc8f37816b2db2f75d637ac43003
+a
+1src/main/webapp/WEB-INF/tld/customDateTimeTag.tld,f\6\f6759b58b3eff1c5d8469210ad74fdf6dca45633
+â
+Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesCommand.java,3\9\395ce0646d71741ead5c4f2f9106e024d27938e2
+à
+Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/CheckoutCommand.java,3\b\3b7f64c6577de821e87f7345bc0adf8aa9e75bdb
+J
+src/main/webapp/dishes.jsp,a\c\acde694e77239f6084fd4b6f71541b0fea553004
+Å
+Qsrc/main/java/com/october/to/finish/app/web/restaurant/tag/CustomDateTimeTag.java,9\d\9d41438bdab803b681e1984f25b7b1fce16a832a
+Ü
+Vsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LogoutCommand.java,0\c\0c029f6f7c1510b3866ceb1edb2ecfb8f2ee1134
+å
+\src/main/java/com/october/to/finish/app/web/restaurant/command/user/RegistrationCommand.java,6\4\64d219b1d791a1673c747ac9210f22ff0f420524

@@ -14,7 +14,7 @@ public class Receipt {
     private int discount;
     private double totalPrice;
     private Address address;
-    private Map<String, Dish> orderedDishes;
+    private Map<Dish, Integer> orderedDishes;
 
     public static Builder newBuilder() {
         return new Receipt().new Builder();
@@ -58,7 +58,7 @@ public class Receipt {
         this.address = address;
     }
 
-    public Map<String, Dish> getOrderedDishes() {
+    public Map<Dish, Integer> getOrderedDishes() {
         return orderedDishes;
     }
 
@@ -78,7 +78,7 @@ public class Receipt {
         this.discount = discount;
     }
 
-    public void setOrderedDishes(Map<String, Dish> orderedDishes) {
+    public void setOrderedDishes(Map<Dish, Integer> orderedDishes) {
         if (orderedDishes == null) {
             throw new IllegalArgumentException("Dishes can't be null!");
         }
@@ -186,7 +186,7 @@ public class Receipt {
             return this;
         }
 
-        public Builder setOrderedDishes(Map<String, Dish> orderedDishes) {
+        public Builder setOrderedDishes(Map<Dish, Integer> orderedDishes) {
             if (orderedDishes == null) {
                 throw new IllegalArgumentException("Dishes can't be null!");
             }

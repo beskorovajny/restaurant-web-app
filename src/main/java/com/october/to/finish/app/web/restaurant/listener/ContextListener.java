@@ -2,7 +2,7 @@ package com.october.to.finish.app.web.restaurant.listener;
 
 import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.*;
-import com.october.to.finish.app.web.restaurant.command.order.ReceiptDetailsCommand;
+import com.october.to.finish.app.web.restaurant.command.receipt.ReceiptDetailsCommand;
 import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.AddressDAO;
 import com.october.to.finish.app.web.restaurant.dao.DishDAO;

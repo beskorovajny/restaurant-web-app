@@ -1,4 +1,4 @@
-package com.october.to.finish.app.web.restaurant.command.order;
+package com.october.to.finish.app.web.restaurant.command.receipt;
 
 import com.october.to.finish.app.web.restaurant.command.AppCommand;
 import com.october.to.finish.app.web.restaurant.exceptions.CommandException;

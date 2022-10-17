@@ -85,8 +85,12 @@
                             <span class="text-success">-$5</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Total (USD)</span>
-                            <strong>$20</strong>
+                            <span>Total ($)</span>
+                            <c:set var="total" value="${0}"/>
+                            <c:forEach var="entry" items="${sessionScope.cart}">
+                                <c:set var="total" value="${total + (entry.key.price * entry.value)}"/>
+                            </c:forEach>
+                            <strong><c:out value="${total}"/></strong>
                         </li>
                     </ul>
 
