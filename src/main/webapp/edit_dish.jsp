@@ -50,13 +50,13 @@
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                              placeholder="${dish.title}"
                                                              name="title"
-                                                             pattern="^(?=.{3,45}$)\w+( \w+)*$"
+                                                             pattern="^(?=.{3,45}$)\p{L}+(\s+\p{L}+)+$"
                                                              minlength="2"
                                                              maxlength="45"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                              placeholder="${dish.description}"
                                                              name="description" minlength="2"
-                                                             pattern="^(?=.{3,255}$)\w+( \w+)*$"
+                                                             pattern="^(?=.{3,65}$)\p{L}+(\s+\p{L}+)+$"
                                                              maxlength="255"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                              name="price"

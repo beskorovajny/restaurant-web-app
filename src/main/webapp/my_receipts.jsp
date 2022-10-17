@@ -62,7 +62,7 @@
             <th scope="col"><fmt:message key="text.date.created"/></th>
             <th scope="col"><fmt:message key="text.discount"/></th>
             <th scope="col"><fmt:message key="text.status"/></th>
-            <th scope="col"><fmt:message key="text.address"/></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -77,7 +77,10 @@
                 </td>
                 <td><c:out value="${receipt.status}"/>
                 </td>
-                <td><c:out value="${receipt.address}"/>
+                <td>
+                    <button type="button" class="btn btn-outline-secondary"
+                            onclick="window.location=''">
+                        <fmt:message key="text.details"/></button>
                 </td>
             </tr>
         </c:forEach>
