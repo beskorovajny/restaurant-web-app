@@ -70,9 +70,9 @@
             <th scope="col">#</th>
             <th scope="col"><fmt:message key="text.date.created"/></th>
             <th scope="col"><fmt:message key="text.discount"/></th>
-            <th scope="col"><fmt:message key="text.user"/></th>
+           <%-- <th scope="col"><fmt:message key="text.user"/></th>--%>
             <th scope="col"><fmt:message key="text.status"/></th>
-            <th scope="col"><fmt:message key="text.address"/></th>
+            <%--<th scope="col"><fmt:message key="text.address"/></th>--%>
         </tr>
         </thead>
         <tbody>
@@ -80,7 +80,8 @@
             <tr>
                 <td><c:out value="${receipt.id}"/>
                 </td>
-                <td><c:out value="${receipt.dateCreated}"/>
+                <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
+                    <fmt:formatDate value="${parsedDate}" pattern="dd/MM/yyyy HH:mm"/>
                 </td>
                 <td><c:out value="${receipt.discount}"/>
                 </td>

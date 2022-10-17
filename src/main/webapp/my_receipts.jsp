@@ -70,7 +70,8 @@
             <tr>
                 <td><c:out value="${receipt.id}"/>
                 </td>
-                <td><c:out value="${receipt.dateCreated}"/>
+                <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
+                    <fmt:formatDate value="${parsedDate}" pattern="dd/MM/yyyy HH:mm"/>
                 </td>
                 <td><c:out value="${receipt.discount}"/>
                 </td>
