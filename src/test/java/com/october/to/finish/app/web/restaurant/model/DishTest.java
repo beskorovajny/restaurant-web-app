@@ -32,10 +32,12 @@ class DishTest {
         assertEquals(Dish.Category.DRINK.getId(), dish.getCategory().getId());
         assertEquals(350, dish.getWeight());
         assertEquals(70, dish.getPrice());
+        assertEquals(0, dish.getTotalPrice());
 
         dish.setId(2);
+        dish.setTotalPrice(300.0);
         assertEquals(2, dish.getId());
-
+        assertEquals(300.0, dish.getTotalPrice());
     }
 
     @Test
@@ -52,6 +54,7 @@ class DishTest {
                 setDateCreated(null).
                 build());
         assertThrows(IllegalArgumentException.class, () -> dish.setId(-1));
+        assertThrows(IllegalArgumentException.class, () -> dish.setTotalPrice(-1));
     }
 
 }

@@ -3,7 +3,7 @@ package com.october.to.finish.app.web.restaurant.command.user;
 import com.october.to.finish.app.web.restaurant.command.AppCommand;
 import com.october.to.finish.app.web.restaurant.exceptions.CommandException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
-import com.october.to.finish.app.web.restaurant.service.AddressService;
+import com.october.to.finish.app.web.restaurant.service.ContactsService;
 import com.october.to.finish.app.web.restaurant.service.ReceiptService;
 import com.october.to.finish.app.web.restaurant.service.UserService;
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +16,11 @@ public class CheckoutCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(CheckoutCommand.class);
     private final ReceiptService receiptService;
     private final UserService userService;
-    private final AddressService addressService;
-    public CheckoutCommand(ReceiptService receiptService, UserService userService, AddressService addressService){
+    private final ContactsService contactsService;
+    public CheckoutCommand(ReceiptService receiptService, UserService userService, ContactsService contactsService){
         this.receiptService = receiptService;
         this.userService = userService;
-        this.addressService = addressService;
+        this.contactsService = contactsService;
     }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {

@@ -1,7 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
-import com.october.to.finish.app.web.restaurant.model.Address;
+import com.october.to.finish.app.web.restaurant.model.Contacts;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.model.User;
 import org.junit.jupiter.api.AfterEach;
@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
 
@@ -35,17 +36,17 @@ class ReceiptDAOImplTest {
     private final int offset = 4;
 
     @BeforeEach
-    public void setUp() throws SQLException {
+    public void init() throws SQLException {
         User user = User.newBuilder().setId(1).build();
-        Address address = new Address();
-        address.setId(1);
+        Contacts contacts = new Contacts();
+        contacts.setId(1);
         expected = Receipt.newBuilder()
                 .setId(1)
-                .setCustomer(user)
+                .setTotalPrice(200.00)
+                .setCustomerId(user.getId())
                 .setStatus(Receipt.Status.NEW)
                 .setTimeCreated(LocalDateTime.now())
-                .setDiscount(75)
-                .setAddress(address)
+                .setContactsId(contacts.getId())
                 .build();
     }
 
@@ -98,10 +99,10 @@ class ReceiptDAOImplTest {
         when(resultSet.next()).thenReturn(true);
         when(resultSet.getLong("id")).thenReturn(expected.getId());
         when(resultSet.getTimestamp("created")).thenReturn(Timestamp.valueOf(expected.getDateCreated()));
-        when(resultSet.getInt("discount")).thenReturn(expected.getDiscount());
+        when(resultSet.getBigDecimal("receipt_price")).thenReturn(BigDecimal.valueOf(expected.getTotalPrice()));
         when(resultSet.getLong("receipt_status_id")).thenReturn(expected.getStatus().getId());
-        when(resultSet.getLong("address_id")).thenReturn(expected.getAddress().getId());
-        when(resultSet.getLong("user_id")).thenReturn(expected.getCustomer().getId());
+        when(resultSet.getLong("contacts_id")).thenReturn(expected.getContactsId());
+        when(resultSet.getLong("user_id")).thenReturn(expected.getCustomerId());
         final Receipt actual = receiptDAO.findById(receiptId);
         assertEquals(expected, actual);
         verify(preparedStatement, times(1)).executeQuery();
@@ -120,11 +121,11 @@ class ReceiptDAOImplTest {
 
    /* @Test
     void shouldFindAllTest() throws SQLException, DAOException {
-       *//* final List<Address> expectedList = List.of(
-                new Address("Country1", "City1", "Street1", "Building1"),
-                new Address("Country2", "City2", "Street2", "Building2"),
-                new Address("Country3", "City3", "Street3", "Building3"));
-        final List<Address> addresses = new ArrayList<>();
+       *//* final List<Contacts> expectedList = List.of(
+                new Contacts("Country1", "City1", "Street1", "Building1"),
+                new Contacts("Country2", "City2", "Street2", "Building2"),
+                new Contacts("Country3", "City3", "Street3", "Building3"));
+        final List<Contacts> addresses = new ArrayList<>();
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
         when(resultSet.next()).thenReturn(true);
@@ -134,7 +135,7 @@ class ReceiptDAOImplTest {
         when(resultSet.getString("street")).thenReturn(expected.getStreet());
         when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
         when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-        final List<Address> actual = dishDAO.findAll();
+        final List<Contacts> actual = dishDAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
 *//*

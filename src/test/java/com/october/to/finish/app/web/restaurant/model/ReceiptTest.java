@@ -1,5 +1,6 @@
 package com.october.to.finish.app.web.restaurant.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,15 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ReceiptTest {
-    Address address = new Address();
+    private Contacts contacts;
+    private User user;
+    @BeforeEach
+    void init() {
+        contacts = new Contacts();
+        contacts.setId(2);
+        user = User.newBuilder().setId(1).setFirstName("John").build();
+        user.setId(1);
+    }
 
     @Test
     void builderTest() {
@@ -18,23 +27,21 @@ class ReceiptTest {
         Map<Dish, Integer> dishMap = Map.of(Dish.newBuilder().setPrice(10).build(), 1,
                 Dish.newBuilder().setPrice(40).build(), 2,
                 Dish.newBuilder().setPrice(50).build(), 3);
-        User user = User.newBuilder().setFirstName("John").build();
+
         Receipt receipt = Receipt.newBuilder().
                 setId(1).
-                setCustomer(user).
+                setCustomerId(user.getId()).
                 setTimeCreated(dateTime).
                 setStatus(Receipt.Status.NEW).
-                setDiscount(10).
                 setOrderedDishes(dishMap).
-                setAddress(address).
+                setContactsId(contacts.getId()).
                 build();
         assertEquals(1, receipt.getId());
-        assertEquals(user, receipt.getCustomer());
+        assertEquals(user.getId(), receipt.getCustomerId());
         assertEquals(dateTime, receipt.getDateCreated());
         assertEquals(Receipt.Status.NEW, receipt.getStatus());
-        assertEquals(10, receipt.getDiscount());
         assertEquals(dishMap, receipt.getOrderedDishes());
-        assertEquals(address, receipt.getAddress());
+        assertEquals(contacts.getId(), receipt.getContactsId());
     }
 
     @Test
@@ -44,12 +51,14 @@ class ReceiptTest {
                 Dish.newBuilder().setPrice(50).build(), 3);
         Receipt receipt = new Receipt();
         assertNull(receipt.getOrderedDishes());
-        assertNull(receipt.getAddress());
+        assertEquals(0, receipt.getCustomerId());
+        assertEquals(0, receipt.getContactsId());
 
         receipt.setOrderedDishes(dishMap);
-        receipt.setAddress(address);
+        receipt.setContactsId(contacts.getId());
+
         assertEquals(dishMap, receipt.getOrderedDishes());
-        assertEquals(address, receipt.getAddress());
+        assertEquals(contacts.getId(), receipt.getContactsId());
     }
 
     @Test
@@ -58,15 +67,14 @@ class ReceiptTest {
         assertThrows(IllegalArgumentException.class,
                 () -> Receipt.newBuilder().
                         setId(-1).
-                        setCustomer(null).
+                        setCustomerId(0).
                         setTimeCreated(null).
                         setStatus(null).
-                        setDiscount(-2).
                         setOrderedDishes(null).
-                        setAddress(null).
+                        setContactsId(0).
                         build());
         assertThrows(IllegalArgumentException.class, () -> receipt.setOrderedDishes(null));
-        assertThrows(IllegalArgumentException.class, () -> receipt.setAddress(null));
-
+        assertThrows(IllegalArgumentException.class, () -> receipt.setCustomerId(-1));
+        assertThrows(IllegalArgumentException.class, () -> receipt.setContactsId(-1));
     }
 }

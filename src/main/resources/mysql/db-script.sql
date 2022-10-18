@@ -16,22 +16,23 @@ CREATE SCHEMA IF NOT EXISTS `restaurant` DEFAULT CHARACTER SET utf8 ;
 USE `restaurant` ;
 
 -- -----------------------------------------------------
--- Table `restaurant`.`address`
+-- Table `restaurant`.`contacts`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `restaurant`.`address` ;
+DROP TABLE IF EXISTS `restaurant`.`contacts` ;
 
-CREATE TABLE IF NOT EXISTS `restaurant`.`address` (
-                                                      `id` INT NOT NULL AUTO_INCREMENT,
-                                                      `country` VARCHAR(45) NOT NULL,
-                                                      `city` VARCHAR(45) NOT NULL,
-                                                      `street` VARCHAR(45) NOT NULL,
-                                                      `building` VARCHAR(45) NOT NULL,
-                                                      PRIMARY KEY (`id`))
+CREATE TABLE IF NOT EXISTS `restaurant`.`contacts` (
+                                                       `id` INT NOT NULL AUTO_INCREMENT,
+                                                       `country` VARCHAR(45) NOT NULL,
+                                                       `city` VARCHAR(45) NOT NULL,
+                                                       `street` VARCHAR(45) NOT NULL,
+                                                       `building` VARCHAR(45) NOT NULL,
+                                                       `phone` VARCHAR(45) NOT NULL,
+                                                       PRIMARY KEY (`id`))
     ENGINE = InnoDB;
 
-CREATE INDEX `idx_address_country` ON `restaurant`.`address` (`country` ASC) INVISIBLE;
+CREATE INDEX `idx_address_country` ON `restaurant`.`contacts` (`country` ASC) INVISIBLE;
 
-CREATE INDEX `idx_address_city_street` ON `restaurant`.`address` (`city` ASC, `street` ASC) VISIBLE;
+CREATE INDEX `idx_address_city_street` ON `restaurant`.`contacts` (`city` ASC, `street` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -103,7 +104,6 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`user` (
                                                    `email` VARCHAR(45) NOT NULL,
                                                    `first_name` VARCHAR(45) NOT NULL,
                                                    `last_name` VARCHAR(45) NOT NULL,
-                                                   `phone_number` VARCHAR(45) NULL,
                                                    `password` VARCHAR(65) NOT NULL,
                                                    `role_id` INT NOT NULL,
                                                    PRIMARY KEY (`id`),
@@ -117,8 +117,6 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`user` (
 CREATE UNIQUE INDEX `email_UNIQUE` ON `restaurant`.`user` (`email` ASC) INVISIBLE;
 
 CREATE INDEX `idx_first_name_last_name` ON `restaurant`.`user` (`first_name` ASC, `last_name` ASC) INVISIBLE;
-
-CREATE UNIQUE INDEX `phone_number_UNIQUE` ON `restaurant`.`user` (`phone_number` ASC) VISIBLE;
 
 CREATE INDEX `fk_person_role1_idx` ON `restaurant`.`user` (`role_id` ASC) VISIBLE;
 
@@ -145,11 +143,11 @@ DROP TABLE IF EXISTS `restaurant`.`receipt` ;
 CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
                                                       `id` INT NOT NULL AUTO_INCREMENT,
                                                       `created` TIMESTAMP(2) NOT NULL,
-                                                      `discount` INT NULL,
+                                                      `receipt_price` DECIMAL(10,2) NOT NULL,
                                                       `user_id` INT NOT NULL,
                                                       `receipt_status_id` INT NOT NULL,
-                                                      `address_id` INT NOT NULL,
-                                                      PRIMARY KEY (`id`, `address_id`),
+                                                      `contacts_id` INT NOT NULL,
+                                                      PRIMARY KEY (`id`, `contacts_id`),
                                                       CONSTRAINT `fk_receipt_person1`
                                                           FOREIGN KEY (`user_id`)
                                                               REFERENCES `restaurant`.`user` (`id`)
@@ -161,8 +159,8 @@ CREATE TABLE IF NOT EXISTS `restaurant`.`receipt` (
                                                               ON DELETE NO ACTION
                                                               ON UPDATE NO ACTION,
                                                       CONSTRAINT `fk_receipt_address1`
-                                                          FOREIGN KEY (`address_id`)
-                                                              REFERENCES `restaurant`.`address` (`id`)
+                                                          FOREIGN KEY (`contacts_id`)
+                                                              REFERENCES `restaurant`.`contacts` (`id`)
                                                               ON DELETE NO ACTION
                                                               ON UPDATE NO ACTION)
     ENGINE = InnoDB;
@@ -173,7 +171,7 @@ CREATE INDEX `fk_receipt_person1_idx` ON `restaurant`.`receipt` (`user_id` ASC) 
 
 CREATE INDEX `fk_receipt_receipt_status1_idx` ON `restaurant`.`receipt` (`receipt_status_id` ASC) VISIBLE;
 
-CREATE INDEX `fk_receipt_address1_idx` ON `restaurant`.`receipt` (`address_id` ASC) VISIBLE;
+CREATE INDEX `fk_receipt_address1_idx` ON `restaurant`.`receipt` (`contacts_id` ASC) VISIBLE;
 
 
 -- -----------------------------------------------------
@@ -184,8 +182,8 @@ DROP TABLE IF EXISTS `restaurant`.`receipt_has_dish` ;
 CREATE TABLE IF NOT EXISTS `restaurant`.`receipt_has_dish` (
                                                                `receipt_id` INT NOT NULL,
                                                                `dish_id` INT NOT NULL,
-                                                               `total_price` DECIMAL(10,2) NULL,
-                                                               `count` INT NULL,
+                                                               `total_price` DECIMAL(10,2) NOT NULL,
+                                                               `count` INT NOT NULL,
                                                                PRIMARY KEY (`receipt_id`, `dish_id`),
                                                                CONSTRAINT `fk_receipt_has_dish_receipt1`
                                                                    FOREIGN KEY (`receipt_id`)
@@ -238,6 +236,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 
+
 INSERT INTO role (id, name)
 VALUES (DEFAULT, 'Client'),
        (DEFAULT, 'Manager');
@@ -259,41 +258,41 @@ VALUES (DEFAULT, 1, 2),
        (DEFAULT, 2, 3),
        (DEFAULT, 3, 4);
 
-INSERT INTO user(id, email, first_name, last_name, phone_number, password, role_id)
-VALUES (DEFAULT, 'admin@admin.app', 'Admin', 'Admin', '1111', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 2),
-       (DEFAULT, 'user@user.app', 'John', 'Doe', '+380111111111', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 1);
+INSERT INTO user(id, email, first_name, last_name, password, role_id)
+VALUES (DEFAULT, 'admin@admin.app', 'Admin', 'Admin', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 2),
+       (DEFAULT, 'user@user.app', 'John', 'Doe', 'd9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb', 1);
 
-INSERT INTO address(id, country, city, street, building)
-VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111'),
-       (DEFAULT, 'USA', 'Washington', '1st', '84'),
-       (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1'),
-       (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45');
+INSERT INTO contacts(id, country, city, street, building, phone)
+VALUES (DEFAULT, 'USA', 'Seattle', 'Washington', '1111', '380111111111'),
+       (DEFAULT, 'USA', 'Washington', '1st', '84', '380111111112'),
+       (DEFAULT, 'Canada', 'Toronto', 'Queen Elizabeth', '1', '380111111111'),
+       (DEFAULT, 'USA', 'New Jersey', 'Bank', '11/45', '380111111115');
 
 INSERT INTO dish(id, title, description, price, weight, cooking, created, category_id)
-VALUES (DEFAULT, 'Pizza1', 'Mmmmmm very nice', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
-       (DEFAULT, 'Pizza2', 'Mmmmmm very nice', 30.00, 1000, 40, '2012-06-18 10:34:09', 2),
-       (DEFAULT, 'Pizza3', 'Mmmmmm very nice', 25.00, 400, 40, '2012-06-18 10:34:09', 2),
-       (DEFAULT, 'Pizza4', 'Mmmmmm very nice', 22.00, 900, 40, '2012-06-18 10:34:09', 2),
-       (DEFAULT, 'Pizza5', 'Mmmmmm very nice', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
-       (DEFAULT, 'Salad1', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
-       (DEFAULT, 'Salad2', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
-       (DEFAULT, 'Salad3', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
-       (DEFAULT, 'Salad4', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
-       (DEFAULT, 'Salad5', 'Nice salad', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
-       (DEFAULT, 'Appetizer1', 'Delicious', 15.00, 300, 10, '2012-06-18 10:34:09', 3),
+VALUES (DEFAULT, 'Diabola', 'Pizza with hottest sauce in Galaxy', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Маргарита', 'М`ягкий смак і нічого зайвого', 30.00, 1000, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Pepperoni', 'Like diabola, but more taste', 25.00, 400, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Капричоза', 'Мікс на любий смак', 22.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Caesario', 'True satisfaction', 20.00, 900, 40, '2012-06-18 10:34:09', 2),
+       (DEFAULT, 'Крабовий', 'На основі дійтичного соусу', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Special', 'Our family receipt for you', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Легкий', 'Червона риба нікого не залишить байдужим', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Caesar', 'Want to fight with enemies?', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Просто салат', 'Опис простого салату', 10.00, 200, 50, '2012-06-18 10:34:09', 1),
+       (DEFAULT, 'Appetizer', 'Delicious', 15.00, 300, 10, '2012-06-18 10:34:09', 3),
        (DEFAULT, 'Appetizer2', 'Delicious', 15.00, 300, 10, '2012-06-18 10:34:09', 3),
        (DEFAULT, 'Appetizer3', 'Delicious', 25.00, 300, 10, '2012-06-18 10:34:09', 3),
        (DEFAULT, 'Appetizer4', 'Delicious', 19.00, 300, 10, '2012-06-18 10:34:09', 3),
        (DEFAULT, 'Appetizer5', 'Delicious', 5.00, 300, 10, '2012-06-18 10:34:09', 3),
-       (DEFAULT, 'Drink1', 'Strong', 90.00, 750, 0, '2012-06-18 10:34:09', 4),
-       (DEFAULT, 'Drink2', 'Strong', 190.00, 750, 0, '2012-06-18 10:34:09', 4),
-       (DEFAULT, 'Drink3', 'Strong', 290.00, 750, 0, '2012-06-18 10:34:09', 4),
-       (DEFAULT, 'Drink4', 'Strong', 390.00, 750, 0, '2012-06-18 10:34:09', 4),
-       (DEFAULT, 'Drink5', 'Strong', 490.00, 750, 0, '2012-06-18 10:34:09', 4);
+       (DEFAULT, 'Light cocktail', 'Fresh strawberries with light drink', 90.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Фірмовий самогон', '10 років витримки в дубових бочка. Оригінальний рецепт', 190.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Chivas Regal', 'Old good whiskey', 290.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Давай знайомитись', 'Різноманіття смаку яке дозволить вам розслабитись', 390.00, 750, 0, '2012-06-18 10:34:09', 4),
+       (DEFAULT, 'Beer', 'Just take one and smoke cigarettes on the bar', 490.00, 750, 0, '2012-06-18 10:34:09', 4);
 
 
-INSERT INTO receipt (id, created, discount, user_id, receipt_status_id, address_id)
-VALUES (DEFAULT, '2012-06-18 10:34:09', 5, 2, 1, 1),
-       (DEFAULT, '2012-05-18 10:34:09', 0, 2, 1, 2),
-       (DEFAULT, '2012-04-18 10:34:09', 5, 2, 3, 2),
-       (DEFAULT, '2012-03-18 10:34:09', 5, 2, 4, 3);
+INSERT INTO receipt (id, created, receipt_price, user_id, receipt_status_id, contacts_id)
+VALUES (DEFAULT, '2012-06-18 10:34:09', 0, 2, 2, 1),
+       (DEFAULT, '2012-05-18 10:34:09', 0, 2, 2, 1),
+       (DEFAULT, '2012-04-18 10:34:09', 0, 2, 2, 3),
+       (DEFAULT, '2012-03-18 10:34:09', 0, 2, 2, 4);

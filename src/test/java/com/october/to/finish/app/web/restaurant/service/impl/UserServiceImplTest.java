@@ -37,7 +37,6 @@ class UserServiceImplTest {
                 .setEmail("test@examp.com")
                 .setFirstName("fTest")
                 .setLastName("lTest")
-                .setPhoneNumber("000-000-0000")
                 .setRole(User.Role.CLIENT)
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build();
 
@@ -130,21 +129,18 @@ class UserServiceImplTest {
                         .setEmail("test@examp.com")
                         .setFirstName("fTest")
                         .setLastName("lTest")
-                        .setPhoneNumber("000-000-0000")
                         .setRole(User.Role.CLIENT)
                         .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build(),
                 User.newBuilder()
                         .setEmail("test1@examp.com")
                         .setFirstName("fTest1")
                         .setLastName("lTest1")
-                        .setPhoneNumber("000-000-0001")
                         .setRole(User.Role.MANAGER)
                         .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build(),
                 User.newBuilder()
                         .setEmail("test2@examp.com")
                         .setFirstName("fTest2")
                         .setLastName("lTest2")
-                        .setPhoneNumber("000-000-0002")
                         .setRole(User.Role.CLIENT)
                         .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).build());
         final int daoOffset = 20;

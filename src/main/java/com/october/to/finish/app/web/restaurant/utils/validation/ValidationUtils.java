@@ -19,8 +19,7 @@ public class ValidationUtils {
 
     public boolean validateUser(User user) {
         return validateTextInput(user.getFirstName()) && validateTextInput(user.getLastName())
-                && validateEmail(user.getEmail()) && validatePhoneNumber(user.getPhoneNumber())
-                && validatePassword(String.valueOf(user.getPassword()));
+                && validateEmail(user.getEmail()) && validatePassword(String.valueOf(user.getPassword()));
     }
     public boolean validateDish(Dish dish) {
         return false;

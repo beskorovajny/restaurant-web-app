@@ -62,12 +62,7 @@
                                                                                  name="lastName" minlength="1"
                                                                                  pattern="^\p{L}{2,45}$"
                                                                                  required="" maxlength="44"/></div>
-                                        <div style="margin-bottom: 16px;"><input class="form-control" type="text"
-                                                                                 name="phoneNumber"
-                                                                                 placeholder="<fmt:message key="text.phone"/>"
-                                                                                 maxlength="44" required=""
-                                                                                 minlength="3"
-                                                                                 pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
+                                        <div style="margin-bottom: 16px;">
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
                                                                  placeholder="<fmt:message key="text.password"/>"

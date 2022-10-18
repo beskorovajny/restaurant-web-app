@@ -12,7 +12,6 @@ public class User implements Serializable {
     private String email;
     private String firstName;
     private String lastName;
-    private String phoneNumber;
     private Role role;
     private char[] password;
     private Set<Receipt> receipts;
@@ -42,10 +41,6 @@ public class User implements Serializable {
 
     public String getLastName() {
         return lastName;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
     }
 
     public User.Role getRole() {
@@ -79,12 +74,12 @@ public class User implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && role == user.role && Arrays.equals(password, user.password) && Objects.equals(receipts, user.receipts);
+        return id == user.id && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && role == user.role && Arrays.equals(password, user.password) && Objects.equals(receipts, user.receipts);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(id, email, firstName, lastName, phoneNumber, role, receipts);
+        int result = Objects.hash(id, email, firstName, lastName, role, receipts);
         result = 31 * result + Arrays.hashCode(password);
         return result;
     }
@@ -96,7 +91,6 @@ public class User implements Serializable {
                 ", email='" + email + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
                 ", role=" + role +
                 ", password=" + String.valueOf(password) +
                 ", receipts=" + receipts +
@@ -157,14 +151,6 @@ public class User implements Serializable {
                 throw new IllegalArgumentException("Last name can't be null!");
             }
             User.this.lastName = lastName;
-            return this;
-        }
-
-        public Builder setPhoneNumber(String phoneNumber) {
-            if (phoneNumber == null) {
-                throw new IllegalArgumentException("Phone number can't be null!");
-            }
-            User.this.phoneNumber = phoneNumber;
             return this;
         }
 

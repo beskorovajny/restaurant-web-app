@@ -60,7 +60,7 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col"><fmt:message key="text.date.created"/></th>
-            <th scope="col"><fmt:message key="text.discount"/></th>
+            <th scope="col"><fmt:message key="text.total.price"/></th>
             <th scope="col"><fmt:message key="text.status"/></th>
             <th scope="col"></th>
         </tr>
@@ -73,7 +73,7 @@
                 <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
                     <fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm"/>
                 </td>
-                <td><c:out value="${receipt.discount}"/>
+                <td><c:out value="${receipt.totalPrice}"/>
                 </td>
                 <td><c:out value="${receipt.status}"/>
                 </td>

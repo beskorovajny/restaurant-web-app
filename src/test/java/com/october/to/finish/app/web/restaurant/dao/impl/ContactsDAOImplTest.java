@@ -1,12 +1,11 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
-import com.october.to.finish.app.web.restaurant.dao.mapper.impl.AddressMapper;
+import com.october.to.finish.app.web.restaurant.dao.mapper.impl.ContactsMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
-import com.october.to.finish.app.web.restaurant.model.Address;
+import com.october.to.finish.app.web.restaurant.model.Contacts;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -16,14 +15,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class AddressDAOImplTest {
+class ContactsDAOImplTest {
     @Mock
     private Connection connection;
     @Mock
@@ -31,15 +28,15 @@ class AddressDAOImplTest {
     @Mock
     private ResultSet resultSet;
     @Mock
-    private AddressMapper addressMapper;
+    private ContactsMapper contactsMapper;
     @InjectMocks
-    private AddressDAOImpl addressDAO;
-    private Address expected;
+    private ContactsDAOImpl addressDAO;
+    private Contacts expected;
     private final long addressId = 100;
 
     @BeforeEach
     public void setUp() {
-        expected = new Address("Country", "City", "Street", "Building");
+        expected = new Contacts("Country", "City", "Street", "Building", "380xx-xxx-xx-xx");
     }
 
     @AfterEach
@@ -49,7 +46,7 @@ class AddressDAOImplTest {
 
     @Test
     void shouldNotInjectTest() {
-        assertThrows(IllegalArgumentException.class, () -> new AddressDAOImpl(null));
+        assertThrows(IllegalArgumentException.class, () -> new ContactsDAOImpl(null));
     }
 
     @Test
@@ -71,7 +68,7 @@ class AddressDAOImplTest {
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.save(0, new Address()));
+        assertThrows(IllegalArgumentException.class, () -> addressDAO.save(0, new Contacts()));
         assertThrows(IllegalArgumentException.class, () -> addressDAO.save(1, null));
         assertThrows(IllegalArgumentException.class, () -> addressDAO.save(-1, null));
     }
@@ -91,10 +88,11 @@ class AddressDAOImplTest {
         when(resultSet.next()).thenReturn(true);
         when(resultSet.getLong("id")).thenReturn(expected.getId());
         when(resultSet.getString("country")).thenReturn(expected.getCountry());
+        when(resultSet.getString("phone")).thenReturn(expected.getPhone());
         when(resultSet.getString("city")).thenReturn(expected.getCity());
         when(resultSet.getString("street")).thenReturn(expected.getStreet());
         when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
-        final Address actual = addressDAO.findById(addressId);
+        final Contacts actual = addressDAO.findById(addressId);
         assertEquals(expected, actual);
         verify(preparedStatement, times(1)).executeQuery();
     }
@@ -112,23 +110,23 @@ class AddressDAOImplTest {
 
     /*@Test
     void shouldFindAllTest() throws SQLException, DAOException {
-        final List<Address> expectedList = List.of(
-                new Address("Country1", "City1", "Street1", "Building1"),
-                new Address("Country2", "City2", "Street2", "Building2"),
-                new Address("Country3", "City3", "Street3", "Building3"));
+        final List<Contacts> expectedList = List.of(
+                new Contacts("Country1", "City1", "Street1", "Building1"),
+                new Contacts("Country2", "City2", "Street2", "Building2"),
+                new Contacts("Country3", "City3", "Street3", "Building3"));
 
-        final List<Address> addresses = new ArrayList<>();
+        final List<Contacts> addresses = new ArrayList<>();
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
         *//*when(resultSet.next()).thenReturn(true);*//*
 
        *//**//*
         int i = 0;
-        for (Address address : expectedList) {
+        for (Contacts address : expectedList) {
             address.setId(++i);
         }
 
-        for (Address address : expectedList) {
+        for (Contacts address : expectedList) {
             when(resultSet.next()).thenReturn(true);
             when(resultSet.getLong("id")).thenReturn(address.getId());
             when(resultSet.getString("country")).thenReturn(address.getCountry());
@@ -136,9 +134,9 @@ class AddressDAOImplTest {
             when(resultSet.getString("street")).thenReturn(address.getStreet());
             when(resultSet.getString("building_number")).thenReturn(address.getBuildingNumber());
         }
-        when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
+        when(contactsMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
 
-        final List<Address> actual = addressDAO.findAll();
+        final List<Contacts> actual = addressDAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
 
@@ -177,7 +175,7 @@ class AddressDAOImplTest {
 
     @Test
     void shouldNotUpdateIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.update(0, new Address()));
+        assertThrows(IllegalArgumentException.class, () -> addressDAO.update(0, new Contacts()));
         assertThrows(IllegalArgumentException.class, () -> addressDAO.update(1, null));
         assertThrows(IllegalArgumentException.class, () -> addressDAO.update(-1, null));
     }

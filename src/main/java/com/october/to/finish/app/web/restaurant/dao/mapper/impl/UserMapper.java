@@ -21,7 +21,6 @@ public class UserMapper implements ObjectMapper<User> {
                 .setEmail(resultSet.getString("email"))
                 .setFirstName(resultSet.getString("first_name"))
                 .setLastName(resultSet.getString("last_name"))
-                .setPhoneNumber(resultSet.getString("phone_number"))
                 .setRole(getById(resultSet.getLong("role_id")))
                 .setPassword(resultSet.getString("password").toCharArray())
                 .build();
@@ -49,9 +48,8 @@ public class UserMapper implements ObjectMapper<User> {
         preparedStatement.setString(1, user.getEmail());
         preparedStatement.setString(2, user.getFirstName());
         preparedStatement.setString(3, user.getLastName());
-        preparedStatement.setString(4, user.getPhoneNumber());
-        preparedStatement.setString(5, String.valueOf(user.getPassword()));
-        preparedStatement.setInt(6, user.getRole().getId());
+        preparedStatement.setString(4, String.valueOf(user.getPassword()));
+        preparedStatement.setInt(5, user.getRole().getId());
     }
 
     public List<User> extractUsers(List<User> users, PreparedStatement preparedStatement) throws SQLException {

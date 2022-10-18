@@ -45,7 +45,6 @@ class UserDAOImplTest {
                 .setEmail("test@examp.com")
                 .setFirstName("fTest")
                 .setLastName("lTest")
-                .setPhoneNumber("000-000-0000")
                 .setRole(User.Role.CLIENT)
                 .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray())
                 .build();
@@ -98,7 +97,6 @@ class UserDAOImplTest {
         when(resultSet.getString("email")).thenReturn(expected.getEmail());
         when(resultSet.getString("first_name")).thenReturn(expected.getFirstName());
         when(resultSet.getString("last_name")).thenReturn(expected.getLastName());
-        when(resultSet.getString("phone_number")).thenReturn(expected.getPhoneNumber());
         when(resultSet.getLong("role_id")).thenReturn((long) expected.getRole().getId());
         when(resultSet.getString("password")).thenReturn(String.valueOf(expected.getPassword()));
         expected.setOrders(new HashSet<>());
@@ -128,7 +126,6 @@ class UserDAOImplTest {
         when(resultSet.getString("email")).thenReturn(expected.getEmail());
         when(resultSet.getString("first_name")).thenReturn(expected.getFirstName());
         when(resultSet.getString("last_name")).thenReturn(expected.getLastName());
-        when(resultSet.getString("phone_number")).thenReturn(expected.getPhoneNumber());
         when(resultSet.getLong("role_id")).thenReturn((long) expected.getRole().getId());
         when(resultSet.getString("password")).thenReturn(String.valueOf(expected.getPassword()));
         expected.setOrders(new HashSet<>());
@@ -151,11 +148,11 @@ class UserDAOImplTest {
 
    /* @Test
     void shouldFindAllTest() throws SQLException, DAOException {
-       *//* final List<Address> expectedList = List.of(
-                new Address("Country1", "City1", "Street1", "Building1"),
-                new Address("Country2", "City2", "Street2", "Building2"),
-                new Address("Country3", "City3", "Street3", "Building3"));
-        final List<Address> addresses = new ArrayList<>();
+       *//* final List<Contacts> expectedList = List.of(
+                new Contacts("Country1", "City1", "Street1", "Building1"),
+                new Contacts("Country2", "City2", "Street2", "Building2"),
+                new Contacts("Country3", "City3", "Street3", "Building3"));
+        final List<Contacts> addresses = new ArrayList<>();
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
         when(resultSet.next()).thenReturn(true);
@@ -165,7 +162,7 @@ class UserDAOImplTest {
         when(resultSet.getString("street")).thenReturn(expected.getStreet());
         when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
         when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-        final List<Address> actual = dishuserDAOAO.findAll();
+        final List<Contacts> actual = dishuserDAOAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
 *//*
@@ -180,7 +177,7 @@ class UserDAOImplTest {
 
     @Test
     void shouldUpdateTest() throws SQLException, DAOException {
-        final int rowsUpdatedTrue = 6;
+        final int rowsUpdatedTrue = 5;
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(rowsUpdatedTrue);

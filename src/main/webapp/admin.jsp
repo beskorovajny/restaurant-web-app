@@ -24,7 +24,7 @@
 
                 <div class="col-md-15 text-center" style="margin: 10px">
                     <h6><fmt:message key="text.greetings"/>
-                            ${sessionScope.user.firstName} ${sessionScope.user.lastName}
+                        ${sessionScope.user.firstName} ${sessionScope.user.lastName}
                     </h6>
                 </div>
                 <div class="col-md-15 text-end">
@@ -69,10 +69,10 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col"><fmt:message key="text.date.created"/></th>
-            <th scope="col"><fmt:message key="text.discount"/></th>
-           <%-- <th scope="col"><fmt:message key="text.user"/></th>--%>
+            <th scope="col"><fmt:message key="text.total.price"/></th>
             <th scope="col"><fmt:message key="text.status"/></th>
-            <%--<th scope="col"><fmt:message key="text.address"/></th>--%>
+            <th scope="col"><fmt:message key="text.user"/>ID</th>
+            <th scope="col"><fmt:message key="text.contacts"/>ID</th>
         </tr>
         </thead>
         <tbody>
@@ -80,17 +80,18 @@
             <tr>
                 <td><c:out value="${receipt.id}"/>
                 </td>
-                <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
+                <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate"
+                                   type="date"/>
                     <fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm"/>
                 </td>
-                <td><c:out value="${receipt.discount}"/>
+                <td><c:out value="${receipt.totalPrice}"/>
                 </td>
-               <%-- <td><c:out value="${receipt.customer}"/>
-                </td>--%>
                 <td><c:out value="${receipt.status}"/>
                 </td>
-               <%-- <td><c:out value="${receipt.address}"/>
-                </td>--%>
+                <td><c:out value="${receipt.contactsId}"/>
+                </td>
+                <td><c:out value="${receipt.customerId}"/>
+                </td>
             </tr>
         </c:forEach>
         </tbody>

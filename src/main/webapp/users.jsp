@@ -69,7 +69,6 @@
             <th scope="col">Email</th>
             <th scope="col"><fmt:message key="text.first.name"/></th>
             <th scope="col"><fmt:message key="text.last.name"/></th>
-            <th scope="col"><fmt:message key="text.phone"/></th>
             <th scope="col"><fmt:message key="text.role"/></th>
         </tr>
         </thead>
@@ -83,8 +82,6 @@
                 <td><c:out value="${user.firstName}"/>
                 </td>
                 <td><c:out value="${user.lastName}"/>
-                </td>
-                <td><c:out value="${user.phoneNumber}"/>
                 </td>
                 <td><c:out value="${user.role}"/>
                 </td>

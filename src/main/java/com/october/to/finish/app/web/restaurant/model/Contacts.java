@@ -2,24 +2,27 @@ package com.october.to.finish.app.web.restaurant.model;
 
 import java.util.Objects;
 
-public class Address {
+public class Contacts {
     private long id;
     private String country;
     private String city;
     private String street;
     private String buildingNumber;
 
-    public Address() {
+    private String phone;
+
+    public Contacts() {
     }
 
-    public Address(String country, String city, String street, String buildingNumber) {
-        if (country == null || city == null || street == null || buildingNumber == null) {
+    public Contacts(String country, String city, String street, String buildingNumber, String phone) {
+        if (country == null || city == null || street == null || buildingNumber == null || phone == null) {
             throw new IllegalArgumentException("Cannot create address with given parameters...");
         }
         this.country = country;
         this.city = city;
         this.street = street;
         this.buildingNumber = buildingNumber;
+        this.phone = phone;
     }
 
     public long getId() {
@@ -76,14 +79,26 @@ public class Address {
         }
         this.buildingNumber = buildingNumber;
     }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        if (phone == null || phone.isEmpty()) {
+            throw new IllegalArgumentException("Phone number can't be null or empty");
+        }
+        this.phone = phone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Address address = (Address) o;
-        return id == address.id && Objects.equals(country, address.country)
-                && Objects.equals(city, address.city) && Objects.equals(street, address.street)
-                && Objects.equals(buildingNumber, address.buildingNumber);
+        Contacts contacts = (Contacts) o;
+        return id == contacts.id && Objects.equals(country, contacts.country)
+                && Objects.equals(city, contacts.city) && Objects.equals(street, contacts.street)
+                && Objects.equals(buildingNumber, contacts.buildingNumber);
     }
 
     @Override
@@ -93,7 +108,7 @@ public class Address {
 
     @Override
     public String toString() {
-        return "Address{" +
+        return "Contacts{" +
                 "id=" + id +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +

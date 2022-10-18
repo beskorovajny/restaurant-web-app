@@ -11,6 +11,8 @@ public class Dish implements Serializable {
     private String description;
     private Category category;
     private double price;
+
+    private double totalPrice;
     private int weight;
     private int cooking;
     private LocalDateTime dateCreated;
@@ -85,6 +87,17 @@ public class Dish implements Serializable {
 
     public void setDateCreated(LocalDateTime dateCreated) {
         this.dateCreated = dateCreated;
+    }
+
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        if (totalPrice < 0) {
+            throw new IllegalArgumentException("Total price can't be < 0");
+        }
+        this.totalPrice = totalPrice;
     }
 
     @Override

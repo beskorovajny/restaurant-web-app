@@ -62,7 +62,7 @@ public class Main {
         receipt.getOrderedDishes().entrySet().forEach(System.out::println);
         System.out.println(receipt);
         LOGGER.error("Fatal error...");*/
-        /*Address address = new Address("Ukraine", "Lviv", "Science st.", "24");
+        /*Contacts address = new Contacts("Ukraine", "Lviv", "Science st.", "24");
         CreditCard creditCard = new CreditCard("PrivatBank", "5355-5555-5555-0001", 10000, "password".toCharArray());
         String password = "426HemiSixPack";
         User user = User.newBuilder()
@@ -142,7 +142,6 @@ public class Main {
                     .setEmail("janov34222424e@example.com")
                     .setFirstName("2111")
                     .setLastName("Smith")
-                    .setPhoneNumber("545-000-11211")
                     .setPassword(PasswordEncryptionUtil.getEncrypted(password).toCharArray()).
                     setRole(User.Role.CLIENT).build();
             user.setId(5);

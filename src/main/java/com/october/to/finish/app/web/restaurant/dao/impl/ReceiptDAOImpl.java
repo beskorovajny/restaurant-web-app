@@ -18,14 +18,14 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private static final Logger LOGGER = LogManager.getLogger(ReceiptDAOImpl.class);
     private static final String NULL_RECEIPT_INPUT_EXC = "[ReceiptService] Can't operate null (or < 1) input!";
     private static final String INSERT = "INSERT INTO receipt" +
-            " (created, discount, user_id, receipt_status_id, address_id)" +
+            " (created, receipt_price, user_id, receipt_status_id, contacts_id)" +
             " VALUES (?, ?, ?, ?, ?); ";
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
 
     private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ? LIMIT 10 OFFSET ?";
     private static final String FIND_ALL = "SELECT * FROM receipt LIMIT 10 OFFSET ?";
     private static final String UPDATE = "UPDATE receipt SET created = ?," +
-            " discount = ?, user_id = ?, receipt_status_id = ?, address_id = ? WHERE id  = ?";
+            "receipt_price = ?, user_id = ?, receipt_status_id = ?, contacts_id = ? WHERE id  = ?";
     private static final String DELETE = "DELETE FROM receipt WHERE id = ?";
 
     private static final String COUNT_RECEIPT_RECORDS = "SELECT COUNT(*) FROM receipt";

@@ -18,13 +18,13 @@ public class UserDAOImpl implements UserDAO {
     private static final String USER_DAO_EXC_MSG = "[UserDAO] exception while receiving User";
     private static final String NULL_INPUT_EXC = "[UserDAO] Can't operate null (or < 1) input!";
     private static final String INSERT =
-            "INSERT INTO user (email, first_name, last_name, phone_number, password, role_id) " +
-                    "VALUES (?, ?, ?, ?, ?, ?)";
+            "INSERT INTO user (email, first_name, last_name, password, role_id) " +
+                    "VALUES (?, ?, ?, ?, ?)";
     private static final String FIND_ALL = "SELECT * FROM user LIMIT 10 OFFSET ?";
     private static final String FIND_BY_ID = "SELECT * FROM user WHERE id = ?";
     private static final String FIND_BY_EMAIL = "SELECT * FROM user WHERE email = ?";
     private static final String UPDATE = "UPDATE user SET email = ?," +
-            "first_name = ?, last_name = ?, phone_number = ?, password = ?, " +
+            "first_name = ?, last_name = ?, password = ?, " +
             "role_Id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM user WHERE id = ?";
     private static final String FIND_ROLE_BY_NAME = "SELECT * FROM role WHERE name = ?";
@@ -141,10 +141,10 @@ public class UserDAOImpl implements UserDAO {
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
             userMapper.setPersonParams(user, preparedStatement);
-            preparedStatement.setLong(7, userId);
+            preparedStatement.setLong(6, userId);
 
             int rowUpdated = preparedStatement.executeUpdate();
-            if (rowUpdated > 0 && rowUpdated < 7) {
+            if (rowUpdated > 0 && rowUpdated < 6) {
                 LOGGER.info("User with ID : [{}] was updated.", userId);
                 return true;
             } else {

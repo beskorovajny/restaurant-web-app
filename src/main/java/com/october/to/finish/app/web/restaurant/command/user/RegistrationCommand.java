@@ -29,7 +29,6 @@ public class RegistrationCommand implements AppCommand {
                     .setEmail(request.getParameter("email"))
                     .setFirstName(request.getParameter("firstName"))
                     .setLastName(request.getParameter("lastName"))
-                    .setPhoneNumber(request.getParameter("phoneNumber"))
                     .setPassword(PasswordEncryptionUtil.getEncrypted(request.getParameter("password")).toCharArray())
                     .setRole(User.Role.CLIENT)
                     .build();

@@ -1,10 +1,11 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
-import com.october.to.finish.app.web.restaurant.model.Address;
+import com.october.to.finish.app.web.restaurant.model.Contacts;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.model.User;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +19,13 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     @Override
     public Receipt extractFromResultSet(ResultSet resultSet) throws SQLException {
         Map<String, Receipt> receiptMap = new HashMap<>();
-        Address address = new Address();
-        address.setId(resultSet.getLong("address_id"));
-        User user = User.newBuilder().setId(resultSet.getLong("user_id")).build();
         Receipt receipt = Receipt.newBuilder().
                 setId(resultSet.getLong("id")).
                 setTimeCreated(resultSet.getTimestamp("created").toLocalDateTime()).
-                setDiscount(resultSet.getInt("discount")).
+                setTotalPrice(resultSet.getBigDecimal("receipt_price").doubleValue()).
                 setStatus(getById(resultSet.getLong("receipt_status_id"))).
-                setAddress(address).
-                setCustomer(user).
+                setContactsId(resultSet.getLong("contacts_id")).
+                setCustomerId(resultSet.getLong("user_id")).
                 build();
         receiptMap.put(String.valueOf(receipt.getId()), receipt);
 
@@ -50,10 +48,11 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
 
     public void setReceiptParams(Receipt receipt, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setTimestamp(1, Timestamp.valueOf(receipt.getDateCreated()));
-        preparedStatement.setInt(2, receipt.getDiscount());
-        preparedStatement.setLong(3, receipt.getCustomer().getId());
+        preparedStatement.setBigDecimal(2, BigDecimal.valueOf(receipt.getTotalPrice()));
+        preparedStatement.setLong(3, receipt.getCustomerId());
         preparedStatement.setLong(4, receipt.getStatus().getId());
-        preparedStatement.setLong(5, receipt.getAddress().getId());
+        preparedStatement.setLong(5, receipt.getContactsId());
+
     }
 
     public List<Receipt> extractReceipts(List<Receipt> receipts, PreparedStatement preparedStatement) throws SQLException {

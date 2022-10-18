@@ -4,20 +4,20 @@ import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.*;
 import com.october.to.finish.app.web.restaurant.command.receipt.ReceiptDetailsCommand;
 import com.october.to.finish.app.web.restaurant.command.user.*;
-import com.october.to.finish.app.web.restaurant.dao.AddressDAO;
+import com.october.to.finish.app.web.restaurant.dao.ContactsDAO;
 import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
 import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.dao.connections.ConnectionPoolHolder;
-import com.october.to.finish.app.web.restaurant.dao.impl.AddressDAOImpl;
+import com.october.to.finish.app.web.restaurant.dao.impl.ContactsDAOImpl;
 import com.october.to.finish.app.web.restaurant.dao.impl.DishDAOImpl;
 import com.october.to.finish.app.web.restaurant.dao.impl.ReceiptDAOImpl;
 import com.october.to.finish.app.web.restaurant.dao.impl.UserDAOImpl;
-import com.october.to.finish.app.web.restaurant.service.AddressService;
+import com.october.to.finish.app.web.restaurant.service.ContactsService;
 import com.october.to.finish.app.web.restaurant.service.DishService;
 import com.october.to.finish.app.web.restaurant.service.ReceiptService;
 import com.october.to.finish.app.web.restaurant.service.UserService;
-import com.october.to.finish.app.web.restaurant.service.impl.AddressServiceImpl;
+import com.october.to.finish.app.web.restaurant.service.impl.ContactsServiceImpl;
 import com.october.to.finish.app.web.restaurant.service.impl.DishServiceImpl;
 import com.october.to.finish.app.web.restaurant.service.impl.ReceiptServiceImpl;
 import com.october.to.finish.app.web.restaurant.service.impl.UserServiceImpl;
@@ -73,8 +73,8 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         ReceiptDAO receiptDAO = new ReceiptDAOImpl(connection);
         LOGGER.info("{} ReceiptDAO created.", CONTEXT_LISTENER_MSG);
 
-        AddressDAO addressDAO = new AddressDAOImpl(connection);
-        LOGGER.info("{} AddressDAO created.", CONTEXT_LISTENER_MSG);
+        ContactsDAO contactsDAO = new ContactsDAOImpl(connection);
+        LOGGER.info("{} ContactsDAO created.", CONTEXT_LISTENER_MSG);
 
         DishDAO dishDAO = new DishDAOImpl(connection);
         LOGGER.info("{} DishDAO created.", CONTEXT_LISTENER_MSG);
@@ -87,12 +87,12 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         context.setAttribute("receiptService", receiptService);
         LOGGER.info("{} ReceiptService created.", CONTEXT_LISTENER_MSG);
 
-        AddressService addressService = new AddressServiceImpl(addressDAO);
-        context.setAttribute("addressService", addressService);
-        LOGGER.info("{} AddressService created.", CONTEXT_LISTENER_MSG);
+        ContactsService contactsService = new ContactsServiceImpl(contactsDAO);
+        context.setAttribute("addressService", contactsService);
+        LOGGER.info("{} ContactsService created.", CONTEXT_LISTENER_MSG);
 
         DishService dishService = new DishServiceImpl(dishDAO);
-        context.setAttribute("dishService", addressService);
+        context.setAttribute("dishService", contactsService);
         LOGGER.info("{} DishService created.", CONTEXT_LISTENER_MSG);
 
         CommandContainer commandContainer = new CommandContainer();
@@ -168,7 +168,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("remove_dish", appCommand);
         LOGGER.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
 
-        appCommand = new UserReceiptsCommand(receiptService, addressService);
+        appCommand = new UserReceiptsCommand(receiptService, contactsService);
         commandContainer.addCommand("user_receipts", appCommand);
         LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
 
@@ -196,7 +196,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("checkout_form", appCommand);
         LOGGER.info("{} CheckoutFormCommand created.", CONTEXT_LISTENER_MSG);
 
-        appCommand = new CheckoutCommand(receiptService, userService, addressService);
+        appCommand = new CheckoutCommand(receiptService, userService, contactsService);
         commandContainer.addCommand("checkout", appCommand);
         LOGGER.info("{} CheckoutCommand created.", CONTEXT_LISTENER_MSG);
 

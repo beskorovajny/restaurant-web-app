@@ -88,7 +88,7 @@
                     </ul>
                 </div>
                 <div class="col-md-8 order-md-1">
-                    <h4 class="mb-3">Billing address and contacts</h4>
+                    <h4 class="mb-3">Billing contacts and contacts</h4>
                     <form class="needs-validation" action="controller" method="post" novalidate>
                         <input hidden name="command" value="checkout"/>
                         <div class="mb-3">
@@ -118,6 +118,18 @@
                                    pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your building info.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone"></label>
+                            <input class="form-control" type="text" id="phone"
+                                   name="phone"
+                                   placeholder="<fmt:message key="text.phone"/>"
+                                   maxlength="44" required=""
+                                   minlength="3"
+                                   pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
+                            <div class="invalid-feedback">
+                                Please enter your contact phone info.
                             </div>
                         </div>
                         <h4 class="mb-3">Payment details</h4>
