@@ -41,15 +41,14 @@ public class ContactsDAOImpl implements ContactsDAO {
     public Connection getConnection() {return connection;}
 
     @Override
-    public long save(long receiptId, Contacts contacts) throws DAOException {
-        if (receiptId < 1 || contacts == null) {
+    public long save(Contacts contacts) throws DAOException {
+        if (contacts == null) {
             LOGGER.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
             contactsMapper.setAddressParams(contacts, preparedStatement);
-            preparedStatement.setLong(5, receiptId);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             long key = 0;

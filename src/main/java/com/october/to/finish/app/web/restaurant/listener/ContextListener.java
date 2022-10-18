@@ -83,7 +83,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         context.setAttribute("userService", userService);
         LOGGER.info("{} UserService created.", CONTEXT_LISTENER_MSG);
 
-        ReceiptService receiptService = new ReceiptServiceImpl(receiptDAO);
+        ReceiptService receiptService = new ReceiptServiceImpl(receiptDAO, contactsDAO, userDAO);
         context.setAttribute("receiptService", receiptService);
         LOGGER.info("{} ReceiptService created.", CONTEXT_LISTENER_MSG);
 

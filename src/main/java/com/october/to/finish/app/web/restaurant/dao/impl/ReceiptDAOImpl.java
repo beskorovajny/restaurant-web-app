@@ -8,6 +8,7 @@ import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private static final String NULL_RECEIPT_INPUT_EXC = "[ReceiptService] Can't operate null (or < 1) input!";
     private static final String INSERT = "INSERT INTO receipt" +
             " (created, receipt_price, user_id, receipt_status_id, contacts_id)" +
-            " VALUES (?, ?, ?, ?, ?); ";
+            " VALUES (?, ?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
 
     private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ? LIMIT 10 OFFSET ?";
@@ -27,7 +28,8 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private static final String UPDATE = "UPDATE receipt SET created = ?," +
             "receipt_price = ?, user_id = ?, receipt_status_id = ?, contacts_id = ? WHERE id  = ?";
     private static final String DELETE = "DELETE FROM receipt WHERE id = ?";
-
+    private static final String SET_DISHES_TO_RECEIPT = "INSERT INTO receipt_has_dish" +
+            "(receipt_id, dish_id, total_price, count) VALUES (?, ?, ?, ?)";
     private static final String COUNT_RECEIPT_RECORDS = "SELECT COUNT(*) FROM receipt";
     private final Connection connection;
     private final ReceiptMapper receiptMapper = new ReceiptMapper();
@@ -175,6 +177,25 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             LOGGER.error("Receipt with ID : [{}] was not removed. An exception occurs : {}",
                     receiptId, e.getMessage());
             throw new DAOException("[ReceiptDAO] exception while removing Receipt" + e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void setDishesForReceipt(long receiptId, long dishId, double totalPrice, int count) throws DAOException {
+        if (receiptId < 1 || dishId < 1 || totalPrice < 0 || count <=0) {
+            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
+        }
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(SET_DISHES_TO_RECEIPT)) {
+            receiptMapper.setReceiptDishParams(receiptId, dishId, totalPrice, count,preparedStatement);
+            preparedStatement.executeUpdate();
+            LOGGER.info("[ReceiptDAO] DishID:[{}], ReceiptID:[{}], TotalPrice:[{}], Count[{}] saved",
+                    dishId, receiptId, totalPrice, count);
+        } catch (SQLException e) {
+            LOGGER.error("[ReceiptDAO] DishID[{}] for ReceiptID[{}] was not saved. An exception occurs : {}",
+                    dishId, receiptId, e.getMessage());
+            throw new DAOException("[ReceiptDAO] exception while saving Dish for Receipt" + e.getMessage(), e);
         }
     }
 

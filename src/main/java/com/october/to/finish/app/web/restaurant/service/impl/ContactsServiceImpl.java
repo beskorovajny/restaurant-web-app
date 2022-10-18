@@ -27,13 +27,13 @@ public class ContactsServiceImpl implements ContactsService {
     }
 
     @Override
-    public void save(long receiptId, Contacts contacts) throws ServiceException {
-        if (receiptId < 1 || contacts == null) {
+    public void save(Contacts contacts) throws ServiceException {
+        if (contacts == null) {
             LOGGER.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
-            contacts.setId(contactsDAO.save(receiptId, contacts));
+            contacts.setId(contactsDAO.save(contacts));
             LOGGER.info("[ContactsService] Contacts saved. (id: {})", contacts.getId());
         } catch (DAOException e) {
             LOGGER.error("[ContactsService] SQLException while saving Contacts; Exc: {}"

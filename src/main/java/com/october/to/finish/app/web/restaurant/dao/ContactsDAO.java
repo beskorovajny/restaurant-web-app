@@ -9,14 +9,14 @@ import java.util.List;
 public interface ContactsDAO {
     Connection getConnection();
 
-    long save(long receiptId, Contacts contacts) throws DAOException;
+    long save(Contacts contacts) throws DAOException;
 
     Contacts findById(long addressId) throws DAOException;
 
     List<Contacts> findAll() throws DAOException;
 
-    boolean update(long addressId, Contacts contacts) throws DAOException;
+    boolean update(long contactsId, Contacts contacts) throws DAOException;
 
-    void delete(long addressId) throws DAOException;
+    void delete(long contactsId) throws DAOException;
 
 }

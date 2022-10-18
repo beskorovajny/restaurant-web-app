@@ -37,25 +37,21 @@ class ContactsServiceImplTest {
 
     @Test
     void shouldSaveTest() throws DAOException, ServiceException {
-        final long receiptId = 1L;
         final long addressId = 2L;
-        when(addressDAO.save(receiptId, expected)).thenReturn(addressId);
-        addressService.save(receiptId, expected);
-        verify(addressDAO, times(1)).save(receiptId, expected);
+        when(addressDAO.save(expected)).thenReturn(addressId);
+        addressService.save(expected);
+        verify(addressDAO, times(1)).save(expected);
     }
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressService.save(0, new Contacts()));
-        assertThrows(IllegalArgumentException.class, () -> addressService.save(1, null));
-        assertThrows(IllegalArgumentException.class, () -> addressService.save(-1, null));
+        assertThrows(IllegalArgumentException.class, () -> addressService.save( null));
     }
 
     @Test
     void shouldNotSaveTest() throws DAOException {
-        final long receiptId = 1L;
-        when(addressDAO.save(receiptId, expected)).thenThrow(DAOException.class);
-        assertThrows(ServiceException.class, () -> addressService.save(receiptId, expected));
+        when(addressDAO.save(expected)).thenThrow(DAOException.class);
+        assertThrows(ServiceException.class, () -> addressService.save(expected));
     }
 
     @Test

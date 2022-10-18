@@ -21,6 +21,8 @@ public interface ReceiptDAO {
 
     void delete(long receiptId) throws DAOException;
 
+    void setDishesForReceipt(long receiptId, long dishId, double totalPrice, int count) throws DAOException;
+
     int countRecords();
 
 }

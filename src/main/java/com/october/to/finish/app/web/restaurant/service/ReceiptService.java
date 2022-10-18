@@ -1,9 +1,13 @@
 package com.october.to.finish.app.web.restaurant.service;
 
+import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
+import com.october.to.finish.app.web.restaurant.model.Contacts;
+import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ReceiptService {
     void save(long userId, Receipt receipt) throws ServiceException;
@@ -17,6 +21,8 @@ public interface ReceiptService {
     boolean update(long receiptId, Receipt receipt) throws ServiceException;
 
     void delete(long receiptId) throws ServiceException;
+
+    void setDishesForReceipt(Map<Dish, Integer> cart, Contacts contacts, long userId) throws ServiceException, DAOException;
 
     int getRecordsCount();
 }

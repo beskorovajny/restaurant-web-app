@@ -52,7 +52,14 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
         preparedStatement.setLong(3, receipt.getCustomerId());
         preparedStatement.setLong(4, receipt.getStatus().getId());
         preparedStatement.setLong(5, receipt.getContactsId());
+    }
 
+    public void setReceiptDishParams(long receiptId, long dishId, double totalPrice,
+                                       int count, PreparedStatement preparedStatement) throws SQLException {
+        preparedStatement.setLong(1, receiptId);
+        preparedStatement.setLong(2, dishId);
+        preparedStatement.setBigDecimal(3, BigDecimal.valueOf(totalPrice));
+        preparedStatement.setInt(4, count);
     }
 
     public List<Receipt> extractReceipts(List<Receipt> receipts, PreparedStatement preparedStatement) throws SQLException {

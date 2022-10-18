@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3">Billing contacts and contacts</h4>
-                    <form class="needs-validation" action="controller" method="post" novalidate>
+                    <form class="text-center" action="controller" method="post" novalidate>
                         <input hidden name="command" value="checkout"/>
                         <div class="mb-3">
                             <label for="country"></label>
@@ -106,7 +106,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="street"></label>
-                            <input type="text" class="form-control" id="street" name="Street" placeholder="street"
+                            <input type="text" class="form-control" id="street" name="street" placeholder="Street"
                                    required pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your street info.
@@ -114,7 +114,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="building"></label>
-                            <input type="text" class="form-control" id="building" placeholder="Building" required
+                            <input type="text" class="form-control" id="building" name="building"
+                                   placeholder="Building" required
                                    pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
                             <div class="invalid-feedback">
                                 Please enter your building info.

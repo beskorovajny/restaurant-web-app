@@ -6,7 +6,7 @@ import com.october.to.finish.app.web.restaurant.model.Contacts;
 import java.util.List;
 
 public interface ContactsService {
-    void save(long userId, Contacts contacts) throws ServiceException;
+    void save(Contacts contacts) throws ServiceException;
 
     Contacts findById(long addressId) throws ServiceException;
 

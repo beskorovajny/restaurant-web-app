@@ -176,7 +176,7 @@ public class Receipt {
 
         public Receipt.Builder setContactsId(long contactsId) {
             if (contactsId <= 0) {
-                throw new IllegalArgumentException("AddressId can't be <= 0!");
+                throw new IllegalArgumentException("ContactsId can't be <= 0!");
             }
             Receipt.this.contactsId = contactsId;
             return this;

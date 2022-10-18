@@ -62,22 +62,19 @@ class ContactsDAOImplTest {
         when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
         when(resultSet.next()).thenReturn(true);
         when(resultSet.getLong(anyInt())).thenReturn(1L);
-        addressDAO.save(receiptId, expected);
+        addressDAO.save(expected);
         verify(preparedStatement, times(1)).executeUpdate();
     }
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.save(0, new Contacts()));
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.save(1, null));
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.save(-1, null));
+        assertThrows(IllegalArgumentException.class, () -> addressDAO.save( null));
     }
 
     @Test
     void shouldNotSaveTest() throws SQLException {
-        final long receiptId = 1L;
         when(connection.prepareStatement(anyString(), anyInt())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.save(receiptId, expected));
+        assertThrows(DAOException.class, () -> addressDAO.save(expected));
     }
 
     @Test

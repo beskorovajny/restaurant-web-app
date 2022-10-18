@@ -47,8 +47,6 @@ Wsrc/test/java/com/october/to/finish/app/web/restaurant/exceptions/DAOExceptionT
 [src/main/java/com/october/to/finish/app/web/restaurant/service/impl/AddressServiceImpl.java,4\c\4c943ed00a538c7d9e31c38fdc7ef71db311585a
 è
 _src/test/java/com/october/to/finish/app/web/restaurant/service/impl/AddressServiceImplTest.java,c\5\c5a8c44ead5f4758ea0713f5d9f8d32e500d2924
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserServiceImpl.java,f\6\f6632e82853123e60a4f02bb58d831c2706fe6cd
 Ñ
 Tsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/DishDAOImplTest.java,1\f\1f6fe0bdaea81f6e7a3cb0fa13be3f7643c0db80
 ê
@@ -59,12 +57,6 @@ w
 Gsrc/main/java/com/october/to/finish/app/web/restaurant/dao/UserDAO.java,5\7\5784ceecf52e9b84e5a394527ff6a3af8d91b649
 I
 src/main/webapp/index.jsp,8\e\8e6d3b70c9f5b02570779b0441540d45eceb0ded
-Ç
-Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/ReceiptService.java,5\0\508a6df90ac1533337caf61f20d3ccdc09845aa9
-ã
-[src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1
-z
-Jsrc/main/java/com/october/to/finish/app/web/restaurant/dao/ReceiptDAO.java,f\d\fdb1fdf2ab34acff7fdcc59699c684091ef251dd
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/AddressMapper.java,7\4\740a55f5582f03de2828713a431ac2b741068ad2
 Ü
@@ -77,10 +69,6 @@ isrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSo
 fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByTitleCommand.java,6\a\6a26e9c864c98bab043b65797b061988aed29ebf
 Ä
 Psrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/DishDAOImpl.java,5\e\5ee17d37e18a471dbd03faea861835693dc1b6b0
-
-Osrc/main/java/com/october/to/finish/app/web/restaurant/service/DishService.java,d\b\db37933c89e29c48c430eea6a2827e7204bdbfdb
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
@@ -174,8 +162,6 @@ Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesCo
 Qsrc/main/java/com/october/to/finish/app/web/restaurant/tag/CustomDateTimeTag.java,9\d\9d41438bdab803b681e1984f25b7b1fce16a832a
 Ü
 Vsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LogoutCommand.java,0\c\0c029f6f7c1510b3866ceb1edb2ecfb8f2ee1134
-â
-Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AddToCartCommand.java,6\3\638d0fdbc9d42f6f14997849274e3d7b03caeb97
 H
 src/main/webapp/menu.jsp,6\7\671fde2a78fbd3479793a5502b8584b419c99f8b
 ë
