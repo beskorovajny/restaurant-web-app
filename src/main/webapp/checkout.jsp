@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-md-8 order-md-1">
                     <h4 class="mb-3"><fmt:message key="text.contact.info"/></h4>
-                    <form class="text-center" action="controller" method="post" novalidate>
+                    <form class="text-center" action="controller" method="post">
                         <input hidden name="command" value="checkout"/>
                         <div class="mb-3">
                             <label for="country"></label>
