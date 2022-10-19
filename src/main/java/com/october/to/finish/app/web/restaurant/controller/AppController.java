@@ -19,6 +19,7 @@ import java.io.IOException;
 public class AppController extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(AppController.class);
     private CommandContainer commandContainer;
+
     @Override
     public void init(ServletConfig config) {
         commandContainer = (CommandContainer) config.getServletContext().getAttribute("commandContainer");
@@ -36,6 +37,7 @@ public class AppController extends HttpServlet {
         }
         request.getRequestDispatcher(url).forward(request, response);
     }
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = null;

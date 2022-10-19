@@ -1,9 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
-import com.october.to.finish.app.web.restaurant.model.Contacts;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
-import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -55,7 +53,7 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
     }
 
     public void setReceiptDishParams(long receiptId, long dishId, double totalPrice,
-                                       int count, PreparedStatement preparedStatement) throws SQLException {
+                                     int count, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setLong(1, receiptId);
         preparedStatement.setLong(2, dishId);
         preparedStatement.setBigDecimal(3, BigDecimal.valueOf(totalPrice));

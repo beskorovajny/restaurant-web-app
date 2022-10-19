@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateReceiptStatusCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(UpdateReceiptStatusCommand.class);
     private final ReceiptService receiptService;
+
     public UpdateReceiptStatusCommand(ReceiptService receiptService) {
         this.receiptService = receiptService;
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         long receiptId = Long.parseLong(request.getParameter("receiptId"));
@@ -28,7 +30,7 @@ public class UpdateReceiptStatusCommand implements AppCommand {
                     receipt.setStatus(Receipt.Status.COOKING);
                 } else if (Receipt.Status.COOKING.equals(receipt.getStatus())) {
                     receipt.setStatus(Receipt.Status.DELIVERY);
-                } else if(Receipt.Status.DELIVERY.equals(receipt.getStatus())){
+                } else if (Receipt.Status.DELIVERY.equals(receipt.getStatus())) {
                     receipt.setStatus(Receipt.Status.COMPLETED);
                 }
                 receiptService.update(receipt.getId(), receipt);

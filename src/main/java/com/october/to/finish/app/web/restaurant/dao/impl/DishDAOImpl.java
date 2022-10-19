@@ -275,6 +275,7 @@ public class DishDAOImpl implements DishDAO {
         }
         return recordsCount;
     }
+
     public int countRecordsForCategory(long categoryId) {
         int categoryRecordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_DISH_RECORDS_FOR_CATEGORY)) {

@@ -1,7 +1,7 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
-import com.october.to.finish.app.web.restaurant.model.Contacts;
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
+import com.october.to.finish.app.web.restaurant.model.Contacts;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.Optional;
 
 public class ContactsMapper implements ObjectMapper<Contacts> {
-
     @Override
     public Contacts extractFromResultSet(ResultSet resultSet) throws SQLException {
         Map<String, Contacts> addressMap = new HashMap<>();
@@ -43,6 +42,7 @@ public class ContactsMapper implements ObjectMapper<Contacts> {
         preparedStatement.setString(4, contacts.getBuildingNumber());
         preparedStatement.setString(5, contacts.getPhone());
     }
+
     public List<Contacts> extractAddresses(List<Contacts> contacts, PreparedStatement preparedStatement) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {

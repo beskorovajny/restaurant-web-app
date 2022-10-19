@@ -1,7 +1,6 @@
 package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
-import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.sql.PreparedStatement;
@@ -38,8 +37,8 @@ public class UserMapper implements ObjectMapper<User> {
     }
 
     private User.Role getById(Long id) {
-        for(User.Role r : User.Role.values()) {
-            if(r.getId() == (id)) return r;
+        for (User.Role r : User.Role.values()) {
+            if (r.getId() == (id)) return r;
         }
         return null;
     }

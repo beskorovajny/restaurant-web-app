@@ -8,7 +8,6 @@ import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -182,13 +181,13 @@ public class ReceiptDAOImpl implements ReceiptDAO {
 
     @Override
     public void setDishesForReceipt(long receiptId, long dishId, double totalPrice, int count) throws DAOException {
-        if (receiptId < 1 || dishId < 1 || totalPrice < 0 || count <=0) {
+        if (receiptId < 1 || dishId < 1 || totalPrice < 0 || count <= 0) {
             LOGGER.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(SET_DISHES_TO_RECEIPT)) {
-            receiptMapper.setReceiptDishParams(receiptId, dishId, totalPrice, count,preparedStatement);
+            receiptMapper.setReceiptDishParams(receiptId, dishId, totalPrice, count, preparedStatement);
             preparedStatement.executeUpdate();
             LOGGER.info("[ReceiptDAO] DishID:[{}], ReceiptID:[{}], TotalPrice:[{}], Count[{}] saved",
                     dishId, receiptId, totalPrice, count);

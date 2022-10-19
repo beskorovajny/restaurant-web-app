@@ -15,9 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 public class EditDishFormCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(EditDishFormCommand.class);
     private final DishService dishService;
+
     public EditDishFormCommand(DishService dishService) {
         this.dishService = dishService;
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         Dish dish = null;

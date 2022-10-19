@@ -20,7 +20,9 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=create_dish," +
                 "/restaurant_web_app/controller?command=remove_dish," +
                 "/restaurant_web_app/controller?command=users," +
-                "/restaurant_web_app/controller?command=edit_dish_form,/restaurant_web_app/controller?command=edit_dish")})
+                "/restaurant_web_app/controller?command=edit_dish_form,/restaurant_web_app/controller?command=edit_dish," +
+                "/restaurant_web_app/controller?command=remove_receipt, /restaurant_web_app/controller?command=remove_user," +
+                "/restaurant_web_app/controller?command=change_user_role, /restaurant_web_app/controller?command=update_receipt_status")})
 public class AdminSessionFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(AdminSessionFilter.class);
     private List<String> restrictedCommands;
@@ -31,7 +33,7 @@ public class AdminSessionFilter implements Filter {
         restrictedCommands = new ArrayList<>();
         String tempCommands = filterConfig.getInitParameter("restricted_adm");
         StringTokenizer token = new StringTokenizer(tempCommands, ",");
-        while (token.hasMoreTokens()){
+        while (token.hasMoreTokens()) {
             restrictedCommands.add(token.nextToken());
         }
     }
@@ -53,9 +55,10 @@ public class AdminSessionFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
-    private boolean isRestricted(String command){
-        for (String restrictedCommand : restrictedCommands){
-            if(command.startsWith(restrictedCommand)){
+
+    private boolean isRestricted(String command) {
+        for (String restrictedCommand : restrictedCommands) {
+            if (command.startsWith(restrictedCommand)) {
                 return true;
             }
         }

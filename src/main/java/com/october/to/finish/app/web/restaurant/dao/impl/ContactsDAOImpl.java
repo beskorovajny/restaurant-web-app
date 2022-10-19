@@ -1,9 +1,9 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
+import com.october.to.finish.app.web.restaurant.dao.ContactsDAO;
 import com.october.to.finish.app.web.restaurant.dao.mapper.impl.ContactsMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.model.Contacts;
-import com.october.to.finish.app.web.restaurant.dao.ContactsDAO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +38,9 @@ public class ContactsDAOImpl implements ContactsDAO {
         this.connection = connection;
     }
 
-    public Connection getConnection() {return connection;}
+    public Connection getConnection() {
+        return connection;
+    }
 
     @Override
     public long save(Contacts contacts) throws DAOException {

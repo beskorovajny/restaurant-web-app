@@ -13,6 +13,7 @@ import java.io.IOException;
 public class JspEncodingFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(JspEncodingFilter.class);
     private String encoding;
+
     @Override
     public void init(FilterConfig filterConfig) {
         encoding = filterConfig.getInitParameter("encoding");

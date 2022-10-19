@@ -33,7 +33,7 @@ public class CreateDishCommand implements AppCommand {
                     setDateCreated(LocalDateTime.now()).
                     setCategory(Dish.Category.valueOf(request.getParameter("dishCategory").toUpperCase())).
                     build();
-            LOGGER.info("[CreateDishCommand] Dish from view : {};",dish);
+            LOGGER.info("[CreateDishCommand] Dish from view : {};", dish);
             if (dishService.isDishExists(dish)) {
                 return "controller?command=dishes";
             }

@@ -20,6 +20,7 @@ import java.util.Properties;
 public class ConnectionPoolHolder {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolHolder.class);
     private static volatile DataSource dataSource;
+
     private ConnectionPoolHolder() {
     }
 

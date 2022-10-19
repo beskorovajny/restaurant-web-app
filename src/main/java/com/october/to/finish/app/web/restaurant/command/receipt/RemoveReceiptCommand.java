@@ -14,9 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 public class RemoveReceiptCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(RemoveReceiptCommand.class);
     private final ReceiptService receiptService;
+
     public RemoveReceiptCommand(ReceiptService receiptService) {
         this.receiptService = receiptService;
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         long receiptId = Long.parseLong(request.getParameter("receiptId"));

@@ -15,6 +15,7 @@ import java.util.Map;
 
 public class CleanCartCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(CleanCartCommand.class);
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         HttpSession session = request.getSession();

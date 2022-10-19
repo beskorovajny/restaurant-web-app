@@ -4,7 +4,6 @@ import com.october.to.finish.app.web.restaurant.command.AppCommand;
 import com.october.to.finish.app.web.restaurant.exceptions.CommandException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
-import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.service.DishService;
 import com.october.to.finish.app.web.restaurant.service.ReceiptService;
@@ -39,7 +38,7 @@ public class AdminCommand implements AppCommand {
         }
         List<Receipt> receipts = null;
         try {
-             receipts = receiptService.findAll(page);
+            receipts = receiptService.findAll(page);
         } catch (ServiceException e) {
             throw new CommandException(e.getMessage(), e);
         }

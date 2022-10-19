@@ -1,12 +1,10 @@
 package com.october.to.finish.app.web.restaurant.command.dish;
 
 import com.october.to.finish.app.web.restaurant.command.AppCommand;
-import com.october.to.finish.app.web.restaurant.command.user.AllUsersCommand;
 import com.october.to.finish.app.web.restaurant.exceptions.CommandException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Dish;
-import com.october.to.finish.app.web.restaurant.model.User;
 import com.october.to.finish.app.web.restaurant.service.DishService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

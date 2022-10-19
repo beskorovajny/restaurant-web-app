@@ -22,7 +22,11 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=dishes_filtered,/restaurant_web_app/controller?command=create_dish," +
                 "/restaurant_web_app/controller?command=remove_dish,/restaurant_web_app/controller?command=user_receipts," +
                 "/restaurant_web_app/controller?command=users,/restaurant_web_app/controller?command=logout," +
-                "/restaurant_web_app/controller?command=edit_dish_form,/restaurant_web_app/controller?command=edit_dish")})
+                "/restaurant_web_app/controller?command=edit_dish_form,/restaurant_web_app/controller?command=edit_dish," +
+                "/restaurant_web_app/controller?command=checkout_form, /restaurant_web_app/controller?command=checkout," +
+                "/restaurant_web_app/controller?command=change_user_role, /restaurant_web_app/controller?command=update_receipt_status," +
+                "/restaurant_web_app/controller?command=add_to_cart, /restaurant_web_app/controller?command=clean_cart," +
+                "/restaurant_web_app/controller?command=remove_receipt, /restaurant_web_app/controller?command=remove_user")})
 public class GuestSessionFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(GuestSessionFilter.class);
     private List<String> restrictedCommands;
@@ -32,7 +36,7 @@ public class GuestSessionFilter implements Filter {
         restrictedCommands = new ArrayList<>();
         String tempCommands = filterConfig.getInitParameter("restricted");
         StringTokenizer token = new StringTokenizer(tempCommands, ",");
-        while (token.hasMoreTokens()){
+        while (token.hasMoreTokens()) {
             restrictedCommands.add(token.nextToken());
         }
     }
@@ -51,9 +55,10 @@ public class GuestSessionFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
-    private boolean isRestricted(String command){
-        for (String restrictedCommand : restrictedCommands){
-            if(command.startsWith(restrictedCommand)){
+
+    private boolean isRestricted(String command) {
+        for (String restrictedCommand : restrictedCommands) {
+            if (command.startsWith(restrictedCommand)) {
                 return true;
             }
         }

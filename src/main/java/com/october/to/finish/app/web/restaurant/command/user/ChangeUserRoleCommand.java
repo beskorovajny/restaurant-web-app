@@ -16,9 +16,10 @@ public class ChangeUserRoleCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(ChangeUserRoleCommand.class);
     private final UserService userService;
 
-    public ChangeUserRoleCommand(UserService userService){
+    public ChangeUserRoleCommand(UserService userService) {
         this.userService = userService;
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         long userId = Long.parseLong(request.getParameter("userId"));

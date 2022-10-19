@@ -1,41 +1,142 @@
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was updated.
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was updated.
-2022-10-19 15:53:30 INFO Receipt with ID [100] received from db successfully 
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was removed.
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was not found to remove.
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was not found for update
-2022-10-19 15:53:30 INFO Receipt with ID : [100] was not found for update
-2022-10-19 15:53:30 INFO Receipt : 1, 2022-10-19T15:53:30.683545300 was saved successfully
-2022-10-19 15:53:31 INFO [MenuCommand] Dishes found.
-2022-10-19 15:53:31 INFO User with ID : [100] was updated.
-2022-10-19 15:53:31 INFO User with ID : [100] was updated.
-2022-10-19 15:53:31 INFO User received : [100], [test@examp.com]
-2022-10-19 15:53:31 INFO User with ID : [100] was removed.
-2022-10-19 15:53:31 INFO User with ID : [100] was not found to remove.
-2022-10-19 15:53:31 INFO User with ID : [100] was not found for update
-2022-10-19 15:53:31 INFO User with ID : [100] was not found for update
-2022-10-19 15:53:31 INFO User : User{id=0, email='test@examp.com', firstName='fTest', lastName='lTest', role=CLIENT, password=88960d9c7eaf249bff77c6d6180625fbaf6e9f0ae7c014b6fe2ff7ffa14dc927, receipts=null} was saved successfully
-2022-10-19 15:53:31 INFO User received : [100], [test@examp.com]
-2022-10-19 15:53:31 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-19 15:53:31 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-19 15:53:32 INFO Dish received : [100], [Pizza], [description]
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was removed.
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was not found to remove.
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-19 15:53:32 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-19 15:53:32 INFO [DishDAO] Dish : Dish{id=1, title='Pizza', description='description', category=PIZZA, price=200.0, weight=425, cooking=25, dateCreated=2022-10-19 15:53:32} was saved successfully
-2022-10-19 15:53:32 INFO Dish received : [100], [Pizza], [description]
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was updated.
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was updated.
-2022-10-19 15:53:32 INFO Contacts received from db: [Contacts{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was removed.
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was not found to remove.
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was not found for update
-2022-10-19 15:53:32 INFO Contacts with ID : [1] was not found for update
-2022-10-19 15:53:32 INFO Contacts : Contacts{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
-2022-10-19 15:53:32 INFO [ContactsService] Contacts saved. (id: 2)
-2022-10-19 15:53:32 INFO [LanguageCommand] Page to process = test_page
-2022-10-19 15:53:33 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-19 15:53:33 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-19 16:40:28 INFO [ContextListener] Context initialization started...
+2022-10-19 16:40:29 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@18914681
+2022-10-19 16:40:29 INFO [ContextListener] UserDAO created.
+2022-10-19 16:40:29 INFO [ContextListener] ReceiptDAO created.
+2022-10-19 16:40:29 INFO [ContextListener] ContactsDAO created.
+2022-10-19 16:40:29 INFO [ContextListener] DishDAO created.
+2022-10-19 16:40:29 INFO [ContextListener] UserService created.
+2022-10-19 16:40:29 INFO [ContextListener] ReceiptService created.
+2022-10-19 16:40:29 INFO [ContextListener] ContactsService created.
+2022-10-19 16:40:29 INFO [ContextListener] DishService created.
+2022-10-19 16:40:29 INFO [ContextListener] CommandContainer created.
+2022-10-19 16:40:29 INFO [ContextListener] Language command created.
+2022-10-19 16:40:29 INFO [ContextListener] Error command created.
+2022-10-19 16:40:29 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] Registration command created.
+2022-10-19 16:40:29 INFO [ContextListener] LoginFormCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] LoginCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AdminCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] DishFormCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllDishesCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] MenuCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllDishesSortedByPriceCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllDishesSortedByTitleCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllDishesSortedByCategoryCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllDishesFilteredByCategoryCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] CreateDishCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] RemoveDishCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] RemoveReceiptCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] RemoveUserCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] UserReceiptsCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AllUsersCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] LogoutCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] EditDishFormCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] EditDishCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] ChangeUserRoleCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] UpdateReceiptStatusCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] AddToCartCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] CheckoutFormCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] CheckoutCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] CleanCartCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] ReceiptDetailsCommand created.
+2022-10-19 16:40:29 INFO [ContextListener] Services initialized
+2022-10-19 16:40:30 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:30 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:40:30 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:40:30 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:30 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:40:33 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:33 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:40:33 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:40:33 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:33 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:45 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [GuestSessionFilter] Access denied! Redirected to login form.
+2022-10-19 16:40:45 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:45 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:45 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:40:45 INFO [AppController-doGet] URL processed
+2022-10-19 16:40:48 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:48 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:40:48 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:40:48 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:40:48 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:40:48 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:19 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:19 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:19 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:19 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:19 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:19 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:31 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:31 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:31 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:31 INFO [JspEncodingFilter] Filter started {command=[login], email=[admin@admin.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:31 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:31 INFO User received : [1], [admin@admin.app]
+2022-10-19 16:41:31 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
+2022-10-19 16:41:31 INFO [LoginCommand] User received from db: admin@admin.app
+2022-10-19 16:41:31 INFO [AppController-doPost] URL processed [controller?command=admin], resp encoding: ISO-8859-1
+2022-10-19 16:41:32 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:32 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:32 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:32 INFO [JspEncodingFilter] Filter started {command=[admin]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:32 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:32 INFO Receipts was found successfully.
+2022-10-19 16:41:32 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:35 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:35 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:35 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:35 INFO [JspEncodingFilter] Filter started {command=[dishes]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:35 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:35 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
+2022-10-19 16:41:35 INFO [AllDishesCommand] Dishes found.
+2022-10-19 16:41:35 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:37 INFO [JspEncodingFilter] Filter started {command=[users]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:37 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:37 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:37 INFO [JspEncodingFilter] Filter started {command=[users]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:37 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:37 INFO Users was found successfully.
+2022-10-19 16:41:37 INFO [AllUsersCommand] Dishes found.
+2022-10-19 16:41:37 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:44 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:44 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:44 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [UserSessionFilter] Access denied! Redirected to home.
+2022-10-19 16:41:44 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:44 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:44 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:44 INFO [AppController-doGet] URL processed
+2022-10-19 16:41:49 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:49 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:41:49 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:41:49 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:41:49 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:41:49 INFO [AppController-doGet] URL processed
+2022-10-19 16:42:00 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:00 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:00 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [UserSessionFilter] Access denied! Redirected to home.
+2022-10-19 16:42:00 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:00 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [JspEncodingFilter] Filter started {command=[home]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:00 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:42:00 INFO [AppController-doGet] URL processed
+2022-10-19 16:42:08 INFO [JspEncodingFilter] Filter started {command=[checkout]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:08 INFO [AdminSessionFilter] Filter started.
+2022-10-19 16:42:08 INFO [GuestSessionFilter] Filter started.
+2022-10-19 16:42:08 INFO [JspEncodingFilter] Filter started {command=[checkout]},  org.apache.catalina.connector.ResponseFacade@7fac315
+2022-10-19 16:42:08 INFO [UserSessionFilter] Filter started.
+2022-10-19 16:42:08 INFO [AppController-doGet] URL processed

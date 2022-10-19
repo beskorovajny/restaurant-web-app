@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AllDishesSortedByPriceCommand  implements AppCommand {
+public class AllDishesSortedByPriceCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(AllDishesSortedByPriceCommand.class);
     private static final String ALL_DISH_COMMAND_MSG = "[AllDishesSortedByPriceCommand]";
     private final DishService dishService;

@@ -43,8 +43,10 @@ public class LoginCommand implements AppCommand {
             if (PasswordEncryptionUtil.validate(PasswordEncryptionUtil.getEncrypted(password)
                     , String.valueOf(user.getPassword()))) {
                 LOGGER.info("{} User received from db: {}", LOGIN_COMMAND, user.getEmail());
+
                 Map<Dish, Integer> cart = new HashMap<>();
                 session.setAttribute("user", user);
+
                 if (user.getRole().getId() == User.Role.MANAGER.getId()) {
                     page = "controller?command=admin";
                 }

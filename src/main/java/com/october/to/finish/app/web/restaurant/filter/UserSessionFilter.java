@@ -16,7 +16,9 @@ import java.util.StringTokenizer;
 
 @WebFilter(filterName = "UserSessionFilter", urlPatterns = "/*",
         initParams = {@WebInitParam(name = "restricted_user", value = "/restaurant_web_app/controller?command=menu," +
-                "/restaurant_web_app/controller?command=user_receipts")})
+                "/restaurant_web_app/controller?command=user_receipts," +
+                "/restaurant_web_app/controller?command=checkout_form, /restaurant_web_app/controller?command=checkout," +
+                "/restaurant_web_app/controller?command=add_to_cart, /restaurant_web_app/controller?command=clean_cart")})
 public class UserSessionFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(UserSessionFilter.class);
     private List<String> restrictedCommands;
