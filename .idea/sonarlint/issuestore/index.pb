@@ -202,8 +202,6 @@ Vsrc/main/java/com/october/to/finish/app/web/restaurant/filter/SessionLocaleFilt
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/filter/JspEncodingFilter.java,8\f\8fa4c8d52b9fc6ec7774de02ca1531fcfb366d62
 …
 Usrc/main/java/com/october/to/finish/app/web/restaurant/filter/AdminSessionFilter.java,0\f\0f0f7cf7470c2c59bf194d4dbca1fcf25df7149b
-…
-Usrc/main/java/com/october/to/finish/app/web/restaurant/filter/GuestSessionFilter.java,b\f\bf20d24d7b8709e71fa92fd357d6fb90c05aedee
 „
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/filter/UserSessionFilter.java,e\4\e42d1a78d7731e6b59254c20aca2537b9844a79c
 v
@@ -234,7 +232,5 @@ H
 fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSortedByTitleCommand.java,6\a\6a26e9c864c98bab043b65797b061988aed29ebf
 ›
 ksrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesFilteredByCategoryCommand.java,d\5\d5d73ce4b4db746ce6ba908e451d172c23cec756
-‘
-asrc/main/java/com/october/to/finish/app/web/restaurant/command/receipt/ReceiptDetailsCommand.java,f\3\f3293882b5130290bf654d6a9cded3fca45fff89
 O
 src/main/webapp/my_receipts.jsp,3\1\314de654c5272842c4a9d7d94fa780566b8af8c1

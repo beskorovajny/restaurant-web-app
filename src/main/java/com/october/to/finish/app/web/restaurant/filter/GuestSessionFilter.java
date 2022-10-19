@@ -26,7 +26,8 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=checkout_form, /restaurant_web_app/controller?command=checkout," +
                 "/restaurant_web_app/controller?command=change_user_role, /restaurant_web_app/controller?command=update_receipt_status," +
                 "/restaurant_web_app/controller?command=add_to_cart, /restaurant_web_app/controller?command=clean_cart," +
-                "/restaurant_web_app/controller?command=remove_receipt, /restaurant_web_app/controller?command=remove_user")})
+                "/restaurant_web_app/controller?command=remove_receipt, /restaurant_web_app/controller?command=remove_user, " +
+                "/restaurant_web_app/controller?command=receipt_details")})
 public class GuestSessionFilter implements Filter {
     private static final Logger LOGGER = LogManager.getLogger(GuestSessionFilter.class);
     private List<String> restrictedCommands;

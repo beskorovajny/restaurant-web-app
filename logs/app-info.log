@@ -1,41 +1,105 @@
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was updated.
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was updated.
-2022-10-19 18:59:09 INFO Receipt with ID [100] received from db successfully 
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was removed.
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was not found to remove.
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was not found for update
-2022-10-19 18:59:09 INFO Receipt with ID : [100] was not found for update
-2022-10-19 18:59:09 INFO Receipt : 1, 2022-10-19T18:59:09.866850300 was saved successfully
-2022-10-19 18:59:10 INFO [MenuCommand] Dishes found.
-2022-10-19 18:59:10 INFO User with ID : [100] was updated.
-2022-10-19 18:59:10 INFO User with ID : [100] was updated.
-2022-10-19 18:59:10 INFO User received : [100], [test@examp.com]
-2022-10-19 18:59:10 INFO User with ID : [100] was removed.
-2022-10-19 18:59:10 INFO User with ID : [100] was not found to remove.
-2022-10-19 18:59:10 INFO User with ID : [100] was not found for update
-2022-10-19 18:59:10 INFO User with ID : [100] was not found for update
-2022-10-19 18:59:10 INFO User : User{id=0, email='test@examp.com', firstName='fTest', lastName='lTest', role=CLIENT, password=88960d9c7eaf249bff77c6d6180625fbaf6e9f0ae7c014b6fe2ff7ffa14dc927, receipts=null} was saved successfully
-2022-10-19 18:59:10 INFO User received : [100], [test@examp.com]
-2022-10-19 18:59:11 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-19 18:59:11 INFO [DishService] Dish saved. (title: Pizza)
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was updated.
-2022-10-19 18:59:11 INFO Dish received : [100], [Pizza], [description]
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was removed.
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was not found to remove.
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-19 18:59:11 INFO [DishDAO] Dish with ID : [100] was not found for update
-2022-10-19 18:59:11 INFO [DishDAO] Dish : Dish{id=1, title='Pizza', description='description', category=PIZZA, price=200.0, weight=425, cooking=25, dateCreated=2022-10-19 18:59:11} was saved successfully
-2022-10-19 18:59:11 INFO Dish received : [100], [Pizza], [description]
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was updated.
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was updated.
-2022-10-19 18:59:11 INFO Contacts received from db: [Contacts{id=100, country='Country', city='City', street='Street', buildingNumber='Building'}]
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was removed.
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was not found to remove.
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was not found for update
-2022-10-19 18:59:11 INFO Contacts with ID : [1] was not found for update
-2022-10-19 18:59:11 INFO Contacts : Contacts{id=0, country='Country', city='City', street='Street', buildingNumber='Building'} was saved successfully
-2022-10-19 18:59:11 INFO [ContactsService] Contacts saved. (id: 2)
-2022-10-19 18:59:12 INFO [LanguageCommand] Page to process = test_page
-2022-10-19 18:59:12 INFO [UserService] User saved. (email: test@examp.com)
-2022-10-19 18:59:12 INFO [UserService] User saved. (email: test@examp.com)
+2022-10-19 19:09:08 INFO [ContextListener] Context initialization started...
+2022-10-19 19:09:09 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@2ac0b28c
+2022-10-19 19:09:09 INFO [ContextListener] UserDAO created.
+2022-10-19 19:09:09 INFO [ContextListener] ReceiptDAO created.
+2022-10-19 19:09:09 INFO [ContextListener] ContactsDAO created.
+2022-10-19 19:09:09 INFO [ContextListener] DishDAO created.
+2022-10-19 19:09:09 INFO [ContextListener] UserService created.
+2022-10-19 19:09:09 INFO [ContextListener] ReceiptService created.
+2022-10-19 19:09:09 INFO [ContextListener] ContactsService created.
+2022-10-19 19:09:09 INFO [ContextListener] DishService created.
+2022-10-19 19:09:09 INFO [ContextListener] CommandContainer created.
+2022-10-19 19:09:09 INFO [ContextListener] Language command created.
+2022-10-19 19:09:09 INFO [ContextListener] Error command created.
+2022-10-19 19:09:09 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] Registration command created.
+2022-10-19 19:09:09 INFO [ContextListener] LoginFormCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] LoginCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AdminCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] DishFormCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllDishesCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] MenuCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllDishesSortedByPriceCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllDishesSortedByTitleCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllDishesSortedByCategoryCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllDishesFilteredByCategoryCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] CreateDishCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] RemoveDishCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] RemoveReceiptCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] RemoveUserCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] UserReceiptsCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AllUsersCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] LogoutCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] EditDishFormCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] EditDishCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] ChangeUserRoleCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] UpdateReceiptStatusCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] AddToCartCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] CheckoutFormCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] CheckoutCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] CleanCartCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] ReceiptDetailsCommand created.
+2022-10-19 19:09:09 INFO [ContextListener] Services initialized
+2022-10-19 19:09:10 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:10 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:10 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:10 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:10 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:09:12 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:12 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:12 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:12 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:12 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [JspEncodingFilter] Filter started {command=[remove_receipt], receiptId=[10]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:25 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [GuestSessionFilter] Access denied! Redirected to login form.
+2022-10-19 19:09:25 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:25 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:25 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:09:25 INFO [AppController-doGet] URL processed
+2022-10-19 19:09:37 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:37 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:37 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:37 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:37 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:09:37 INFO [AppController-doGet] URL processed
+2022-10-19 19:09:59 INFO [JspEncodingFilter] Filter started {command=[remove_receipt], receiptId=[10]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:59 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:59 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:59 INFO [GuestSessionFilter] Access denied! Redirected to login form.
+2022-10-19 19:09:59 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:59 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:09:59 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:09:59 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:09:59 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:09:59 INFO [AppController-doGet] URL processed
+2022-10-19 19:10:09 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:09 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:10:09 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:10:09 INFO [JspEncodingFilter] Filter started {command=[clean_cart]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:09 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:10:09 INFO [AppController-doGet] URL processed
+2022-10-19 19:10:28 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[3]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:28 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:10:28 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:10:28 INFO [GuestSessionFilter] Access denied! Redirected to login form.
+2022-10-19 19:10:28 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:28 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:10:28 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:10:28 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:28 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:10:28 INFO [AppController-doGet] URL processed
+2022-10-19 19:10:30 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:30 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:10:30 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:10:30 INFO [JspEncodingFilter] Filter started {command?=[home]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:30 INFO [UserSessionFilter] Filter started.
+2022-10-19 19:10:30 INFO [AppController-doGet] URL processed
+2022-10-19 19:10:48 INFO [JspEncodingFilter] Filter started {command=[receipt_details]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:48 INFO [AdminSessionFilter] Filter started.
+2022-10-19 19:10:48 INFO [GuestSessionFilter] Filter started.
+2022-10-19 19:10:48 INFO [JspEncodingFilter] Filter started {command=[receipt_details]},  org.apache.catalina.connector.ResponseFacade@65996b77
+2022-10-19 19:10:48 INFO [UserSessionFilter] Filter started.
