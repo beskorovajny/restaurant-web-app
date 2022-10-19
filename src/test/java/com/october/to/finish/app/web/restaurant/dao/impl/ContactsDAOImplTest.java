@@ -30,7 +30,7 @@ class ContactsDAOImplTest {
     @Mock
     private ContactsMapper contactsMapper;
     @InjectMocks
-    private ContactsDAOImpl addressDAO;
+    private ContactsDAOImpl contactsDAO;
     private Contacts expected;
     private final long addressId = 100;
 
@@ -51,7 +51,7 @@ class ContactsDAOImplTest {
 
     @Test
     void getConnectionTest() {
-        assertEquals(connection, addressDAO.getConnection());
+        assertEquals(connection, contactsDAO.getConnection());
     }
 
     @Test
@@ -62,19 +62,19 @@ class ContactsDAOImplTest {
         when(preparedStatement.getGeneratedKeys()).thenReturn(resultSet);
         when(resultSet.next()).thenReturn(true);
         when(resultSet.getLong(anyInt())).thenReturn(1L);
-        addressDAO.save(expected);
+        contactsDAO.save(expected);
         verify(preparedStatement, times(1)).executeUpdate();
     }
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.save( null));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.save( null));
     }
 
     @Test
     void shouldNotSaveTest() throws SQLException {
         when(connection.prepareStatement(anyString(), anyInt())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.save(expected));
+        assertThrows(DAOException.class, () -> contactsDAO.save(expected));
     }
 
     @Test
@@ -88,21 +88,21 @@ class ContactsDAOImplTest {
         when(resultSet.getString("phone")).thenReturn(expected.getPhone());
         when(resultSet.getString("city")).thenReturn(expected.getCity());
         when(resultSet.getString("street")).thenReturn(expected.getStreet());
-        when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
-        final Contacts actual = addressDAO.findById(addressId);
+        when(resultSet.getString("building")).thenReturn(expected.getBuildingNumber());
+        final Contacts actual = contactsDAO.findById(addressId);
         assertEquals(expected, actual);
         verify(preparedStatement, times(1)).executeQuery();
     }
 
     @Test
     void shouldNotFindByIdIfInvalidInput() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.findById(0));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.findById(0));
     }
 
     @Test
     void shouldNotFindById() throws SQLException {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.findById(addressId));
+        assertThrows(DAOException.class, () -> contactsDAO.findById(addressId));
     }
 
     /*@Test
@@ -133,7 +133,7 @@ class ContactsDAOImplTest {
         }
         when(contactsMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
 
-        final List<Contacts> actual = addressDAO.findAll();
+        final List<Contacts> actual = contactsDAO.findAll();
         assertEquals(expectedList, actual);
         verify(preparedStatement, times(1)).executeQuery();
 
@@ -142,7 +142,7 @@ class ContactsDAOImplTest {
     @Test
     void shouldNotFindAll() throws SQLException {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.findAll());
+        assertThrows(DAOException.class, () -> contactsDAO.findAll());
     }
 
 
@@ -153,9 +153,9 @@ class ContactsDAOImplTest {
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(rowsUpdatedTrue);
-        addressDAO.update(addressId, expected);
+        contactsDAO.update(addressId, expected);
         verify(preparedStatement, times(1)).executeUpdate();
-        assertTrue(addressDAO.update(addressId, expected));
+        assertTrue(contactsDAO.update(addressId, expected));
     }
 
     @Test
@@ -165,23 +165,23 @@ class ContactsDAOImplTest {
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(rowsUpdatedFalse);
-        addressDAO.update(addressId, expected);
+        contactsDAO.update(addressId, expected);
         verify(preparedStatement, times(1)).executeUpdate();
-        assertFalse(addressDAO.update(addressId, expected));
+        assertFalse(contactsDAO.update(addressId, expected));
     }
 
     @Test
     void shouldNotUpdateIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.update(0, new Contacts()));
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.update(1, null));
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.update(-1, null));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.update(0, new Contacts()));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.update(1, null));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.update(-1, null));
     }
 
     @Test
     void shouldNotUpdateTest() throws SQLException {
         final long addressId = 1L;
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.update(addressId, expected));
+        assertThrows(DAOException.class, () -> contactsDAO.update(addressId, expected));
     }
 
     @Test
@@ -191,7 +191,7 @@ class ContactsDAOImplTest {
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(rowsDeletedTrue);
-        addressDAO.delete(addressId);
+        contactsDAO.delete(addressId);
         verify(preparedStatement, times(1)).executeUpdate();
     }
 
@@ -202,19 +202,19 @@ class ContactsDAOImplTest {
 
         when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
         when(preparedStatement.executeUpdate()).thenReturn(rowsDeletedFalse);
-        addressDAO.delete(addressId);
+        contactsDAO.delete(addressId);
         verify(preparedStatement, times(1)).executeUpdate();
     }
 
     @Test
     void shouldNotDeleteIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressDAO.delete(0));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.delete(0));
     }
 
     @Test
     void shouldNotDeleteTest() throws SQLException {
         final long addressId = 1L;
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
-        assertThrows(DAOException.class, () -> addressDAO.delete(addressId));
+        assertThrows(DAOException.class, () -> contactsDAO.delete(addressId));
     }
 }
