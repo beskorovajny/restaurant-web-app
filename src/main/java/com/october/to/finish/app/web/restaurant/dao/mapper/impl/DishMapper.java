@@ -26,14 +26,29 @@ public class DishMapper implements ObjectMapper<Dish> {
                 setDateCreated(resultSet.getTimestamp("created").toLocalDateTime()).
                 setCategory(getById(resultSet.getLong("category_id"))).
                 build();
-
-
         dishMap.put(String.valueOf(dish.getId()), dish);
 
         dish = this.makeUnique(dishMap, dish);
         return dish;
     }
 
+    public Dish extractFromResultSetForReceipt(ResultSet resultSet) throws SQLException {
+        Map<String, Dish> dishMap = new HashMap<>();
+        Dish dish = Dish.newBuilder().setId(resultSet.getLong("id")).
+                setTitle(resultSet.getString("title")).
+                setDescription(resultSet.getString("description")).
+                setPrice(resultSet.getBigDecimal("price").doubleValue()).
+                setTotalPrice(resultSet.getBigDecimal("total_price").doubleValue()).
+                setWeight(resultSet.getInt("weight")).
+                setCooking(resultSet.getInt("cooking")).
+                setDateCreated(resultSet.getTimestamp("created").toLocalDateTime()).
+                setCategory(getById(resultSet.getLong("category_id"))).
+                build();
+        dishMap.put(String.valueOf(dish.getId()), dish);
+
+        dish = this.makeUnique(dishMap, dish);
+        return dish;
+    }
     private Dish.Category getById(Long id) {
         for (Dish.Category c : Dish.Category.values()) {
             if (c.getId() == (id)) return c;
@@ -65,5 +80,16 @@ public class DishMapper implements ObjectMapper<Dish> {
             dish.ifPresent(dishes::add);
         }
         return dishes;
+    }
+
+    public Map<Dish, Integer> extractOrderedDishes(Map<Dish, Integer> orderedDishes, PreparedStatement preparedStatement)
+            throws SQLException {
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            Optional<Dish> dish = Optional.ofNullable(extractFromResultSetForReceipt(resultSet));
+            int count = resultSet.getInt("count");
+            dish.ifPresent(value -> orderedDishes.put(value, count));
+        }
+        return orderedDishes;
     }
 }

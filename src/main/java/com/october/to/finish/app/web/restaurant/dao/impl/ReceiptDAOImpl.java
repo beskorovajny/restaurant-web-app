@@ -1,17 +1,17 @@
 package com.october.to.finish.app.web.restaurant.dao.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
+import com.october.to.finish.app.web.restaurant.dao.mapper.impl.DishMapper;
 import com.october.to.finish.app.web.restaurant.dao.mapper.impl.ReceiptMapper;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
+import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import com.october.to.finish.app.web.restaurant.utils.db.DBUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class ReceiptDAOImpl implements ReceiptDAO {
 
@@ -21,7 +21,6 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             " (created, receipt_price, user_id, receipt_status_id, contacts_id)" +
             " VALUES (?, ?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM receipt WHERE id = ?";
-
     private static final String FIND_BY_USER_ID = "SELECT * FROM receipt WHERE user_id = ? LIMIT 10 OFFSET ?";
     private static final String FIND_ALL = "SELECT * FROM receipt LIMIT 10 OFFSET ?";
     private static final String UPDATE = "UPDATE receipt SET created = ?," +
@@ -29,9 +28,15 @@ public class ReceiptDAOImpl implements ReceiptDAO {
     private static final String DELETE = "DELETE FROM receipt WHERE id = ?";
     private static final String SET_DISHES_TO_RECEIPT = "INSERT INTO receipt_has_dish" +
             "(receipt_id, dish_id, total_price, count) VALUES (?, ?, ?, ?)";
+    private static final String GET_ALL_ORDERED_FOR_RECEIPT =
+            "SELECT dish.id, dish.title, dish.description, dish.price, dish.weight, " +
+                    "dish.cooking, dish.created, dish.category_id, receipt_has_dish.total_price," +
+                    "receipt_has_dish.count FROM dish INNER JOIN receipt_has_dish " +
+                    "ON dish.id = receipt_has_dish.dish_id WHERE receipt_has_dish.receipt_id = ?";
     private static final String COUNT_RECEIPT_RECORDS = "SELECT COUNT(*) FROM receipt";
     private final Connection connection;
     private final ReceiptMapper receiptMapper = new ReceiptMapper();
+    private final DishMapper dishMapper = new DishMapper();
 
     public ReceiptDAOImpl(Connection connection) {
         if (connection == null) {
@@ -128,6 +133,24 @@ public class ReceiptDAOImpl implements ReceiptDAO {
         } catch (SQLException e) {
             LOGGER.error("Receipts was not found. An exception occurs : {}", e.getMessage());
             throw new DAOException("[ReceiptDAO] exception while receiving all receipts", e);
+        }
+        return result;
+    }
+
+    @Override
+    public Map<Dish, Integer> findAllOrderedForReceipt(long receiptId) throws DAOException {
+        Map<Dish, Integer> result = new HashMap<>();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(GET_ALL_ORDERED_FOR_RECEIPT)) {
+            preparedStatement.setLong(1, receiptId);
+            dishMapper.extractOrderedDishes(result, preparedStatement);
+            if (!result.isEmpty()) {
+                LOGGER.info("Dishes for receipt ID:[{}] was found successfully.", receiptId);
+                return result;
+            }
+        } catch (SQLException e) {
+            LOGGER.error("Ordered dishes was not found. An exception occurs : {}", e.getMessage());
+            throw new DAOException("[ReceiptDAO] Exception while receiving all dishes for receipt", e);
         }
         return result;
     }

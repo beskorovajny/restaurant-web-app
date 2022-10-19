@@ -28,10 +28,12 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a>
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&
+                               receipt=${receipt}&user=${user}&contacts=${contacts}&receiptId=${receipt.id}">UA</a>
                         </li>
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}&
+                               receipt=${receipt}&user=${user}&contacts=${contacts}&receiptId=${receipt.id}">ENG</a></li>
                     </ul>
                 </div>
             </div>
@@ -47,21 +49,20 @@
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-                <c:forEach var="entry" items="${sessionScope.cart}">
+                <c:forEach var="entry" items="${receipt.orderedDishes}">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                             <h6 class="my-0"><c:out value="${entry.key.title}"/></h6>
                             <small class="text-muted"><c:out value="${entry.key.description}"/></small>
                         </div>
                         <span class="text-muted">
-                                    <small class="my-0">pcs: <c:out value="${entry.value}"/></small>
-                                    Price: <c:out value="${entry.key.price * entry.value}"/>
+                                    <small class="my-0"><c:out value="${entry.value}"/>X<c:out value="${entry.key.price}"/></small>
                                 </span>
                     </li>
                 </c:forEach>
                 <li class="list-group-item d-flex justify-content-between">
                     <span><fmt:message key="text.total.price"/></span>
-                    <strong>$20</strong>
+                    <strong>${receipt.totalPrice}</strong>
                 </li>
             </ul>
         </div>
@@ -74,7 +75,7 @@
                             <p class="mb-0"><fmt:message key="text.full.name"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">Johnatan Smith</p>
+                            <p class="text-muted mb-0">${user.firstName} ${user.lastName}</p>
                         </div>
                     </div>
                     <hr>
@@ -83,7 +84,7 @@
                             <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">example@example.com</p>
+                            <p class="text-muted mb-0">${user.email}</p>
                         </div>
                     </div>
                     <hr>
@@ -93,7 +94,7 @@
                             <p class="mb-0"><fmt:message key="text.country"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">USA</p>
+                            <p class="text-muted mb-0">${contacts.country}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -101,7 +102,7 @@
                             <p class="mb-0"><fmt:message key="text.city"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">San Francisco, CA</p>
+                            <p class="text-muted mb-0">${contacts.city}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -109,7 +110,7 @@
                             <p class="mb-0"><fmt:message key="text.street"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">Bay Area</p>
+                            <p class="text-muted mb-0">${contacts.street}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -117,7 +118,7 @@
                             <p class="mb-0"><fmt:message key="text.building"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">114/2</p>
+                            <p class="text-muted mb-0">${contacts.buildingNumber}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -125,7 +126,7 @@
                             <p class="mb-0"><fmt:message key="text.phone"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">(097) 234-5678</p>
+                            <p class="text-muted mb-0">${contacts.phone}</p>
                         </div>
                     </div>
                     <hr>

@@ -93,7 +93,10 @@
                 </td>
                 <td><c:out value="${receipt.customerId}"/>
                 </td>
-                <td><button type="button" class="btn btn-outline-primary"
+                <td><button type="button" class="btn btn-outline-secondary"
+                            onclick="window.location='controller?command=receipt_details&receiptId=${receipt.id}'">
+                    <fmt:message key="text.details"/></button>
+                    <button type="button" class="btn btn-outline-warning"
                             onclick="window.location='controller?command=update_receipt_status&receiptId=${receipt.id}'">
                     <fmt:message key="text.edit"/></button>
                     <button type="button" class="btn btn-outline-danger"

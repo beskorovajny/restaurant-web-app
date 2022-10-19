@@ -18,6 +18,8 @@ public interface ReceiptService {
 
     List<Receipt> findAllByUser(long userid, int offset) throws ServiceException;
 
+    Map<Dish, Integer> findAllOrderedForReceipt(long receiptId) throws ServiceException;
+
     boolean update(long receiptId, Receipt receipt) throws ServiceException;
 
     void delete(long receiptId) throws ServiceException;

@@ -11,7 +11,6 @@ public class Dish implements Serializable {
     private String description;
     private Category category;
     private double price;
-
     private double totalPrice;
     private int weight;
     private int cooking;
@@ -191,6 +190,14 @@ public class Dish implements Serializable {
                 throw new IllegalArgumentException("Price can't be < 0");
             }
             Dish.this.price = price;
+            return this;
+        }
+
+        public Builder setTotalPrice(double totalPrice) {
+            if (totalPrice < 0) {
+                throw new IllegalArgumentException("Total price can't be < 0");
+            }
+            Dish.this.totalPrice = totalPrice;
             return this;
         }
 

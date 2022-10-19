@@ -1,10 +1,12 @@
 package com.october.to.finish.app.web.restaurant.dao;
 
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
+import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Map;
 
 public interface ReceiptDAO {
     Connection getConnection();
@@ -16,6 +18,8 @@ public interface ReceiptDAO {
     List<Receipt> findByUserId(long userId, int offset) throws DAOException;
 
     List<Receipt> findAll(int offset) throws DAOException;
+
+    Map<Dish, Integer> findAllOrderedForReceipt(long receiptId) throws DAOException;
 
     boolean update(long receiptId, Receipt receipt) throws DAOException;
 

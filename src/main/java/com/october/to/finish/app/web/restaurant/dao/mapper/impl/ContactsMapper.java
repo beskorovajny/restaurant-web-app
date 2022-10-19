@@ -20,7 +20,7 @@ public class ContactsMapper implements ObjectMapper<Contacts> {
         contacts.setCountry(resultSet.getString("country"));
         contacts.setCity(resultSet.getString("city"));
         contacts.setStreet(resultSet.getString("street"));
-        contacts.setBuildingNumber(resultSet.getString("building_number"));
+        contacts.setBuildingNumber(resultSet.getString("building"));
         contacts.setPhone(resultSet.getString("phone"));
 
         addressMap.put(String.valueOf(contacts.getId()), contacts);

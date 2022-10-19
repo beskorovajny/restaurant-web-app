@@ -8,7 +8,6 @@ public class Contacts {
     private String city;
     private String street;
     private String buildingNumber;
-
     private String phone;
 
     public Contacts() {

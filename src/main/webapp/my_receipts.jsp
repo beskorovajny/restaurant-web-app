@@ -79,7 +79,7 @@
                 </td>
                 <td>
                     <button type="button" class="btn btn-outline-secondary"
-                            onclick="window.location=''">
+                            onclick="window.location='controller?command=receipt_details&receiptId=${receipt.id}'">
                         <fmt:message key="text.details"/></button>
                 </td>
             </tr>

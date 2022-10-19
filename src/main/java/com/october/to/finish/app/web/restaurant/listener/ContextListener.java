@@ -161,7 +161,6 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("filtered_dishes", appCommand);
         LOGGER.info("{} AllDishesFilteredByCategoryCommand created.", CONTEXT_LISTENER_MSG);
 
-
         appCommand = new CreateDishCommand(dishService);
         commandContainer.addCommand("create_dish", appCommand);
         LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
@@ -222,7 +221,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("clean_cart", appCommand);
         LOGGER.info("{} CleanCartCommand created.", CONTEXT_LISTENER_MSG);
 
-        appCommand = new ReceiptDetailsCommand(receiptService, contactsService, dishService, userService);
+        appCommand = new ReceiptDetailsCommand(receiptService, contactsService, userService);
         commandContainer.addCommand("receipt_details", appCommand);
         LOGGER.info("{} ReceiptDetailsCommand created.", CONTEXT_LISTENER_MSG);
 

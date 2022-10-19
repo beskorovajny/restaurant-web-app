@@ -3,8 +3,6 @@ F
 restaurant-web-app.iml,2\2\2224ccc7f79297c3c245520b6064550f2fed7289
 á
 Wsrc/main/java/com/october/to/finish/app/web/restaurant/exceptions/ServiceException.java,a\a\aa37f10dc46c145552327d78913d59220a67211b
-É
-Ssrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/ObjectMapper.java,e\c\ec6266cc5db4a53c1a303370c539214f266556e4
 ã
 [src/main/java/com/october/to/finish/app/web/restaurant/security/PasswordEncryptionUtil.java,f\1\f17f3f94cec59ccef523bdc184e5e8381f3bcdce
 T
@@ -89,10 +87,6 @@ L
 á
 Wsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/ReceiptDAOImplTest.java,3\5\3525d5ba3d106264251c798cee9b34dcd54e0566
 z
-Jsrc/main/java/com/october/to/finish/app/web/restaurant/model/Contacts.java,f\8\f8ad05b39bbc90abb9ed2d089aab2987b485fc1a
-v
-Fsrc/main/java/com/october/to/finish/app/web/restaurant/model/User.java,c\9\c9bd035abeae950b04c00c967c6c049bf1117db9
-z
 Jsrc/test/java/com/october/to/finish/app/web/restaurant/model/UserTest.java,7\f\7fa69e1eb4f70b5b48f56c472bed27e20fe939cf
 x
 Hsrc/main/java/com/october/to/finish/app/web/restaurant/sandbox/Main.java,3\2\32847b19347b8f955d83f30a8817a709213b5c41
@@ -120,13 +114,7 @@ Ssrc/main/java/com/october/to/finish/app/web/restaurant/service/ContactsService.
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/service/DishService.java,d\b\db37933c89e29c48c430eea6a2827e7204bdbfdb
-Ç
-Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/ReceiptService.java,5\0\508a6df90ac1533337caf61f20d3ccdc09845aa9
 ê
 `src/test/java/com/october/to/finish/app/web/restaurant/service/impl/ContactsServiceImplTest.java,f\b\fb299bc66d215464c30c6feab12dbe47f2f7a501
 à
 Xsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/ContactsDAOImplTest.java,8\0\80b8986188053e87d7ea14ee624702e9d51d9082
-z
-Jsrc/main/java/com/october/to/finish/app/web/restaurant/dao/ReceiptDAO.java,f\d\fdb1fdf2ab34acff7fdcc59699c684091ef251dd
-ã
-[src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1

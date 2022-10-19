@@ -88,6 +88,17 @@ public class ReceiptServiceImpl implements ReceiptService {
         }
     }
 
+    @Override
+    public Map<Dish, Integer> findAllOrderedForReceipt(long receiptId) throws ServiceException {
+        try {
+            return receiptDAO.findAllOrderedForReceipt(receiptId);
+        } catch (DAOException e) {
+            LOGGER.error("[ReceiptService] An exception occurs while receiving ordered dishes. Exc: {}",
+                    e.getMessage());
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+
     private int getOffset(int offset) {
         return offset * 10 - 10;
     }
