@@ -88,32 +88,32 @@
                     </ul>
                 </div>
                 <div class="col-md-8 order-md-1">
-                    <h4 class="mb-3"><fmt:message key="text.contact.info"/></h4>
                     <form class="text-center" action="controller" method="post">
                         <input hidden name="command" value="checkout"/>
+                        <h5 class="mb-3 text-start"><fmt:message key="text.contact.info"/></h5>
                         <div class="mb-3">
                             <label for="country"></label>
                             <input type="text" class="form-control" id="country" name="country"
                                    placeholder="<fmt:message key="text.country"/>"
-                                   required="" pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
+                                   required="" pattern="(?=.{1,45}$)[\p{L}\s*]+$">
                         </div>
                         <div class="mb-3">
                             <label for="city"></label>
                             <input type="text" class="form-control" id="city" name="city"
                                    placeholder="<fmt:message key="text.city"/>" required=""
-                                   pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
+                                   pattern="^(?=.{1,45}$)[\p{L}\s*]+$">
                         </div>
                         <div class="mb-3">
                             <label for="street"></label>
                             <input type="text" class="form-control" id="street" name="street"
                                    placeholder="<fmt:message key="text.street"/>"
-                                   required="" pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
+                                   required="" pattern="(?=.{1,45}$)[\p{L}\s\d*]+$">
                         </div>
                         <div class="mb-3">
                             <label for="building"></label>
                             <input type="text" class="form-control" id="building" name="building"
                                    placeholder="<fmt:message key="text.building"/>" required=""
-                                   pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
+                                   pattern="(?=.{1,45}$)[\p{L}\s\d*]+$">
                         </div>
                         <div class="mb-3">
                             <label for="phone"></label>
@@ -124,7 +124,7 @@
                                    minlength="3"
                                    pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
                         </div>
-                        <h4 class="mb-3"><fmt:message key="text.payment.details"/></h4>
+                        <h5 class="mb-3 text-start"><fmt:message key="text.payment.details"/></h5>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-number"></label>
@@ -144,8 +144,12 @@
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-outline-success btn-lg btn-block" type="submit">
+                        <button class="btn btn-danger btn-lg btn-block" type="button"
+                                onclick="window.location='controller?command=clean_cart'">
+                            <fmt:message key="text.decline"/></button>
+                        <button class="btn btn-success btn-lg btn-block" type="submit">
                             <fmt:message key="text.confirm"/></button>
+
                     </form>
                 </div>
             </div>

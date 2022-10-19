@@ -50,14 +50,14 @@
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                              placeholder="${dish.title}"
                                                              name="title"
-                                                             pattern="^(?=.{2,45}$)[\p{L}+(\s+\p{L}+)]+$"
+                                                             pattern="(?=.{1,45}$)[\p{L}\s\d*]+$"
                                                              minlength="2"
                                                              maxlength="45"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                              placeholder="${dish.description}"
                                                              name="description" minlength="2"
-                                                             pattern="^(?=.{3,65}$)[\p{L}+(\s+\p{L}+)]+$"
-                                                             maxlength="65"/></div>
+                                                             pattern="(?=.{1,255}$)[\p{L}\s\d*]+$"
+                                                             maxlength="255"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                              name="price"
                                                              placeholder="price=${dish.price}"

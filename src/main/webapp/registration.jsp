@@ -54,13 +54,13 @@
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="<fmt:message key="text.first.name"/>"
                                                                                  name="firstName"
-                                                                                 pattern="^\p{L}{2,45}$"
+                                                                                 pattern="(?=.{1,45}$)[\p{L}\s*]+$"
                                                                                  minlength="1" required=""
                                                                                  maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;"><input class="form-control" type="text"
                                                                                  placeholder="<fmt:message key="text.last.name"/>"
                                                                                  name="lastName" minlength="1"
-                                                                                 pattern="^\p{L}{2,45}$"
+                                                                                 pattern="(?=.{1,45}$)[\p{L}\s*]+$"
                                                                                  required="" maxlength="44"/></div>
                                         <div style="margin-bottom: 16px;">
                                         </div>
