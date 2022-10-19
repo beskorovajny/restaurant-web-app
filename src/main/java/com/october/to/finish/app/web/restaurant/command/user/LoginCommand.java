@@ -53,6 +53,8 @@ public class LoginCommand implements AppCommand {
                     LOGGER.info("{} Cart to session: [{}]", LOGIN_COMMAND, cart);
                     page = "controller?command=menu";
                 }
+            } else {
+                page = "controller?command=login_form";
             }
             return page;
         } catch (ServiceException e) {
