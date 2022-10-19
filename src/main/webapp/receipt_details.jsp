@@ -8,7 +8,7 @@
 <head>
     <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title><fmt:message key="text.login"/></title>
+    <title><fmt:message key="text.receipt.details"/></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
 
@@ -43,7 +43,7 @@
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">Ordered dishes</span>
+                <span class="text-muted"><fmt:message key="text.ordered.dishes"/></span>
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
@@ -60,7 +60,7 @@
                     </li>
                 </c:forEach>
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
+                    <span><fmt:message key="text.total.price"/></span>
                     <strong>$20</strong>
                 </li>
             </ul>
@@ -68,10 +68,10 @@
         <div class="col-lg-8">
             <div class="card mb-4">
                 <div class="card-body">
-                    <h5>Customer info</h5>
+                    <h5><fmt:message key="text.customer.info"/></h5>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Full name</p>
+                            <p class="mb-0"><fmt:message key="text.full.name"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">Johnatan Smith</p>
@@ -87,10 +87,10 @@
                         </div>
                     </div>
                     <hr>
-                    <h5>Address and contacts info</h5>
+                    <h5><fmt:message key="text.contact.info"/></h5>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Country</p>
+                            <p class="mb-0"><fmt:message key="text.country"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">USA</p>
@@ -98,7 +98,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">City</p>
+                            <p class="mb-0"><fmt:message key="text.city"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">San Francisco, CA</p>
@@ -106,7 +106,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Street</p>
+                            <p class="mb-0"><fmt:message key="text.street"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">Bay Area</p>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Building</p>
+                            <p class="mb-0"><fmt:message key="text.building"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">114/2</p>
@@ -122,7 +122,7 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-3">
-                            <p class="mb-0">Phone</p>
+                            <p class="mb-0"><fmt:message key="text.phone"/></p>
                         </div>
                         <div class="col-sm-9">
                             <p class="text-muted mb-0">(097) 234-5678</p>

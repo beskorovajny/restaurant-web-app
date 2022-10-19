@@ -44,7 +44,7 @@
         <div class="container py-4 py-xl-5">
             <div class="row mb-5">
                 <div class="col-md-8 col-xl-6 text-center mx-auto">
-                    <h4 class="mb-3">Your cart is empty</h4>
+                    <h4 class="mb-3"><fmt:message key="text.empty.cart"/></h4>
                     <div class="col-md-15 text-center" style="margin-right: 10px;">
                         <a href="controller?command=menu" style="text-decoration:none;">
                             <button type="button" class="btn btn-outline-success">
@@ -61,7 +61,7 @@
             <div class="row">
                 <div class="col-md-4 order-md-2 mb-4">
                     <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-muted">Your cart</span>
+                        <span class="text-muted"><fmt:message key="text.your.cart"/></span>
                         <span class="badge badge-secondary badge-pill">3</span>
                     </h4>
                     <ul class="list-group mb-3">
@@ -78,7 +78,7 @@
                             </li>
                         </c:forEach>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span>Total ($)</span>
+                            <span><fmt:message key="text.total.price"/>($)</span>
                             <c:set var="total" value="${0}"/>
                             <c:forEach var="entry" items="${sessionScope.cart}">
                                 <c:set var="total" value="${total + (entry.key.price * entry.value)}"/>
@@ -88,60 +88,48 @@
                     </ul>
                 </div>
                 <div class="col-md-8 order-md-1">
-                    <h4 class="mb-3">Billing contacts and contacts</h4>
+                    <h4 class="mb-3"><fmt:message key="text.contact.info"/></h4>
                     <form class="text-center" action="controller" method="post" novalidate>
                         <input hidden name="command" value="checkout"/>
                         <div class="mb-3">
                             <label for="country"></label>
-                            <input type="text" class="form-control" id="country" name="country" placeholder="Country"
-                                   required pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
+                            <input type="text" class="form-control" id="country" name="country"
+                                   placeholder="<fmt:message key="text.country"/>"
+                                   required="" pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
                         </div>
                         <div class="mb-3">
                             <label for="city"></label>
-                            <input type="text" class="form-control" id="city" name="city" placeholder="City" required
-                                   pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
-                            <div class="invalid-feedback">
-                                Please enter your city info.
-                            </div>
+                            <input type="text" class="form-control" id="city" name="city"
+                                   placeholder="<fmt:message key="text.city"/>" required=""
+                                   pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
                         </div>
                         <div class="mb-3">
                             <label for="street"></label>
-                            <input type="text" class="form-control" id="street" name="street" placeholder="Street"
-                                   required pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
-                            <div class="invalid-feedback">
-                                Please enter your street info.
-                            </div>
+                            <input type="text" class="form-control" id="street" name="street"
+                                   placeholder="<fmt:message key="text.street"/>"
+                                   required="" pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
                         </div>
                         <div class="mb-3">
                             <label for="building"></label>
                             <input type="text" class="form-control" id="building" name="building"
-                                   placeholder="Building" required
-                                   pattern="^(?=.{3,45}$)[\p{L}+(\s+\p{L}+)]+$">
-                            <div class="invalid-feedback">
-                                Please enter your building info.
-                            </div>
+                                   placeholder="<fmt:message key="text.building"/>" required=""
+                                   pattern="^(?=.{1,45}$)[\p{L}+(\s+\p{L}+)]+$">
                         </div>
                         <div class="mb-3">
                             <label for="phone"></label>
                             <input class="form-control" type="text" id="phone"
                                    name="phone"
                                    placeholder="<fmt:message key="text.phone"/>"
-                                   maxlength="44" required=""
+                                   maxlength="45" required=""
                                    minlength="3"
                                    pattern="^(?=.{3,45}$)[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"/>
-                            <div class="invalid-feedback">
-                                Please enter your contact phone info.
-                            </div>
                         </div>
-                        <h4 class="mb-3">Payment details</h4>
+                        <h4 class="mb-3"><fmt:message key="text.payment.details"/></h4>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="cc-number"></label>
                                 <input type="text" class="form-control" id="cc-number"
                                        placeholder="Credit card number" required>
-                                <div class="invalid-feedback">
-                                    Credit card number is required
-                                </div>
                             </div>
                         </div>
                         <div class="row">
@@ -149,20 +137,15 @@
                                 <label for="cc-expiration"></label>
                                 <input type="text" class="form-control" id="cc-expiration" placeholder="Expiration"
                                        required>
-                                <div class="invalid-feedback">
-                                    Expiration date required
-                                </div>
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label for="cc-cvv"></label>
                                 <input type="text" class="form-control" id="cc-cvv" placeholder="CVV" required>
-                                <div class="invalid-feedback">
-                                    Security code required
-                                </div>
                             </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Checkout</button>
+                        <button class="btn btn-outline-success btn-lg btn-block" type="submit">
+                            <fmt:message key="text.confirm"/></button>
                     </form>
                 </div>
             </div>

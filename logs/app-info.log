@@ -1,149 +1,115 @@
-2022-10-18 17:45:25 INFO [ContextListener] Context initialization started...
-2022-10-18 17:45:26 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@6a56d5ff
-2022-10-18 17:45:26 INFO [ContextListener] UserDAO created.
-2022-10-18 17:45:26 INFO [ContextListener] ReceiptDAO created.
-2022-10-18 17:45:26 INFO [ContextListener] ContactsDAO created.
-2022-10-18 17:45:26 INFO [ContextListener] DishDAO created.
-2022-10-18 17:45:26 INFO [ContextListener] UserService created.
-2022-10-18 17:45:26 INFO [ContextListener] ReceiptService created.
-2022-10-18 17:45:26 INFO [ContextListener] ContactsService created.
-2022-10-18 17:45:26 INFO [ContextListener] DishService created.
-2022-10-18 17:45:26 INFO [ContextListener] CommandContainer created.
-2022-10-18 17:45:26 INFO [ContextListener] Language command created.
-2022-10-18 17:45:26 INFO [ContextListener] Error command created.
-2022-10-18 17:45:26 INFO [ContextListener] RegistrationFormCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] Registration command created.
-2022-10-18 17:45:26 INFO [ContextListener] LoginFormCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] LoginCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AdminCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] DishFormCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllDishesCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] MenuCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllDishesSortedByPriceCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllDishesSortedByTitleCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllDishesSortedByCategoryCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllDishesFilteredByCategoryCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] CreateDishCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] RemoveDishCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] UserReceiptsCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AllUsersCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] LogoutCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] EditDishFormCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] EditDishCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] AddToCartCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] CheckoutFormCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] CheckoutCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] ReceiptDetailsCommand created.
-2022-10-18 17:45:26 INFO [ContextListener] Services initialized
-2022-10-18 17:45:27 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@28a4224a
-2022-10-18 17:45:27 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:45:27 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:45:27 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@28a4224a
-2022-10-18 17:45:27 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:45:30 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:45:30 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:45:30 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:45:30 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:45:30 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:46:46 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:46 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:46:46 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:46:46 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:46 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:46:46 INFO [AppController-doGet] URL processed
-2022-10-18 17:46:55 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@test.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:55 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@test.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:55 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO User received : [3], [user@test.app]
-2022-10-18 17:46:55 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
-2022-10-18 17:46:55 INFO [LoginCommand] User received from db: user@test.app
-2022-10-18 17:46:55 INFO [LoginCommand] Cart to session: [{}]
-2022-10-18 17:46:55 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
-2022-10-18 17:46:55 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:55 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:46:55 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:46:55 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
-2022-10-18 17:46:55 INFO [MenuCommand] Dishes found.
-2022-10-18 17:46:55 INFO [AppController-doGet] URL processed
-2022-10-18 17:47:00 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[4]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:00 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[4]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:00 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO Dish received : [1], [Diabola], [Pizza with hottest sauce in Galaxy]
-2022-10-18 17:47:00 INFO [AddToCartCommand] Cart successfully updated!
-2022-10-18 17:47:00 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
-2022-10-18 17:47:00 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:00 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:00 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:00 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
-2022-10-18 17:47:00 INFO [MenuCommand] Dishes found.
-2022-10-18 17:47:00 INFO [AppController-doGet] URL processed
-2022-10-18 17:47:03 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[2], cart=[{Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}=4}], count=[2]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:03 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[2], cart=[{Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}=4}], count=[2]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:03 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO Dish received : [2], [Маргарита], [М`ягкий смак і нічого зайвого]
-2022-10-18 17:47:03 INFO [AddToCartCommand] Cart successfully updated!
-2022-10-18 17:47:03 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
-2022-10-18 17:47:03 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:03 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:03 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:03 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
-2022-10-18 17:47:03 INFO [MenuCommand] Dishes found.
-2022-10-18 17:47:03 INFO [AppController-doGet] URL processed
-2022-10-18 17:47:10 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[6], cart=[{Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}=2, Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}=4}], count=[]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:10 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[6], cart=[{Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}=2, Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}=4}], count=[]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:10 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO Dish received : [6], [Крабовий], [На основі дійтичного соусу]
-2022-10-18 17:47:10 INFO [AddToCartCommand] Cart successfully updated!
-2022-10-18 17:47:10 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
-2022-10-18 17:47:10 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:10 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:10 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:10 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
-2022-10-18 17:47:10 INFO [MenuCommand] Dishes found.
-2022-10-18 17:47:10 INFO [AppController-doGet] URL processed
-2022-10-18 17:47:11 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:11 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:11 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:11 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:11 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:11 INFO [AppController-doGet] URL processed
-2022-10-18 17:47:47 INFO [JspEncodingFilter] Filter started {command=[checkout], country=[Україна], city=[Городжів], street=[Центральна], building=[233], phone=[380661122666]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:47 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:47 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:47 INFO [JspEncodingFilter] Filter started {command=[checkout], country=[Україна], city=[Городжів], street=[Центральна], building=[233], phone=[380661122666]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:47 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:47 INFO Contacts : Contacts{id=0, country='Україна', city='Городжів', street='Центральна', buildingNumber='233'} was saved successfully
-2022-10-18 17:47:47 INFO Receipt : 0, 2022-10-18T17:47:47.727816900 was saved successfully
-2022-10-18 17:47:47 INFO [ReceiptDAO] DishID:[2], ReceiptID:[8], TotalPrice:[60.0], Count[2] saved
-2022-10-18 17:47:47 INFO [ReceiptDAO] DishID:[6], ReceiptID:[8], TotalPrice:[10.0], Count[1] saved
-2022-10-18 17:47:47 INFO [ReceiptDAO] DishID:[1], ReceiptID:[8], TotalPrice:[80.0], Count[4] saved
-2022-10-18 17:47:47 INFO [CheckoutCommand] Receipt saved, dishes assigned.
-2022-10-18 17:47:47 INFO [AppController-doPost] URL processed [home.jsp], resp encoding: ISO-8859-1
-2022-10-18 17:47:47 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:47 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:47 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:47 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:47 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:51 INFO [JspEncodingFilter] Filter started {command=[user_receipts], userId=[3]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:51 INFO [AdminSessionFilter] Filter started.
-2022-10-18 17:47:51 INFO [GuestSessionFilter] Filter started.
-2022-10-18 17:47:51 INFO [JspEncodingFilter] Filter started {command=[user_receipts], userId=[3]},  org.apache.catalina.connector.ResponseFacade@38a5cf59
-2022-10-18 17:47:51 INFO [UserSessionFilter] Filter started.
-2022-10-18 17:47:51 INFO Receipts was found successfully.
-2022-10-18 17:47:51 INFO [AppController-doGet] URL processed
+2022-10-19 12:41:52 INFO [ContextListener] Context initialization started...
+2022-10-19 12:41:53 INFO [ContextListener] Connection created. org.apache.tomcat.dbcp.dbcp2.DelegatingDatabaseMetaData@467c217d
+2022-10-19 12:41:53 INFO [ContextListener] UserDAO created.
+2022-10-19 12:41:53 INFO [ContextListener] ReceiptDAO created.
+2022-10-19 12:41:53 INFO [ContextListener] ContactsDAO created.
+2022-10-19 12:41:53 INFO [ContextListener] DishDAO created.
+2022-10-19 12:41:53 INFO [ContextListener] UserService created.
+2022-10-19 12:41:53 INFO [ContextListener] ReceiptService created.
+2022-10-19 12:41:53 INFO [ContextListener] ContactsService created.
+2022-10-19 12:41:53 INFO [ContextListener] DishService created.
+2022-10-19 12:41:53 INFO [ContextListener] CommandContainer created.
+2022-10-19 12:41:53 INFO [ContextListener] Language command created.
+2022-10-19 12:41:53 INFO [ContextListener] Error command created.
+2022-10-19 12:41:53 INFO [ContextListener] RegistrationFormCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] Registration command created.
+2022-10-19 12:41:53 INFO [ContextListener] LoginFormCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] LoginCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AdminCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] DishFormCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllDishesCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] MenuCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllDishesSortedByPriceCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllDishesSortedByTitleCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllDishesSortedByCategoryCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllDishesFilteredByCategoryCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] CreateDishCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] RemoveDishCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] UserReceiptsCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AllUsersCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] LogoutCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] EditDishFormCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] EditDishCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] AddToCartCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] CheckoutFormCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] CheckoutCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] ReceiptDetailsCommand created.
+2022-10-19 12:41:53 INFO [ContextListener] Services initialized
+2022-10-19 12:41:54 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:41:54 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:41:54 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:41:54 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:41:54 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:41:56 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:41:56 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:41:56 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:41:56 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:41:56 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:01 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:01 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:01 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:01 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:09 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:09 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:09 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:09 INFO [JspEncodingFilter] Filter started {command=[login_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:09 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:09 INFO [AppController-doGet] URL processed
+2022-10-19 12:42:19 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@user.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:19 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO [JspEncodingFilter] Filter started {command=[login], email=[user@user.app], password=[sBBuE%0&V9h6]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:19 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO User received : [2], [user@user.app]
+2022-10-19 12:42:19 INFO [PasswordEncrypt] password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb], user.password: [d9bbfb3d7aa0fcbd61cb0cfe606f80e444a36a0c0e62a54265255f54145545fb]
+2022-10-19 12:42:19 INFO [LoginCommand] User received from db: user@user.app
+2022-10-19 12:42:19 INFO [LoginCommand] Cart to session: [{}]
+2022-10-19 12:42:19 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
+2022-10-19 12:42:19 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:19 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:19 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:19 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
+2022-10-19 12:42:19 INFO [MenuCommand] Dishes found.
+2022-10-19 12:42:19 INFO [AppController-doGet] URL processed
+2022-10-19 12:42:22 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:22 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO [JspEncodingFilter] Filter started {command=[add_to_cart], dishId=[1], cart=[{}], count=[]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:22 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO Dish received : [1], [Diabola], [Pizza with hottest sauce in Galaxy]
+2022-10-19 12:42:22 INFO [AddToCartCommand] Cart successfully updated!
+2022-10-19 12:42:22 INFO [AppController-doPost] URL processed [controller?command=menu], resp encoding: ISO-8859-1
+2022-10-19 12:42:22 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:22 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO [JspEncodingFilter] Filter started {command=[menu]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:22 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:22 INFO [DishDAO] Dishes was found successfully. [[Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=2, title='Маргарита', description='М`ягкий смак і нічого зайвого', category=PIZZA, price=30.0, weight=1000, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=3, title='Pepperoni', description='Like diabola, but more taste', category=PIZZA, price=25.0, weight=400, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=4, title='Капричоза', description='Мікс на любий смак', category=PIZZA, price=22.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=5, title='Caesario', description='True satisfaction', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}, Dish{id=6, title='Крабовий', description='На основі дійтичного соусу', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=7, title='Special', description='Our family receipt for you', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=8, title='Легкий', description='Червона риба нікого не залишить байдужим', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=9, title='Caesar', description='Want to fight with enemies?', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}, Dish{id=10, title='Просто салат', description='Опис простого салату', category=SALAD, price=10.0, weight=200, cooking=50, dateCreated=2012-06-18 10:34:09}]]
+2022-10-19 12:42:22 INFO [MenuCommand] Dishes found.
+2022-10-19 12:42:22 INFO [AppController-doGet] URL processed
+2022-10-19 12:42:23 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:23 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:23 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:23 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:23 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:23 INFO [AppController-doGet] URL processed
+2022-10-19 12:42:26 INFO [JspEncodingFilter] Filter started {command=[checkout], country=[], city=[], street=[], building=[], phone=[]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:26 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:26 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:26 INFO [JspEncodingFilter] Filter started {command=[checkout], country=[], city=[], street=[], building=[], phone=[]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:26 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:26 INFO [AppController-doPost] URL processed [home.jsp], resp encoding: ISO-8859-1
+2022-10-19 12:42:26 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:26 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:26 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:26 INFO [JspEncodingFilter] Filter started {},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:26 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:30 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:30 INFO [AdminSessionFilter] Filter started.
+2022-10-19 12:42:30 INFO [GuestSessionFilter] Filter started.
+2022-10-19 12:42:30 INFO [JspEncodingFilter] Filter started {command=[checkout_form]},  org.apache.catalina.connector.ResponseFacade@4728e9d9
+2022-10-19 12:42:30 INFO [UserSessionFilter] Filter started.
+2022-10-19 12:42:30 INFO [AppController-doGet] URL processed
