@@ -3,6 +3,8 @@ package com.october.to.finish.app.web.restaurant.listener;
 import com.october.to.finish.app.web.restaurant.command.*;
 import com.october.to.finish.app.web.restaurant.command.dish.*;
 import com.october.to.finish.app.web.restaurant.command.receipt.ReceiptDetailsCommand;
+import com.october.to.finish.app.web.restaurant.command.receipt.RemoveReceiptCommand;
+import com.october.to.finish.app.web.restaurant.command.receipt.UpdateReceiptStatusCommand;
 import com.october.to.finish.app.web.restaurant.command.user.*;
 import com.october.to.finish.app.web.restaurant.dao.ContactsDAO;
 import com.october.to.finish.app.web.restaurant.dao.DishDAO;
@@ -168,6 +170,14 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("remove_dish", appCommand);
         LOGGER.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new RemoveReceiptCommand(receiptService);
+        commandContainer.addCommand("remove_receipt", appCommand);
+        LOGGER.info("{} RemoveReceiptCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new RemoveUserCommand(userService);
+        commandContainer.addCommand("remove_user", appCommand);
+        LOGGER.info("{} RemoveUserCommand created.", CONTEXT_LISTENER_MSG);
+
         appCommand = new UserReceiptsCommand(receiptService, contactsService);
         commandContainer.addCommand("user_receipts", appCommand);
         LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
@@ -188,6 +198,14 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("edit_dish", appCommand);
         LOGGER.info("{} EditDishCommand created.", CONTEXT_LISTENER_MSG);
 
+        appCommand = new ChangeUserRoleCommand(userService);
+        commandContainer.addCommand("change_user_role", appCommand);
+        LOGGER.info("{} ChangeUserRoleCommand created.", CONTEXT_LISTENER_MSG);
+
+        appCommand = new UpdateReceiptStatusCommand(receiptService);
+        commandContainer.addCommand("update_receipt_status", appCommand);
+        LOGGER.info("{} UpdateReceiptStatusCommand created.", CONTEXT_LISTENER_MSG);
+
         appCommand = new AddToCartCommand(dishService);
         commandContainer.addCommand("add_to_cart", appCommand);
         LOGGER.info("{} AddToCartCommand created.", CONTEXT_LISTENER_MSG);
@@ -203,7 +221,6 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         appCommand = new CleanCartCommand();
         commandContainer.addCommand("clean_cart", appCommand);
         LOGGER.info("{} CleanCartCommand created.", CONTEXT_LISTENER_MSG);
-
 
         appCommand = new ReceiptDetailsCommand(receiptService, contactsService, dishService, userService);
         commandContainer.addCommand("receipt_details", appCommand);

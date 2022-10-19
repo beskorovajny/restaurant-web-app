@@ -71,8 +71,9 @@
             <th scope="col"><fmt:message key="text.date.created"/></th>
             <th scope="col"><fmt:message key="text.total.price"/></th>
             <th scope="col"><fmt:message key="text.status"/></th>
-            <th scope="col"><fmt:message key="text.user"/>ID</th>
-            <th scope="col"><fmt:message key="text.contacts"/>ID</th>
+            <th scope="col"><fmt:message key="text.user"/> ID</th>
+            <th scope="col"><fmt:message key="text.contacts"/> ID</th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -91,6 +92,13 @@
                 <td><c:out value="${receipt.contactsId}"/>
                 </td>
                 <td><c:out value="${receipt.customerId}"/>
+                </td>
+                <td><button type="button" class="btn-sm btn-outline-primary"
+                            onclick="window.location='controller?command=update_receipt_status&receiptId=${receipt.id}'">
+                    <fmt:message key="text.edit"/></button>
+                    <button type="button" class="btn-sm btn-outline-danger"
+                            onclick="window.location='controller?command=remove_receipt&receiptId=${receipt.id}'">
+                        <fmt:message key="text.remove"/></button>
                 </td>
             </tr>
         </c:forEach>

@@ -1,2 +1,0 @@
-2022-10-19 14:44:21 DEBUG Cart from session: [{}]
-2022-10-19 14:44:21 DEBUG Cart to session: [{Dish{id=1, title='Diabola', description='Pizza with hottest sauce in Galaxy', category=PIZZA, price=20.0, weight=900, cooking=40, dateCreated=2012-06-18 10:34:09}=1}]

@@ -70,6 +70,7 @@
             <th scope="col"><fmt:message key="text.first.name"/></th>
             <th scope="col"><fmt:message key="text.last.name"/></th>
             <th scope="col"><fmt:message key="text.role"/></th>
+            <th scope="col"></th>
         </tr>
         </thead>
         <tbody>
@@ -84,6 +85,16 @@
                 <td><c:out value="${user.lastName}"/>
                 </td>
                 <td><c:out value="${user.role}"/>
+                </td>
+                <td>
+                    <c:if test="${user.id > 1}">
+                        <button type="button" class="btn btn-outline-danger"
+                                onclick="window.location='controller?command=remove_user&userId=${user.id}'">
+                            <fmt:message key="text.remove"/></button>
+                        <button type="button" class="btn btn-outline-warning"
+                                onclick="window.location='controller?command=change_user_role&userId=${user.id}'">
+                            <fmt:message key="text.change.role"/></button>
+                    </c:if>
                 </td>
             </tr>
         </c:forEach>
