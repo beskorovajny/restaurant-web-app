@@ -154,7 +154,11 @@ public class ReceiptServiceImpl implements ReceiptService {
     private void transactionHelper(Map<Dish, Integer> cart, Contacts contacts, long userId) throws ServiceException {
         Receipt receipt = null;
         try {
-            contacts.setId(contactsDAO.save(contacts));
+            if (contactsDAO.findByAllParams(contacts).getId() < 1) {
+                contacts.setId(contactsDAO.save(contacts));
+            } else {
+                contacts = contactsDAO.findByAllParams(contacts);
+            }
             LOGGER.debug("[ReceiptService] Saved contacts info ID:[{}]", contacts.getId());
             receipt = Receipt.newBuilder().
                     setTimeCreated(LocalDateTime.now()).

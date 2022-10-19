@@ -13,6 +13,8 @@ public interface ContactsDAO {
 
     Contacts findById(long addressId) throws DAOException;
 
+    Contacts findByAllParams(Contacts contacts) throws DAOException;
+
     List<Contacts> findAll() throws DAOException;
 
     boolean update(long contactsId, Contacts contacts) throws DAOException;

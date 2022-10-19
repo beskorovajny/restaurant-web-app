@@ -21,6 +21,8 @@ public class ContactsDAOImpl implements ContactsDAO {
             " (country, city, street, building, phone)" +
             " VALUES (?, ?, ?, ?, ?)";
     private static final String FIND_BY_ID = "SELECT * FROM contacts WHERE id = ?";
+    private static final String FIND_BY_ALL_PARAMS = "SELECT * FROM contacts WHERE country = ?" +
+            " AND city = ? AND street = ? AND building = ? AND phone = ?";
     private static final String FIND_ALL = "SELECT * FROM contacts";
     private static final String UPDATE = "UPDATE contacts SET country = ?," +
             " city = ?, street = ?, building = ?, phone = ? WHERE id = ?";
@@ -86,6 +88,36 @@ public class ContactsDAOImpl implements ContactsDAO {
             throw new DAOException("[ContactsDAO] exception while receiving Contacts", e);
         }
         return contacts.orElse(new Contacts());
+    }
+
+    @Override
+    public Contacts findByAllParams(Contacts contacts) throws DAOException {
+        if (contacts == null || contacts.getCountry() == null || contacts.getCountry().isEmpty() ||
+                contacts.getCity() == null || contacts.getCity().isEmpty() ||
+                contacts.getStreet() == null || contacts.getStreet().isEmpty() ||
+                contacts.getBuildingNumber() == null || contacts.getBuildingNumber().isEmpty() ||
+                contacts.getPhone() == null || contacts.getPhone().isEmpty()) {
+            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
+        }
+        Optional<Contacts> contactsOptional = Optional.empty();
+        try (PreparedStatement preparedStatement = connection.
+                prepareStatement(FIND_BY_ALL_PARAMS)) {
+            preparedStatement.setString(1, contacts.getCountry());
+            preparedStatement.setString(2, contacts.getCity());
+            preparedStatement.setString(3, contacts.getStreet());
+            preparedStatement.setString(4, contacts.getBuildingNumber());
+            preparedStatement.setString(5, contacts.getPhone());
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                contactsOptional = Optional.ofNullable(contactsMapper.extractFromResultSet(resultSet));
+            }
+            contactsOptional.ifPresent(contact -> LOGGER.info("Contacts received from db: [{}]", contact));
+        } catch (SQLException e) {
+            LOGGER.error("Contacts was not found. An exception occurs : {}", e.getMessage());
+            throw new DAOException("[ContactsDAO] exception while receiving Contacts", e);
+        }
+        return contactsOptional.orElse(new Contacts());
     }
 
     @Override
