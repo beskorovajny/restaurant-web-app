@@ -21,6 +21,6 @@ public class CleanCartCommand implements AppCommand {
         HttpSession session = request.getSession();
         Map<Dish, Integer> cart = new HashMap<>();
         session.setAttribute("cart", cart);
-        return "home.jsp";
+        return "controller?command=home";
     }
 }

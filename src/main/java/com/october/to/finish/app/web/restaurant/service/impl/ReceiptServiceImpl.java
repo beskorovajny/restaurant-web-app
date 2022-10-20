@@ -22,20 +22,16 @@ public class ReceiptServiceImpl implements ReceiptService {
     private static final Logger LOGGER = LogManager.getLogger(ReceiptServiceImpl.class);
     private static final String NULL_RECEIPT_DAO_EXC = "[ReceiptService] Can't create ContactsService with null input ContactsDAO";
     private static final String NULL_RECEIPT_INPUT_EXC = "[ReceiptService] Can't operate null (or < 1) input!";
-    private static final String EXISTED_RECEIPT_EXC =
-            "[ReceiptService] Receipt is already exists!";
     private final ReceiptDAO receiptDAO;
     private final ContactsDAO contactsDAO;
-    private final UserDAO userDAO;
 
-    public ReceiptServiceImpl(ReceiptDAO receiptDAO, ContactsDAO contactsDAO, UserDAO userDAO) {
-        if (receiptDAO == null || contactsDAO == null || userDAO == null) {
+    public ReceiptServiceImpl(ReceiptDAO receiptDAO, ContactsDAO contactsDAO) {
+        if (receiptDAO == null || contactsDAO == null) {
             LOGGER.error(NULL_RECEIPT_DAO_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_DAO_EXC);
         }
         this.receiptDAO = receiptDAO;
         this.contactsDAO = contactsDAO;
-        this.userDAO = userDAO;
     }
 
     @Override
