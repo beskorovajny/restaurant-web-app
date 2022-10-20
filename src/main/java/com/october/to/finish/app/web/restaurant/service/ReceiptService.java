@@ -26,5 +26,5 @@ public interface ReceiptService {
 
     void setDishesForReceipt(Map<Dish, Integer> cart, Contacts contacts, long userId) throws ServiceException, DAOException;
 
-    int getRecordsCount();
+    int getRecordsCount() throws DAOException;
 }

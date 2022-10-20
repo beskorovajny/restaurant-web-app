@@ -2,6 +2,7 @@ package com.october.to.finish.app.web.restaurant.command.user;
 
 import com.october.to.finish.app.web.restaurant.command.AppCommand;
 import com.october.to.finish.app.web.restaurant.exceptions.CommandException;
+import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.FatalApplicationException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
@@ -19,13 +20,9 @@ import java.util.List;
 public class AdminCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(AdminCommand.class);
     private final ReceiptService receiptService;
-    private final DishService dishService;
-    private final UserService userService;
 
-    public AdminCommand(ReceiptService receiptService, DishService dishService, UserService userService) {
+    public AdminCommand(ReceiptService receiptService) {
         this.receiptService = receiptService;
-        this.dishService = dishService;
-        this.userService = userService;
     }
 
     @Override
@@ -37,13 +34,15 @@ public class AdminCommand implements AppCommand {
             page = Integer.parseInt(request.getParameter("page"));
         }
         List<Receipt> receipts = null;
+        int countPages = 0;
         try {
             receipts = receiptService.findAll(page);
-        } catch (ServiceException e) {
+            countPages = receiptService.getRecordsCount() / 10 + 1;
+        } catch (ServiceException | DAOException e) {
             throw new CommandException(e.getMessage(), e);
         }
         request.setAttribute("receipts", receipts);
-        int countPages = receiptService.getRecordsCount() / 10 + 1;
+
         List<Integer> pages = new ArrayList<>();
         for (int i = 1; i <= countPages; i++) {
             pages.add(i);

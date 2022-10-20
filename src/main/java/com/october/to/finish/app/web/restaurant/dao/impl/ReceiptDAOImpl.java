@@ -221,7 +221,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
         }
     }
 
-    public int countRecords() {
+    public int countRecords() throws DAOException {
         int recordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECEIPT_RECORDS);
              ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -230,7 +230,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             return recordsCount;
         } catch (SQLException e) {
             LOGGER.error("{} Failed to count receipts! An exception occurs :[{}]", "[ReceiptDAO]", e.getMessage());
+            throw new DAOException("[ReceiptDAO] An exception occurs while calculating records" + e.getMessage(), e);
         }
-        return recordsCount;
     }
 }

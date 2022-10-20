@@ -129,7 +129,7 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
         commandContainer.addCommand("login", appCommand);
         LOGGER.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
 
-        appCommand = new AdminCommand(receiptService, dishService, userService);
+        appCommand = new AdminCommand(receiptService);
         commandContainer.addCommand("admin", appCommand);
         LOGGER.info("{} AdminCommand created.", CONTEXT_LISTENER_MSG);
 

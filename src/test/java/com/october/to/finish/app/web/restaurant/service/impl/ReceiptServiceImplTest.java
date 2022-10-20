@@ -58,7 +58,7 @@ class ReceiptServiceImplTest {
     }
 
     @Test
-    void shouldGetRecordsCountTest() {
+    void shouldGetRecordsCountTest() throws DAOException {
         final int records = 5;
         when(receiptDAO.countRecords()).thenReturn(records);
         assertEquals(records, receiptService.getRecordsCount());

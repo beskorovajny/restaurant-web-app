@@ -185,7 +185,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         return cart.entrySet().stream().mapToDouble(this::getDishTotalPriceWithCount).sum();
     }
 
-    public int getRecordsCount() {
+    public int getRecordsCount() throws DAOException {
         return receiptDAO.countRecords();
     }
 }
