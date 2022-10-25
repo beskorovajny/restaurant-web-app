@@ -26,6 +26,10 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
+    /**
+     * @param user
+     * @throws ServiceException when DAOException was catched
+     */
     @Override
     public void save(User user) throws ServiceException {
         if (user == null) {
@@ -45,8 +49,7 @@ public class UserServiceImpl implements UserService {
     public boolean isUserExist(User user) throws ServiceException {
         try {
             if (userDAO.findByEmail(user.getEmail()).getId() != 0) {
-                LOGGER.info(REGISTERED_EMAIL_EXC
-                        , user.getEmail());
+                LOGGER.info(REGISTERED_EMAIL_EXC, user.getEmail());
                 return true;
             }
             return false;

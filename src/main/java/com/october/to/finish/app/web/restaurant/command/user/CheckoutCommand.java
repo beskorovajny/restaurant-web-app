@@ -74,6 +74,6 @@ public class CheckoutCommand implements AppCommand {
                 throw new CommandException(e.getMessage(), e);
             }
         }
-        return "home.jsp";
+        return "controller?command=home";
     }
 }

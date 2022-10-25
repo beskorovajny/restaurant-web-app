@@ -7,7 +7,11 @@ import com.october.to.finish.app.web.restaurant.model.User;
 import java.util.List;
 
 public interface UserService {
-    void save(User user) throws ServiceException, FatalApplicationException;
+    /**
+     * @param user
+     * @throws ServiceException
+     */
+    void save(User user) throws ServiceException;
 
     User findById(long id) throws ServiceException;
 

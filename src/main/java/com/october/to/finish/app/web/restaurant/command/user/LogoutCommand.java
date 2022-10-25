@@ -17,6 +17,6 @@ public class LogoutCommand implements AppCommand {
             session.removeAttribute("cart");
         }
         session.invalidate();
-        return "home.jsp";
+        return "controller?command=home";
     }
 }

@@ -43,9 +43,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a></li>
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}$page=${param.page}">ENG</a></li>
                     </ul>
                 </div>
             </div>
