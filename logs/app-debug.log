@@ -1,2 +1,0 @@
-2022-10-25 12:56:52 DEBUG Cart from session: [{}]
-2022-10-25 12:56:52 DEBUG Cart to session: [{Dish{id=21, title='Реберця', description='Соковитий кабан запечений в соусі', category=APPETIZER, price=500.0, weight=700, cooking=65, dateCreated=2022-10-19 14:38:20}=1}]

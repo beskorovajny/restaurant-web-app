@@ -35,9 +35,6 @@ w
 Gsrc/main/java/com/october/to/finish/app/web/restaurant/dao/UserDAO.java,5\7\5784ceecf52e9b84e5a394527ff6a3af8d91b649
 w
 Gsrc/main/java/com/october/to/finish/app/web/restaurant/dao/DishDAO.java,c\0\c0c6c99a0e1f8c868dbc112aeb4ef6b397ac9ac9
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 ê
 `src/test/java/com/october/to/finish/app/web/restaurant/command/user/UserReceiptsCommandTest.java,d\d\dd125a011c880554a94fcf8c920952334d7f9a12
 à
