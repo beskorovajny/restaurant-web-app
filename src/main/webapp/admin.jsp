@@ -40,9 +40,11 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a></li>
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a>
+                        </li>
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}">ENG</a></li>
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}">ENG</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -87,18 +89,37 @@
                 </td>
                 <td><c:out value="${receipt.totalPrice}"/>
                 </td>
-                <td><c:out value="${receipt.status}"/>
+                <td>
+                    <c:choose>
+                        <c:when test="${receipt.status.id == 1}">
+                            <fmt:message key="text.new" var="newS"/>
+                            <c:out value="${newS}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 2}">
+                            <fmt:message key="text.cooking" var="cooking"/>
+                            <c:out value="${cooking}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 3}">
+                            <fmt:message key="text.delivery" var="delivery"/>
+                            <c:out value="${delivery}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 4}">
+                            <fmt:message key="text.completed" var="completed"/>
+                            <c:out value="${completed}"/>
+                        </c:when>
+                    </c:choose>
                 </td>
                 <td><c:out value="${receipt.contactsId}"/>
                 </td>
                 <td><c:out value="${receipt.customerId}"/>
                 </td>
-                <td><button type="button" class="btn btn-outline-secondary"
+                <td>
+                    <button type="button" class="btn btn-outline-secondary"
                             onclick="window.location='controller?command=receipt_details&receiptId=${receipt.id}'">
-                    <fmt:message key="text.details"/></button>
+                        <fmt:message key="text.details"/></button>
                     <button type="button" class="btn btn-outline-warning"
-                            onclick="window.location='controller?command=update_receipt_status&receiptId=${receipt.id}'">
-                    <fmt:message key="text.edit"/></button>
+                            onclick="window.location='controller?command=update_receipt_status&receiptId=${receipt.id}&page=${param.page}'">
+                        <fmt:message key="text.edit"/></button>
                     <button type="button" class="btn btn-outline-danger"
                             onclick="window.location='controller?command=remove_receipt&receiptId=${receipt.id}'">
                         <fmt:message key="text.remove"/></button>

@@ -43,9 +43,9 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a></li>
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}&category=${param.category}">UA</a></li>
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}">ENG</a></li>
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}&category=${param.category}">ENG</a></li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +120,24 @@
                 </td>
                 <td><c:out value="${dish.cooking}"/>
                 </td>
-                <td><c:out value="${dish.category.getName()}"/>
+                <td><c:choose>
+                    <c:when test="${dish.category.id == 1}">
+                        <fmt:message key="text.salad" var="salad"/>
+                        <c:out value="${salad}"/>
+                    </c:when>
+                    <c:when test="${dish.category.id == 2}">
+                        <fmt:message key="text.pizza" var="pizza"/>
+                        <c:out value="${pizza}"/>
+                    </c:when>
+                    <c:when test="${dish.category.id == 3}">
+                        <fmt:message key="text.appetizer" var="appetizer"/>
+                        <c:out value="${appetizer}"/>
+                    </c:when>
+                    <c:when test="${dish.category.id == 4}">
+                        <fmt:message key="text.drink" var="drink"/>
+                        <c:out value="${drink}"/>
+                    </c:when>
+                </c:choose>
                 </td>
                 <td>
                     <form class="text-center" action="controller" method="post">
@@ -150,11 +167,9 @@
             </c:if>
 
             <c:forEach var="page" items="${pages}">
-
                 <li class="page-item"><a class="page-link"
                                          href="controller?command=${param.command}&page=${page}">${page}</a>
                 </li>
-
             </c:forEach>
             <c:set var="size" scope="page" value="${requestScope.pages}"/>
 

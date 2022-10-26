@@ -99,7 +99,25 @@
                 <td><fmt:parseDate value="${dish.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
                     <fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm"/>
                 </td>
-                <td><c:out value="${dish.category}"/>
+                <td>
+                    <c:choose>
+                        <c:when test="${dish.category.id == 1}">
+                            <fmt:message key="text.salad" var="salad"/>
+                            <c:out value="${salad}"/>
+                        </c:when>
+                        <c:when test="${dish.category.id == 2}">
+                            <fmt:message key="text.pizza" var="pizza"/>
+                            <c:out value="${pizza}"/>
+                        </c:when>
+                        <c:when test="${dish.category.id == 3}">
+                            <fmt:message key="text.appetizer" var="appetizer"/>
+                            <c:out value="${appetizer}"/>
+                        </c:when>
+                        <c:when test="${dish.category.id == 4}">
+                            <fmt:message key="text.drink" var="drink"/>
+                            <c:out value="${drink}"/>
+                        </c:when>
+                    </c:choose>
                 </td>
                 <td>
                     <button type="button" class="btn btn-outline-warning"

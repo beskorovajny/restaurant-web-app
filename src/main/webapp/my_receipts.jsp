@@ -75,7 +75,25 @@
                 </td>
                 <td><c:out value="${receipt.totalPrice}"/>
                 </td>
-                <td><c:out value="${receipt.status}"/>
+                <td>
+                    <c:choose>
+                        <c:when test="${receipt.status.id == 1}">
+                            <fmt:message key="text.new" var="newS"/>
+                            <c:out value="${newS}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 2}">
+                            <fmt:message key="text.cooking" var="cooking"/>
+                            <c:out value="${cooking}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 3}">
+                            <fmt:message key="text.delivery" var="delivery"/>
+                            <c:out value="${delivery}"/>
+                        </c:when>
+                        <c:when test="${receipt.status.id == 4}">
+                            <fmt:message key="text.completed" var="completed"/>
+                            <c:out value="${completed}"/>
+                        </c:when>
+                    </c:choose>
                 </td>
                 <td>
                     <button type="button" class="btn btn-outline-secondary"

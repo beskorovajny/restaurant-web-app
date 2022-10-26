@@ -72,8 +72,7 @@
                                     <small class="text-muted"><c:out value="${entry.key.description}"/></small>
                                 </div>
                                 <span class="text-muted">
-                                    <small class="my-0">pcs: <c:out value="${entry.value}"/></small>
-                                    Price: <c:out value="${entry.key.price * entry.value}"/>
+                                    <small class="my-0"><c:out value="${entry.value}"/>X<c:out value="${entry.key.price}"/></small>
                                 </span>
                             </li>
                         </c:forEach>

@@ -1,10 +1,8 @@
 package com.october.to.finish.app.web.restaurant.model;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Objects;
-import java.util.stream.DoubleStream;
 
 public class Receipt {
     private long id;
@@ -33,15 +31,18 @@ public class Receipt {
     public long getCustomerId() {
         return customerId;
     }
+
     public void setCustomerId(long customerId) {
         if (customerId <= 0) {
             throw new IllegalArgumentException("CustomerID can't be less than zero");
         }
         this.customerId = customerId;
     }
+
     public long getContactsId() {
         return contactsId;
     }
+
     public void setContactsId(long contactsId) {
         if (contactsId <= 0) {
             throw new IllegalArgumentException("ContactsID can't be less than zero");
@@ -60,9 +61,11 @@ public class Receipt {
     public Status getStatus() {
         return status;
     }
+
     public void setStatus(Status status) {
         this.status = status;
     }
+
     public Map<Dish, Integer> getOrderedDishes() {
         return orderedDishes;
     }
@@ -159,6 +162,7 @@ public class Receipt {
             Receipt.this.dateCreated = timeCreated;
             return this;
         }
+
         public Builder setTotalPrice(double totalPrice) {
             if (totalPrice < 0) {
                 throw new IllegalArgumentException("Total price can't be < 0!");
@@ -166,6 +170,7 @@ public class Receipt {
             Receipt.this.totalPrice = totalPrice;
             return this;
         }
+
         public Builder setStatus(Status status) {
             if (status == null) {
                 throw new IllegalArgumentException("Status can't be null!");

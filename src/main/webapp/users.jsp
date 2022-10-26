@@ -1,3 +1,4 @@
+<%@ page import="java.util.Calendar" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -38,9 +39,11 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a></li>
+                               href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&page=${param.page}">UA</a>
+                        </li>
                         <li><a class="dropdown-item"
-                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}">ENG</a></li>
+                               href="controller?command=setLang&locale&pageToProcess=${param.command}&page=${param.page}">ENG</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -84,7 +87,17 @@
                 </td>
                 <td><c:out value="${user.lastName}"/>
                 </td>
-                <td><c:out value="${user.role}"/>
+                <td>
+                    <c:choose>
+                        <c:when test="${user.role.id == 1}">
+                            <fmt:message key="text.customer" var="customer"/>
+                            <c:out value="${customer}"/>
+                        </c:when>
+                        <c:when test="${user.role.id == 2}">
+                            <fmt:message key="text.admin" var="admin"/>
+                            <c:out value="${admin}"/>
+                        </c:when>
+                    </c:choose>
                 </td>
                 <td>
                     <c:if test="${user.id > 1}">

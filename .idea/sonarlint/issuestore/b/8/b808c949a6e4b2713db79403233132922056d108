@@ -1,23 +1,13 @@
 
-A
-java:S1172"+Remove this unused method parameter "dish".(¢­Áú
 b
-java:S5998
-"LRefactor this repetition that can lead to a stack overflow for large inputs.(è¾¯¸
+java:S5998"LRefactor this repetition that can lead to a stack overflow for large inputs.(è¾¯¸
 J
-java:S6353
-"4Use concise quantifier syntax '+' instead of '{1,}'.(è¾¯¸
+java:S6353"4Use concise quantifier syntax '+' instead of '{1,}'.(è¾¯¸
 K
-java:S6397"5Replace this character class by the character itself.(žª…´
+java:S6397"5Replace this character class by the character itself.(žª…´
 K
-java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(žª…´
+java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(žª…´
 R
-java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(žª…´
+java:S6353"<Use concise character class syntax '\\d' instead of '[0-9]'.(žª…´
 K
-java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(žª…´
-I
-java:S1068"3Remove this unused "INTEGER_PATTERN" private field.(†¿Úü
-S
-java:S1068"8Remove this unused "REGULAR_TEXT_PATTERN" private field.(³áúðùÿÿÿÿ
-K
-java:S1068"5Remove this unused "LONG_TEXT_PATTERN" private field.(èÉ÷ 
+java:S6353"5Use concise quantifier syntax '?' instead of '{0,1}'.(žª…´

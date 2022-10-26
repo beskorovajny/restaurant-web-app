@@ -14,7 +14,7 @@
 
 <body>
 <nav class="navbar navbar-light navbar-expand-md py-3">
-    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command?=home">
+    <div class="container"><a class="navbar-brand d-flex align-items-center" href="controller?command=home">
         <span><fmt:message key="text.brand"/></span></a>
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav-col-2"><span
                 class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
@@ -49,7 +49,7 @@
                                         <input hidden name="command" value="login">
                                         <div class="mb-3"><input class="form-control" type="email" name="email"
                                                                  placeholder="Email" minlength="4" maxlength="45"
-                                                                 pattern="([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
+                                                                 pattern="^(?=.{4,45}$)([\w-\.]{1,})+@([\w-]+\.)+([\w-]{2,4})$"
                                                                  required="" style="margin-top: 10px">
                                         </div>
                                         <div class="mb-3"><input class="form-control" type="password" name="password"
