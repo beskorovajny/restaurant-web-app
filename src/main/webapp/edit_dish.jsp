@@ -24,12 +24,6 @@
                   aria-expanded="false">
             <fmt:message key="logo.globe"/>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-            <li><a class="dropdown-item" role="button"
-                   href="controller?command=setLang&locale=ua&pageToProcess=${param.command}">UA</a></li>
-            <li><a class="dropdown-item" role="button"
-                   href="controller?command=setLang&locale&pageToProcess=${param.command}">ENG</a></li>
-          </ul>
         </div>
       </div>
     </div>

@@ -71,12 +71,6 @@ Jsrc/test/java/com/october/to/finish/app/web/restaurant/model/DishTest.java,0\0
 Tsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/UserDAOImplTest.java,3\b\3b5a51f19e8acdcd6496347b6b6132453304aa5d
 }
 Msrc/test/java/com/october/to/finish/app/web/restaurant/model/ReceiptTest.java,9\1\911db25ff77f0172ebef969abee07f6b4c07e3be
-å
-\src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ContactsServiceImpl.java,b\8\b86cd1fc9b1b0c008b5eac1bea8ffe87e60d2349
-É
-Ssrc/main/java/com/october/to/finish/app/web/restaurant/service/ContactsService.java,a\4\a4e1a289145ba10378ec96e9bbdf88e3126c1d63
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImpl.java,6\2\62188d1658937d1001af9fadc5b13b3e2e760ab7
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/service/DishService.java,d\b\db37933c89e29c48c430eea6a2827e7204bdbfdb
 ê
@@ -95,8 +89,6 @@ fsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/AllDishesSo
 Zsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/CreateDishCommand.java,2\3\238d7c74a7747e8b12278830b3b4c29bd4a4fcc8
 à
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/DishFormCommand.java,b\d\bd3f327428069e940e789296a23e94dc54c7ad08
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/EditDishCommand.java,d\c\dcdb12af105da9856bc14acb336f71b20497d8ee
 å
 \src/main/java/com/october/to/finish/app/web/restaurant/command/dish/EditDishFormCommand.java,2\c\2c4329aac62adf9929e4b22f24d2ff13045957ac
 Ñ
@@ -111,8 +103,6 @@ fsrc/main/java/com/october/to/finish/app/web/restaurant/command/receipt/UpdateRe
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/user/AllUsersCommand.java,f\2\f2b0f1dea948e761f86eea72e585a844462b1104
 é
 ^src/main/java/com/october/to/finish/app/web/restaurant/command/user/ChangeUserRoleCommand.java,6\9\6910da1035d97e07e6929a4e7810cef8c10edcf8
-Ö
-Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginCommand.java,a\d\ada986d739395d37fafa7b165cbecb739e3f9a8c
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginFormCommand.java,f\7\f7d5e6cf48577819c7deb34b3f024bf6d6fec62a
 å
@@ -165,12 +155,8 @@ Tsrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/ContactsDAOImpl
 Rsrc/main/java/com/october/to/finish/app/web/restaurant/service/ReceiptService.java,5\0\508a6df90ac1533337caf61f20d3ccdc09845aa9
 Ö
 Usrc/main/java/com/october/to/finish/app/web/restaurant/filter/GuestSessionFilter.java,b\f\bf20d24d7b8709e71fa92fd357d6fb90c05aedee
-å
-\src/test/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImplTest.java,9\9\991efb6e617bd2dd57da4addcb7774eccdb82861
 Ñ
 Tsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/DishDAOImplTest.java,1\f\1f6fe0bdaea81f6e7a3cb0fa13be3f7643c0db80
-ã
-[src/main/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImpl.java,8\9\89783c21543140cd547a4e5701f72816ea763bb1
 è
 _src/test/java/com/october/to/finish/app/web/restaurant/service/impl/ReceiptServiceImplTest.java,e\9\e91ee377c9a7de42c8357d07528f17849e483904
 å
@@ -181,10 +167,6 @@ Ssrc/main/java/com/october/to/finish/app/web/restaurant/dao/impl/ReceiptDAOImpl.
 Wsrc/test/java/com/october/to/finish/app/web/restaurant/dao/impl/ReceiptDAOImplTest.java,3\5\3525d5ba3d106264251c798cee9b34dcd54e0566
 Ö
 Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/AdminCommand.java,1\d\1d2691b4e0adad8335c25c6815eb0a1b2e01a492
-
-Osrc/main/java/com/october/to/finish/app/web/restaurant/service/UserService.java,d\5\d5539f39ce3e2ad115825436424afbe864dca76e
-à
-Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserServiceImpl.java,f\6\f6632e82853123e60a4f02bb58d831c2706fe6cd
 â
 Ysrc/main/java/com/october/to/finish/app/web/restaurant/dao/mapper/impl/ReceiptMapper.java,0\4\042171f6484ac5f321719271192d8359f2bc203f
 Ü
@@ -202,8 +184,6 @@ Ysrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/CleanCartCo
 Lsrc/main/java/com/october/to/finish/app/web/restaurant/utils/db/DBUtils.java,1\4\14bf17a62c9eb710d19da3bfae7eb9806c045f31
 O
 src/main/webapp/create_dish.jsp,f\c\fc91f304ba7257719327bd19d183849795b7dd8b
-å
-\src/main/java/com/october/to/finish/app/web/restaurant/utils/validation/ValidationUtils.java,b\8\b808c949a6e4b2713db79403233132922056d108
 Ñ
 Tsrc/main/java/com/october/to/finish/app/web/restaurant/listener/ContextListener.java,e\4\e4aec79c0bfd1d2988d9f6df39c358f7499996e2
 Ñ

@@ -8,12 +8,12 @@ import java.util.List;
 public interface ContactsService {
     void save(Contacts contacts) throws ServiceException;
 
-    Contacts findById(long addressId) throws ServiceException;
+    Contacts findById(long contactsId) throws ServiceException;
 
     List<Contacts> findAll() throws ServiceException;
 
-    boolean update(long addressId, Contacts contacts) throws ServiceException;
+    boolean update(long contactsId, Contacts contacts) throws ServiceException;
 
-    void delete(long addressId) throws ServiceException;
+    void delete(long contactsId) throws ServiceException;
 
 }
