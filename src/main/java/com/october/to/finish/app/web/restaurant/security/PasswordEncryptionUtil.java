@@ -52,7 +52,6 @@ public class PasswordEncryptionUtil {
         if (password == null || userPassword == null) {
             throw new IllegalArgumentException("Can't validate null!");
         }
-        LOGGER.info("[PasswordEncrypt] password: [{}], user.password: [{}]", password, userPassword);
         return password.equals(userPassword);
     }
 

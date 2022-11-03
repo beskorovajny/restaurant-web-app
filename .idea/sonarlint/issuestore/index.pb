@@ -164,8 +164,6 @@ Xsrc/main/java/com/october/to/finish/app/web/restaurant/service/impl/UserService
 \src/test/java/com/october/to/finish/app/web/restaurant/service/impl/DishServiceImplTest.java,9\9\991efb6e617bd2dd57da4addcb7774eccdb82861
 ˆ
 Xsrc/main/java/com/october/to/finish/app/web/restaurant/command/dish/EditDishCommand.java,d\c\dcdb12af105da9856bc14acb336f71b20497d8ee
-…
-Usrc/main/java/com/october/to/finish/app/web/restaurant/command/user/LoginCommand.java,a\d\ada986d739395d37fafa7b165cbecb739e3f9a8c
 
 Osrc/main/java/com/october/to/finish/app/web/restaurant/service/UserService.java,d\5\d5539f39ce3e2ad115825436424afbe864dca76e
 ƒ
