@@ -30,7 +30,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -39,16 +38,6 @@ import java.sql.SQLException;
 public class ContextListener implements HttpSessionListener, ServletContextListener {
     private static final Logger LOGGER = LogManager.getLogger(ContextListener.class);
     private static final String CONTEXT_LISTENER_MSG = "[ContextListener]";
-
-    @Override
-    public void sessionCreated(HttpSessionEvent se) {
-        // empty
-    }
-
-    @Override
-    public void sessionDestroyed(HttpSessionEvent se) {
-        // empty
-    }
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -227,10 +216,5 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
 
         context.setAttribute("commandContainer", commandContainer);
 
-    }
-
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        // empty
     }
 }

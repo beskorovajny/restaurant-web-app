@@ -10,7 +10,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+/**
+ * This class implements functionality of
+ * @see com.october.to.finish.app.web.restaurant.model.User
+ * mapping using JDBC API.
+ */
 public class UserMapper implements ObjectMapper<User> {
     @Override
     public User extractFromResultSet(ResultSet resultSet) throws SQLException {
@@ -36,6 +40,11 @@ public class UserMapper implements ObjectMapper<User> {
         return cache.get(String.valueOf(user.getId()));
     }
 
+    /**
+     * @param id long value parameter of User.Role.id
+     * @return User.Role value if role is exists or null value otherwise
+     * @see User.Role
+     */
     private User.Role getById(Long id) {
         for (User.Role r : User.Role.values()) {
             if (r.getId() == (id)) return r;
@@ -43,7 +52,7 @@ public class UserMapper implements ObjectMapper<User> {
         return null;
     }
 
-    public void setPersonParams(User user, PreparedStatement preparedStatement) throws SQLException {
+    public void setUserParams(User user, PreparedStatement preparedStatement) throws SQLException {
         preparedStatement.setString(1, user.getEmail());
         preparedStatement.setString(2, user.getFirstName());
         preparedStatement.setString(3, user.getLastName());

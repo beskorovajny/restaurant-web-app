@@ -12,6 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * This class implements functionality of manipulations with
+ *
+ * @see com.october.to.finish.app.web.restaurant.model.Dish
+ * using MySQL database.
+ * Constructor param :
+ * @see java.sql.Connection
+ */
 public class DishDAOImpl implements DishDAO {
     private static final Logger LOGGER = LogManager.getLogger(DishDAOImpl.class);
     private static final String DISH_RECEIVED_MSG = "Dish received : [{}], [{}], [{}]";
@@ -263,6 +272,11 @@ public class DishDAOImpl implements DishDAO {
         }
     }
 
+    /**
+     * @return integer value of number of all
+     * @see com.october.to.finish.app.web.restaurant.model.Dish
+     * records.
+     */
     public int countRecords() {
         int recordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_DISH_RECORDS);
@@ -276,6 +290,12 @@ public class DishDAOImpl implements DishDAO {
         return recordsCount;
     }
 
+    /**
+     * @return integer value of number of all
+     * @see com.october.to.finish.app.web.restaurant.model.Dish
+     * records filtered by
+     * @see com.october.to.finish.app.web.restaurant.model.Dish.Category
+     */
     public int countRecordsForCategory(long categoryId) {
         int categoryRecordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_DISH_RECORDS_FOR_CATEGORY)) {

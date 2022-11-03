@@ -13,6 +13,13 @@ import org.apache.logging.log4j.Logger;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * This class implements functionality of manipulations with
+ * @see com.october.to.finish.app.web.restaurant.model.Receipt
+ * class using MySQL database.
+ * Constructor param :
+ * @see java.sql.Connection
+ */
 public class ReceiptDAOImpl implements ReceiptDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(ReceiptDAOImpl.class);
@@ -220,7 +227,11 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             throw new DAOException("[ReceiptDAO] exception while saving Dish for Receipt" + e.getMessage(), e);
         }
     }
-
+    /**
+     * @return integer value of number of all
+     * @see com.october.to.finish.app.web.restaurant.model.Receipt
+     * records.
+     */
     public int countRecords() throws DAOException {
         int recordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_RECEIPT_RECORDS);

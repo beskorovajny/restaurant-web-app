@@ -13,6 +13,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This class implements functionality of manipulations with
+ * @see com.october.to.finish.app.web.restaurant.model.User
+ * class using MySQL database.
+ * Constructor param :
+ * @see java.sql.Connection
+ */
 public class UserDAOImpl implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(UserDAOImpl.class);
     private static final String USER_DAO_EXC_MSG = "[UserDAO] exception while receiving User";
@@ -27,7 +34,6 @@ public class UserDAOImpl implements UserDAO {
             "first_name = ?, last_name = ?, password = ?, " +
             "role_Id = ? WHERE id = ?";
     private static final String DELETE = "DELETE FROM user WHERE id = ?";
-    private static final String FIND_ROLE_BY_NAME = "SELECT * FROM role WHERE name = ?";
     private static final String COUNT_USERS_RECORDS = "SELECT COUNT(*) FROM user";
     private final Connection connection;
     private final UserMapper userMapper = new UserMapper();
@@ -52,7 +58,7 @@ public class UserDAOImpl implements UserDAO {
         }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS)) {
-            userMapper.setPersonParams(user, preparedStatement);
+            userMapper.setUserParams(user, preparedStatement);
             preparedStatement.executeUpdate();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
             long key = 0;
@@ -140,7 +146,7 @@ public class UserDAOImpl implements UserDAO {
         }
         try (PreparedStatement preparedStatement = connection.
                 prepareStatement(UPDATE)) {
-            userMapper.setPersonParams(user, preparedStatement);
+            userMapper.setUserParams(user, preparedStatement);
             preparedStatement.setLong(6, userId);
 
             int rowUpdated = preparedStatement.executeUpdate();
@@ -179,7 +185,11 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
-
+    /**
+     * @return integer value of number of all
+     * @see com.october.to.finish.app.web.restaurant.model.User
+     * records.
+     */
     public int countRecords() {
         int recordsCount = 0;
         try (PreparedStatement preparedStatement = connection.prepareStatement(COUNT_USERS_RECORDS);

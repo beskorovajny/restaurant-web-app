@@ -2,6 +2,7 @@ package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
+import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -12,7 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+/**
+ * This class implements functionality of
+ * @see com.october.to.finish.app.web.restaurant.model.Receipt
+ * mapping using JDBC API.
+ */
 public class ReceiptMapper implements ObjectMapper<Receipt> {
     @Override
     public Receipt extractFromResultSet(ResultSet resultSet) throws SQLException {
@@ -30,7 +35,11 @@ public class ReceiptMapper implements ObjectMapper<Receipt> {
         receipt = this.makeUnique(receiptMap, receipt);
         return receipt;
     }
-
+    /**
+     * @param id long value parameter of Receipt.Status.id
+     * @return Receipt.Status value if status is exists or null value otherwise
+     * @see Receipt.Status
+     */
     private Receipt.Status getById(Long id) {
         for (Receipt.Status s : Receipt.Status.values()) {
             if (s.getId() == (id)) return s;

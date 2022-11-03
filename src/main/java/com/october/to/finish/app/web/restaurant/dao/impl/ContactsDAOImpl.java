@@ -12,6 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * This class implements functionality of manipulations with
+ * @see com.october.to.finish.app.web.restaurant.model.Contacts
+ * class using MySQL database.
+ * Constructor param :
+ * @see java.sql.Connection
+ */
 public class ContactsDAOImpl implements ContactsDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(ContactsDAOImpl.class);

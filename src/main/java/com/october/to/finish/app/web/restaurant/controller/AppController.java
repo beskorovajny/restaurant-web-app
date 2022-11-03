@@ -18,12 +18,6 @@ import java.io.IOException;
 @WebServlet(name = "appController", value = "/controller")
 public class AppController extends HttpServlet {
     private static final Logger LOGGER = LogManager.getLogger(AppController.class);
-    private CommandContainer commandContainer;
-
-    @Override
-    public void init(ServletConfig config) {
-        commandContainer = (CommandContainer) config.getServletContext().getAttribute("commandContainer");
-    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -54,7 +48,7 @@ public class AppController extends HttpServlet {
 
     public String getUrl(HttpServletRequest req, HttpServletResponse resp) throws CommandException, FatalApplicationException {
         String commandName = req.getParameter("command");
-        AppCommand actionCommand = CommandContainer.getCommand(commandName);
-        return actionCommand.execute(req, resp);
+        AppCommand appCommand = CommandContainer.getCommand(commandName);
+        return appCommand.execute(req, resp);
     }
 }

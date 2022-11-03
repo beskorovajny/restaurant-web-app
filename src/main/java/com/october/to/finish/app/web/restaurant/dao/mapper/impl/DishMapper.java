@@ -2,6 +2,7 @@ package com.october.to.finish.app.web.restaurant.dao.mapper.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.mapper.ObjectMapper;
 import com.october.to.finish.app.web.restaurant.model.Dish;
+import com.october.to.finish.app.web.restaurant.model.User;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
@@ -12,7 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-
+/**
+ * This class implements functionality of
+ * @see com.october.to.finish.app.web.restaurant.model.Dish
+ * mapping using JDBC API.
+ */
 public class DishMapper implements ObjectMapper<Dish> {
     @Override
     public Dish extractFromResultSet(ResultSet resultSet) throws SQLException {
@@ -49,6 +54,11 @@ public class DishMapper implements ObjectMapper<Dish> {
         dish = this.makeUnique(dishMap, dish);
         return dish;
     }
+    /**
+     * @param id long value parameter of Dish.Category.id
+     * @return Dish.Category value if category is exists or null value otherwise
+     * @see Dish.Category
+     */
     private Dish.Category getById(Long id) {
         for (Dish.Category c : Dish.Category.values()) {
             if (c.getId() == (id)) return c;

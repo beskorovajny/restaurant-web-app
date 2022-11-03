@@ -14,8 +14,6 @@ public class ContactsServiceImpl implements ContactsService {
     private static final Logger LOGGER = LogManager.getLogger(ContactsServiceImpl.class);
     private static final String NULL_ADDRESS_DAO_EXC = "[ContactsService] Can't create ContactsService with null input ContactsDAO";
     private static final String NULL_ADDRESS_INPUT_EXC = "[ContactsService] Can't operate null (or < 1) input!";
-    private static final String EXISTED_ADDRESS_EXC =
-            "[ContactsService] Contacts with given [ID: {}] is already existed!";
     private final ContactsDAO contactsDAO;
 
     public ContactsServiceImpl(ContactsDAO contactsDAO) {
