@@ -16,22 +16,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ReceiptDAOImplTest {
-
     @Mock
     private Connection connection;
     @Mock
     private PreparedStatement preparedStatement;
     @Mock
     private ResultSet resultSet;
-    @Mock ReceiptMapper receiptMapper;
+    @Mock
+    ReceiptMapper receiptMapper;
     @InjectMocks
     private ReceiptDAOImpl receiptDAO;
     private Receipt expected;
@@ -89,7 +87,7 @@ class ReceiptDAOImplTest {
     }
 
     @Test
-    void shouldNotSaveTest() throws  SQLException {
+    void shouldNotSaveTest() throws SQLException {
         final long userId = 1L;
         when(connection.prepareStatement(anyString(), anyInt())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> receiptDAO.save(userId, expected));
@@ -122,36 +120,6 @@ class ReceiptDAOImplTest {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> receiptDAO.findById(receiptId));
     }
-
-
-    /*@Test
-    void shouldFindAllTest() throws SQLException, DAOException {
-        final List<Receipt> expectedList = List.of(
-                expected, expected, expected);
-        final List<Receipt> receipts = new ArrayList<>();
-        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
-        when(preparedStatement.executeQuery()).thenReturn(resultSet);
-       *//* when(resultSet.next()).thenReturn(true);*//*
-        for (Receipt receipt : expectedList) {
-            when(receiptMapper.extractFromResultSet(resultSet)).thenReturn(receipt);
-        }
-        *//*when(receiptMapper.extractReceipts(receipts, preparedStatement)).thenReturn(expectedList);*//*
-
-        *//*when(resultSet.getLong("id")).thenReturn(expected.getId());
-        when(resultSet.getTimestamp("created")).thenReturn(Timestamp.valueOf(expected.getDateCreated()));
-        when(resultSet.getBigDecimal("receipt_price")).thenReturn(BigDecimal.valueOf(expected.getTotalPrice()));
-        when(resultSet.getLong("user_id")).thenReturn(expected.getCustomerId());
-        when(resultSet.getLong("receipt_status_id")).thenReturn(expected.getStatus().getId());
-        when(resultSet.getLong("contacts_id")).thenReturn(expected.getContactsId());*//*
-
-        *//*when(resultSet.next()).thenReturn(false);*//*
-
-
-        when(receiptMapper.extractReceipts(expectedList, preparedStatement)).thenReturn(expectedList);
-        final List<Receipt> actual = receiptDAO.findAll(offset);
-        assertEquals(expectedList, actual);
-        verify(preparedStatement, times(1)).executeQuery();
-    }*/
 
     @Test
     void shouldNotFindAll() throws SQLException {

@@ -15,9 +15,9 @@ import java.util.Optional;
 
 /**
  * This class implements functionality of manipulations with
- * @see com.october.to.finish.app.web.restaurant.model.User
- * class using MySQL database.
+ * {@link User} entity using MySQL database.
  * Constructor param :
+ *
  * @see java.sql.Connection
  */
 public class UserDAOImpl implements UserDAO {

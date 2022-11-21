@@ -45,7 +45,7 @@ class ContactsServiceImplTest {
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> addressService.save( null));
+        assertThrows(IllegalArgumentException.class, () -> addressService.save(null));
     }
 
     @Test
@@ -98,6 +98,7 @@ class ContactsServiceImplTest {
         addressService.update(addressId, expected);
         verify(addressDAO, times(1)).update(addressId, expected);
     }
+
     @Test
     void shouldNotUpdateIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> addressService.update(0, new Contacts()));

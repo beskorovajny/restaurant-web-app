@@ -2,7 +2,6 @@ package com.october.to.finish.app.web.restaurant.service.impl;
 
 import com.october.to.finish.app.web.restaurant.dao.ContactsDAO;
 import com.october.to.finish.app.web.restaurant.dao.ReceiptDAO;
-import com.october.to.finish.app.web.restaurant.dao.UserDAO;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Contacts;
@@ -18,6 +17,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This class implements business logic for {@link Receipt}
+ */
 public class ReceiptServiceImpl implements ReceiptService {
     private static final Logger LOGGER = LogManager.getLogger(ReceiptServiceImpl.class);
     private static final String NULL_RECEIPT_DAO_EXC = "[ReceiptService] Can't create ContactsService with null input ContactsDAO";
@@ -95,6 +97,10 @@ public class ReceiptServiceImpl implements ReceiptService {
         }
     }
 
+    /**
+     * @param offset is a current page value
+     * @return value for pagination on JSP for {@link Receipt}
+     */
     private int getOffset(int offset) {
         return offset * 10 - 10;
     }
@@ -185,6 +191,9 @@ public class ReceiptServiceImpl implements ReceiptService {
         return cart.entrySet().stream().mapToDouble(this::getDishTotalPriceWithCount).sum();
     }
 
+    /**
+     * @return all {@link Receipt} records in database
+     */
     public int getRecordsCount() throws DAOException {
         return receiptDAO.countRecords();
     }

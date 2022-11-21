@@ -14,9 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 /**
- * This class implements functionality of
- * @see com.october.to.finish.app.web.restaurant.model.Receipt
- * mapping using JDBC API.
+ * This class implements functionality of {@link Receipt} mapping using JDBC API.
  */
 public class ReceiptMapper implements ObjectMapper<Receipt> {
     @Override

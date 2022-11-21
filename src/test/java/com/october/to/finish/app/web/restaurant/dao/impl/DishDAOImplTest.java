@@ -146,28 +146,6 @@ class DishDAOImplTest {
         assertThrows(DAOException.class, () -> dishDAO.findByTitle(title));
     }
 
-   /* @Test
-    void shouldFindAllTest() throws SQLException, DAOException {
-       *//* final List<Contacts> expectedList = List.of(
-                new Contacts("Country1", "City1", "Street1", "Building1"),
-                new Contacts("Country2", "City2", "Street2", "Building2"),
-                new Contacts("Country3", "City3", "Street3", "Building3"));
-        final List<Contacts> addresses = new ArrayList<>();
-        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
-        when(preparedStatement.executeQuery()).thenReturn(resultSet);
-        when(resultSet.next()).thenReturn(true);
-        when(resultSet.getLong("id")).thenReturn(expected.getId());
-        when(resultSet.getString("country")).thenReturn(expected.getCountry());
-        when(resultSet.getString("city")).thenReturn(expected.getCity());
-        when(resultSet.getString("street")).thenReturn(expected.getStreet());
-        when(resultSet.getString("building_number")).thenReturn(expected.getBuildingNumber());
-        when(addressMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-        final List<Contacts> actual = dishDAO.findAll();
-        assertEquals(expectedList, actual);
-        verify(preparedStatement, times(1)).executeQuery();
-*//*
-    }*/
-
     @Test
     void shouldNotFindAll() throws SQLException {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);

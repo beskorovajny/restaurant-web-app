@@ -14,8 +14,7 @@ import java.util.Optional;
 
 /**
  * This class implements functionality of manipulations with
- * @see com.october.to.finish.app.web.restaurant.model.Contacts
- * class using MySQL database.
+ * {@link Contacts} entity using MySQL database.
  * Constructor param :
  * @see java.sql.Connection
  */

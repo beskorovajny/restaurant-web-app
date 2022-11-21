@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * This class implements functionality of showing current time on client side using tag library
+ */
 public class CustomDateTimeTag extends TagSupport {
     @Override
     public int doStartTag() throws JspException {

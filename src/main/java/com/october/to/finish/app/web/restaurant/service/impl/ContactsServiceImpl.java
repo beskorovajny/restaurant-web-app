@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * This class implements business logic for {@link Contacts}
+ */
 public class ContactsServiceImpl implements ContactsService {
     private static final Logger LOGGER = LogManager.getLogger(ContactsServiceImpl.class);
     private static final String NULL_ADDRESS_DAO_EXC = "[ContactsService] Can't create ContactsService with null input ContactsDAO";

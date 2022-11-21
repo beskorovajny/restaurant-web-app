@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * This class implements business logic for {@link Dish}
+ */
 public class DishServiceImpl implements DishService {
     private static final Logger LOGGER = LogManager.getLogger(DishServiceImpl.class);
     private static final String NULL_DISH_DAO_EXC = "[DishService] Can't create DishService with null input DishDAO";
@@ -140,6 +143,10 @@ public class DishServiceImpl implements DishService {
         }
     }
 
+    /**
+     * @param offset is a current page value
+     * @return value for pagination on JSP for {@link Dish}
+     */
     private int getOffset(int offset) {
         return offset * 10 - 10;
     }
@@ -172,10 +179,17 @@ public class DishServiceImpl implements DishService {
         }
     }
 
+    /**
+     * @return all {@link Dish} records in database
+     */
     public int getRecordsCount() {
         return dishDAO.countRecords();
     }
 
+    /**
+     * @param categoryId is a value of {@link Dish.Category#id}
+     * @return value of records count in database
+     */
     public int getRecordsCountForCategory(long categoryId) {
         return dishDAO.countRecordsForCategory(categoryId);
     }

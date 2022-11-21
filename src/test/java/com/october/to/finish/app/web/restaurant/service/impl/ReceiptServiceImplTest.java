@@ -1,12 +1,9 @@
 package com.october.to.finish.app.web.restaurant.service.impl;
 
-import com.october.to.finish.app.web.restaurant.dao.DishDAO;
 import com.october.to.finish.app.web.restaurant.dao.impl.ContactsDAOImpl;
-import com.october.to.finish.app.web.restaurant.dao.impl.DishDAOImpl;
 import com.october.to.finish.app.web.restaurant.dao.impl.ReceiptDAOImpl;
 import com.october.to.finish.app.web.restaurant.exceptions.DAOException;
 import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
-import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.Receipt;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -81,7 +78,7 @@ class ReceiptServiceImplTest {
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
         assertThrows(IllegalArgumentException.class, () -> receiptService.save(0, null));
-        assertThrows(IllegalArgumentException.class, () -> receiptService.save(1,null));
+        assertThrows(IllegalArgumentException.class, () -> receiptService.save(1, null));
         assertThrows(IllegalArgumentException.class, () -> receiptService.save(-1, expectedReceipt));
     }
 

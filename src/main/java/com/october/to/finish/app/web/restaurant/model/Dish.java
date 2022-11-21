@@ -36,52 +36,52 @@ public class Dish implements Serializable {
         return title;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public int getCooking() {
-        return cooking;
-    }
-
-    public LocalDateTime getDateCreated() {
-        return dateCreated;
-    }
-
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
+    public Category getCategory() {
+        return category;
+    }
+
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public double getPrice() {
+        return price;
     }
 
     public void setPrice(double price) {
         this.price = price;
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
     public void setWeight(int weight) {
         this.weight = weight;
     }
 
+    public int getCooking() {
+        return cooking;
+    }
+
     public void setCooking(int cooking) {
         this.cooking = cooking;
+    }
+
+    public LocalDateTime getDateCreated() {
+        return dateCreated;
     }
 
     public void setDateCreated(LocalDateTime dateCreated) {

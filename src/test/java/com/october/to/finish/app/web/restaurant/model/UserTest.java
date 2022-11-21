@@ -43,7 +43,7 @@ class UserTest {
     void wrongInputTest() {
         User user = User.newBuilder().build();
         assertThrows(IllegalArgumentException.class, () -> User.newBuilder().setId(0).setEmail(null).setFirstName(null).setLastName(null)
-               .setRole(null).setPassword(null).build());
+                .setRole(null).setPassword(null).build());
         assertThrows(IllegalArgumentException.class, () -> user.setOrders(null));
         assertThrows(IllegalArgumentException.class, () -> user.setId(0));
         assertThrows(IllegalArgumentException.class, () -> user.setRole(null));

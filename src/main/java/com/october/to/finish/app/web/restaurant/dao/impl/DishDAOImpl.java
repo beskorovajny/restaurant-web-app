@@ -15,10 +15,9 @@ import java.util.Optional;
 
 /**
  * This class implements functionality of manipulations with
- *
- * @see com.october.to.finish.app.web.restaurant.model.Dish
- * using MySQL database.
+ * {@link Dish} entity using MySQL database.
  * Constructor param :
+ *
  * @see java.sql.Connection
  */
 public class DishDAOImpl implements DishDAO {
@@ -273,9 +272,7 @@ public class DishDAOImpl implements DishDAO {
     }
 
     /**
-     * @return integer value of number of all
-     * @see com.october.to.finish.app.web.restaurant.model.Dish
-     * records.
+     * @return integer value of number of all {@link Dish} records in database
      */
     public int countRecords() {
         int recordsCount = 0;
@@ -291,10 +288,7 @@ public class DishDAOImpl implements DishDAO {
     }
 
     /**
-     * @return integer value of number of all
-     * @see com.october.to.finish.app.web.restaurant.model.Dish
-     * records filtered by
-     * @see com.october.to.finish.app.web.restaurant.model.Dish.Category
+     * @return integer value of number of all {@link Dish} records filtered by {@link Dish.Category}
      */
     public int countRecordsForCategory(long categoryId) {
         int categoryRecordsCount = 0;

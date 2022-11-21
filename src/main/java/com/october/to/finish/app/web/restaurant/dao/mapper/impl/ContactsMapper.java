@@ -12,9 +12,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * This class implements functionality of
- * @see com.october.to.finish.app.web.restaurant.model.Contacts
- * mapping using JDBC API.
+ * This class implements functionality of {@link Contacts} mapping using JDBC API.
  */
 public class ContactsMapper implements ObjectMapper<Contacts> {
     @Override

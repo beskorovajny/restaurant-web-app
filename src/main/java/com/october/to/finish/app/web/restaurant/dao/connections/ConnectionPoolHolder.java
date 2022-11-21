@@ -17,6 +17,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * Utility class for creating database connections
+ */
 public class ConnectionPoolHolder {
     private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolHolder.class);
     private static volatile DataSource dataSource;
@@ -24,6 +27,12 @@ public class ConnectionPoolHolder {
     private ConnectionPoolHolder() {
     }
 
+    /**
+     * Method for receive Datasource object using configuration properties file
+     * @param path is a properties file path value
+     * @return {@link DataSource}
+     * @throws DAOException if something wrong
+     */
     public static DataSource getDataSource(String path) throws DAOException {
         if (dataSource == null) {
             synchronized (ConnectionPoolHolder.class) {
@@ -52,6 +61,10 @@ public class ConnectionPoolHolder {
         return dataSource;
     }
 
+    /**
+     * @return database connection using JNDI features using
+     * src/main/webapp/META-INF/context.xml configuration file
+     */
     public static Connection getConnection() {
         Connection connection = null;
         try {

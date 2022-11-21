@@ -29,7 +29,7 @@ public class UserSessionFilter implements Filter {
         restrictedCommands = new ArrayList<>();
         String tempCommands = filterConfig.getInitParameter("restricted_user");
         StringTokenizer token = new StringTokenizer(tempCommands, ",");
-        while (token.hasMoreTokens()){
+        while (token.hasMoreTokens()) {
             restrictedCommands.add(token.nextToken());
         }
     }
@@ -51,9 +51,10 @@ public class UserSessionFilter implements Filter {
             filterChain.doFilter(servletRequest, servletResponse);
         }
     }
-    private boolean isRestricted(String command){
-        for (String restrictedCommand : restrictedCommands){
-            if(command.startsWith(restrictedCommand)){
+
+    private boolean isRestricted(String command) {
+        for (String restrictedCommand : restrictedCommands) {
+            if (command.startsWith(restrictedCommand)) {
                 return true;
             }
         }

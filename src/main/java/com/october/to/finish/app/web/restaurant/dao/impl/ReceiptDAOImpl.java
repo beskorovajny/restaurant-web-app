@@ -15,9 +15,9 @@ import java.util.*;
 
 /**
  * This class implements functionality of manipulations with
- * @see com.october.to.finish.app.web.restaurant.model.Receipt
- * class using MySQL database.
+ * {@link Receipt} entity using MySQL database.
  * Constructor param :
+ *
  * @see java.sql.Connection
  */
 public class ReceiptDAOImpl implements ReceiptDAO {
@@ -227,6 +227,7 @@ public class ReceiptDAOImpl implements ReceiptDAO {
             throw new DAOException("[ReceiptDAO] exception while saving Dish for Receipt" + e.getMessage(), e);
         }
     }
+
     /**
      * @return integer value of number of all
      * @see com.october.to.finish.app.web.restaurant.model.Receipt

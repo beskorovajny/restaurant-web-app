@@ -14,7 +14,6 @@ import java.security.NoSuchAlgorithmException;
  * using SHA-256
  */
 public class PasswordEncryptionUtil {
-    private static final Logger LOGGER = LogManager.getLogger(PasswordEncryptionUtil.class);
     private PasswordEncryptionUtil() {
     }
 

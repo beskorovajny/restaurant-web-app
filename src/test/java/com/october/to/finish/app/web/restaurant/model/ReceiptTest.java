@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ReceiptTest {
     private Contacts contacts;
     private User user;
+
     @BeforeEach
     void init() {
         contacts = new Contacts();

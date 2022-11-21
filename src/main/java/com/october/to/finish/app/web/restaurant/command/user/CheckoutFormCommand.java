@@ -19,6 +19,7 @@ public class CheckoutFormCommand implements AppCommand {
     public CheckoutFormCommand(DishService dishService) {
         this.dishService = dishService;
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws CommandException, FatalApplicationException {
         HttpSession session = request.getSession();

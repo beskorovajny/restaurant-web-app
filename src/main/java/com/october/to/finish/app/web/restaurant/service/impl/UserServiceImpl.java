@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+/**
+ * This class implements business logic for {@link User}
+ */
 public class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
     private static final String NULL_USER_DAO_EXC = "[UserService] Can't create UserService with null input UserDAO";
@@ -26,10 +29,6 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
-    /**
-     * @param user
-     * @throws ServiceException when DAOException was catched
-     */
     @Override
     public void save(User user) throws ServiceException {
         if (user == null) {
@@ -58,7 +57,6 @@ public class UserServiceImpl implements UserService {
             throw new ServiceException(e.getMessage(), e);
         }
     }
-
 
     @Override
     public User findById(long id) throws ServiceException {
@@ -100,6 +98,10 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * @param offset is a current page value
+     * @return value for pagination on JSP for {@link User}
+     */
     private int getOffset(int offset) {
         return offset * 10 - 10;
     }
@@ -134,6 +136,9 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * @return all {@link User} records in database
+     */
     public int getRecordsCount() {
         return userDAO.countRecords();
     }

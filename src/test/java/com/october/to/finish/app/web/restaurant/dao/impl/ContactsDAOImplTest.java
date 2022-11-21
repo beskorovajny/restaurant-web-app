@@ -68,7 +68,7 @@ class ContactsDAOImplTest {
 
     @Test
     void shouldNotSaveIfInputIncorrectTest() {
-        assertThrows(IllegalArgumentException.class, () -> contactsDAO.save( null));
+        assertThrows(IllegalArgumentException.class, () -> contactsDAO.save(null));
     }
 
     @Test
@@ -104,40 +104,6 @@ class ContactsDAOImplTest {
         when(connection.prepareStatement(anyString())).thenThrow(SQLException.class);
         assertThrows(DAOException.class, () -> contactsDAO.findById(addressId));
     }
-
-    /*@Test
-    void shouldFindAllTest() throws SQLException, DAOException {
-        final List<Contacts> expectedList = List.of(
-                new Contacts("Country1", "City1", "Street1", "Building1"),
-                new Contacts("Country2", "City2", "Street2", "Building2"),
-                new Contacts("Country3", "City3", "Street3", "Building3"));
-
-        final List<Contacts> addresses = new ArrayList<>();
-        when(connection.prepareStatement(anyString())).thenReturn(preparedStatement);
-        when(preparedStatement.executeQuery()).thenReturn(resultSet);
-        *//*when(resultSet.next()).thenReturn(true);*//*
-
-       *//**//*
-        int i = 0;
-        for (Contacts address : expectedList) {
-            address.setId(++i);
-        }
-
-        for (Contacts address : expectedList) {
-            when(resultSet.next()).thenReturn(true);
-            when(resultSet.getLong("id")).thenReturn(address.getId());
-            when(resultSet.getString("country")).thenReturn(address.getCountry());
-            when(resultSet.getString("city")).thenReturn(address.getCity());
-            when(resultSet.getString("street")).thenReturn(address.getStreet());
-            when(resultSet.getString("building_number")).thenReturn(address.getBuildingNumber());
-        }
-        when(contactsMapper.extractAddresses(addresses, preparedStatement)).thenReturn(expectedList);
-
-        final List<Contacts> actual = contactsDAO.findAll();
-        assertEquals(expectedList, actual);
-        verify(preparedStatement, times(1)).executeQuery();
-
-    }*/
 
     @Test
     void shouldNotFindAll() throws SQLException {
