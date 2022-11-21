@@ -66,32 +66,30 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="receipt" items="${receipts}">
+        <c:forEach var="receipt" items="${requestScope.receipts}">
             <tr>
-                <td><c:out value="${receipt.id}"/>
-                </td>
+                <td>${receipt.id}</td>
                 <td><fmt:parseDate value="${receipt.dateCreated}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDate" type="date"/>
                     <fmt:formatDate value="${parsedDate}" pattern="yyyy-MM-dd HH:mm"/>
                 </td>
-                <td><c:out value="${receipt.totalPrice}"/>
-                </td>
+                <td>${receipt.totalPrice}</td>
                 <td>
                     <c:choose>
                         <c:when test="${receipt.status.id == 1}">
-                            <fmt:message key="text.new" var="newS"/>
-                            <c:out value="${newS}"/>
+                            <fmt:message key="text.new" var="statusNew"/>
+                            ${statusNew}
                         </c:when>
                         <c:when test="${receipt.status.id == 2}">
                             <fmt:message key="text.cooking" var="cooking"/>
-                            <c:out value="${cooking}"/>
+                            ${cooking}
                         </c:when>
                         <c:when test="${receipt.status.id == 3}">
                             <fmt:message key="text.delivery" var="delivery"/>
-                            <c:out value="${delivery}"/>
+                            ${delivery}
                         </c:when>
                         <c:when test="${receipt.status.id == 4}">
                             <fmt:message key="text.completed" var="completed"/>
-                            <c:out value="${completed}"/>
+                            ${completed}
                         </c:when>
                     </c:choose>
                 </td>
@@ -114,7 +112,7 @@
                 </li>
             </c:if>
 
-            <c:forEach var="page" items="${pages}">
+            <c:forEach var="page" items="${requestScope.pages}">
 
                 <li class="page-item"><a class="page-link"
                                          href="controller?command=${param.command}&page=${page}">${page}</a>

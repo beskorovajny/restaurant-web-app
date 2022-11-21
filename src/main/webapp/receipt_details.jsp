@@ -29,11 +29,11 @@
                     <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                         <li><a class="dropdown-item"
                                href="controller?command=setLang&locale=ua&pageToProcess=${param.command}&
-                               receipt=${receipt}&user=${user}&contacts=${contacts}&receiptId=${receipt.id}">UA</a>
+                               receipt=${requestScope.receipt}&user=${requestScope.user}&contacts=${requestScope.contacts}&receiptId=${requestScope.receipt.id}">UA</a>
                         </li>
                         <li><a class="dropdown-item"
                                href="controller?command=setLang&locale&pageToProcess=${param.command}&
-                               receipt=${receipt}&user=${user}&contacts=${contacts}&receiptId=${receipt.id}">ENG</a></li>
+                               receipt=${requestScope.receipt}&user=${requestScope.user}&contacts=${requestScope.contacts}&receiptId=${requestScope.receipt.id}">ENG</a></li>
                     </ul>
                 </div>
             </div>
@@ -49,7 +49,7 @@
                 <span class="badge badge-secondary badge-pill">3</span>
             </h4>
             <ul class="list-group mb-3">
-                <c:forEach var="entry" items="${receipt.orderedDishes}">
+                <c:forEach var="entry" items="${requestScope.receipt.orderedDishes}">
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
                             <h6 class="my-0"><c:out value="${entry.key.title}"/></h6>
@@ -62,7 +62,7 @@
                 </c:forEach>
                 <li class="list-group-item d-flex justify-content-between">
                     <span><fmt:message key="text.total.price"/></span>
-                    <strong>${receipt.totalPrice}</strong>
+                    <strong>${requestScope.receipt.totalPrice}</strong>
                 </li>
             </ul>
         </div>
@@ -75,7 +75,7 @@
                             <p class="mb-0"><fmt:message key="text.full.name"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${user.firstName} ${user.lastName}</p>
+                            <p class="text-muted mb-0">${requestScope.user.firstName} ${requestScope.user.lastName}</p>
                         </div>
                     </div>
                     <hr>
@@ -84,7 +84,7 @@
                             <p class="mb-0">Email</p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${user.email}</p>
+                            <p class="text-muted mb-0">${requestScope.user.email}</p>
                         </div>
                     </div>
                     <hr>
@@ -94,7 +94,7 @@
                             <p class="mb-0"><fmt:message key="text.country"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${contacts.country}</p>
+                            <p class="text-muted mb-0">${requestScope.contacts.country}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -102,7 +102,7 @@
                             <p class="mb-0"><fmt:message key="text.city"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${contacts.city}</p>
+                            <p class="text-muted mb-0">${requestScope.contacts.city}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -110,7 +110,7 @@
                             <p class="mb-0"><fmt:message key="text.street"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${contacts.street}</p>
+                            <p class="text-muted mb-0">${requestScope.contacts.street}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -118,7 +118,7 @@
                             <p class="mb-0"><fmt:message key="text.building"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${contacts.buildingNumber}</p>
+                            <p class="text-muted mb-0">${requestScope.contacts.buildingNumber}</p>
                         </div>
                     </div>
                     <div class="row">
@@ -126,7 +126,7 @@
                             <p class="mb-0"><fmt:message key="text.phone"/></p>
                         </div>
                         <div class="col-sm-9">
-                            <p class="text-muted mb-0">${contacts.phone}</p>
+                            <p class="text-muted mb-0">${requestScope.contacts.phone}</p>
                         </div>
                     </div>
                     <hr>

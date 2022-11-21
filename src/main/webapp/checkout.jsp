@@ -77,7 +77,7 @@
                             </li>
                         </c:forEach>
                         <li class="list-group-item d-flex justify-content-between">
-                            <span><fmt:message key="text.total.price"/>($)</span>
+                            <span><fmt:message key="text.total.price"/></span>
                             <c:set var="total" value="${0}"/>
                             <c:forEach var="entry" items="${sessionScope.cart}">
                                 <c:set var="total" value="${total + (entry.key.price * entry.value)}"/>

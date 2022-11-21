@@ -40,34 +40,34 @@
                 <div class="card-body d-flex flex-column align-items-center">
                   <form class="text-center" action="controller" method="post">
                     <input hidden name="command" value="edit_dish"/>
-                    <input type="hidden" name="dishId" value="${dish.id}">
+                    <input type="hidden" name="dishId" value="${requestScope.dish.id}">
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
-                                                             placeholder="${dish.title}"
+                                                             placeholder="${requestScope.dish.title}"
                                                              name="title"
                                                              pattern="(?=.{1,45}$)[\p{L}\s\d*]+$"
                                                              minlength="2"
                                                              maxlength="45"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="text"
-                                                             placeholder="${dish.description}"
+                                                             placeholder="${requestScope.dish.description}"
                                                              name="description" minlength="2"
                                                              pattern="(?=.{1,255}$)[\p{L}\s\d*]+$"
                                                              maxlength="255"/></div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                              name="price"
-                                                             placeholder="price=${dish.price}"
+                                                             placeholder="price=${requestScope.dish.price}"
                                                              minlength="1"
                                                              step=".01"
                                                              pattern="^\d+(.\d{1,2})?$"/>
                     </div>
                     <div class="mb-3"><input class="form-control" type="number"
                                              name="weight"
-                                             placeholder="weight=${dish.weight}"
+                                             placeholder="weight=${requestScope.dish.weight}"
                                              step=".01"
                                              pattern="^\d+$"/>
                     </div>
                     <div style="margin-bottom: 16px;"><input class="form-control" type="number"
                                                              name="cooking"
-                                                             placeholder="cooking=${dish.cooking}"
+                                                             placeholder="cooking=${requestScope.dish.cooking}"
                                                              pattern="^\d+$"/>
                     </div>
                     <select name="category" style="margin-bottom: 10px">

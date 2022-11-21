@@ -1,11 +1,11 @@
-<%@ page isErrorPage="true" contentType="text/html; charset=UTF-8"%>
+<%@ page isErrorPage="true" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="messages"/>
 <html lang="${sessionScope.lang}">
 <head>
-    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
     <title><fmt:message key="text.error"/></title>
 </head>
@@ -20,10 +20,11 @@
         </div>
         <div class="row">
             <div class="col">
-                <h1 style="text-align: center;"><fmt:message key="text.error.text"/><br/><fmt:message key="text.error.me"/>
-                    </h1>
+                <h1 style="text-align: center;"><fmt:message key="text.error.text"/><br/><fmt:message
+                        key="text.error.me"/>
+                </h1>
                 <h3 style="text-align: center;"><a class="text-muted" href="controller?command?=home"
-                       style="color: #008000;"><fmt:message key="text.home"/></a></h3>
+                                                   style="color: #008000;"><fmt:message key="text.home"/></a></h3>
                 <p class="lead shadow-none"
                    style="text-align: center;font-size: 15px;margin: 54px;">
                     Something went terribly wrong...<br/>

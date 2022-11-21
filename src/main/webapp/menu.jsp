@@ -106,36 +106,30 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="dish" items="${dishes}">
+        <c:forEach var="dish" items="${requestScope.dishes}">
             <tr>
-                <td><c:out value="${dish.id}"/>
-                </td>
-                <td><c:out value="${dish.title}"/>
-                </td>
-                <td><c:out value="${dish.description}"/>
-                </td>
-                <td><c:out value="${dish.price}"/>
-                </td>
-                <td><c:out value="${dish.weight}"/>
-                </td>
-                <td><c:out value="${dish.cooking}"/>
-                </td>
+                <td>${dish.id}</td>
+                <td>${dish.title}</td>
+                <td>${dish.description}</td>
+                <td>${dish.price}</td>
+                <td>${dish.weight}</td>
+                <td>${dish.cooking}</td>
                 <td><c:choose>
                     <c:when test="${dish.category.id == 1}">
                         <fmt:message key="text.salad" var="salad"/>
-                        <c:out value="${salad}"/>
+                        ${salad}
                     </c:when>
                     <c:when test="${dish.category.id == 2}">
                         <fmt:message key="text.pizza" var="pizza"/>
-                        <c:out value="${pizza}"/>
+                        ${pizza}
                     </c:when>
                     <c:when test="${dish.category.id == 3}">
                         <fmt:message key="text.appetizer" var="appetizer"/>
-                        <c:out value="${appetizer}"/>
+                        ${appetizer}
                     </c:when>
                     <c:when test="${dish.category.id == 4}">
                         <fmt:message key="text.drink" var="drink"/>
-                        <c:out value="${drink}"/>
+                        ${drink}
                     </c:when>
                 </c:choose>
                 </td>
@@ -166,7 +160,7 @@
                 </li>
             </c:if>
 
-            <c:forEach var="page" items="${pages}">
+            <c:forEach var="page" items="${requestScope.pages}">
                 <li class="page-item"><a class="page-link"
                                          href="controller?command=${param.command}&page=${page}">${page}</a>
                 </li>

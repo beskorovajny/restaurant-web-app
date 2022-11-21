@@ -8,9 +8,7 @@ import com.october.to.finish.app.web.restaurant.exceptions.ServiceException;
 import com.october.to.finish.app.web.restaurant.model.Contacts;
 import com.october.to.finish.app.web.restaurant.model.Dish;
 import com.october.to.finish.app.web.restaurant.model.User;
-import com.october.to.finish.app.web.restaurant.service.ContactsService;
 import com.october.to.finish.app.web.restaurant.service.ReceiptService;
-import com.october.to.finish.app.web.restaurant.service.UserService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,13 +22,9 @@ public class CheckoutCommand implements AppCommand {
     private static final Logger LOGGER = LogManager.getLogger(CheckoutCommand.class);
     private static final String CHECKOUT_MSG = "[CheckoutCommand]";
     private final ReceiptService receiptService;
-    private final UserService userService;
-    private final ContactsService contactsService;
 
-    public CheckoutCommand(ReceiptService receiptService, UserService userService, ContactsService contactsService) {
+    public CheckoutCommand(ReceiptService receiptService) {
         this.receiptService = receiptService;
-        this.userService = userService;
-        this.contactsService = contactsService;
     }
 
     @Override
@@ -57,6 +51,7 @@ public class CheckoutCommand implements AppCommand {
         String phoneNumber = request.getParameter("phone");
         LOGGER.debug("Phone from request: [{}]", phoneNumber);
         Contacts contacts = null;
+
         if ((country != null && !country.isEmpty()) && (city != null && !city.isEmpty()) &&
                 (street != null && !street.isEmpty()) && (building != null && !building.isEmpty()) &&
                 (phoneNumber != null && !phoneNumber.isEmpty())) {

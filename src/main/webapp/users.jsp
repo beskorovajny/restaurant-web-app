@@ -77,25 +77,21 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="user" items="${users}">
+        <c:forEach var="user" items="${requestScope.users}">
             <tr>
-                <td><c:out value="${user.id}"/>
-                </td>
-                <td><c:out value="${user.email}"/>
-                </td>
-                <td><c:out value="${user.firstName}"/>
-                </td>
-                <td><c:out value="${user.lastName}"/>
-                </td>
+                <td>${user.id}</td>
+                <td>${user.email}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
                 <td>
                     <c:choose>
                         <c:when test="${user.role.id == 1}">
                             <fmt:message key="text.customer" var="customer"/>
-                            <c:out value="${customer}"/>
+                            ${customer}
                         </c:when>
                         <c:when test="${user.role.id == 2}">
                             <fmt:message key="text.admin" var="admin"/>
-                            <c:out value="${admin}"/>
+                           ${admin}
                         </c:when>
                     </c:choose>
                 </td>
@@ -123,7 +119,7 @@
                 </li>
             </c:if>
 
-            <c:forEach var="page" items="${pages}">
+            <c:forEach var="page" items="${requestScope.pages}">
 
                 <li class="page-item"><a class="page-link"
                                          href="controller?command=${param.command}&page=${page}">${page}</a>
