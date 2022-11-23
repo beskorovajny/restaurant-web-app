@@ -36,19 +36,19 @@ import java.sql.SQLException;
 
 @WebListener
 public class ContextListener implements HttpSessionListener, ServletContextListener {
-    private static final Logger LOGGER = LogManager.getLogger(ContextListener.class);
+    private static final Logger log = LogManager.getLogger(ContextListener.class);
     private static final String CONTEXT_LISTENER_MSG = "[ContextListener]";
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        LOGGER.info("[ContextListener] Context initialization started...");
+        log.info("[ContextListener] Context initialization started...");
         ServletContext context = sce.getServletContext();
         context.setInitParameter("encoding", "UTF-8");
         try {
             initServices(context);
-            LOGGER.info("{} Services initialized", CONTEXT_LISTENER_MSG);
+            log.info("{} Services initialized", CONTEXT_LISTENER_MSG);
         } catch (SQLException e) {
-            LOGGER.error("{} Services initialization failed!..", CONTEXT_LISTENER_MSG);
+            log.error("{} Services initialization failed!..", CONTEXT_LISTENER_MSG);
             throw new RuntimeException(e);
         }
     }
@@ -56,38 +56,38 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
     private void initServices(ServletContext context) throws SQLException {
         Connection connection = ConnectionPoolHolder.getConnection();
         connection.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-        LOGGER.info("{} Connection created. {}", CONTEXT_LISTENER_MSG, connection.getMetaData());
+        log.info("{} Connection created. {}", CONTEXT_LISTENER_MSG, connection.getMetaData());
 
         UserDAO userDAO = new UserDAOImpl(connection);
-        LOGGER.info("{} UserDAO created.", CONTEXT_LISTENER_MSG);
+        log.info("{} UserDAO created.", CONTEXT_LISTENER_MSG);
 
         ReceiptDAO receiptDAO = new ReceiptDAOImpl(connection);
-        LOGGER.info("{} ReceiptDAO created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ReceiptDAO created.", CONTEXT_LISTENER_MSG);
 
         ContactsDAO contactsDAO = new ContactsDAOImpl(connection);
-        LOGGER.info("{} ContactsDAO created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ContactsDAO created.", CONTEXT_LISTENER_MSG);
 
         DishDAO dishDAO = new DishDAOImpl(connection);
-        LOGGER.info("{} DishDAO created.", CONTEXT_LISTENER_MSG);
+        log.info("{} DishDAO created.", CONTEXT_LISTENER_MSG);
 
         UserService userService = new UserServiceImpl(userDAO);
         context.setAttribute("userService", userService);
-        LOGGER.info("{} UserService created.", CONTEXT_LISTENER_MSG);
+        log.info("{} UserService created.", CONTEXT_LISTENER_MSG);
 
         ReceiptService receiptService = new ReceiptServiceImpl(receiptDAO, contactsDAO);
         context.setAttribute("receiptService", receiptService);
-        LOGGER.info("{} ReceiptService created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ReceiptService created.", CONTEXT_LISTENER_MSG);
 
         ContactsService contactsService = new ContactsServiceImpl(contactsDAO);
         context.setAttribute("addressService", contactsService);
-        LOGGER.info("{} ContactsService created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ContactsService created.", CONTEXT_LISTENER_MSG);
 
         DishService dishService = new DishServiceImpl(dishDAO);
         context.setAttribute("dishService", contactsService);
-        LOGGER.info("{} DishService created.", CONTEXT_LISTENER_MSG);
+        log.info("{} DishService created.", CONTEXT_LISTENER_MSG);
 
         CommandContainer commandContainer = new CommandContainer();
-        LOGGER.info("{} CommandContainer created.", CONTEXT_LISTENER_MSG);
+        log.info("{} CommandContainer created.", CONTEXT_LISTENER_MSG);
 
         AppCommand appCommand = new HomeCommand();
         commandContainer.addCommand("home", appCommand);
@@ -96,123 +96,123 @@ public class ContextListener implements HttpSessionListener, ServletContextListe
 
         appCommand = new LanguageCommand();
         commandContainer.addCommand("setLang", appCommand);
-        LOGGER.info("{} Language command created.", CONTEXT_LISTENER_MSG);
+        log.info("{} Language command created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new ExceptionCommand();
         commandContainer.addCommand("error", appCommand);
-        LOGGER.info("{} Error command created.", CONTEXT_LISTENER_MSG);
+        log.info("{} Error command created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RegistrationFormCommand();
         commandContainer.addCommand("registration_form", appCommand);
-        LOGGER.info("{} RegistrationFormCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} RegistrationFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RegistrationCommand(userService);
         commandContainer.addCommand("registration", appCommand);
-        LOGGER.info("{} Registration command created.", CONTEXT_LISTENER_MSG);
+        log.info("{} Registration command created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new LoginFormCommand();
         commandContainer.addCommand("login_form", appCommand);
-        LOGGER.info("{} LoginFormCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} LoginFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new LoginCommand(userService);
         commandContainer.addCommand("login", appCommand);
-        LOGGER.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} LoginCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AdminCommand(receiptService);
         commandContainer.addCommand("admin", appCommand);
-        LOGGER.info("{} AdminCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AdminCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new DishFormCommand();
         commandContainer.addCommand("dish_form", appCommand);
-        LOGGER.info("{} DishFormCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} DishFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesCommand(dishService);
         commandContainer.addCommand("dishes", appCommand);
-        LOGGER.info("{} AllDishesCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllDishesCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new MenuCommand(dishService);
         commandContainer.addCommand("menu", appCommand);
-        LOGGER.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} MenuCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesSortedByPriceCommand(dishService);
         commandContainer.addCommand("sorted_by_price", appCommand);
-        LOGGER.info("{} AllDishesSortedByPriceCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllDishesSortedByPriceCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesSortedByTitleCommand(dishService);
         commandContainer.addCommand("sorted_by_title", appCommand);
-        LOGGER.info("{} AllDishesSortedByTitleCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllDishesSortedByTitleCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesSortedByCategoryCommand(dishService);
         commandContainer.addCommand("sorted_by_category", appCommand);
-        LOGGER.info("{} AllDishesSortedByCategoryCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllDishesSortedByCategoryCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllDishesFilteredByCategoryCommand(dishService);
         commandContainer.addCommand("filtered_dishes", appCommand);
-        LOGGER.info("{} AllDishesFilteredByCategoryCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllDishesFilteredByCategoryCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new CreateDishCommand(dishService);
         commandContainer.addCommand("create_dish", appCommand);
-        LOGGER.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} CreateDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RemoveDishCommand(dishService);
         commandContainer.addCommand("remove_dish", appCommand);
-        LOGGER.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} RemoveDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RemoveReceiptCommand(receiptService);
         commandContainer.addCommand("remove_receipt", appCommand);
-        LOGGER.info("{} RemoveReceiptCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} RemoveReceiptCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new RemoveUserCommand(userService);
         commandContainer.addCommand("remove_user", appCommand);
-        LOGGER.info("{} RemoveUserCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} RemoveUserCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new UserReceiptsCommand(receiptService, contactsService);
         commandContainer.addCommand("user_receipts", appCommand);
-        LOGGER.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} UserReceiptsCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AllUsersCommand(userService);
         commandContainer.addCommand("users", appCommand);
-        LOGGER.info("{} AllUsersCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AllUsersCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new LogoutCommand();
         commandContainer.addCommand("logout", appCommand);
-        LOGGER.info("{} LogoutCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} LogoutCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new EditDishFormCommand(dishService);
         commandContainer.addCommand("edit_dish_form", appCommand);
-        LOGGER.info("{} EditDishFormCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} EditDishFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new EditDishCommand(dishService);
         commandContainer.addCommand("edit_dish", appCommand);
-        LOGGER.info("{} EditDishCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} EditDishCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new ChangeUserRoleCommand(userService);
         commandContainer.addCommand("change_user_role", appCommand);
-        LOGGER.info("{} ChangeUserRoleCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ChangeUserRoleCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new UpdateReceiptStatusCommand(receiptService);
         commandContainer.addCommand("update_receipt_status", appCommand);
-        LOGGER.info("{} UpdateReceiptStatusCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} UpdateReceiptStatusCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new AddToCartCommand(dishService);
         commandContainer.addCommand("add_to_cart", appCommand);
-        LOGGER.info("{} AddToCartCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} AddToCartCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new CheckoutFormCommand(dishService);
         commandContainer.addCommand("checkout_form", appCommand);
-        LOGGER.info("{} CheckoutFormCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} CheckoutFormCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new CheckoutCommand(receiptService);
         commandContainer.addCommand("checkout", appCommand);
-        LOGGER.info("{} CheckoutCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} CheckoutCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new CleanCartCommand();
         commandContainer.addCommand("clean_cart", appCommand);
-        LOGGER.info("{} CleanCartCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} CleanCartCommand created.", CONTEXT_LISTENER_MSG);
 
         appCommand = new ReceiptDetailsCommand(receiptService, contactsService, userService);
         commandContainer.addCommand("receipt_details", appCommand);
-        LOGGER.info("{} ReceiptDetailsCommand created.", CONTEXT_LISTENER_MSG);
+        log.info("{} ReceiptDetailsCommand created.", CONTEXT_LISTENER_MSG);
 
         context.setAttribute("commandContainer", commandContainer);
 

@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddToCartCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AddToCartCommand.class);
+    private static final Logger log = LogManager.getLogger(AddToCartCommand.class);
     private final DishService dishService;
 
     public AddToCartCommand(DishService dishService) {
@@ -38,17 +38,17 @@ public class AddToCartCommand implements AppCommand {
         if (cart == null) {
             cart = new HashMap<>();
         }
-        LOGGER.debug("Cart from session: [{}]", cart);
+        log.debug("Cart from session: [{}]", cart);
         try {
             Dish dish = dishService.findById(dishId);
             if (dish != null && dish.getId() != 0 && count >= 1) {
                 cart.put(dish, count);
-                LOGGER.info("[AddToCartCommand] Cart successfully updated!");
+                log.info("[AddToCartCommand] Cart successfully updated!");
             }
             session.setAttribute("cart", cart);
-            LOGGER.debug("Cart to session: [{}]", cart);
+            log.debug("Cart to session: [{}]", cart);
         } catch (ServiceException e) {
-            LOGGER.error("[AddToCartCommand] Failed to add dish to cart! [dishId = {}]...", dishId);
+            log.error("[AddToCartCommand] Failed to add dish to cart! [dishId = {}]...", dishId);
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=menu";

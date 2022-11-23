@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RemoveDishCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(RemoveDishCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveDishCommand.class);
     private final DishService dishService;
 
     public RemoveDishCommand(DishService dishService) {
@@ -24,7 +24,7 @@ public class RemoveDishCommand implements AppCommand {
             dishService.delete(Long.parseLong(request.getParameter("dishId")));
             return "controller?command=dishes";
         } catch (ServiceException e) {
-            LOGGER.error("[RemoveDishCommand] Dish wasn't removed. An exception occurs: [{}]", e.getMessage());
+            log.error("[RemoveDishCommand] Dish wasn't removed. An exception occurs: [{}]", e.getMessage());
             throw new CommandException(e.getMessage(), e);
         }
     }

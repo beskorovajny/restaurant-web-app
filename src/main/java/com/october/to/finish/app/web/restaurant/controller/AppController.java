@@ -19,16 +19,16 @@ import java.io.IOException;
  */
 @WebServlet(name = "appController", value = "/controller")
 public class AppController extends HttpServlet {
-    private static final Logger LOGGER = LogManager.getLogger(AppController.class);
+    private static final Logger log = LogManager.getLogger(AppController.class);
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String url = null;
         try {
             url = getUrl(request, response);
-            LOGGER.info("[AppController-doGet] URL processed");
+            log.info("[AppController-doGet] URL processed");
         } catch (CommandException | FatalApplicationException e) {
-            LOGGER.error("An exception occurs: {}, req encoding: {}", e.getMessage(), request.getCharacterEncoding());
+            log.error("An exception occurs: {}, req encoding: {}", e.getMessage(), request.getCharacterEncoding());
             response.sendError(500, "Can't process command");
         }
         request.getRequestDispatcher(url).forward(request, response);
@@ -39,10 +39,10 @@ public class AppController extends HttpServlet {
         String url = null;
         try {
             url = getUrl(request, response);
-            LOGGER.info("[AppController-doPost] URL processed [{}], resp encoding: {}", url,
+            log.info("[AppController-doPost] URL processed [{}], resp encoding: {}", url,
                     response.getCharacterEncoding());
         } catch (CommandException | FatalApplicationException e) {
-            LOGGER.error("An exception occurs: {}", e.getMessage());
+            log.error("An exception occurs: {}", e.getMessage());
             response.sendError(500, "Can't process the command");
         }
         response.sendRedirect(url);

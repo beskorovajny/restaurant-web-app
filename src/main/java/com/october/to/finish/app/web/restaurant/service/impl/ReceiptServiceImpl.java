@@ -21,7 +21,7 @@ import java.util.Map;
  * This class implements business logic for {@link Receipt}
  */
 public class ReceiptServiceImpl implements ReceiptService {
-    private static final Logger LOGGER = LogManager.getLogger(ReceiptServiceImpl.class);
+    private static final Logger log = LogManager.getLogger(ReceiptServiceImpl.class);
     private static final String NULL_RECEIPT_DAO_EXC = "[ReceiptService] Can't create ContactsService with null input ContactsDAO";
     private static final String NULL_RECEIPT_INPUT_EXC = "[ReceiptService] Can't operate null (or < 1) input!";
     private final ReceiptDAO receiptDAO;
@@ -29,7 +29,7 @@ public class ReceiptServiceImpl implements ReceiptService {
 
     public ReceiptServiceImpl(ReceiptDAO receiptDAO, ContactsDAO contactsDAO) {
         if (receiptDAO == null || contactsDAO == null) {
-            LOGGER.error(NULL_RECEIPT_DAO_EXC);
+            log.error(NULL_RECEIPT_DAO_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_DAO_EXC);
         }
         this.receiptDAO = receiptDAO;
@@ -39,14 +39,14 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public void save(long userId, Receipt receipt) throws ServiceException {
         if (userId < 1 || receipt == null) {
-            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            log.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
             receipt.setId(receiptDAO.save(userId, receipt));
-            LOGGER.info("[ReceiptService] Receipt saved. (title: {})", receipt.getId());
+            log.info("[ReceiptService] Receipt saved. (title: {})", receipt.getId());
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] SQLException while saving Receipt; Exc: {}"
+            log.error("[ReceiptService] SQLException while saving Receipt; Exc: {}"
                     , e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -55,13 +55,13 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public Receipt findById(long receiptId) throws ServiceException {
         if (receiptId < 1) {
-            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            log.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
             return receiptDAO.findById(receiptId);
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while receiving Receipt. (id: {}). Exc: {}"
+            log.error("[ReceiptService] An exception occurs while receiving Receipt. (id: {}). Exc: {}"
                     , receiptId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -72,7 +72,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         try {
             return receiptDAO.findAll(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
+            log.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -81,7 +81,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         try {
             return receiptDAO.findByUserId(userId, getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
+            log.error("[ReceiptService] An exception occurs while receiving receipt. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -91,7 +91,7 @@ public class ReceiptServiceImpl implements ReceiptService {
         try {
             return receiptDAO.findAllOrderedForReceipt(receiptId);
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while receiving ordered dishes. Exc: {}",
+            log.error("[ReceiptService] An exception occurs while receiving ordered dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -108,13 +108,13 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public boolean update(long receiptId, Receipt receipt) throws ServiceException {
         if (receiptId < 1 || receipt == null) {
-            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            log.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
             return receiptDAO.update(receiptId, receipt);
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while updating Receipt. (id: {}). Exc: {}"
+            log.error("[ReceiptService] An exception occurs while updating Receipt. (id: {}). Exc: {}"
                     , receipt, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -123,13 +123,13 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public void delete(long receiptId) throws ServiceException {
         if (receiptId < 1) {
-            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            log.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
             receiptDAO.delete(receiptId);
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while deleting Receipt. (id: {}). Exc: {}"
+            log.error("[ReceiptService] An exception occurs while deleting Receipt. (id: {}). Exc: {}"
                     , receiptId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -138,7 +138,7 @@ public class ReceiptServiceImpl implements ReceiptService {
     @Override
     public void setDishesForReceipt(Map<Dish, Integer> cart, Contacts contacts, long userId) throws ServiceException, DAOException {
         if (cart == null || cart.isEmpty()) {
-            LOGGER.error(NULL_RECEIPT_INPUT_EXC);
+            log.error(NULL_RECEIPT_INPUT_EXC);
             throw new IllegalArgumentException(NULL_RECEIPT_INPUT_EXC);
         }
         try {
@@ -147,7 +147,7 @@ public class ReceiptServiceImpl implements ReceiptService {
             receiptDAO.getConnection().commit();
         } catch (SQLException | ServiceException e) {
             DBUtils.rollback(receiptDAO.getConnection());
-            LOGGER.error("[ReceiptService] Failed to save Receipt, Contacts, assign Dishes." +
+            log.error("[ReceiptService] Failed to save Receipt, Contacts, assign Dishes." +
                     "An exception occurs: [{}]", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -161,7 +161,7 @@ public class ReceiptServiceImpl implements ReceiptService {
             } else {
                 contacts = contactsDAO.findByAllParams(contacts);
             }
-            LOGGER.debug("[ReceiptService] Saved contacts info ID:[{}]", contacts.getId());
+            log.debug("[ReceiptService] Saved contacts info ID:[{}]", contacts.getId());
             receipt = Receipt.newBuilder().
                     setTimeCreated(LocalDateTime.now()).
                     setTotalPrice(getReceiptTotalPrice(cart)).
@@ -169,14 +169,14 @@ public class ReceiptServiceImpl implements ReceiptService {
                     setStatus(Receipt.Status.NEW).
                     setContactsId(contacts.getId()).
                     build();
-            LOGGER.debug("[ReceiptService] Receipt to process: [{}]", receipt);
+            log.debug("[ReceiptService] Receipt to process: [{}]", receipt);
             receipt.setId(receiptDAO.save(userId, receipt));
             for (Map.Entry<Dish, Integer> entry : cart.entrySet()) {
                 receiptDAO.setDishesForReceipt(receipt.getId(), entry.getKey().getId(),
                         getDishTotalPriceWithCount(entry), entry.getValue());
             }
         } catch (DAOException e) {
-            LOGGER.error("[ReceiptService] An exception occurs while creating Receipt with Dishes. Exc: [{}]"
+            log.error("[ReceiptService] An exception occurs while creating Receipt with Dishes. Exc: [{}]"
                     , e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }

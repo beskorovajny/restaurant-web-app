@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllUsersCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AllUsersCommand.class);
+    private static final Logger log = LogManager.getLogger(AllUsersCommand.class);
     private static final String USERS_COMMAND_MSG = "[AllUsersCommand]";
     private final UserService userService;
 
@@ -35,9 +35,9 @@ public class AllUsersCommand implements AppCommand {
         List<User> users = null;
         try {
             users = userService.findAll(page);
-            LOGGER.info("{} Dishes found.", USERS_COMMAND_MSG);
+            log.info("{} Dishes found.", USERS_COMMAND_MSG);
         } catch (ServiceException e) {
-            LOGGER.error("{} Can't receive users! An exception occurs: [{}]", USERS_COMMAND_MSG, e.getMessage());
+            log.error("{} Can't receive users! An exception occurs: [{}]", USERS_COMMAND_MSG, e.getMessage());
             throw new CommandException(e.getMessage(), e);
         }
         request.setAttribute("users", users);

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ChangeUserRoleCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(ChangeUserRoleCommand.class);
+    private static final Logger log = LogManager.getLogger(ChangeUserRoleCommand.class);
     private final UserService userService;
 
     public ChangeUserRoleCommand(UserService userService) {
@@ -32,10 +32,10 @@ public class ChangeUserRoleCommand implements AppCommand {
                     user.setRole(User.Role.CLIENT);
                 }
                 userService.update(user.getId(), user);
-                LOGGER.info("[ChangeUserRoleCommand] User.Role for userID:[{}] updated.", user.getId());
+                log.info("[ChangeUserRoleCommand] User.Role for userID:[{}] updated.", user.getId());
             }
         } catch (ServiceException e) {
-            LOGGER.error("[ChangeUserRoleCommand] Failed to update User.Role for userID:[{}].", userId);
+            log.error("[ChangeUserRoleCommand] Failed to update User.Role for userID:[{}].", userId);
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=users";

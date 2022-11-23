@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 
 public class CreateDishCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(CreateDishCommand.class);
+    private static final Logger log = LogManager.getLogger(CreateDishCommand.class);
     private final DishService dishService;
 
     public CreateDishCommand(DishService dishService) {
@@ -33,14 +33,14 @@ public class CreateDishCommand implements AppCommand {
                     setDateCreated(LocalDateTime.now()).
                     setCategory(Dish.Category.valueOf(request.getParameter("dishCategory").toUpperCase())).
                     build();
-            LOGGER.info("[CreateDishCommand] Dish from view : {};", dish);
+            log.info("[CreateDishCommand] Dish from view : {};", dish);
             if (dishService.isDishExists(dish)) {
                 return "controller?command=dishes";
             }
             dishService.save(dish);
-            LOGGER.info("[CreateDishCommand] Dish saved : {}", dish);
+            log.info("[CreateDishCommand] Dish saved : {}", dish);
         } catch (ServiceException e) {
-            LOGGER.error("An exception occurs while saving Dish");
+            log.error("An exception occurs while saving Dish");
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=dishes";

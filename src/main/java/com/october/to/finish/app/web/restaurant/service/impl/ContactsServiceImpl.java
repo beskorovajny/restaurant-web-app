@@ -14,14 +14,14 @@ import java.util.List;
  * This class implements business logic for {@link Contacts}
  */
 public class ContactsServiceImpl implements ContactsService {
-    private static final Logger LOGGER = LogManager.getLogger(ContactsServiceImpl.class);
+    private static final Logger log = LogManager.getLogger(ContactsServiceImpl.class);
     private static final String NULL_ADDRESS_DAO_EXC = "[ContactsService] Can't create ContactsService with null input ContactsDAO";
     private static final String NULL_ADDRESS_INPUT_EXC = "[ContactsService] Can't operate null (or < 1) input!";
     private final ContactsDAO contactsDAO;
 
     public ContactsServiceImpl(ContactsDAO contactsDAO) {
         if (contactsDAO == null) {
-            LOGGER.error(NULL_ADDRESS_DAO_EXC);
+            log.error(NULL_ADDRESS_DAO_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_DAO_EXC);
         }
         this.contactsDAO = contactsDAO;
@@ -30,14 +30,14 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public void save(Contacts contacts) throws ServiceException {
         if (contacts == null) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
             contacts.setId(contactsDAO.save(contacts));
-            LOGGER.info("[ContactsService] Contacts saved. (id: {})", contacts.getId());
+            log.info("[ContactsService] Contacts saved. (id: {})", contacts.getId());
         } catch (DAOException e) {
-            LOGGER.error("[ContactsService] SQLException while saving Contacts; Exc: {}"
+            log.error("[ContactsService] SQLException while saving Contacts; Exc: {}"
                     , e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -46,13 +46,13 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public Contacts findById(long addressId) throws ServiceException {
         if (addressId < 1) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
             return contactsDAO.findById(addressId);
         } catch (DAOException e) {
-            LOGGER.error("[ContactsService] An exception occurs while receiving Contacts. (id: {}). Exc: {}"
+            log.error("[ContactsService] An exception occurs while receiving Contacts. (id: {}). Exc: {}"
                     , addressId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -63,7 +63,7 @@ public class ContactsServiceImpl implements ContactsService {
         try {
             return contactsDAO.findAll();
         } catch (DAOException e) {
-            LOGGER.error("[ContactsService] An exception occurs while receiving Addresses. Exc: {}", e.getMessage());
+            log.error("[ContactsService] An exception occurs while receiving Addresses. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -71,13 +71,13 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public boolean update(long addressId, Contacts contacts) throws ServiceException {
         if (addressId < 1 || contacts == null) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
             return contactsDAO.update(addressId, contacts);
         } catch (DAOException e) {
-            LOGGER.error("[ContactsService] An exception occurs while updating Contacts. (id: {}). Exc: {}"
+            log.error("[ContactsService] An exception occurs while updating Contacts. (id: {}). Exc: {}"
                     , addressId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -86,13 +86,13 @@ public class ContactsServiceImpl implements ContactsService {
     @Override
     public void delete(long addressId) throws ServiceException {
         if (addressId < 1) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try {
             contactsDAO.delete(addressId);
         } catch (DAOException e) {
-            LOGGER.error("[ContactsService] An exception occurs while deleting Contacts. (id: {}). Exc: {}"
+            log.error("[ContactsService] An exception occurs while deleting Contacts. (id: {}). Exc: {}"
                     , addressId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }

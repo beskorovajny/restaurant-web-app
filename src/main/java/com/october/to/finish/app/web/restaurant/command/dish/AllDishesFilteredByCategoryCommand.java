@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllDishesFilteredByCategoryCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AllDishesFilteredByCategoryCommand.class);
+    private static final Logger log = LogManager.getLogger(AllDishesFilteredByCategoryCommand.class);
     private static final String ALL_DISH_COMMAND_MSG = "[AllDishesFilteredByCategoryCommand]";
     private final DishService dishService;
 
@@ -37,9 +37,9 @@ public class AllDishesFilteredByCategoryCommand implements AppCommand {
             Dish.Category category = Dish.Category.valueOf(request.getParameter("category").toUpperCase());
             try {
                 dishes = dishService.findAllFilteredByCategory(category.getId(), page);
-                LOGGER.info("{} Filtered dishes found.", ALL_DISH_COMMAND_MSG);
+                log.info("{} Filtered dishes found.", ALL_DISH_COMMAND_MSG);
             } catch (ServiceException e) {
-                LOGGER.error("{} Can't receive filtered dishes! An exception occurs: [{}]", ALL_DISH_COMMAND_MSG, e.getMessage());
+                log.error("{} Can't receive filtered dishes! An exception occurs: [{}]", ALL_DISH_COMMAND_MSG, e.getMessage());
                 throw new CommandException(e.getMessage(), e);
             }
             request.setAttribute("dishes", dishes);

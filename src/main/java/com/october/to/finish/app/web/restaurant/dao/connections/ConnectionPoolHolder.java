@@ -21,7 +21,7 @@ import java.util.Properties;
  * Utility class for creating database connections
  */
 public class ConnectionPoolHolder {
-    private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolHolder.class);
+    private static final Logger log = LogManager.getLogger(ConnectionPoolHolder.class);
     private static volatile DataSource dataSource;
 
     private ConnectionPoolHolder() {
@@ -72,7 +72,7 @@ public class ConnectionPoolHolder {
             DataSource dataSource = (DataSource) initContext.lookup("java:/comp/env/jdbc/mysqlDB");
             connection = dataSource.getConnection();
         } catch (SQLException | NamingException e) {
-            LOGGER.error("Failed to create connection.");
+            log.error("Failed to create connection.");
         }
         return connection;
     }

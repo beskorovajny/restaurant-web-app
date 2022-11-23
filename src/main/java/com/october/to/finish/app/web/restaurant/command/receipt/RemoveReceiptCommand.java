@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RemoveReceiptCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(RemoveReceiptCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveReceiptCommand.class);
     private final ReceiptService receiptService;
 
     public RemoveReceiptCommand(ReceiptService receiptService) {
@@ -24,9 +24,9 @@ public class RemoveReceiptCommand implements AppCommand {
         long receiptId = Long.parseLong(request.getParameter("receiptId"));
         try {
             receiptService.delete(receiptId);
-            LOGGER.info("[RemoveReceiptCommand] Receipt for ID:[{}] successfully removed.", receiptId);
+            log.info("[RemoveReceiptCommand] Receipt for ID:[{}] successfully removed.", receiptId);
         } catch (ServiceException e) {
-            LOGGER.error("[RemoveReceiptCommand] Failed to remove receipt for ID:[{}]", receiptId);
+            log.error("[RemoveReceiptCommand] Failed to remove receipt for ID:[{}]", receiptId);
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=admin";

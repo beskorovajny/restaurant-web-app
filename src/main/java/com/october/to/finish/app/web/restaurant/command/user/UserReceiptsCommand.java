@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserReceiptsCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(UserReceiptsCommand.class);
+    private static final Logger log = LogManager.getLogger(UserReceiptsCommand.class);
     private final ReceiptService receiptService;
     private final ContactsService contactsService;
 

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class ReceiptDetailsCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(ReceiptDetailsCommand.class);
+    private static final Logger log = LogManager.getLogger(ReceiptDetailsCommand.class);
     private final ReceiptService receiptService;
     private final ContactsService contactsService;
     private final UserService userService;
@@ -41,7 +41,7 @@ public class ReceiptDetailsCommand implements AppCommand {
             request.setAttribute("receipt", receipt);
             request.setAttribute("contacts", contacts);
         } catch (ServiceException e) {
-            LOGGER.error("[ReceiptDetailsCommand] Failed to load receipt details");
+            log.error("[ReceiptDetailsCommand] Failed to load receipt details");
             throw new CommandException(e.getMessage(), e);
         }
         return "receipt_details.jsp";

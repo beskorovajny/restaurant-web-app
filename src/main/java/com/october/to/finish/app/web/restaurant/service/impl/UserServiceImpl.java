@@ -14,7 +14,7 @@ import java.util.List;
  * This class implements business logic for {@link User}
  */
 public class UserServiceImpl implements UserService {
-    private static final Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
+    private static final Logger log = LogManager.getLogger(UserServiceImpl.class);
     private static final String NULL_USER_DAO_EXC = "[UserService] Can't create UserService with null input UserDAO";
     private static final String NULL_USER_INPUT_EXC = "[UserService] Can't operate null (or < 1) input!";
     private static final String REGISTERED_EMAIL_EXC =
@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
 
     public UserServiceImpl(UserDAO userDAO) {
         if (userDAO == null) {
-            LOGGER.error(NULL_USER_DAO_EXC);
+            log.error(NULL_USER_DAO_EXC);
             throw new IllegalArgumentException(NULL_USER_DAO_EXC);
         }
         this.userDAO = userDAO;
@@ -32,14 +32,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save(User user) throws ServiceException {
         if (user == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
+            log.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
             user.setId(userDAO.save(user));
-            LOGGER.info("[UserService] User saved. (email: {})", user.getEmail());
+            log.info("[UserService] User saved. (email: {})", user.getEmail());
         } catch (DAOException e) {
-            LOGGER.error("[UserService] SQLException while saving User (email: {}). Exc: {}"
+            log.error("[UserService] SQLException while saving User (email: {}). Exc: {}"
                     , user.getEmail(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -48,12 +48,12 @@ public class UserServiceImpl implements UserService {
     public boolean isUserExist(User user) throws ServiceException {
         try {
             if (userDAO.findByEmail(user.getEmail()).getId() != 0) {
-                LOGGER.info(REGISTERED_EMAIL_EXC, user.getEmail());
+                log.info(REGISTERED_EMAIL_EXC, user.getEmail());
                 return true;
             }
             return false;
         } catch (DAOException e) {
-            LOGGER.error("[UserService] User is exists.");
+            log.error("[UserService] User is exists.");
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -61,13 +61,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(long id) throws ServiceException {
         if (id < 1) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
+            log.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
             return userDAO.findById(id);
         } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while receiving User. (id: {}). Exc: {}"
+            log.error("[UserService] An exception occurs while receiving User. (id: {}). Exc: {}"
                     , id, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -76,13 +76,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByEmail(String eMail) throws ServiceException {
         if (eMail == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
+            log.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
             return userDAO.findByEmail(eMail);
         } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while receiving User. (email: {}). Exc: {}"
+            log.error("[UserService] An exception occurs while receiving User. (email: {}). Exc: {}"
                     , eMail, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
         try {
             return userDAO.findAll(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while receiving Users. Exc: {}", e.getMessage());
+            log.error("[UserService] An exception occurs while receiving Users. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -109,13 +109,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean update(long userId, User user) throws ServiceException {
         if (userId < 1 || user == null) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
+            log.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
             return userDAO.update(userId, user);
         } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while updating User. (id: {}). Exc: {}"
+            log.error("[UserService] An exception occurs while updating User. (id: {}). Exc: {}"
                     , userId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -124,13 +124,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(long userId) throws ServiceException {
         if (userId < 1) {
-            LOGGER.error(NULL_USER_INPUT_EXC);
+            log.error(NULL_USER_INPUT_EXC);
             throw new IllegalArgumentException(NULL_USER_INPUT_EXC);
         }
         try {
             userDAO.delete(userId);
         } catch (DAOException e) {
-            LOGGER.error("[UserService] An exception occurs while deleting User. (id: {}). Exc: {}"
+            log.error("[UserService] An exception occurs while deleting User. (id: {}). Exc: {}"
                     , userId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }

@@ -14,7 +14,7 @@ import java.util.List;
  * This class implements business logic for {@link Dish}
  */
 public class DishServiceImpl implements DishService {
-    private static final Logger LOGGER = LogManager.getLogger(DishServiceImpl.class);
+    private static final Logger log = LogManager.getLogger(DishServiceImpl.class);
     private static final String NULL_DISH_DAO_EXC = "[DishService] Can't create DishService with null input DishDAO";
     private static final String NULL_INPUT_EXC = "[DishService] Can't operate null input!";
     private static final String EXISTED_DISH_EXC =
@@ -24,7 +24,7 @@ public class DishServiceImpl implements DishService {
 
     public DishServiceImpl(DishDAO dishDAO) {
         if (dishDAO == null) {
-            LOGGER.error(NULL_DISH_DAO_EXC);
+            log.error(NULL_DISH_DAO_EXC);
             throw new IllegalArgumentException(NULL_DISH_DAO_EXC);
         }
         this.dishDAO = dishDAO;
@@ -33,14 +33,14 @@ public class DishServiceImpl implements DishService {
     @Override
     public void save(Dish dish) throws ServiceException {
         if (dish == null) {
-            LOGGER.error(NULL_INPUT_EXC);
+            log.error(NULL_INPUT_EXC);
             throw new IllegalArgumentException(NULL_INPUT_EXC);
         }
         try {
             dish.setId(dishDAO.save(dish));
-            LOGGER.info("[DishService] Dish saved. (title: {})", dish.getTitle());
+            log.info("[DishService] Dish saved. (title: {})", dish.getTitle());
         } catch (DAOException e) {
-            LOGGER.error("[DishService] SQLException while saving Dish (title: {}). Exc: {}"
+            log.error("[DishService] SQLException while saving Dish (title: {}). Exc: {}"
                     , dish.getTitle(), e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -50,13 +50,13 @@ public class DishServiceImpl implements DishService {
     public boolean isDishExists(Dish dish) throws ServiceException {
         try {
             if (dishDAO.findByTitle(dish.getTitle()).getId() != 0) {
-                LOGGER.info(EXISTED_DISH_EXC
+                log.info(EXISTED_DISH_EXC
                         , dish.getTitle());
                 return true;
             }
             return false;
         } catch (DAOException e) {
-            LOGGER.error("[DishService] Dish already exist");
+            log.error("[DishService] Dish already exist");
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -69,7 +69,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findById(dishId);
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving Dish. (id: {}). Exc: {}"
+            log.error("[DishService] An exception occurs while receiving Dish. (id: {}). Exc: {}"
                     , dishId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -83,7 +83,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findByTitle(title);
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving Dish. (title: {}). Exc: {}"
+            log.error("[DishService] An exception occurs while receiving Dish. (title: {}). Exc: {}"
                     , title, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -94,7 +94,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findAll(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving Dishes. Exc: {}", e.getMessage());
+            log.error("[DishService] An exception occurs while receiving Dishes. Exc: {}", e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
     }
@@ -104,7 +104,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findAllSortedByPrice(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving sorted by price Dishes. Exc: {}",
+            log.error("[DishService] An exception occurs while receiving sorted by price Dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -115,7 +115,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findAllSortedByTitle(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving sorted by title Dishes. Exc: {}",
+            log.error("[DishService] An exception occurs while receiving sorted by title Dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -126,7 +126,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findAllSortedByCategory(getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving sorted by category Dishes. Exc: {}",
+            log.error("[DishService] An exception occurs while receiving sorted by category Dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -137,7 +137,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.findAllFilteredByCategory(categoryId, getOffset(offset));
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while receiving filtered by category Dishes. Exc: {}",
+            log.error("[DishService] An exception occurs while receiving filtered by category Dishes. Exc: {}",
                     e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -159,7 +159,7 @@ public class DishServiceImpl implements DishService {
         try {
             return dishDAO.update(dishId, dish);
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while updating Dish. (id: {}). Exc: {}"
+            log.error("[DishService] An exception occurs while updating Dish. (id: {}). Exc: {}"
                     , dishId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }
@@ -173,7 +173,7 @@ public class DishServiceImpl implements DishService {
         try {
             dishDAO.delete(dishId);
         } catch (DAOException e) {
-            LOGGER.error("[DishService] An exception occurs while deleting Dish. (id: {}). Exc: {}"
+            log.error("[DishService] An exception occurs while deleting Dish. (id: {}). Exc: {}"
                     , dishId, e.getMessage());
             throw new ServiceException(e.getMessage(), e);
         }

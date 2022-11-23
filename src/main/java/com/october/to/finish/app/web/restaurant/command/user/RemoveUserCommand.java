@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class RemoveUserCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(RemoveUserCommand.class);
+    private static final Logger log = LogManager.getLogger(RemoveUserCommand.class);
     private final UserService userService;
 
     public RemoveUserCommand(UserService userService) {
@@ -24,9 +24,9 @@ public class RemoveUserCommand implements AppCommand {
         long userId = Long.parseLong(request.getParameter("userId"));
         try {
             userService.delete(userId);
-            LOGGER.info("[RemoveUserCommand] User for ID:[{}] successfully removed.", userId);
+            log.info("[RemoveUserCommand] User for ID:[{}] successfully removed.", userId);
         } catch (ServiceException e) {
-            LOGGER.error("[RemoveUserCommand] Failed to remove user for ID:[{}]", userId);
+            log.error("[RemoveUserCommand] Failed to remove user for ID:[{}]", userId);
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=users";

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MenuCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(MenuCommand.class);
+    private static final Logger log = LogManager.getLogger(MenuCommand.class);
     private static final String MENU_COMMAND_MSG = "[MenuCommand]";
     private final DishService dishService;
 
@@ -33,9 +33,9 @@ public class MenuCommand implements AppCommand {
         List<Dish> dishes = null;
         try {
             dishes = dishService.findAll(page);
-            LOGGER.info("{} Dishes found.", MENU_COMMAND_MSG);
+            log.info("{} Dishes found.", MENU_COMMAND_MSG);
         } catch (ServiceException e) {
-            LOGGER.error("{} Can't receive dishes! An exception occurs: [{}]", MENU_COMMAND_MSG, e.getMessage());
+            log.error("{} Can't receive dishes! An exception occurs: [{}]", MENU_COMMAND_MSG, e.getMessage());
             throw new CommandException(e.getMessage(), e);
         }
         request.setAttribute("dishes", dishes);

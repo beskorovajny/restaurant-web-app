@@ -29,7 +29,7 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=remove_receipt, /restaurant_web_app/controller?command=remove_user, " +
                 "/restaurant_web_app/controller?command=receipt_details")})
 public class GuestSessionFilter implements Filter {
-    private static final Logger LOGGER = LogManager.getLogger(GuestSessionFilter.class);
+    private static final Logger log = LogManager.getLogger(GuestSessionFilter.class);
     private List<String> restrictedCommands;
 
     @Override
@@ -44,14 +44,14 @@ public class GuestSessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        LOGGER.info("[GuestSessionFilter] Filter started.");
+        log.info("[GuestSessionFilter] Filter started.");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String requestCommand = req.getRequestURI() + "?" + req.getQueryString();
         boolean shouldBeRestricted = isRestricted(requestCommand);
         if (shouldBeRestricted && req.getSession().getAttribute("user") == null) {
             res.sendRedirect(req.getContextPath() + "/controller?command=login_form");
-            LOGGER.info("[GuestSessionFilter] Access denied! Redirected to login form.");
+            log.info("[GuestSessionFilter] Access denied! Redirected to login form.");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

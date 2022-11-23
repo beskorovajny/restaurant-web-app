@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 
 public class EditDishCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(EditDishCommand.class);
+    private static final Logger log = LogManager.getLogger(EditDishCommand.class);
     private final DishService dishService;
 
     public EditDishCommand(DishService dishService) {
@@ -73,7 +73,7 @@ public class EditDishCommand implements AppCommand {
             dishService.update(actual.getId(), updated);
             return "controller?command=dishes";
         } catch (ServiceException e) {
-            LOGGER.error("[EditDishCommand] Can't update dish");
+            log.error("[EditDishCommand] Can't update dish");
             throw new CommandException(e.getMessage(), e);
         }
     }

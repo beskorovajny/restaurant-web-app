@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckoutCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(CheckoutCommand.class);
+    private static final Logger log = LogManager.getLogger(CheckoutCommand.class);
     private static final String CHECKOUT_MSG = "[CheckoutCommand]";
     private final ReceiptService receiptService;
 
@@ -35,21 +35,21 @@ public class CheckoutCommand implements AppCommand {
         if (session.getAttribute("user") != null) {
             user = (User) session.getAttribute("user");
         }
-        LOGGER.debug("{} User from session: [{}]", CHECKOUT_MSG, user);
+        log.debug("{} User from session: [{}]", CHECKOUT_MSG, user);
         if (session.getAttribute("cart") != null) {
             cart = (Map<Dish, Integer>) session.getAttribute("cart");
         }
-        LOGGER.debug("{} Cart from session: [{}]", CHECKOUT_MSG, cart);
+        log.debug("{} Cart from session: [{}]", CHECKOUT_MSG, cart);
         String country = request.getParameter("country");
-        LOGGER.debug("Country from request: [{}]", country);
+        log.debug("Country from request: [{}]", country);
         String city = request.getParameter("city");
-        LOGGER.debug("City from request: [{}]", city);
+        log.debug("City from request: [{}]", city);
         String street = request.getParameter("street");
-        LOGGER.debug("Street from request: [{}]", street);
+        log.debug("Street from request: [{}]", street);
         String building = request.getParameter("building");
-        LOGGER.debug("Building from request: [{}]", building);
+        log.debug("Building from request: [{}]", building);
         String phoneNumber = request.getParameter("phone");
-        LOGGER.debug("Phone from request: [{}]", phoneNumber);
+        log.debug("Phone from request: [{}]", phoneNumber);
         Contacts contacts = null;
 
         if ((country != null && !country.isEmpty()) && (city != null && !city.isEmpty()) &&
@@ -57,14 +57,14 @@ public class CheckoutCommand implements AppCommand {
                 (phoneNumber != null && !phoneNumber.isEmpty())) {
             contacts = new Contacts(country, city, street, building, phoneNumber);
         }
-        LOGGER.debug("{} Contacts info from request: [{}]", CHECKOUT_MSG, contacts);
+        log.debug("{} Contacts info from request: [{}]", CHECKOUT_MSG, contacts);
         if (user != null && contacts != null) {
             try {
                 receiptService.setDishesForReceipt(cart, contacts, user.getId());
-                LOGGER.info("{} Receipt saved, dishes assigned.", CHECKOUT_MSG);
+                log.info("{} Receipt saved, dishes assigned.", CHECKOUT_MSG);
                 session.setAttribute("cart", new HashMap<Dish, Integer>());
             } catch (ServiceException | DAOException e) {
-                LOGGER.error("{} Failed to save receipt or assign dishes. An exception occurs: [{}]",
+                log.error("{} Failed to save receipt or assign dishes. An exception occurs: [{}]",
                         CHECKOUT_MSG, e.getMessage());
                 throw new CommandException(e.getMessage(), e);
             }

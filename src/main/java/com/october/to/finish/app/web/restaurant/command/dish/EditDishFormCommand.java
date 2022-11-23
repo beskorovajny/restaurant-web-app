@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class EditDishFormCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(EditDishFormCommand.class);
+    private static final Logger log = LogManager.getLogger(EditDishFormCommand.class);
     private final DishService dishService;
 
     public EditDishFormCommand(DishService dishService) {
@@ -27,7 +27,7 @@ public class EditDishFormCommand implements AppCommand {
         try {
             dish = dishService.findById(id);
         } catch (ServiceException e) {
-            LOGGER.error("[EditDishFormCommand] Can't receive dish by id:[{}]", id);
+            log.error("[EditDishFormCommand] Can't receive dish by id:[{}]", id);
             throw new CommandException(e.getMessage(), e);
         }
         request.setAttribute("dish", dish);

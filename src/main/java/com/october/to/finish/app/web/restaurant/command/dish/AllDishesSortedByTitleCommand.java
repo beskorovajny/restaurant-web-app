@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AllDishesSortedByTitleCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AllDishesSortedByTitleCommand.class);
+    private static final Logger log = LogManager.getLogger(AllDishesSortedByTitleCommand.class);
     private static final String ALL_DISH_COMMAND_MSG = "[AllDishesSortedByTitleCommand]";
     private final DishService dishService;
 
@@ -34,9 +34,9 @@ public class AllDishesSortedByTitleCommand implements AppCommand {
         List<Dish> dishes = null;
         try {
             dishes = dishService.findAllSortedByTitle(page);
-            LOGGER.info("{} Dishes sorted by title found.", ALL_DISH_COMMAND_MSG);
+            log.info("{} Dishes sorted by title found.", ALL_DISH_COMMAND_MSG);
         } catch (ServiceException e) {
-            LOGGER.error("{} Can't receive sorted by title dishes! An exception occurs: [{}]",
+            log.error("{} Can't receive sorted by title dishes! An exception occurs: [{}]",
                     ALL_DISH_COMMAND_MSG, e.getMessage());
             throw new CommandException(e.getMessage(), e);
         }

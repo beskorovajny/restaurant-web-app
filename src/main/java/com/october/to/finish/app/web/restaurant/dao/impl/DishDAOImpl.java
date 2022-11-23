@@ -21,7 +21,7 @@ import java.util.Optional;
  * @see java.sql.Connection
  */
 public class DishDAOImpl implements DishDAO {
-    private static final Logger LOGGER = LogManager.getLogger(DishDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(DishDAOImpl.class);
     private static final String DISH_RECEIVED_MSG = "Dish received : [{}], [{}], [{}]";
     private static final String DISH_RECEIVING_EXCEPTION_MSG = "[DishDAO] exception while receiving Dish";
     private static final String DISH_DAO_MSG = "[DishDAO]";
@@ -51,7 +51,7 @@ public class DishDAOImpl implements DishDAO {
 
     public DishDAOImpl(Connection connection) {
         if (connection == null) {
-            LOGGER.error(NULL_INPUT_EXC);
+            log.error(NULL_INPUT_EXC);
             throw new IllegalArgumentException(NULL_INPUT_EXC);
         }
         this.connection = connection;
@@ -64,7 +64,7 @@ public class DishDAOImpl implements DishDAO {
     @Override
     public long save(Dish dish) throws DAOException {
         if (dish == null) {
-            LOGGER.error(NULL_INPUT_EXC);
+            log.error(NULL_INPUT_EXC);
             throw new IllegalArgumentException(NULL_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
@@ -75,11 +75,11 @@ public class DishDAOImpl implements DishDAO {
             long key = 0;
             if (resultSet.next()) {
                 key = resultSet.getLong(1);
-                LOGGER.info("{} Dish : {} was saved successfully", DISH_DAO_MSG, dish);
+                log.info("{} Dish : {} was saved successfully", DISH_DAO_MSG, dish);
             }
             return key;
         } catch (SQLException e) {
-            LOGGER.error("{} Dish : [{}] was not saved. An exception occurs.: {}", DISH_DAO_MSG, dish, e.getMessage());
+            log.error("{} Dish : [{}] was not saved. An exception occurs.: {}", DISH_DAO_MSG, dish, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while saving Dish" + e.getMessage(), e);
         }
     }
@@ -97,11 +97,11 @@ public class DishDAOImpl implements DishDAO {
             if (resultSet.next()) {
                 dish = Optional.ofNullable(dishMapper.extractFromResultSet(resultSet));
             }
-            dish.ifPresent(d -> LOGGER.info(DISH_RECEIVED_MSG,
+            dish.ifPresent(d -> log.info(DISH_RECEIVED_MSG,
                     d.getId(), d.getTitle(), d.getDescription()));
             return dish.orElse(new Dish());
         } catch (SQLException e) {
-            LOGGER.error("{} Dish for given ID : [{}] was not found. An exception occurs : {}",
+            log.error("{} Dish for given ID : [{}] was not found. An exception occurs : {}",
                     DISH_DAO_MSG, dishId, e.getMessage());
             throw new DAOException(DISH_RECEIVING_EXCEPTION_MSG, e);
         }
@@ -120,11 +120,11 @@ public class DishDAOImpl implements DishDAO {
             if (resultSet.next()) {
                 dish = Optional.ofNullable(dishMapper.extractFromResultSet(resultSet));
             }
-            dish.ifPresent(d -> LOGGER.info(DISH_RECEIVED_MSG,
+            dish.ifPresent(d -> log.info(DISH_RECEIVED_MSG,
                     d.getId(), d.getTitle(), d.getDescription()));
             return dish.orElse(new Dish());
         } catch (SQLException e) {
-            LOGGER.error("{} Dish for given title : [{}] was not found. An exception occurs : {}",
+            log.error("{} Dish for given title : [{}] was not found. An exception occurs : {}",
                     DISH_DAO_MSG, title, e.getMessage());
             throw new DAOException(DISH_RECEIVING_EXCEPTION_MSG, e);
         }
@@ -139,11 +139,11 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes was found successfully. [{}]", DISH_DAO_MSG, result);
+                log.info("{} Dishes was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
+            log.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes", e);
         }
         return result;
@@ -158,11 +158,11 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes sorted by price was found successfully. [{}]", DISH_DAO_MSG, result);
+                log.info("{} Dishes sorted by price was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
+            log.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by price", e);
         }
         return result;
@@ -177,11 +177,11 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes sorted by title was found successfully. [{}]", DISH_DAO_MSG, result);
+                log.info("{} Dishes sorted by title was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
+            log.error("{} {} : {}", DISH_DAO_MSG, DISHES_WAS_NOT_FOUND, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by title", e);
         }
         return result;
@@ -196,11 +196,11 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes sorted by category was found successfully. [{}]", DISH_DAO_MSG, result);
+                log.info("{} Dishes sorted by category was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            log.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes sorted by category", e);
         }
         return result;
@@ -216,11 +216,11 @@ public class DishDAOImpl implements DishDAO {
             dishMapper.extractDishes(result, preparedStatement);
 
             if (!result.isEmpty()) {
-                LOGGER.info("{} Dishes filtered by category was found successfully. [{}]", DISH_DAO_MSG, result);
+                log.info("{} Dishes filtered by category was found successfully. [{}]", DISH_DAO_MSG, result);
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            log.error("{} Dishes was not found. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + "exception while receiving all dishes filtered by category", e);
         }
         return result;
@@ -238,14 +238,14 @@ public class DishDAOImpl implements DishDAO {
 
             int rowUpdated = preparedStatement.executeUpdate();
             if (rowUpdated > 0 && rowUpdated < 8) {
-                LOGGER.info("{} Dish with ID : [{}] was updated.", DISH_DAO_MSG, dishId);
+                log.info("{} Dish with ID : [{}] was updated.", DISH_DAO_MSG, dishId);
                 return true;
             } else {
-                LOGGER.info("{} Dish with ID : [{}] was not found for update", DISH_DAO_MSG, dishId);
+                log.info("{} Dish with ID : [{}] was not found for update", DISH_DAO_MSG, dishId);
                 return false;
             }
         } catch (SQLException e) {
-            LOGGER.error("{} Dish was not update. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
+            log.error("{} Dish was not update. An exception occurs : {}", DISH_DAO_MSG, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + " exception while updating Dish" + e.getMessage(), e);
         }
     }
@@ -260,12 +260,12 @@ public class DishDAOImpl implements DishDAO {
             preparedStatement.setLong(1, dishId);
             int rowDeleted = preparedStatement.executeUpdate();
             if (rowDeleted > 0) {
-                LOGGER.info("{} Dish with ID : [{}] was removed.", DISH_DAO_MSG, dishId);
+                log.info("{} Dish with ID : [{}] was removed.", DISH_DAO_MSG, dishId);
             } else {
-                LOGGER.info("{} Dish with ID : [{}] was not found to remove.", DISH_DAO_MSG, dishId);
+                log.info("{} Dish with ID : [{}] was not found to remove.", DISH_DAO_MSG, dishId);
             }
         } catch (SQLException e) {
-            LOGGER.error("{} Dish with ID : [{}] was not removed. An exception occurs : {}",
+            log.error("{} Dish with ID : [{}] was not removed. An exception occurs : {}",
                     DISH_DAO_MSG, dishId, e.getMessage());
             throw new DAOException(DISH_DAO_MSG + " exception while removing Dish" + e.getMessage(), e);
         }
@@ -282,7 +282,7 @@ public class DishDAOImpl implements DishDAO {
             recordsCount = resultSet.getInt(1);
             return recordsCount;
         } catch (SQLException e) {
-            LOGGER.error("{} Failed to count dishes! An exception occurs :[{}]", DISH_DAO_MSG, e.getMessage());
+            log.error("{} Failed to count dishes! An exception occurs :[{}]", DISH_DAO_MSG, e.getMessage());
         }
         return recordsCount;
     }
@@ -299,7 +299,7 @@ public class DishDAOImpl implements DishDAO {
             categoryRecordsCount = resultSet.getInt(1);
             return categoryRecordsCount;
         } catch (SQLException e) {
-            LOGGER.error("{} Failed to count dishes filtered by category! An exception occurs :[{}]",
+            log.error("{} Failed to count dishes filtered by category! An exception occurs :[{}]",
                     DISH_DAO_MSG, e.getMessage());
         }
         return categoryRecordsCount;

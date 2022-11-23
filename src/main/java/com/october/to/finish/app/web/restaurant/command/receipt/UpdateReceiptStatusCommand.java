@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class UpdateReceiptStatusCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(UpdateReceiptStatusCommand.class);
+    private static final Logger log = LogManager.getLogger(UpdateReceiptStatusCommand.class);
     private final ReceiptService receiptService;
 
     public UpdateReceiptStatusCommand(ReceiptService receiptService) {
@@ -34,10 +34,10 @@ public class UpdateReceiptStatusCommand implements AppCommand {
                     receipt.setStatus(Receipt.Status.COMPLETED);
                 }
                 receiptService.update(receipt.getId(), receipt);
-                LOGGER.info("[UpdateReceiptStatusCommand] Receipt status for ID:[{}] updated.", receipt.getId());
+                log.info("[UpdateReceiptStatusCommand] Receipt status for ID:[{}] updated.", receipt.getId());
             }
         } catch (ServiceException e) {
-            LOGGER.error("[UpdateReceiptStatusCommand] Failed to update receipt status for ID:[{}].", receiptId);
+            log.error("[UpdateReceiptStatusCommand] Failed to update receipt status for ID:[{}].", receiptId);
             throw new CommandException(e.getMessage(), e);
         }
         return "controller?command=admin";

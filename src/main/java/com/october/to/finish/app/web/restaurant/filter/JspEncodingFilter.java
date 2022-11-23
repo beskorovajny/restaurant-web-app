@@ -11,7 +11,7 @@ import java.io.IOException;
 @WebFilter(urlPatterns = {"/*"},
         initParams = {@WebInitParam(name = "encoding", value = "UTF-8")})
 public class JspEncodingFilter implements Filter {
-    private static final Logger LOGGER = LogManager.getLogger(JspEncodingFilter.class);
+    private static final Logger log = LogManager.getLogger(JspEncodingFilter.class);
     private String encoding;
 
     @Override
@@ -23,10 +23,10 @@ public class JspEncodingFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        LOGGER.info("[JspEncodingFilter] Filter started {},  {}", request.getParameterMap(), response);
+        log.info("[JspEncodingFilter] Filter started {},  {}", request.getParameterMap(), response);
         if (request.getCharacterEncoding() == null) {
             request.setCharacterEncoding(encoding);
-            LOGGER.info("[JspEncodingFilter] encoding: {}", encoding);
+            log.info("[JspEncodingFilter] encoding: {}", encoding);
         }
         chain.doFilter(request, response);
     }

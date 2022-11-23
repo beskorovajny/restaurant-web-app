@@ -20,7 +20,7 @@ import java.util.StringTokenizer;
                 "/restaurant_web_app/controller?command=checkout_form, /restaurant_web_app/controller?command=checkout," +
                 "/restaurant_web_app/controller?command=add_to_cart, /restaurant_web_app/controller?command=clean_cart")})
 public class UserSessionFilter implements Filter {
-    private static final Logger LOGGER = LogManager.getLogger(UserSessionFilter.class);
+    private static final Logger log = LogManager.getLogger(UserSessionFilter.class);
     private List<String> restrictedCommands;
     private User user;
 
@@ -36,7 +36,7 @@ public class UserSessionFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        LOGGER.info("[UserSessionFilter] Filter started.");
+        log.info("[UserSessionFilter] Filter started.");
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
         String requestCommand = req.getRequestURI() + "?" + req.getQueryString();
@@ -46,7 +46,7 @@ public class UserSessionFilter implements Filter {
         }
         if (user != null && shouldBeRestricted && user.getRole() != User.Role.CLIENT) {
             res.sendRedirect(req.getContextPath() + "/controller?command=home");
-            LOGGER.info("[UserSessionFilter] Access denied! Redirected to home.");
+            log.info("[UserSessionFilter] Access denied! Redirected to home.");
         } else {
             filterChain.doFilter(servletRequest, servletResponse);
         }

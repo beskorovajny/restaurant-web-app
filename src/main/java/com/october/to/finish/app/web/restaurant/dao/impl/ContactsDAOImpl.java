@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 public class ContactsDAOImpl implements ContactsDAO {
 
-    private static final Logger LOGGER = LogManager.getLogger(ContactsDAOImpl.class);
+    private static final Logger log = LogManager.getLogger(ContactsDAOImpl.class);
     private static final String NULL_CONNECTION_MSG = "[AddressDaoImpl] Connection cannot be null!";
     private static final String NULL_ADDRESS_INPUT_EXC = "[ContactsDAO] Can't operate null (or < 1) input!";
     private static final String INSERT = "INSERT INTO contacts" +
@@ -40,7 +40,7 @@ public class ContactsDAOImpl implements ContactsDAO {
 
     public ContactsDAOImpl(Connection connection) {
         if (connection == null) {
-            LOGGER.error(NULL_CONNECTION_MSG);
+            log.error(NULL_CONNECTION_MSG);
             throw new IllegalArgumentException(NULL_CONNECTION_MSG);
         }
         this.connection = connection;
@@ -53,7 +53,7 @@ public class ContactsDAOImpl implements ContactsDAO {
     @Override
     public long save(Contacts contacts) throws DAOException {
         if (contacts == null) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
@@ -64,11 +64,11 @@ public class ContactsDAOImpl implements ContactsDAO {
             long key = 0;
             if (resultSet.next()) {
                 key = resultSet.getLong(1);
-                LOGGER.info("Contacts : {} was saved successfully", contacts);
+                log.info("Contacts : {} was saved successfully", contacts);
             }
             return key;
         } catch (SQLException e) {
-            LOGGER.error("Contacts : [{}] was not saved. An exception occurs : {}",
+            log.error("Contacts : [{}] was not saved. An exception occurs : {}",
                     contacts, e.getMessage());
             throw new DAOException("[ContactsDAO] exception while saving Contacts" + e.getMessage(), e);
         }
@@ -77,7 +77,7 @@ public class ContactsDAOImpl implements ContactsDAO {
     @Override
     public Contacts findById(long contactsId) throws DAOException {
         if (contactsId < 1) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         Optional<Contacts> contacts = Optional.empty();
@@ -88,9 +88,9 @@ public class ContactsDAOImpl implements ContactsDAO {
             if (resultSet.next()) {
                 contacts = Optional.ofNullable(contactsMapper.extractFromResultSet(resultSet));
             }
-            contacts.ifPresent(contact -> LOGGER.info("Contacts received from db: [{}]", contact));
+            contacts.ifPresent(contact -> log.info("Contacts received from db: [{}]", contact));
         } catch (SQLException e) {
-            LOGGER.error("Contacts with ID : [{}] was not found. An exception occurs : {}", contactsId, e.getMessage());
+            log.error("Contacts with ID : [{}] was not found. An exception occurs : {}", contactsId, e.getMessage());
             throw new DAOException("[ContactsDAO] exception while receiving Contacts", e);
         }
         return contacts.orElse(new Contacts());
@@ -103,7 +103,7 @@ public class ContactsDAOImpl implements ContactsDAO {
                 contacts.getStreet() == null || contacts.getStreet().isEmpty() ||
                 contacts.getBuildingNumber() == null || contacts.getBuildingNumber().isEmpty() ||
                 contacts.getPhone() == null || contacts.getPhone().isEmpty()) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         Optional<Contacts> contactsOptional = Optional.empty();
@@ -118,9 +118,9 @@ public class ContactsDAOImpl implements ContactsDAO {
             if (resultSet.next()) {
                 contactsOptional = Optional.ofNullable(contactsMapper.extractFromResultSet(resultSet));
             }
-            contactsOptional.ifPresent(contact -> LOGGER.info("Contacts received from db: [{}]", contact));
+            contactsOptional.ifPresent(contact -> log.info("Contacts received from db: [{}]", contact));
         } catch (SQLException e) {
-            LOGGER.error("Contacts was not found. An exception occurs : {}", e.getMessage());
+            log.error("Contacts was not found. An exception occurs : {}", e.getMessage());
             throw new DAOException("[ContactsDAO] exception while receiving Contacts", e);
         }
         return contactsOptional.orElse(new Contacts());
@@ -133,11 +133,11 @@ public class ContactsDAOImpl implements ContactsDAO {
                 prepareStatement(FIND_ALL)) {
             contactsMapper.extractAddresses(result, preparedStatement);
             if (!result.isEmpty()) {
-                LOGGER.info("Contacts was found successfully.");
+                log.info("Contacts was found successfully.");
                 return result;
             }
         } catch (SQLException e) {
-            LOGGER.error("Contacts was not found. An exception occurs : {}", e.getMessage());
+            log.error("Contacts was not found. An exception occurs : {}", e.getMessage());
             throw new DAOException("[ContactsDAO] exception while receiving all addresses", e);
         }
         return result;
@@ -146,7 +146,7 @@ public class ContactsDAOImpl implements ContactsDAO {
     @Override
     public boolean update(long contactsId, Contacts contacts) throws DAOException {
         if (contactsId < 1 || contacts == null) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
@@ -156,14 +156,14 @@ public class ContactsDAOImpl implements ContactsDAO {
 
             int rowUpdated = preparedStatement.executeUpdate();
             if (rowUpdated > 0 && rowUpdated < 6) {
-                LOGGER.info("Contacts with ID : [{}] was updated.", contactsId);
+                log.info("Contacts with ID : [{}] was updated.", contactsId);
                 return true;
             } else {
-                LOGGER.info("Contacts with ID : [{}] was not found for update", contactsId);
+                log.info("Contacts with ID : [{}] was not found for update", contactsId);
                 return false;
             }
         } catch (SQLException e) {
-            LOGGER.error("Contacts with ID : [{}] was not updated. An exception occurs : {}",
+            log.error("Contacts with ID : [{}] was not updated. An exception occurs : {}",
                     contactsId, e.getMessage());
             throw new DAOException("[ContactsDAO] exception while updating Contacts" + e.getMessage(), e);
         }
@@ -173,7 +173,7 @@ public class ContactsDAOImpl implements ContactsDAO {
     @Override
     public void delete(long contactsId) throws DAOException {
         if (contactsId < 1) {
-            LOGGER.error(NULL_ADDRESS_INPUT_EXC);
+            log.error(NULL_ADDRESS_INPUT_EXC);
             throw new IllegalArgumentException(NULL_ADDRESS_INPUT_EXC);
         }
         try (PreparedStatement preparedStatement = connection.
@@ -181,12 +181,12 @@ public class ContactsDAOImpl implements ContactsDAO {
             preparedStatement.setLong(1, contactsId);
             int rowDeleted = preparedStatement.executeUpdate();
             if (rowDeleted > 0) {
-                LOGGER.info("Contacts with ID : [{}] was removed.", contactsId);
+                log.info("Contacts with ID : [{}] was removed.", contactsId);
             } else {
-                LOGGER.info("Contacts with ID : [{}] was not found to remove.", contactsId);
+                log.info("Contacts with ID : [{}] was not found to remove.", contactsId);
             }
         } catch (SQLException e) {
-            LOGGER.error("Contacts with ID : [{}] was not removed. An exception occurs : {}",
+            log.error("Contacts with ID : [{}] was not removed. An exception occurs : {}",
                     contactsId, e.getMessage());
             throw new DAOException("[ContactsDAO] exception while removing Contacts" + e.getMessage(), e);
         }

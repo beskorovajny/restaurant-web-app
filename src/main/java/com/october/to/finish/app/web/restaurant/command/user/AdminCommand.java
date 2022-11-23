@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AdminCommand implements AppCommand {
-    private static final Logger LOGGER = LogManager.getLogger(AdminCommand.class);
+    private static final Logger log = LogManager.getLogger(AdminCommand.class);
     private final ReceiptService receiptService;
 
     public AdminCommand(ReceiptService receiptService) {
